@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./headerStyle.css">
+    <link rel="stylesheet" href="./responsiveHeaderCss.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portal | Home</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div id="logo-div">
+            <a href="/index.html"><img id="logo_image" src="./Images/Logo Blue P.svg" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <a href="#web-feedback"><p>عن مَدخل</p></a>
+            <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+            <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        </div>
+
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar-->
+    <nav class="mobile-nav" id="mobileNav">
+        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+
+        <!-- Mobile search -->
+        <div id="mobile-search">
+            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+
+        <a href="./aboutPage/about.html"><p>عن مَدخل</p></a>
+        <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
+    </nav>
+
+
+    <!-- greating -->
+    <div id="greating">
+        <h1 id="portal-greating">منصـة مَـدخـــل</h1>
+        <p>😉ما يحتاج تطول بحث وسؤال في القروبات مادام مَدخل بين يديك</p>
+        <div id="choosing-school">
+            <a href="./JTIPage/JTI.html"><button id="institute-button">معهد الجبيل التقني</button></a>
+            <a href="./JICPage/jic.html"><button id="college-button">كلية الجبيل الصناعية</button></a>
+        </div>
+    </div>
+
+
+    <!-- last news -->
+    <div id="last-news">
+        <h1 class="subtitle">آخـــر الاخبـــار</h1>
+        <p class="p-text">📱خلك قريب وعلى علم بـ آخر الاحداث اللي تصير في الكلية والمعهد أول بأول</p>
+        <div id="news">
+            <!-- سيتم تعبئة الأخبار هنا تلقائياً via JavaScript -->
+        </div>
+    </div>
+
+
+    <!-- searching section -->
+    <div id="search-section">
+        <nav style="margin: 10px auto; width:fit-content; padding-left: 480px">
+
+            <h1 class="subtitle">محــرك البحــث</h1>
+            <p class="p-text">🔍ما يحتاج تدور بكل الصفحات لان بكلمة واحدة توصل للي تبيه بسرعة</p>
+            <div id="search-section-div">
+                <input id="search-section-input" type="search" placeholder="اكتب كلمة مفتاحية">
+                <button id="search-section-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+                <div class="result-search-sectoin-box" id="result-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+            <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائع؟<a href="" style="display: inline; color:blue;">خريطة الموقع</a></p>
+        </nav>
+    </div>
+
+    <!-- feedback section -->
+    <div id="web-feedback">
+        <nav style="margin: 10px auto; width:fit-content; padding-left: 480px"></nav>
+            <h1 class="subtitle" id="feedback-h1">ايش هو <span style="color: #109175;">مَدخـل</span>؟</h1>
+            <p class="p-text" id="feedback-text" style="direction: rtl;">مشروع غير رسمي لطلاب كلية ومعهد الجبيل الصناعية تم تصميمه وبرمجته بواسطة مجموعة طلاب من الكلية كمجهود طلابي بالكامل👥</p>
+            <div id="web-features">
+                <h1 class="subtitle">💻مـزايا المنصـة</h1>
+                <ul>
+                    <li>- تحديثات مستمرة للاخبار اللي تخص الكلية والمعهد</li>
+                    <li>- ادوات تساعدك في حساب المعدل و غيابات المواد</li>
+                    <li>- مكتبة معلومات تشمل كل ما يخص التخصصات واللوائح</li>
+                    <li>- اجابة لمعظم الاسئلة بالاضافة الى خانة الدعم الفني</li>
+                    <li>- البحث السريع داخل الموقع والانتقال بسرعة</li>
+                    <li>- ضمان نشر الاخبار الموثوقة فقط</li>
+                    <li>- مشاريع مرتبطة بالمنصة مثل "توزيع الاسابيع الدراسية"</li>
+                    <li>- والمزيد من المزايا ...</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Contact with us -->
+    <div id="contact-us">
+        <h1 class="subtitle">تــواصـل معنــا</h1>
+        <p class="p-text"> من هنا تقدر تتواصل معنا بسهولة اذا واجهت اي مشاكل او عندك استفسارات</p>
+        <div id="out-information">
+
+            <div class="info-post" id="info-post1">
+                <div class="info">
+                    <h3 id="contactUs-h11" style="font-size: 20px;">عبدالملك الخليفه</h3>
+                    <p>علوم حاسب - مبرمج الموقع</p>
+                    <p> كلية الجبيل الصناعية - بكالوريوس</p>
+                    <a href=""><button>التواصل عبر واتساب<img src="/Images/whatsapp.png" alt=""></button></a>
+                </div>
+                
+                <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">    
+            </div>
+
+            <div id="email-info-div">
+                <p style="margin-left: 10px;">Portalsa@hotmail.com</p>
+                <span style="color: white;" class="material-symbols-outlined">mail</span>
+                <p style="margin-left: 30px; margin-right: 10px;">البريد الإلكتروني</p>
+            </div>
+
+            <div class="info-post" id="info-post2">
+                <div class="info">
+                    <h3 id="contactUs-h12" style="font-size: 20px;">رائد الزهراني</h3>
+                    <p>صيانة ميكانيكية - مصمم الموقع ومشاريعه</p>
+                    <p>كلية الجبيل الصناعية - دبلوم متوسط</p>
+                    <a href=""><button>التواصل عبر واتساب<img src="/Images/whatsapp.png" alt=""></button></a>
+                </div>
+                <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="font-size: 30px;" class="subtitle">انضم الى قناة التليجرام عشان ما يفوتك شيء</h3>
+        <div id="subsecribe-div">
+            <a style="width: 80%; margin: 5px auto;"><button id="subsecribe-button">انضم الى قناة التليجرام<span class="material-symbols-outlined" style="background: none; padding: 5px;">north_east</span></button></a>
+        </div>
+
+        <div id="links-div">
+            <a href="/index.html"><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href="/newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
+            <a href=""><p class="p-links">خريطة الموقع</p></a>
+            <a href="/gpaPage/gpa.html"><p class="p-links">حساب المعدل</p></a>
+            <a href=""><p class="p-links">تواصل معنا</p></a>
+            <a href="/absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
+            <a href="/DistributionOfWeeks.pdf"><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+        </div>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+    
+    
+</body>
+    <script src="./newsPage/news-data.js"></script>
+    <script src="./script.js"></script>
+    <script src="./search.js"></script>
+    <script src="./searchSection.js"></script>
+</html>

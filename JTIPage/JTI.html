@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./JTIstyle.css">
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../responsiveHeaderCss.css">
+    <title>JTI</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div id="logo-div">
+            <a href="../index.html"><img id="logo_image" src="../Images/Logo Blue P.svg" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+            <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+            <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        </div>
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar-->
+    <nav class="mobile-nav" id="mobileNav">
+        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+
+        <!-- Mobile search -->
+        <div id="mobile-search">
+            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+
+        <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+    </nav>
+
+    <!-- greating -->
+    <div id="greating">
+        <h1 id="portal-greating">معهـد الجبيـل التقــني</h1>
+        <p>🤓دليلك الشامل كطالب في معهد الجبيل التقني في مكان واحد</p>
+        <div id="choosing-page">
+            <div id="top-choosing-page-buttons">
+                <button id="jic-gate">بوابة المعهد</button>
+                <button id="majorsButton">التخصصات</button>
+                <button id="blackboard">البلاك بورد</button>
+            </div>
+            <button id="acadim-board">اللوائح الاكاديمية و الاسئلة الشائعة</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div class="modal-content">
+
+            <div id="header-modal">
+                <h3>اختر السنة</h3>
+                <span class="material-symbols-outlined">close</span>
+            </div>
+
+            <div id="modal-body">
+                <div id="modal-buttons-container">
+                    <button id="prepare-button">السنة التحضيرية</button>
+                    <button id="deplome-button">التخصصات</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- searching section -->
+    <div id="search-section" style="padding-bottom: 30px;">
+        <nav style="margin: 10px auto; width:fit-content; padding-left: 480px">
+
+            <h1 class="subtitle">محــرك البحــث</h1>
+            <p class="p-text">🔍ما يحتاج تدور بكل الصفحات لان بكلمة واحدة توصل للي تبيه بسرعة</p>
+            <div id="search-section-div">
+                <input id="search-section-input" type="search" placeholder="اكتب كلمة مفتاحية">
+                <button id="search-section-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+                <div class="result-search-sectoin-box" id="result-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+            <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائع؟<a href="" style="display: inline; color:blue;">خريطة الموقع</a></p>
+        </nav>
+    </div>
+
+    <!-- Facilities -->
+    <div class="facilities">
+
+        <nav id="nav-facilities" style="margin: 10px auto; width:fit-content; padding-left: 480px">
+            <h1 class="subtitle">تسهيــلات</h1>
+            <p class="p-text" id="p-facilities">👇مجموعة تختصر عليك مشوار طويل بضغطة واحدة</p>
+        
+        </nav>
+    <div id="top-buttons-fac">
+        <button id="jic-gate">حساب المعدل</button>
+        <button id="majorsButton">التقويم الاكاديمي</button>
+        <button id="blackboard">حساب الغيابات</button>
+    </div>
+    <button id="dis-weeks">📅توزيع الاسابيع الدراسية</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h1 style="font-size: 30px;" class="subtitle">📫اشترك بالحملة البريدية عشان ما يفوتك شيء</h1>
+        <div id="subsecribe-div">
+            <button id="subsecribe-button">اشتراك</button>
+            <input id="email-input" placeholder="بريدك الإلكتروني" type="text">
+            <span class="material-symbols-outlined">mail</span>
+        </div>
+
+        <div id="links-div">
+            <a href=""><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href=""><p class="p-links">مدونة الأخبار</p></a>
+            <a href=""><p class="p-links">تويتر الهيئة الملكية</p></a>
+            <a href=""><p class="p-links">خريطة الموقع</p></a>
+            <a href=""><p class="p-links">حساب المعدل</p></a>
+            <a href=""><p class="p-links">تواصل معنا</p></a>
+            <a href=""><p class="p-links">حساب الغيابات</p></a>
+            <a href=""><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+        </div>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+
+</body>
+<script src="../search.js"></script>
+<script src="../searchSection.js"></script>
+<script src="./JTI.js"></script>
+</html>

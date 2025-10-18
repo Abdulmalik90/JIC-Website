@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../responsiveHeaderCss.css">
+    <link rel="stylesheet" href="./regulationStyle.css">
+    <title>اللوائح الأكاديمية والمستندات</title>
+</head>
+<body>
+
+    <!-- header -->
+    <header>
+        <div id="logo-div">
+            <a href="../index.html"><img id="logo_image" src="../Images/Logo Blue P.svg" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+            <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+            <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        </div>
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar-->
+    <nav class="mobile-nav" id="mobileNav">
+        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+
+        <!-- Mobile search -->
+        <div id="mobile-search">
+            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+
+        <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+    </nav>
+
+    <!-- Greating -->
+    <div id="greating">
+        <h1 id="portal-greating">اللوائح الاكاديميــة والتخصصات</h1>
+        <p>كل ما تريد معرفته عن تخصصات كليات ومعاهد الجبيل الصناعية</p>
+        <div id="choosing-page">
+            <div>
+                <a href="../JICPage/bacholarMajors/bMajors.html"><button id="jic-bacholar">بكالوريوس الكلية</button></a>
+                <a href=""><button id="jti-deplome">دبلوم المعهد</button></a>
+                <a href="../JICPage/deplomeMajors/depMajors.html"><button id="jic-deplome">دبلوم الكلية</button></a>
+            </div>
+            <a href="../academicRegulationsPage/regulations.html"><button  id="explain-section-button">اللوائح الاكاديمية و الاسئلة الشائعة</button></a>
+        </div>
+    </div>
+
+    <!-- Acadimic Documents -->
+    <div id="doc-container">
+        <div id="doc-container2">
+            <h1>المستندات الاكاديمية</h1>
+            <p>📃جميع المستندات الاكاديمية الرسمية اللي تحتاجها في مكان واحد</p>
+            <div id="files-container">
+                <button class="file-button">لائحة الامن والسلامة وتصاريح المركبات<span class="material-symbols-outlined">download</span></button>
+                <button class="file-button">لوائح الكليات والمعاهد<span class="material-symbols-outlined">download</span></button>
+                <button class="file-button">وصف المقررات<span class="material-symbols-outlined">download</span></button>
+                <button class="file-button">الكتب pdf<span class="material-symbols-outlined">download</span></button>
+                <button class="file-button">التحويل بين التخصصات<span class="material-symbols-outlined">download</span></button>
+                <button class="file-button">إظهار جميع المستندات<span class="material-symbols-outlined">download</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Common Questions -->
+    <div id="questions-general-container">
+        <h1>الاسئلـة الشـائعـة</h1>
+        <p>⁉️مجموعة اجابات للاسئلة الاكثر شيوعاً بين الطلاب</p>
+        <div id="questions-container">
+            <div class="container-ac">
+                <div class="accordion">
+
+                <!-- Accordion Item 1 -->
+                    <div class="accordion-item">
+                        <input type="checkbox" id="section1" name="accordion">
+                        <label style="border-radius: 15px 15px 0 0;" for="section1" class="accordion-header">اذا كان معدلي تحت 2, هل بيجيني إنذار اكاديمي؟</label>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>An accordion is a UI element that expands and collapses to show or hide content. It's useful for organizing information in a compact space, allowing users to choose which sections to view.</p>
+                            </div>
+                        </div>
+                    </div>
+            
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="section2" name="accordion">
+                    <label for="section2" class="accordion-header">أقدر أحول تخصصي من دبلوم الى بكالوريوس أو العكس؟</label>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>نعم, لكن التحويل له ضوابط محددة ويمكنك الاطلاع على جميع الضوابط من <a href="" style="color:rgb(68, 124, 228)">الرابط التالي</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="section3" name="accordion">
+                    <label for="section3" class="accordion-header">أقدر أحول من معهد الجبيل التقني الى كلية الجبيل الصناعية أو العكس؟</label>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>While this CSS-only approach works visually, for full accessibility you might want to add ARIA attributes and consider a JavaScript implementation. However, using standard form controls (checkboxes) helps maintain basic accessibility.</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="section4" name="accordion">
+                    <label for="section4" class="accordion-header">على أي أساس يتم اختيار تخصصي؟</label>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>يتم ترتيب رغبات التخصص خلال السنة التحضيرية ويتم قبول اختيارك بناءََا على معدلك في التحضيري, وفي التخصص يتم تصفير المعدل من جديد</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Accordion Item 5 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="section5" name="accordion">
+                    <label style="border-radius: 0 0 15px 15px;" for="section5" class="accordion-header">How can I customize the appearance?</label>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>You can easily customize the accordion by modifying the CSS. Change colors, fonts, transition speeds, or icons to match your design. The structure is flexible enough to accommodate various styling preferences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="font-size: 30px;" class="subtitle">📫اشترك بالحملة البريدية عشان ما يفوتك شيء</h3>
+        <div id="subsecribe-div">
+            <button id="subsecribe-button">اشتراك</button>
+            <input id="email-input" placeholder="بريدك الإلكتروني" type="text">
+            <span class="material-symbols-outlined">mail</span>
+        </div>
+
+        <div id="links-div">
+            <a href=""><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href=""><p class="p-links">مدونة الأخبار</p></a>
+            <a href=""><p class="p-links">تويتر الهيئة الملكية</p></a>
+            <a href=""><p class="p-links">خريطة الموقع</p></a>
+            <a href=""><p class="p-links">حساب المعدل</p></a>
+            <a href=""><p class="p-links">تواصل معنا</p></a>
+            <a href=""><p class="p-links">حساب الغيابات</p></a>
+            <a href=""><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+        </div>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+</body>
+<script src="../search.js"></script>
+</html>

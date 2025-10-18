@@ -1,0 +1,474 @@
+
+/* Greating */
+
+#greating {
+    margin-top: 90px;
+}
+
+#portal-greating {
+    text-align: center;
+    margin-top: 190px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 85px;
+    background: linear-gradient(-120deg, #0d6665, #108c75); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#greating p {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+}
+
+#choosing-page {
+
+}
+
+#choosing-page div {
+    display: flex;
+    width: 50%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 30px auto 10px auto;
+    gap: 7px;
+    max-width: 1100px;
+}
+
+#choosing-page div a {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+#choosing-page div button {
+    padding: 12px 50px;
+    background: linear-gradient(120deg, #0d6665, #108c75); 
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+#choosing-page div button:hover, #acadim-board:hover {
+    background: #0d6665; /* smoother transition */
+    transform: translateY(-3px) scale(0.95);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: #03f5c9 solid 2px;
+}
+
+#jic-gate {
+    border-bottom-right-radius: 30px !important;
+}
+
+#blackboard {
+    border-top-left-radius: 30px !important;
+}
+
+#acadim-board, #dis-weeks {
+    background: linear-gradient(120deg, #126968, #108c75);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 10px 25px;
+    width: 50%;
+    margin: 5px auto 60px auto;
+    display: block;
+    max-width: 1100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Modal Styles */
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+#modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+#modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#header-modal {
+    display: flex;
+    background: #858585;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+#header-modal span {
+    cursor: pointer;
+    font-size: 28px;
+    transition: transform 0.2s ease;
+}
+
+#header-modal span:hover {
+    transform: rotate(90deg);
+    color: red;
+}
+
+#modal-body {
+    padding: 30px 20px;
+}
+
+#modal-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#modal-buttons-container button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+#deplome-button {
+    background: linear-gradient(120deg, #0d6665, #108c75);
+}
+
+#deplome-button:hover {
+    background: #0d6665;
+    transform: translateY(-2px);
+}
+
+#bacholar-button {
+    background: linear-gradient(120deg, #0d6665, #108c75);
+}
+
+#bacholar-button:hover {
+    background: #0d6665;
+    transform: translateY(-2px);
+}
+
+#prepare-button {
+    background: linear-gradient(120deg, #0d6665, #108c75);
+}
+
+#prepare-button:hover {
+    background: #0d6665;
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Search section */
+
+#search-section {
+    background-color: #eef2f5;
+}
+
+#search-section div {
+    display: flex;
+    width: fit-content;
+    margin-right: 70px;
+    margin-left: auto;
+}
+
+#search-section div input {
+    width: 700px;
+    height: 70px;
+    margin-right: 0;
+    border: none;
+    background-color: rgb(210, 210, 210);
+    padding: 20px;
+    text-align: right;
+    border-radius: 20px 0 0 20px;
+    font-size: 20px;
+}
+
+#search-section div button {
+    background-color: rgb(210, 210, 210);
+    margin-left: 0;
+    border: none;
+    height: 70px;
+    padding-right: 20px;
+    border-radius: 0 20px 20px 0;
+    font-size: 40px;
+}
+
+#search-section div .search-icon {
+    font-size: 30px;
+}
+
+#search-section div input:focus {
+    outline: none;
+    border: none;
+}
+
+.subtitle {
+    padding: 40px 70px 10px 0;
+    font-size: 50px;
+    text-align: right;
+}
+
+.p-text {
+    padding: 5px 70px 40px 0;
+    font-size: 30px;
+    text-align: right;
+    max-width: 900px;
+    margin-left: auto;
+}
+
+/* Facilities */
+
+#nav-facilities {
+    padding: 0 !important;
+    margin-right: 20px !important;
+    margin-left: auto !important;
+}
+
+#top-buttons-fac {
+    display: flex;
+    width: 50%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 30px auto 10px auto;
+    gap: 7px;
+    max-width: 1100px;
+}
+
+#top-buttons-fac a {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+#top-buttons-fac button {
+    padding: 12px 50px;
+    background: linear-gradient(120deg, #0d6665, #108c75); 
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+#top-buttons-fac button:hover, #dis-weeks:hover {
+    background: #0d6665; /* smoother transition */
+    transform: translateY(-3px) scale(0.95);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: #03f5c9 solid 2px;
+}
+
+
+/* Making the page responsive */
+
+/* Greating responsive */
+@media (max-width: 1165px) {
+    #portal-greating {
+        font-size: 70px;
+    }
+
+    #greating p {
+        font-size: 25px;
+    }
+
+    #choosing-page div, #acadim-board {
+        width: 90%;
+    }
+}
+
+@media (max-width: 720px) {
+    #portal-greating {
+        font-size: 60px;
+    }
+
+    #greating p {
+        font-size: 22px;
+    }
+
+    #choosing-page div button, #acadim-board {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 585px) {
+    #portal-greating {
+        font-size: 50px;
+    }
+
+    #greating p {
+        font-size: 20px;
+    }
+
+    #choosing-page div button, #acadim-board {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 475px) {
+    #portal-greating {
+        font-size: 40px;
+    }
+
+    #greating p {
+        font-size: 15px;
+    }
+
+    #choosing-page div button, #acadim-board {
+        font-size: 13px;
+    }
+}
+
+
+/* Search section responsive  */
+@media (max-width:1300px) {
+    #search-section nav {
+        width: 90%;
+        padding: 0 !important;
+    }
+
+    #p-map {
+        margin: 10px 10px 50px auto;
+    }
+    
+
+}
+
+@media (max-width:820px ) {
+    #search-section nav h1, 
+    #search-section .p-text,
+    #search-section-div {
+        width: fit-content !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #search-section-input, #result-box  {
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 750px) {
+    .subtitle {
+        font-size: 35px !important;
+    }
+
+    .p-text {
+        font-size: 20px !important;
+        white-space: normal;
+        word-break: break-word !important;
+        width: 90% !important;
+    }
+
+    #p-map {
+        margin-right: 10px !important;
+        margin-left: auto;
+    }
+
+    #search-section nav {
+        width: fit-content;
+    }
+}
+
+@media (max-width:480px){
+    #search-section nav .subtitle {
+        font-size: 28px !important;
+    }
+
+    #search-section nav .p-text {
+        font-size: 13px !important;
+    }
+
+    #search-section-input {
+        font-size: 18px !important;
+        height: 50px !important;
+    }
+
+    #search-section-button {
+        height: 50px !important;
+    }
+}
+
+/* Facilities section responsive */
+
+@media (max-width: 1050px) {
+    #p-facilities {
+        font-size: 20px;
+        width: 60%;
+    }
+
+    #top-buttons-fac, #dis-weeks {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    #top-buttons-fac button, #dis-weeks {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 690px) {
+    #nav-facilities .subtitle {
+        font-size: 29px !important;
+    } 
+
+    #p-facilities {
+        font-size: 17px !important;
+    }
+
+    #top-buttons-fac button, #dis-weeks {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 620px) {
+    #top-buttons-fac button, #dis-weeks {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 575px) {
+    #top-buttons-fac button, #dis-weeks {
+        padding: 5px;
+    }
+}

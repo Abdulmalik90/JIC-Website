@@ -1,0 +1,226 @@
+/* Greating */
+
+#greating {
+    margin-top: 90px;
+}
+
+#portal-greating {
+    text-align: center;
+    margin-top: 190px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 85px;
+    color: rgb(74, 74, 74);
+}
+
+#greating p {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    color: rgb(74, 74, 74);
+}
+
+
+/* Majors style */
+.subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 25px;
+    font-weight: 300;
+}
+
+.majors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.major-card {
+    position: relative;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #2c3e50;
+}
+
+.major-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.major-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(70%);
+    transition: all 0.6s ease;
+}
+
+.major-card:hover .major-image {
+    filter: grayscale(0%) brightness(100%);
+    transform: scale(1.1);
+}
+
+.major-name {
+    position: absolute;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    width: 85%;
+    padding: 0 15px;
+    z-index: 2;
+}
+
+.major-card:hover .major-name {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.major-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.major-card:hover .major-overlay {
+    opacity: 1;
+}
+
+.major-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.8rem;
+    opacity: 0.7;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+.major-card:hover .major-icon {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg);
+    color: rgb(45, 153, 255);
+}
+
+
+.instructions {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 600px;
+}
+
+/* responsive */
+
+
+/* majors */
+@media (max-width: 768px) {
+    .majors-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .major-card {
+        height: 240px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .majors-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    
+    .major-card {
+        height: 250px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .major-name {
+        opacity: 1;
+        color: rgb(82, 82, 82);
+        background-color: rgba(255, 255, 255, 0.485);
+        border-radius: 10px;
+    }
+
+    .major-image {
+        filter: grayscale(0%) brightness(100%);
+    }
+
+    .major-icon {
+        color: rgb(45, 153, 255);
+    }
+}
+
+@media (max-width: 1170px) {
+    .majors-grid {
+        width: 90%;
+    }
+}
+
+@media (max-width: 840px) {
+    #portal-greating {
+        font-size: 53px;
+    }
+
+    #greating p {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 500px) {
+    #portal-greating {
+        font-size: 40px;
+    }
+
+    #greating p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 390px) {
+    #portal-greating {
+        font-size: 35px;
+    }
+
+    #greating p {
+        font-size: 12px;
+    }
+}

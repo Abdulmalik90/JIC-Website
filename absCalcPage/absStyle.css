@@ -1,0 +1,314 @@
+
+/* Greating */
+
+#greating {
+    margin-top: 90px;
+}
+
+#portal-greating {
+    text-align: center;
+    margin-top: 190px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 80px;
+    color: rgb(74, 74, 74);
+}
+
+#greating p {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    color: rgb(74, 74, 74);
+}
+
+/* Absences Calculator */
+
+#abs-container {
+    width: 70%;
+    margin: 30px auto 80px auto;
+    max-width: 1000px;
+}
+
+#abs-container div {
+    background-color: #eef2f5;
+}
+
+
+#abs-info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    border-radius: 30px 30px 15px 15px;
+}
+
+#abs-info label {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+}
+
+#abs-info input {
+    text-align: right;
+    margin-top: 10px;
+    padding: 10px;
+    padding-left: 0px !important;
+    border: #9c9c9c solid 2px;
+    background-color: #d7e0e5;
+    width: 100%;
+    font-size: 20px;
+    
+}
+
+.info-part {
+    padding: 35px 0;
+    margin-bottom: 20px;
+    width: 40%;
+}
+
+#sub-name-input {
+    border-radius: 15px 15px 30px 15px;
+}
+
+#lectures-count-input {
+    border-radius: 15px 15px 15px 30px;
+}
+
+
+/* ----------------------- */
+
+#result-div {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+#result-div h1 {
+    text-align: right;
+    padding: 20px 5%;
+}
+
+#abs-result {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    border-radius: 30px 30px 15px 15px;
+}
+
+#abs-result label {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+}
+
+#abs-result input {
+    text-align: right;
+    margin-top: 10px;
+    padding: 10px;
+    padding-left: 0px !important;
+    border: #9c9c9c solid 2px;
+    background-color: #d7e0e5;
+    width: 100%;
+    font-size: 20px;
+}
+
+.result-part {
+    padding: 15px 0;
+    margin-bottom: 20px;
+    width: 40%;
+}
+
+
+#allowed-abs-input, #notallowed-abs-input {
+    border-radius: 15px;
+}
+
+#result-button-div {
+    width:88%;
+    margin: 0 auto 10px auto;
+    padding-bottom: 30px;
+}
+
+#result-button {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 20px;
+    background: linear-gradient(90deg, rgb(0, 145, 255), rgb(60, 60, 60));
+    color: white;
+    border: none;
+    border-radius: 15px 15px 30px 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#result-button:hover {
+    background: #ff4b2b; /* smoother transition */
+    border: none;
+    transform: translateY(3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* -------------------------- */
+
+#how-count {
+    text-align: right;
+    direction: rtl;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 15px 15px 30px 30px;
+    padding: 20px 30px;
+}
+
+#how-count h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#how-count p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+/* Making the page responsive */
+
+/* Greating responsive */
+@media (max-width: 1000px) {
+    #portal-greating {
+        font-size: 60px;
+    }
+
+    #greating p {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 630px) {
+    #portal-greating {
+        font-size: 50px;
+    }
+
+    #greating p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 490px) {
+    #portal-greating {
+        font-size: 40px;
+    }
+
+    #greating p {
+        font-size: 15px;
+    }
+}
+
+/* Absences Calculator responsive */
+
+    /* Subject name and hours per week responsive */
+@media (max-width:940px) {
+    .info-part label {
+        font-size: 16px !important;
+    }
+
+    .info-part input {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #abs-container {
+        width: 85%;
+    }
+    .info-part label {
+        font-size: 13px !important;
+    }
+
+    .info-part input {
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width:470px) {
+    .info-part label {
+        font-size: 10px !important;
+    }
+
+    .info-part input {
+        font-size: 9px !important;
+    }
+}
+
+    /* result responsive */
+@media (max-width: 940px) {
+    #result-div .subtitle {
+        font-size: 35px ;
+    }
+
+    .result-part label {
+        font-size: 16px !important;
+    }
+
+    .result-part input {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #result-div .subtitle {
+        font-size: 30px ;
+    }
+
+    .result-part label {
+        font-size: 13px !important;
+    }
+
+    .result-part input {
+        font-size: 12px !important;
+    }
+
+    #result-button {
+        font-size: 17px;
+        padding: 7px;
+    }
+}
+
+@media (max-width:470px) {
+    #result-div .subtitle {
+        font-size: 25px ;
+    }
+
+    .result-part label {
+        font-size: 10px !important;
+    }
+
+    .result-part input {
+        font-size: 9px !important;
+    }
+
+    #result-button {
+        font-size: 13px;
+        padding: 5px;
+    }
+}
+
+    /* Disclaimer */
+
+@media (max-width: 800px) {
+    #how-count h3 {
+        font-size: 15px;
+    }
+
+    #how-count p, #how-count b {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 500px) {
+    #how-count h3 {
+        font-size: 12px;
+    }
+
+    #how-count p, #how-count b {
+        font-size: 10px;
+    }
+}

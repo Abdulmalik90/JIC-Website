@@ -1,0 +1,230 @@
+/* Greating */
+#greating {
+    margin-top: 90px;
+}
+
+#portal-greating {
+    text-align: center;
+    margin-top: 190px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 85px;
+    color: rgb(74, 74, 74);
+}
+
+/* Major details */
+.top-div {
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin: 10px auto;
+    border-radius: 15px 30px;
+    border: black solid 1px;
+}
+
+.top-div span {
+    color: rgb(0, 102, 255);
+    font-weight: 500;
+}
+
+/* Major Plan */
+#courseTableContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.semester-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.semester-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.course-table thead {
+    width: 100%;
+}
+
+.course-table th {
+    background-color: #f5f5f5;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.course-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.course-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Optional Courses Section */
+.optional-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.optional-title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-size: 28px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.optional-courses-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.optional-course-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 280px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid #3498db;
+}
+
+.optional-course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.optional-course-card h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.optional-course-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.optional-course-card strong {
+    color: #2c3e50;
+}
+
+/* responsivitiy */
+/* Greating rsp*/
+@media (max-width:550px) {
+    #greating {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #portal-greating {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    #portal-greating {
+        font-size: 45px;
+    }
+}
+
+/* Major details */
+@media (max-width: 620px) {
+    .top-div {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .top-div p {
+        margin-bottom: 30px;
+    }
+}
+
+/* Responsive design for optional courses */
+@media (max-width: 768px) {
+    .optional-courses-wrapper {
+        gap: 15px;
+    }
+    
+    .optional-course-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .optional-container {
+        padding: 15px;
+    }
+    
+    .optional-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .optional-course-card {
+        padding: 15px;
+    }
+    
+    .optional-course-card h4 {
+        font-size: 16px;
+    }
+    
+    .optional-course-card p {
+        font-size: 13px;
+    }
+}
+
+
+/* responsive thead of the table courses */
+@media (max-width: 440px) {
+    .course-table thead tr th {
+        font-size: 12px;
+    }
+
+    .course-table tbody tr td {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 425px) {
+    .course-table thead tr th {
+        padding: 8px;
+    }
+}

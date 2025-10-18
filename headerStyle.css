@@ -1,0 +1,457 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+p, li, h3, button, label {
+    font-family: "tajawal", sans-serif !important;
+}
+
+@font-face {
+    font-family: 'Handicrafts';
+    src: url('./fonts/OTF/TheYearofHandicrafts-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Handicrafts';
+    src: url('./fonts/OTF/TheYearofHandicrafts-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Handicrafts';
+    src: url('./fonts/OTF/TheYearofHandicrafts-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Handicrafts';
+    src: url('./fonts/OTF/TheYearofHandicrafts-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Handicrafts';
+    src: url('./fonts/OTF/TheYearofHandicrafts-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+
+/* -------------------------------  */
+
+body {
+    height: 100%;
+    background: #f4f9fd;
+    font-family: 'Handicrafts', sans-serif;
+}
+
+
+/* Header */
+header {
+    z-index: 998;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+header div a, header div a p {
+    width: fit-content;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+#logo-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 30%;
+    flex: 1;
+    min-width: 0;
+}
+
+#logo_image {
+    height: 70px;
+    padding: 0;
+    width: max-content;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+}
+
+#logo_image:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+#menu-button {
+    display: none;
+}
+
+#header-pages {
+    width: 30%;
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex: 1;
+    min-width: 0;
+}
+
+#header-pages p {
+    transition: color 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#header-pages p:hover {
+    color: #ff4b2b; /* smoother transition */
+    transform: translateY(-3px) scale(1.05);
+}
+
+#search-div {
+    display: flex;
+    width: 30% !important;
+    padding-left: 40px;
+    padding-right: 40px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+#search-div button {
+    cursor: pointer;
+    background-color: rgb(210, 210, 210);
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+
+#search-div input {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0;
+    border: none;
+    padding: 10px;
+    width: 220px;
+    background-color: rgb(210, 210, 210);
+}
+
+#search-div input:focus {
+    outline: none;
+    border: none;
+}
+
+/* Search style */
+
+.result-search-box, .result-search-sectoin-box {
+    text-align: right;
+    position: absolute;
+    width: 246px;
+    top: 100%; /* Position below the search input */
+    left: 40px; /* Match the padding of parent */
+    right: 40px; /* Match the padding of parent */
+    max-height: 300px; /* Maximum height before scrolling */
+    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100; /* Ensure it appears above other content */
+    /* display: none;  */
+    border-top: 1px solid #e0e0e0;
+}
+
+.result-search-sectoin-box {
+    width: 754px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    text-align: right;
+    
+}
+
+/* Show the box when search is active */
+#search-div:focus-within .result-search-box,
+#search-div:hover .result-search-box, 
+#search-section-div:focus-within .result-search-sectoin-box, /* Fixed typo here */
+#search-section-div:hover .result-search-sectoin-box {
+    display: block;
+}
+
+
+/* Style individual search results */
+.result-search-box div, .result-search-sectoin-box div {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.result-search-box div:hover, .result-search-sectoin-box div:hover {
+    background-color: #f5f5f5;
+}
+
+/* Style scrollbar */
+.result-search-box::-webkit-scrollbar, 
+.result-search-sectoin-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result-search-box::-webkit-scrollbar-track, 
+.result-search-sectoin-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 0 10px 0;
+}
+
+.result-search-box::-webkit-scrollbar-thumb,
+.result-search-sectoin-box::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.result-search-box::-webkit-scrollbar-thumb:hover,
+.result-search-sectoin-box::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.result-search-box ul, .result-search-sectoin-box ul  {
+    border-top: rgb(183, 183, 183) solid 2px;
+}
+
+.result-search-sectoin-box ul {
+    margin-left: auto !important;
+}
+
+.result-search-box ul li, .result-search-sectoin-box ul li {
+    list-style: none;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+
+.result-search-box ul li:hover, .result-search-sectoin-box ul li:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+#search-section-div {
+    position: relative; /* This is crucial for absolute positioning of child */
+    display: flex;
+    /* Your other styles */
+}
+
+#search-div {
+    position: relative; /* Same for the other search div */
+}
+
+/* Search more setting */
+/* Search section container - crucial for positioning */
+#search-section-div {
+    position: relative; /* This is essential for absolute positioning */
+    display: flex;
+    width: fit-content;
+    margin-right: 70px;
+    margin-left: auto;
+}
+
+/* Result box styling */
+.result-search-sectoin-box {
+    position: absolute;
+    top: 100%; /* Position directly below the input */
+    left: 0; /* Align with left edge of parent container */
+    width: 700px; /* Match the input width exactly */
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 0 0 20px 20px; /* Match input border radius */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Show the box when search is active */
+#search-section-div:focus-within .result-search-sectoin-box,
+#search-section-div:hover .result-search-sectoin-box {
+    display: block;
+}
+
+/* Input and button styles (your existing styles) */
+#search-section-div input {
+    width: 700px;
+    height: 70px;
+    margin-right: 0;
+    border: none;
+    background-color: rgb(210, 210, 210);
+    padding: 20px;
+    text-align: right;
+    border-radius: 20px 0 0 20px;
+    font-size: 20px;
+}
+
+#search-section-div button {
+    background-color: rgb(210, 210, 210);
+    margin-left: 0;
+    border: none;
+    height: 70px;
+    padding-right: 20px;
+    border-radius: 0 20px 20px 0;
+    font-size: 40px;
+}
+
+#search-section-div .search-icon {
+    font-size: 30px;
+}
+
+#search-section-div input:focus {
+    outline: none;
+    border: none;
+}
+
+/* Result list styling */
+.result-search-sectoin-box ul {
+    border-top: rgb(183, 183, 183) solid 2px;
+    margin: 0;
+    padding: 0;
+}
+
+.result-search-sectoin-box ul li {
+    list-style: none;
+    padding: 15px 20px; /* Match input padding */
+    cursor: pointer;
+    text-align: right;
+    font-size: 18px;
+}
+
+.result-search-sectoin-box ul li:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+/* Scrollbar styling */
+.result-search-sectoin-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result-search-sectoin-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 0 20px 0;
+}
+
+.result-search-sectoin-box::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.result-search-sectoin-box::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+#search-section div input {
+    border-radius: 20px 0 0 0 !important;
+}
+
+#search-section div button {
+    border-radius: 0 20px 0 0 !important;
+}
+/* =============================================================== */
+
+.search-icon {
+    margin-top: 3px;
+    margin-left: 4px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+/* Footer */
+footer {
+    background-color: #eef2f5;
+}
+
+.subtitle {
+    padding: 40px 70px 10px 0;
+    font-size: 50px;
+    text-align: right;
+}
+
+footer h1 {
+    text-align: right;
+}
+
+#subsecribe-div {    
+    width: 100%;
+    margin: 30px auto;
+}
+
+
+#subsecribe-div span {
+    background-color: #e6e6e6;
+    padding: 13px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    
+}
+
+#subsecribe-div button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    width: 100%;
+    font-weight: 500;
+    background: linear-gradient(90deg, #102376, #0066ff);
+    transition: background-color 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#subsecribe-div button:hover {
+    background: #0066ff; /* smoother transition */
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+#links-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 100px;
+    width: 50%;
+    margin: 20px auto;
+    justify-content: center;
+    align-content: space-around;
+}
+
+#links-div p {
+    margin: 10px;
+    transition: color 0.6s ease, transform 0.3s ease;
+}
+
+#links-div p:hover {
+    color: #ff4b2b; /* smoother transition */
+    transform: translateY(-3px) scale(1.05);
+}
+
+
+

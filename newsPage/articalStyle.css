@@ -1,0 +1,138 @@
+/* article.css */
+.article-container {
+    max-width: 800px;
+    margin: 200px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.article-title {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: right;
+    line-height: 1.4;
+}
+
+.article-meta {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+    text-align: right;
+    font-size: 1.1em;
+}
+
+.article-meta span {
+    margin: 10px;
+}
+
+.article-category {
+    background: #3498db;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.article-image-container {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.article-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.article-content {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #2c3e50;
+    text-align: right;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}
+
+.article-content ul {
+    margin: 20px 0;
+    padding-right: 20px;
+}
+
+.article-content li {
+    margin-bottom: 10px;
+}
+
+.article-actions {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #ecf0f1;
+    text-align: center;
+}
+
+.back-btn, .share-btn {
+    padding: 12px 25px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.back-btn {
+    background: #95a5a6;
+    color: white;
+}
+
+.back-btn:hover {
+    background: #7f8c8d;
+}
+
+.share-btn {
+    background: #3498db;
+    color: white;
+}
+
+.share-btn:hover {
+    background: #2980b9;
+}
+
+.error-container {
+    text-align: center;
+    padding: 50px;
+    color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .article-container {
+        margin: 80px 15px 30px;
+        padding: 20px;
+    }
+    
+    .article-title {
+        font-size: 1.8em;
+    }
+    
+    .article-meta {
+        font-size: 0.9em;
+    }
+    
+    .article-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .back-btn, .share-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

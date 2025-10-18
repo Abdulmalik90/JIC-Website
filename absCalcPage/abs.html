@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="./absStyle.css">
+    <link rel="stylesheet" href="../responsiveHeaderCss.css">
+    <title>حاسبة الغيابات</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div id="logo-div">
+            <a href="../index.html"><img id="logo_image" src="../Images/Logo Blue P.svg" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <a href="../index.html"><p>الرئيسية</p></a>
+            <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+            <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        </div>
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar-->
+    <nav class="mobile-nav" id="mobileNav">
+        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+
+        <!-- Mobile search -->
+        <div id="mobile-search">
+            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+
+        <a href="../index.html"><p>الرئيسية</p></a>
+        <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+    </nav>
+
+    <!-- greating -->
+    <div id="greating">
+        <h1 id="portal-greating">حسـاب الغيـابات</h1>
+        <p>أداة مبسطة تساعدك تعرف عدد الغيابات الاقصى للمواد</p>
+    </div>
+
+    <!-- Absences Calculator -->
+    <div id="abs-container">
+        <div id="abs-info">
+
+            <div id="sub-name" class="info-part">
+                <label for="sub-name-input">اسم المادة</label>
+                <input id="sub-name-input" type="text" placeholder="اكتب اسم المادة">
+            </div>
+
+            <div id="lectures-count" class="info-part">
+                <label for="lectures-coutnt-input">عدد المحاضرات (بالاسبوع)</label>
+                <input max="22" min="0" type="number" id="lectures-count-input" placeholder="اكتب عدد الكلاسات بشكل صحيح">
+            </div>
+
+        </div>
+
+        <div id="result-div">
+            <h1 class="subtitle">النتيجة</h1>
+            <div id="abs-result">
+
+                <div id="allowed-abs" class="result-part">
+                    <label for="allowed-abs-input">عدد الغيابات الاقصى</label>
+                    <input style="color: rgb(65, 137, 65); font-weight:300; direction:rtl;" readonly id="allowed-abs-input" type="text" placeholder="الغيابات المسموحة">
+                </div>
+
+                <div id="notallowed-abs" class="result-part">
+                    <label for="notallowed-abs-input"><span style="color: rgb(255, 52, 52); font-weight:bold;">DN </span>عدد غيابات الحرمان </label>
+                    <input style="color: rgb(255, 52, 52); font-weight:300; direction:rtl;" readonly type="text" id="notallowed-abs-input" placeholder="غيابات الحرمان">
+                </div>
+
+            </div>
+            <div id="result-button-div">
+                <button id="result-button">إظهار النتيجة</button>
+            </div>
+        </div>
+
+        <div id="how-count">
+            <h3>إخلاء مسؤولية:</h3>
+            <p>هذه الاداة تعتمد على المعادلة الحسابية والنسبة الموضحة من قبل ادارة الكلية رسمياً للتأكيد تأكد ان عدد الغيابات لا يزيد عن اسبوعين من محاضرات المادة.</p>
+            <b>المعادلة الحسابية: <span style="color: rgb(0, 110, 255);">عدد الاسابيع الدراسية × عدد المحـاضرات بالاسبوع ÷ %20</span></b>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="font-size: 30px;" class="subtitle">📫اشترك بالحملة البريدية عشان ما يفوتك شيء</h3>
+        <div id="subsecribe-div">
+            <button id="subsecribe-button">اشتراك</button>
+            <input id="email-input" placeholder="بريدك الإلكتروني" type="text">
+            <span class="material-symbols-outlined">mail</span>
+        </div>
+
+        <div id="links-div">
+            <a href="/index.html"><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href="/newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
+            <a href=""><p class="p-links">خريطة الموقع</p></a>
+            <a href="/gpaPage/gpa.html"><p class="p-links">حساب المعدل</p></a>
+            <a href=""><p class="p-links">تواصل معنا</p></a>
+            <a href="/absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
+            <a href="/DistributionOfWeeks.pdf"><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+        </div>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+
+</body>
+    <script src="./abs.js"></script>
+    <script src="../search.js"></script>
+</html>
