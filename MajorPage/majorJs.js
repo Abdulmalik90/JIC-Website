@@ -21,7 +21,6 @@ window.onload = function () {
     document.getElementById("majorGender").textContent = majorData.genders;
 
     const container = document.getElementById("courseTableContainer");
-    console.log(majorData.courses)
     if(majorData.courses.length !== 0){
         container.innerHTML = '';
     }
@@ -58,10 +57,17 @@ window.onload = function () {
         // Create table body
         const tbody = document.createElement("tbody");
         
-        // Add each course as a row
+        
+       // Add each course as a row
         sem.courses.forEach(course => {
+            if (!Array.isArray(course)) {
+                console.warn("⚠️ Invalid course data:", course, "in semester", sem.semester);
+                return; // skip invalid entries
+            }
+
             const [title, credits, lec, lab, prereqs] = course;
             const row = document.createElement("tr");
+
             
             row.innerHTML = `
                 <td>${title}</td>
@@ -81,7 +87,9 @@ window.onload = function () {
 
     // Render Optional Courses (Semester 0)
     const optionalSem = majorData.courses.find(s => s.semester === 0);
+    console.log(optionalSem)
     if (optionalSem && optionalSem.courses.length > 0) {
+
         // Create container for optional courses
         const optionalContainer = document.createElement("div");
         optionalContainer.classList.add("optional-container");
