@@ -12,7 +12,7 @@ const newsData = [
                 <li>English for Academic Purposes</li>
             </ul>
         `,
-        image: "./newsImages/EnglishBooks471.jpeg",
+        image: "./newsPage/newsImages/EnglishBooks471.jpeg",
         date: "2025-08-24T14:34:00",
         author: "عبدالملك الخليفة",
         category: "الكتب"
@@ -25,7 +25,7 @@ const newsData = [
             <p>تتوسط الدائرة موضعها مع الحفاظ على مساحة آمنة تعادل حجم الشعار بداخل الدائرة ويكون إرتفاع الشعار داخل الدائرة يساوي 60% من قطر الدائرة مع الحفاظ على مسافة آمنة بين طرف الدائرة العلوي ونهاية انحناء الكتف كما يتموضع مسمى كلية الجبيل الصناعية ومعهد الجبيل التقني على بعد مسافة ارتفاعه أسفل الدائرة مع مراعاة مسافة آمنة جانبية لاستدارة الكم</p>
             <p>يمكن للطالب طلب الزي من خلال اي مزود بشرط الالتزام بالمواصفات الخاصة بالخامات والتصميم المعتمد</p>
         `,
-        image: "./newsImages/uniform.jpeg",
+        image: "./newsPage/newsImages/uniform.jpeg",
         date: "2025-08-25T17:15:00",
         author: "رائد الزهراني",
         category: "الزي الموحد"
@@ -37,7 +37,7 @@ const newsData = [
             <p>نموذج لخريطة الكلية فيه كل أسماء واختصارات المباني الللي ممكن تحتاجها</p>
             
         `,
-        image: "./newsImages/jicMap.png",
+        image: "./newsPage/newsImages/jicMap.png",
         date: "2025-08-26T13:42:00",
         author: "رائد الزهراني",
         category: "خريطة"
@@ -60,7 +60,7 @@ const newsData = [
             
 
         `,
-        image: "./newsImages/jicSustainabilityClub.jpeg",
+        image: "./newsPage/newsImages/jicSustainabilityClub.jpeg",
         date: "2025-08-27T14:37:00",
         author: "",
         category: "نادي الإستدامة"
