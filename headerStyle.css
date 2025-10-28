@@ -98,11 +98,13 @@ a {
 #logo_image {
     height: 70px;
     padding: 0;
-    width: max-content;
     color: #FFFFFF;
     letter-spacing: 2px;
     transition: transform 0.3s ease;
     margin-left: 10px;
+    object-fit: contain;
+    max-height: 60px; /* أو أي ارتفاع مناسب */
+    width: auto;
 }
 
 #logo_image:hover {
