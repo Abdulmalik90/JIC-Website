@@ -42,35 +42,35 @@ function searchResult2(){
     let searchInput = document.getElementById("search-section-input").value;
     switch(searchInput){
         case "كلية الجبيل الصناعية":
-            window.location.href = "/JIC-Website/JICPage/jic.html";
+            window.location.href = "/JICPage/jic.html";
             break;
         
         case "تخصصات بكالوريوس الكلية":
-            window.location.href = "/JIC-Website/JICPage/bacholarMajors/bMajors.html"
+            window.location.href = "/JICPage/bacholarMajors/bMajors.html"
             break;
         
         case "تخصصات دبلوم الكلية":
-            window.location.href = "/JIC-Website/JICPage/deplomeMajors/depMajors.html"
+            window.location.href = "/JICPage/deplomeMajors/depMajors.html"
             break;
 
         case "تخصصات دبلوم المعهد":
-            window.location.href = "/JIC-Website/JTIPage/JTImajors/JTImajors.html"
+            window.location.href = "/JTIPage/JTImajors/JTImajors.html"
             break;
 
         case "معهد الجبيل التقني":
-            window.location.href = "/JIC-Website/JTIPage/JTI.html"
+            window.location.href = "/JTIPage/JTI.html"
             break;
 
         case "حساب الغيابات":
-            window.location.href = "/JIC-Website/absCalcPage/abs.html"
+            window.location.href = "/absCalcPage/abs.html"
             break;
 
         case "حساب المعدل":
-            window.location.href = "/JIC-Website/gpaPage/gpa.html"
+            window.location.href = "/gpaPage/gpa.html"
             break;
             
         case "الأخبار" || "الاخبار":
-            window.location.href = "/JIC-Website/newsPage/news.html"
+            window.location.href = "/newsPage/news.html"
             break;
 
         case "خريطة الموقع" || "خريطة مدخل":
@@ -78,7 +78,7 @@ function searchResult2(){
             break;
 
         case "المستندات والاسئلة الشائعة":
-            window.location.href = "/JIC-Website/academicRegulationsPage/regulations.html"
+            window.location.href = "/academicRegulationsPage/regulations.html"
             break;
 
     }
