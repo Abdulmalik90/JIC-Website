@@ -5,7 +5,7 @@ document.getElementById("result-button").addEventListener("click", () => {
         alert("عذراً, يجب ان تضع عدد الكلاسات بشكل صحيح")
         return;
     }
-    let totalAbs = classPerWeek * 15 * 0.20;
+    let totalAbs = classPerWeek * 16 * 0.20;
     let allowedAbs = parseInt(totalAbs)
 
     if (Math.ceil(totalAbs) == allowedAbs) {

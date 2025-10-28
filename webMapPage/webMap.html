@@ -6,9 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../headerStyle.css">
-    <link rel="stylesheet" href="./absStyle.css">
     <link rel="stylesheet" href="../responsiveHeaderCss.css">
-    <title>حاسبة الغيابات</title>
+    <link rel="stylesheet" href="mapstyle.css">
+    <title>خريطة الموقع</title>
 </head>
 <body>
     <!-- header -->
@@ -19,8 +19,8 @@
         </div>
         
         <div id="header-pages">
-            <a href="../index.html"><p>الرئيسية</p></a>
             <a href="/index.html#web-feedback"><p>عن مَدخل</p></a>
+            <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
             <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
         </div>
 
@@ -51,59 +51,32 @@
             </div>
         </div>
 
-        <a href="../index.html"><p>الرئيسية</p></a>
         <a href="../aboutPage/about.html"><p>عن مَدخل</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
         <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
     </nav>
 
     <!-- greating -->
     <div id="greating">
-        <h1 id="portal-greating">حسـاب الغيـابات</h1>
-        <p>أداة مبسطة تساعدك تعرف عدد الغيابات الاقصى للمواد</p>
+        <h1 id="portal-greating">خريــطـة منصـة مدخـل</h1>
+        <p>😉ملخص مبسط يختصر عليك المشاوير داخل مدخـل</p>
     </div>
 
-    <!-- Absences Calculator -->
-    <div id="abs-container">
-        <div id="abs-info">
-
-            <div id="sub-name" class="info-part">
-                <label for="sub-name-input">اسم المادة</label>
-                <input id="sub-name-input" type="text" placeholder="اكتب اسم المادة">
-            </div>
-
-            <div id="lectures-count" class="info-part">
-                <label for="lectures-coutnt-input">عدد المحاضرات (بالاسبوع)</label>
-                <input max="22" min="0" type="number" id="lectures-count-input" placeholder="اكتب عدد الكلاسات بشكل صحيح">
-            </div>
-
-        </div>
-
-        <div id="result-div">
-            <h1 class="subtitle">النتيجة</h1>
-            <div id="abs-result">
-
-                <div id="allowed-abs" class="result-part">
-                    <label for="allowed-abs-input">عدد الغيابات الاقصى</label>
-                    <input style="color: rgb(65, 137, 65); font-weight:300; direction:rtl;" readonly id="allowed-abs-input" type="text" placeholder="الغيابات المسموحة">
-                </div>
-
-                <div id="notallowed-abs" class="result-part">
-                    <label for="notallowed-abs-input"><span style="color: rgb(255, 52, 52); font-weight:bold;">DN </span>عدد غيابات الحرمان </label>
-                    <input style="color: rgb(255, 52, 52); font-weight:300; direction:rtl;" readonly type="text" id="notallowed-abs-input" placeholder="غيابات الحرمان">
-                </div>
-
-            </div>
-            <div id="result-button-div">
-                <button id="result-button">إظهار النتيجة</button>
-            </div>
-        </div>
-
-        <div id="how-count">
-            <h3>إخلاء مسؤولية:</h3>
-            <p>تعتمد هذه الأداة على المعادلة المُعلنة رسمياً من أدارة كليات ومعاهد الجبيل الصناعية — عدد الاسابيعx عدد المحاضرات بالاسبوعx 0.2</p>
-            <b>المعادلة الحسابية: <span style="color: rgb(0, 110, 255);">عدد الاسابيع الدراسية × عدد المحـاضرات بالاسبوع × %20</span></b>
+    <!-- Web Map buttons -->
+    <div id="map-container">
+        <a href="/index.html" id="home-button">الرئيسية</a>
+        <div id="all-pages-container">
+            <a href="/JTIPage/JTI.html">معهد الجبيل التقني</a>
+            <a href="/JICPage/jic.html">كلية الجبيل الصناعية</a>
+            <a href="/newsPage/news.html">مدونة اخبار الكلية والمعهد</a>
+            <a href="/gpaPage/gpa.html">اداة حساب المعدل</a>
+            <a href="/absCalcPage/abs.html">اداة حساب الغيابات</a>
+            <a href="/JICPage/bacholarMajors/bMajors.html">تخصصات الكلية</a>
+            <a href="/JTIPage/JTImajors/JTImajors.html">تخصصات المعهد</a>
+            <a href="/academicRegulationsPage/regulations.html">المستندات والاسئلة الشائعة</a>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer>
@@ -125,8 +98,6 @@
         </div>
         <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
     </footer>
-
 </body>
-    <script src="./abs.js"></script>
-    <script src="../search.js"></script>
+<script src="../search.js"></script>
 </html>

@@ -49,6 +49,17 @@
     background: #2c3e50;
 }
 
+.major-icon-gender {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1.8rem;
+    opacity: 0.7;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
 .major-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);

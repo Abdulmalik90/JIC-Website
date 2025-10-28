@@ -3,7 +3,12 @@ let keyWords = [
     "معهد الجبيل التقني", 
     "حساب الغيابات",
     "حساب المعدل", 
-    "الأخبار"
+    "الأخبار",
+    "خريطة الموقع",
+    "المستندات والاسئلة الشائعة",
+    "تخصصات بكالوريوس الكلية",
+    "تخصصات دبلوم الكلية",
+    "تخصصات دبلوم المعهد"
 ];
 
 const resultBox = document.querySelector(".result-search-box");
@@ -42,6 +47,18 @@ function searchResult(){
         case "كلية الجبيل الصناعية":
             window.location.href = "/JICPage/jic.html";
             break;
+        
+        case "تخصصات بكالوريوس الكلية":
+            window.location.href = "/JICPage/bacholarMajors/bMajors.html"
+            break;
+        
+        case "تخصصات دبلوم الكلية":
+            window.location.href = "/JICPage/deplomeMajors/depMajors.html"
+            break;
+
+        case "تخصصات دبلوم المعهد":
+            window.location.href = "/JTIPage/JTImajors/JTImajors.html"
+            break;
 
         case "معهد الجبيل التقني":
             window.location.href = "/JTIPage/JTI.html"
@@ -56,8 +73,17 @@ function searchResult(){
             break;
             
         case "الأخبار" || "الاخبار":
-        window.location.href = "/newsPage/news.html"
-        break;
+            window.location.href = "/newsPage/news.html"
+            break;
+
+        case "خريطة الموقع" || "خريطة مدخل":
+            window.location.href = "/webMapPage/webMap.html"
+            break;
+
+        case "المستندات والاسئلة الشائعة":
+            window.location.href = "/academicRegulationsPage/regulations.html"
+            break;
+
     }
 }
 
@@ -94,7 +120,7 @@ mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
     mobileNav.classList.remove('active');
     document.body.style.overflow = 'auto';
-  });
+});
 });
 
 // Mobile search functionality (reuse your existing search logic)
@@ -131,20 +157,44 @@ function searchMobileResult(){
     let searchInput = mobileSearchInput.value;
     switch(searchInput){
     case "كلية الجبيل الصناعية":
-        window.location.href = "/JICPage/jic.html";
-        break;
-    case "معهد الجبيل التقني":
-        window.location.href = "/JTIPage/JTI.html"
-        break;
-    case "حساب الغيابات":
-        window.location.href = "/absCalcPage/abs.html"
-        break;
-    case "حساب المعدل":
-        window.location.href = "/gpaPage/gpa.html"
-        break;
-    case "الأخبار" || "الاخبار":
-        window.location.href = "/newsPage/news.html"
-        break;
+            window.location.href = "/JICPage/jic.html";
+            break;
+        
+        case "تخصصات بكالوريوس الكلية":
+            window.location.href = "/JICPage/bacholarMajors/bMajors.html"
+            break;
+        
+        case "تخصصات دبلوم الكلية":
+            window.location.href = "/JICPage/deplomeMajors/depMajors.html"
+            break;
+
+        case "تخصصات دبلوم المعهد":
+            window.location.href = "/JTIPage/JTImajors/JTImajors.html"
+            break;
+
+        case "معهد الجبيل التقني":
+            window.location.href = "/JTIPage/JTI.html"
+            break;
+
+        case "حساب الغيابات":
+            window.location.href = "/absCalcPage/abs.html"
+            break;
+
+        case "حساب المعدل":
+            window.location.href = "/gpaPage/gpa.html"
+            break;
+            
+        case "الأخبار" || "الاخبار":
+            window.location.href = "/newsPage/news.html"
+            break;
+
+        case "خريطة الموقع" || "خريطة مدخل":
+            window.location.href = "/webMapPage/webMap.html"
+            break;
+
+        case "المستندات والاسئلة الشائعة":
+            window.location.href = "/academicRegulationsPage/regulations.html"
+            break;
     }
 }
 

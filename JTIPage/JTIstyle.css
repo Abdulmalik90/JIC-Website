@@ -22,8 +22,9 @@
     padding: 20px;
 }
 
-#choosing-page {
-
+#top-choosing-page-buttons a {
+    width: 33%;
+    height: 100%;
 }
 
 #choosing-page div {
@@ -36,7 +37,7 @@
     max-width: 1100px;
 }
 
-#choosing-page div button {
+#top-choosing-page-buttons button {
     padding: 12px 50px;
     background: linear-gradient(-120deg, #103291, #105f91); 
     color: white;
@@ -44,6 +45,7 @@
     font-size: 20px;
     cursor: pointer;
     width: 100%;
+    height: 100%;
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
@@ -257,6 +259,10 @@
     max-width: 1100px;
 }
 
+#top-buttons-fac a {
+    width: 33%;
+}
+
 #top-buttons-fac button {
     padding: 12px 50px;
     background: linear-gradient(-120deg, #103291, #105f91); 
@@ -279,6 +285,12 @@
 
 /* Making the page responsive */
 
+@media (max-width: 1357px) {
+    #choosing-page div button {
+        font-size: 16px;
+    }
+}
+
 /* Greating responsive */
 @media (max-width: 1030px){
     #portal-greating {
@@ -290,7 +302,7 @@
     }
 
     #choosing-page div button {
-        width: 30%;
+        
         text-align: center;
         padding: 10px;
     }

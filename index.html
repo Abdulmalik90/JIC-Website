@@ -81,7 +81,7 @@
 
     <!-- searching section -->
     <div id="search-section">
-        <nav style="margin: 10px auto; width:fit-content; padding-left: 480px">
+        <div style="margin: 10px 10px 10px auto; width:fit-content;">
 
             <h1 class="subtitle">محــرك البحــث</h1>
             <p class="p-text">🔍ما يحتاج تدور بكل الصفحات لان بكلمة واحدة توصل للي تبيه بسرعة</p>
@@ -94,29 +94,24 @@
                     </ul>
                 </div>
             </div>
-            <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائع؟<a href="" style="display: inline; color:blue;">خريطة الموقع</a></p>
-        </nav>
+            <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائع؟<a href="/webMapPage/webMap.html" style="display: inline; color:blue;">خريطة الموقع</a></p>
+        </div>
     </div>
 
     <!-- feedback section -->
     <div id="web-feedback">
-        <nav style="margin: 10px auto; width:fit-content; padding-left: 480px"></nav>
+        <div id="feedback-container">
             <h1 class="subtitle" id="feedback-h1">ايش هو <span style="color: #109175;">مَدخـل</span>؟</h1>
-            <p class="p-text" id="feedback-text" style="direction: rtl;">مشروع غير رسمي لطلاب كلية ومعهد الجبيل الصناعية تم تصميمه وبرمجته بواسطة مجموعة طلاب من الكلية كمجهود طلابي بالكامل👥</p>
-            <div id="web-features">
-                <h1 class="subtitle">💻مـزايا المنصـة</h1>
-                <ul>
-                    <li>- تحديثات مستمرة للاخبار اللي تخص الكلية والمعهد</li>
-                    <li>- ادوات تساعدك في حساب المعدل و غيابات المواد</li>
-                    <li>- مكتبة معلومات تشمل كل ما يخص التخصصات واللوائح</li>
-                    <li>- اجابة لمعظم الاسئلة بالاضافة الى خانة الدعم الفني</li>
-                    <li>- البحث السريع داخل الموقع والانتقال بسرعة</li>
-                    <li>- ضمان نشر الاخبار الموثوقة فقط</li>
-                    <li>- مشاريع مرتبطة بالمنصة مثل "توزيع الاسابيع الدراسية"</li>
-                    <li>- والمزيد من المزايا ...</li>
-                </ul>
+            <p id="feedback-text" style="direction: rtl;">مشروع غير رسمي لطلاب كلية ومعهد الجبيل الصناعية تم تصميمه وبرمجته بواسطة مجموعة طلاب من الكلية كمجهود طلابي بالكامل👥</p>
+            <div id="highlights">
+                <div id="right-hightlight"><h2>ادوات طلابية</h2></div>
+                <div id="meddil-hightlight"><h2>تحديثات مستمرة</h2></div>
+                <div id="left-hightlight"><h2>سهل الإستخدام</h2></div>
             </div>
-        </nav>
+            <p id="feedback-text2" style="direction: rtl;">هدفنـا تسخيـر مهـارتنا وتطويـرها من خلال تطـوير المنصـة وجعلها المرجـع الاول
+لطلاب وطالبات الجبيل الصناعيـة , لذلك قدمنا هذه النسخة التجريبية والتي
+وجدت لاستقبال اقتراحاتكم وملاحظاتكم اللي بتساعدنا نطـور مـدخـل 🙏</p>
+        </div>
     </div>
 
     <!-- Contact with us -->
@@ -130,14 +125,14 @@
                     <h3 id="contactUs-h11" style="font-size: 20px;">عبدالملك الخليفه</h3>
                     <p>علوم حاسب - مبرمج الموقع</p>
                     <p> كلية الجبيل الصناعية - بكالوريوس</p>
-                    <a href=""><button>التواصل عبر واتساب<img src="/Images/whatsapp.png" alt=""></button></a>
+                    <a target="_blank" href="https://t.me/Abdulmalik_portal"><button id="contactDev">التواصل عبر تليجرام<img src="/Images/telegram.png" alt=""></button></a>
                 </div>
                 
                 <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">    
             </div>
 
             <div id="email-info-div">
-                <p style="margin-left: 10px;">Portalsa@hotmail.com</p>
+                <p style="margin-left: 10px;">portalplatformsa@hotmail.com</p>
                 <span style="color: white;" class="material-symbols-outlined">mail</span>
                 <p style="margin-left: 30px; margin-right: 10px;">البريد الإلكتروني</p>
             </div>
@@ -147,7 +142,7 @@
                     <h3 id="contactUs-h12" style="font-size: 20px;">رائد الزهراني</h3>
                     <p>صيانة ميكانيكية - مصمم الموقع ومشاريعه</p>
                     <p>كلية الجبيل الصناعية - دبلوم متوسط</p>
-                    <a href=""><button>التواصل عبر واتساب<img src="/Images/whatsapp.png" alt=""></button></a>
+                    <a target="_blank" href="https://wa.me/966554392702"><button>التواصل عبر واتساب<img src="/Images/whatsapp.png" alt=""></button></a>
                 </div>
                 <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">
             </div>
@@ -157,19 +152,21 @@
 
     <!-- Footer -->
     <footer>
-        <h3 style="font-size: 30px;" class="subtitle">انضم الى قناة التليجرام عشان ما يفوتك شيء</h3>
+        <h3 style="font-size: 30px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
         <div id="subsecribe-div">
-            <a style="width: 80%; margin: 5px auto;"><button id="subsecribe-button">انضم الى قناة التليجرام<span class="material-symbols-outlined" style="background: none; padding: 5px;">north_east</span></button></a>
+            <h3>المشاركة ماراح تاخذ منك اكثر من دقيقتين!<span class="material-symbols-outlined">description</span></h3>
+            <a href="https://forms.office.com/r/CsBDhj3mQ9">شارك في الاستبيان!</a>
         </div>
 
         <div id="links-div">
             <a href="/index.html"><p class="p-links">الصفحة الرئيسية</p></a>
             <a href="/newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
-            <a href=""><p class="p-links">خريطة الموقع</p></a>
+            <a href="/webMapPage/webMap.html"><p class="p-links">خريطة الموقع</p></a>
             <a href="/gpaPage/gpa.html"><p class="p-links">حساب المعدل</p></a>
-            <a href=""><p class="p-links">تواصل معنا</p></a>
+            <a target="_blank" href="https://t.me/razhran"><p class="p-links">تواصل معنا</p></a>
             <a href="/absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
             <a href="/DistributionOfWeeks.pdf"><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+            <a href="https://t.me/JuPortalsa"><p class="p-links">قناة التليجرام</p></a>
         </div>
         <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
     </footer>

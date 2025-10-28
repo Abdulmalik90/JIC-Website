@@ -21,7 +21,10 @@ window.onload = function () {
     document.getElementById("majorGender").textContent = majorData.genders;
 
     const container = document.getElementById("courseTableContainer");
-
+    console.log(majorData.courses)
+    if(majorData.courses.length !== 0){
+        container.innerHTML = '';
+    }
     // Process each semester (excluding semester 0)
     majorData.courses.forEach(sem => {
         if (sem.semester === 0) return; // skip optional courses here
@@ -52,7 +55,6 @@ window.onload = function () {
             </tr>
         `;
         table.appendChild(thead);
-
         // Create table body
         const tbody = document.createElement("tbody");
         

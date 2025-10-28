@@ -806,11 +806,23 @@ function generateMajorCards() {
         
         const card = document.createElement('div');
         card.className = 'major-card';
-        
+        let iconGender = "wc";
+        let genderColor = "green";
+        if(major.genders == "بنين وبنات"){
+            iconGender = "wc"
+            genderColor = "green"
+        } else if(major.genders == "بنات"){
+            iconGender = "woman"
+            genderColor = "purple"
+        } else if(major.genders == "البنين"){
+            iconGender = "man"
+            genderColor = "blue"
+        }
         card.innerHTML = `
             <img src="${major.imgs}" alt="${major.major}" class="major-image">
             <div class="major-name">${major.arabicName}</div>
             <span class="material-symbols-outlined major-icon fas">${major.icon}</span>
+            <span class="material-symbols-outlined major-icon-gender fas" style="color:${genderColor};">${iconGender}</span>
         `;
         
         a.appendChild(card);

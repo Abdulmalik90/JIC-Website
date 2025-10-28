@@ -400,35 +400,50 @@ footer h1 {
 }
 
 #subsecribe-div {    
-    width: 100%;
+    width: 70%;
+    max-width: 1000px;
     margin: 30px auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
 }
 
-
-#subsecribe-div span {
-    background-color: #e6e6e6;
-    padding: 13px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    
-}
-
-#subsecribe-div button {
-    padding: 10px 20px;
+#subsecribe-div h3 {
     font-size: 20px;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    width: 100%;
+    width: 70%;
+    font-weight: 100;
+    background-color: #e3e3e3;
+    padding: 10px;
+    text-align: right;
+    border-radius: 15px;
+}
+#subsecribe-div h3 .material-symbols-outlined {
+    vertical-align: middle; /* يجعل الأيقونة بمحاذاة النص عموديًا */
+    font-size: 25px; /* اختياري - لتصغير أو تكبير الأيقونة بما يتناسب مع النص */
+    margin-right: 5px; /* مسافة صغيرة بين النص والأيقونة */
+    margin-left: 15px;
+    font-weight: 200;
+}
+
+#subsecribe-div a {
+    font-size: 17px;
     font-weight: 500;
-    background: linear-gradient(90deg, #102376, #0066ff);
+    width: 20%;
+    background: linear-gradient(90deg, #103490, #3589e2);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
     transition: background-color 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#subsecribe-div button:hover {
-    background: #0066ff; /* smoother transition */
+#subsecribe-div a:hover {
+    background: #107673; /* smoother transition */
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 
@@ -437,7 +452,7 @@ footer h1 {
     flex-direction: column;
     flex-wrap: wrap;
     max-height: 100px;
-    width: 50%;
+    width: 70%;
     margin: 20px auto;
     justify-content: center;
     align-content: space-around;

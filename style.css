@@ -29,11 +29,16 @@
 
 }
 
+#choosing-school a {
+    width: 45%;
+}
+
 #choosing-school button {
     padding: 9px 50px;
     background: linear-gradient(70deg, #103591, #497f91);
     color: white;
     border: none;
+    width: 100%;
     font-size: 20px;
     cursor: pointer;
     transition:  transform 0.3s ease, box-shadow 0.3s ease;
@@ -172,7 +177,7 @@
 /* Search section */
 
 
-#search-section div {
+#search-section-div, #result-search-sectoin-box {
     display: flex;
     width: fit-content;
     margin-right: 70px;
@@ -191,7 +196,7 @@
     font-size: 20px;
 }
 
-#search-section div button {
+#search-section-div button {
     background-color: rgb(210, 210, 210);
     margin-left: 0;
     border: none;
@@ -219,25 +224,62 @@
     padding-bottom: 20px;
 }
 
-#web-features {
-    background-color: #f2f2f2;
-    margin: 20px 70px 70px auto;
-    border: black solid 1px;
-    border-radius: 15px;
-    max-width: 900px;
+#feedback-container {
+    width: 80%;
+    margin: 40px auto;
+}
+
+#feedback-h1 {
+    margin-right: 0 !important;
+    padding-right: 0;
+}
+
+#feedback-text, #feedback-text2 {
+    width: 80%;
+    padding-right: 0;
+    max-width: 1000px;
+    margin: 30px 0 30px auto;
+    font-size: 25px;
+    text-align: right;
     
 }
 
-#web-features ul {
-    margin-bottom: 30px;
+#highlights {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
-#web-features ul li {
-    direction: rtl;
-    text-align: right;
-    margin-right: 70px;
-    list-style-type: none;
-    font-size: 25px;
+#highlights div {
+    background-color: white;
+    padding: 20px 35px;
+    width: 30%;
+    text-align: center;
+    font-weight: 100 !important;
+}
+
+#highlights div h2 {
+    font-size: 27px;
+    font-weight: 100 !important;
+}
+
+#right-hightlight {
+    border: 2px solid rgb(0, 89, 255);
+    border-radius: 10px 10px 50px;
+}
+
+#meddil-hightlight {
+    border: 2px solid rgb(0, 181, 0);
+    border-radius: 10px;
+}
+
+#left-hightlight {
+    border: 2px solid red;
+    border-radius: 10px 10px 10px 50px;
 }
 
 /* Contact with us */
@@ -293,6 +335,10 @@
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border: none;
+}
+
+#contactDev {
+    background: linear-gradient(90deg, #103490, #3589e2) !important;
 }
 
 .personal-img {
@@ -421,6 +467,10 @@
 @media (max-width: 1050px) {
     #choosing-school {
         flex-direction: column-reverse;
+    }
+
+    #choosing-school a {
+        width: 100%;
     }
     #choosing-school button {
         width: 100%;
@@ -561,6 +611,10 @@
         margin: 20px auto 70px auto;
         width: 88%;
     }
+
+    #highlights div h2 {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 900px) {
@@ -577,11 +631,19 @@
         font-size: 35px ;
     }
 
-    #web-features ul li {
-        font-size: 20px;
-        margin-bottom: 10px;
-        padding-left: 10px;
+    #highlights {
+        flex-direction: column-reverse;
+        margin: 40px auto;
+        width: 90%;
+        align-items: center;
     }
+
+    #highlights div {
+        width: 80%;
+        border-radius: 20px;
+    }
+
+    
 }
 
 @media (max-width: 750px){
@@ -593,6 +655,15 @@
     #web-features ul li {
         font-size: 17px;
         
+    }
+
+    #feedback-text2, #feedback-text{
+        font-size: 17px;
+    }
+
+    #highlights div h2 {
+        font-size: 15px;
+        padding: 5px 20px;
     }
 }
 
