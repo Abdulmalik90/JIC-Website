@@ -2,6 +2,7 @@
 class NewsManager {
     constructor() {
         this.articles = getAllNewsArticles();
+        console.log(this.articles)
     }
 
 
