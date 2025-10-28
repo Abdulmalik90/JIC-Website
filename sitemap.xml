@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://juportal.online/</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://juportal.online/index.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/absCalcPage/abs.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/gpaPage/gpa.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/JTIPage/JTI.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/JICPage/jic.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/webMapPage/webMap.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/newsPage/news.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/DistributionOfWeeks.pdf</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://juportal.online/JTIPage/JTImajors/JTImajors.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://juportal.online/academicRegulationsPage/regulations.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://juportal.online/JICPage/bacholarMajors/bMajors.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://juportal.online/JICPage/deplomeMajors/depMajors.html</loc>
+  <lastmod>2025-10-28T16:42:36+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
