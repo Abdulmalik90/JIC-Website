@@ -4,6 +4,7 @@ class NewsManager {
         this.articles = getAllNewsArticles();
     }
 
+
     createArticleCard(article) {
         const formattedDate = new Date(article.date).toLocaleDateString('ar-EG', {
             year: 'numeric',
@@ -61,6 +62,7 @@ function openArticle(articleId) {
     // الانتقال إلى صفحة المقال
     window.location.href = './artical.html';
 }
+
 
 // عرض الأخبار عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
