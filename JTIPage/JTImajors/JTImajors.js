@@ -32,7 +32,7 @@ const deplomes = [maintenance, metalTurning, welding, operatingCranes, pipeLayin
 // link the buttons from index.html to majorInfo.html page
 function goToMajorDetails(majorObj) {
     localStorage.setItem("selectedMajor", JSON.stringify(majorObj));
-    window.location.href = "/MajorPage/majorInfo.html";
+    window.location.href = "MajorPage/majorInfo.html";
 }
 
 function generateMajorCards() {
