@@ -59,7 +59,17 @@
         <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
         <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
     </nav>
+<script>
+  const mobileInput = document.getElementById("mobile-search-input");
+  const mobileButton = document.getElementById("mobile-search-button");
 
+  mobileInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      mobileButton.click();
+    }
+  });
+</script>
 
     <!-- greating -->
     <div id="greating">
@@ -100,6 +110,17 @@
             <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائع؟<a href="/webMapPage/webMap.html" style="display: inline; color:blue;">خريطة الموقع</a></p>
         </div>
     </div>
+    <script>
+  const input = document.getElementById("search-section-input");
+  const button = document.getElementById("search-section-button");
+
+  input.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      button.click();
+    }
+  });
+</script>
 
     <!-- feedback section -->
     <div id="web-feedback">
