@@ -189,7 +189,7 @@ function searchMobileResult(){
             break;
 
         case "خريطة الموقع" || "خريطة مدخل":
-            window.location.href = "vwebMapPage/webMap.html"
+            window.location.href = "/webMapPage/webMap.html"
             break;
 
         case "المستندات والاسئلة الشائعة":
