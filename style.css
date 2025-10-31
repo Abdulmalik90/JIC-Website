@@ -1,27 +1,27 @@
 
-<style>
-  /* خلفية الاشعار */
+ /* الخلفية المغبشة */
   .modal {
     display: none;
     position: fixed;
-    z-index: 9999;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
     justify-content: center;
     align-items: center;
     font-family: "Tajawal", "Segoe UI", sans-serif;
   }
 
-  /* محتوى الإشعار */
+  /* المحتوى */
   .modal-content {
     background: #fff;
+    border-radius: 18px;
     padding: 2rem;
-    border-radius: 16px;
     max-width: 500px;
     width: 90%;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    direction: rtl;
+    text-align: right;
     animation: fadeIn 0.4s ease;
   }
 
@@ -33,20 +33,28 @@
 
   .modal-content p {
     color: #333;
-    line-height: 1.8;
-    font-size: 1.1rem;
+    line-height: 1.9;
+    font-size: 1.05rem;
     margin: 10px 0;
+  }
+
+  .modal-content strong {
+    color: #0050d5;
+  }
+
+  .actions {
+    text-align: center;
+    margin-top: 1.5rem;
   }
 
   .modal-content button {
     background-color: #0050d5;
     color: white;
     border: none;
-    padding: 10px 26px;
+    padding: 10px 28px;
     border-radius: 8px;
     font-size: 1.1rem;
     cursor: pointer;
-    margin-top: 1rem;
     transition: 0.3s;
   }
 
@@ -57,14 +65,32 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(-10px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-</style>
+
+  /* 📱 للجوال */
+  @media (max-width: 480px) {
+    .modal-content {
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      border-radius: 14px;
+    }
+
+    .modal-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+    }
+  }
 
 /* Greating */
 #greating {
