@@ -1,4 +1,70 @@
 
+<style>
+  /* خلفية الاشعار */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    font-family: "Tajawal", "Segoe UI", sans-serif;
+  }
+
+  /* محتوى الإشعار */
+  .modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.4s ease;
+  }
+
+  .modal-content h2 {
+    color: #0050d5;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content p {
+    color: #333;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+
+  .modal-content button {
+    background-color: #0050d5;
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: 0.3s;
+  }
+
+  .modal-content button:hover {
+    background-color: #003fa8;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 
 /* Greating */
 #greating {
