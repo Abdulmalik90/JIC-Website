@@ -112,6 +112,13 @@
     padding: 40px;
 }
 
+@media (max-width:1200px) {
+    #newsGrid {
+        width: 80%;
+        margin: auto;
+    }
+}
+
 @media (max-width: 768px) {
     .news-grid {
         grid-template-columns: 1fr;
