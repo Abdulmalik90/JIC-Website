@@ -68,37 +68,22 @@
         <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
     </nav>
 
-  <div id="noticeModal" class="modal">
-  <div class="modal-content">
-    <h2>🫡 لازم تعـرف</h2>
-    <p>
-      مبـادرة مَدخـل عبارة عن مجهـود <strong>طلابي</strong> بالكامل،  
-      ولا تمثل إدارة كليات أو معاهد الجبيل الصناعية.
-    </p>
-    <p>
-      النسخـة الحـالية <strong>تجريبية</strong>، هدفنـا منها نختـبر المنصـة وناخـذ آرائكـم منهـا 🙏
-    </p>
-    <div class="actions">
-      <button id="continueBtn">متابعــة</button>
+    <div id="noticeModal" class="modal">
+        <div class="modal-content">
+            <h2>🫡 لازم تعـرف</h2>
+            <p>
+            مبـادرة مَدخـل عبارة عن مجهـود <strong>طلابي</strong> بالكامل،  
+            ولا تمثل إدارة كليات أو معاهد الجبيل الصناعية.
+            </p>
+            <p>
+            النسخـة الحـالية <strong>تجريبية</strong>، هدفنـا منها نختـبر المنصـة وناخـذ آرائكـم منهـا 🙏
+            </p>
+            <div class="actions">
+            <button id="continueBtn">متابعــة</button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("noticeModal");
-    const continueBtn = document.getElementById("continueBtn");
 
-    // يظهر أول مرة فقط
-    if (!localStorage.getItem("visited")) {
-      modal.style.display = "flex"; // يخليها بالمنتصف تلقائيًا
-    }
-
-    continueBtn.addEventListener("click", () => {
-      localStorage.setItem("visited", "true");
-      modal.style.display = "none";
-    });
-  });
-</script>
     <!-- greating -->
     <div id="greating">
         <h1 id="portal-greating">منصـة مَـدخـل</h1>
@@ -126,10 +111,10 @@
 
             <h1 class="subtitle">محــرك البحــث</h1>
             <p class="p-text">🔍ما يحتاج تدور بكل الصفحات لان بكلمة واحدة توصل للي تبيه بسرعة</p>
-           <center> <div id="search-section-div">
+            <div id="search-section-div">
                 <input id="search-section-input" type="search" placeholder="اكتب كلمة مفتاحية">
                 <button id="search-section-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
-                <div class="result-search-sectoin-box" id="result-box"> </center>
+                <div class="result-search-sectoin-box" id="result-box"> 
                     <ul>
                         
                     </ul>
@@ -190,47 +175,8 @@
 
         </div>
     </div>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js")
-      .then(() => console.log("✅ Service Worker Registered"))
-      .catch((err) => console.log("❌ SW registration failed:", err));
-  }
-</script>
-    <script>
-  let deferredPrompt;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
 
-    // إنشاء الإشعار
-    const promptBox = document.createElement('div');
-    promptBox.id = 'installPrompt';
-    promptBox.innerHTML = `
-      <img src="/icons/icon-192.png" alt="Juportal">
-      <div class="text">
-        <strong>مدخل</strong><br>
-        أضف المنصة إلى شاشتك الرئيسية ✨
-      </div>
-      <button>تثبيت</button>
-    `;
-    document.body.appendChild(promptBox);
-
-    // إظهار الإشعار بعد تأخير بسيط
-    setTimeout(() => promptBox.classList.add('visible'), 1500);
-
-    // عند الضغط على زر "تثبيت"
-    promptBox.querySelector('button').addEventListener('click', async () => {
-      promptBox.classList.remove('visible');
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      setTimeout(() => promptBox.remove(), 500);
-    });
-  });
-
-    </script>
     <!-- Footer -->
     <footer>
         <h3 style="font-size: 26px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
@@ -265,4 +211,31 @@
         d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("noticeModal");
+    const continueBtn = document.getElementById("continueBtn");
+
+    // يظهر أول مرة فقط
+    if (!localStorage.getItem("visited")) {
+      modal.style.display = "flex"; // يخليها بالمنتصف تلقائيًا
+    }
+
+    continueBtn.addEventListener("click", () => {
+        localStorage.setItem("visited", "true");
+        modal.style.display = "none";
+    });
+});
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("✅ Service Worker Registered"))
+    .catch((err) => console.log("❌ SW registration failed:", err));
+}
+</script>
+
+
 </html>
