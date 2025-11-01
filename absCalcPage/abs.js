@@ -2,7 +2,7 @@ document.getElementById("result-button").addEventListener("click", () => {
     let classPerWeek = Number(document.getElementById("lectures-count-input").value)
     console.log(classPerWeek)
     if (classPerWeek === NaN || classPerWeek === 0){
-        alert("عذراً, يجب ان تضع عدد الكلاسات بشكل صحيح")
+        alert("عذراً, يجب ان تضع عدد الساعات/المحاضرات بشكل صحيح")
         return;
     }
     let totalAbs = classPerWeek * 16 * 0.20;
@@ -12,6 +12,6 @@ document.getElementById("result-button").addEventListener("click", () => {
         allowedAbs -= 1
     }
 
-    document.getElementById("allowed-abs-input").value = `${allowedAbs} كلاسات`;
-    document.getElementById("notallowed-abs-input").value = `${Math.ceil(totalAbs)} كلاسات`;
+    document.getElementById("allowed-abs-input").value = `${allowedAbs} محـاضرة`;
+    document.getElementById("notallowed-abs-input").value = `${Math.ceil(totalAbs)} محـاضرة`;
 })
