@@ -494,7 +494,56 @@
     text-align: center;
 }
 
+/*notification of download*/
+#installPrompt {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: rgba(20, 20, 25, 0.95);
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
 
+  #installPrompt.visible {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  #installPrompt button {
+    background: linear-gradient(90deg, #00ffff, #0077ff);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  #installPrompt button:hover {
+    opacity: 0.9;
+  }
+
+  #installPrompt img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+  }
+
+  #installPrompt .text {
+    flex: 1;
+    text-align: left;
+  }
 /* Majors list style */
 
 .majors-div {
