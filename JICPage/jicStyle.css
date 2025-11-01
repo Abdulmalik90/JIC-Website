@@ -22,9 +22,6 @@
     padding: 20px;
 }
 
-#choosing-page {
-
-}
 
 #choosing-page div {
     display: flex;
@@ -36,12 +33,15 @@
     max-width: 1100px;
 }
 
-#choosing-page div a {
+#choosing-page #choosing-page-div a {
     cursor: pointer;
+    display: block;
     width: 100%;
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
+
+
 
 #choosing-page div button {
     padding: 12px 50px;
@@ -64,10 +64,12 @@
 
 #jic-gate {
     border-bottom-right-radius: 30px !important;
+    height: 100%;
 }
 
 #blackboard {
     border-top-left-radius: 30px !important;
+    height: 100%;
 }
 
 #acadim-board, #dis-weeks {
