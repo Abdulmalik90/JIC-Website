@@ -197,6 +197,39 @@
       .catch((err) => console.log("❌ SW registration failed:", err));
   }
 </script>
+    <script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // إنشاء الإشعار
+    const promptBox = document.createElement('div');
+    promptBox.id = 'installPrompt';
+    promptBox.innerHTML = `
+      <img src="/icons/icon-192.png" alt="Juportal">
+      <div class="text">
+        <strong>مدخل</strong><br>
+        أضف المنصة إلى شاشتك الرئيسية ✨
+      </div>
+      <button>تثبيت</button>
+    `;
+    document.body.appendChild(promptBox);
+
+    // إظهار الإشعار بعد تأخير بسيط
+    setTimeout(() => promptBox.classList.add('visible'), 1500);
+
+    // عند الضغط على زر "تثبيت"
+    promptBox.querySelector('button').addEventListener('click', async () => {
+      promptBox.classList.remove('visible');
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      setTimeout(() => promptBox.remove(), 500);
+    });
+  });
+</script>
     <!-- Footer -->
     <footer>
         <h3 style="font-size: 26px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
