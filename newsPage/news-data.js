@@ -53,7 +53,7 @@ const newsData = [
                 <li>بتاريــخ الاول من شهــر نوفمبــر.</li>
             </ul>
             <p style="direction: rtl;">قـنـاة الاخبـار:</p>
-            <a href="https://t.me/newsjuc</a>
+            <a href="https://t.me/newsjuc"</a>
             
 
         `,
