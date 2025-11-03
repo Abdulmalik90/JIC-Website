@@ -8,7 +8,8 @@ let keyWords2 = [
     "المستندات والاسئلة الشائعة",
     "تخصصات بكالوريوس الكلية",
     "تخصصات دبلوم الكلية",
-    "تخصصات دبلوم المعهد"
+    "تخصصات دبلوم المعهد",
+    "اصنع جدولك"
 ];
 
 const resultBox2 = document.getElementById("result-box");
@@ -79,6 +80,10 @@ function searchResult2(){
 
         case "المستندات والاسئلة الشائعة":
             window.location.href = "/academicRegulationsPage/regulations.html"
+            break;
+
+        case "اصنع جدولك" || "إصنع جدولك":
+            window.location.href = "/createSchedulePage/schedule.html"
             break;
 
     }
