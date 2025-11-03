@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../responsiveHeaderCss.css">
+    <link rel="stylesheet" href="./schedule.css">
+    <title>Create Your Scheduale</title>
+</head>
+<body>
+        <!-- header -->
+    <header>
+        <div id="logo-div">
+            <a href="../index.html"><img id="logo_image" src="../Images/logo_backgroundless.png" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <a href="/index.html#web-feedback"><p>عن مَدخل</p></a>
+            <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+            <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        </div>
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar-->
+    <nav class="mobile-nav" id="mobileNav">
+        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+
+        <!-- Mobile search -->
+        <div id="mobile-search">
+            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+
+        <a href="/index.html#web-feedback"><p>عن مَدخل</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+    </nav>
+
+    <!-- greating -->
+    <div id="greating">
+        <h1 id="portal-greating">اصنع جدولك</h1>
+        <p>اصنع جدولك الدراسي بطريقة منظمه وسهله</p>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div class="modal-content">
+
+            <div id="header-modal">
+                <h3>أضف مادة</h3>
+                <span class="material-symbols-outlined">close</span>
+            </div>
+
+            <div id="modal-body">
+                <div id="modal-form-container">
+
+                    <label for="subject-name-input" class="form-lb">اسم المادة:</label>
+                    <input type="text" id="subject-name-input" class="text-box" placeholder="Subject Name">
+
+                    <label for="subject-code-input" class="form-lb">رمز المقرر:</label>
+                    <input type="text" id="subject-code-input" class="text-box" placeholder="Subject Code">
+
+                    <label for="subject-teacher-input" class="form-lb">مدرس المادة:</label>
+                    <input type="text" id="subject-teacher-input" class="text-box" placeholder="Teacher's name">
+
+                    <label for="subject-color-input" class="form-lb">لون المادة:</label>
+                    <input type="color" id="subject-color-input" class="color-input" placeholder="Subject Color">
+
+                    <div id="days-checkbox-div">
+                        <input type="checkbox" id="sun-checkbox" class="checkbox-input">
+                        <label for="sun-checkbox" class="checkbox-label">الأحد</label>
+
+                        <input type="checkbox" id="mon-checkbox" class="checkbox-input">
+                        <label for="mon-checkbox" class="checkbox-label">الإثنين</label>
+
+                        <input type="checkbox" id="tues-checkbox" class="checkbox-input">
+                        <label for="tues-checkbox" class="checkbox-label">الثلاثاء</label>
+
+                        <input type="checkbox" id="wedn-checkbox" class="checkbox-input">
+                        <label for="wedn-checkbox" class="checkbox-label">الأربعاء</label>
+
+                        <input type="checkbox" id="thur-checkbox" class="checkbox-input">
+                        <label for="thur-checkbox" class="checkbox-label">الخميس</label>
+                    </div>
+                    
+                </div>
+
+                <div id="modal-periods-containre">
+                    <div id="periods-container-sun" class="periods-container"></div>
+                    <div id="periods-container-mon" class="periods-container"></div>
+                    <div id="periods-container-tues" class="periods-container"></div>
+                    <div id="periods-container-wedn" class="periods-container"></div>
+                    <div id="periods-container-thur" class="periods-container"></div>
+                    <div id="add-button-div">
+                        <button id="add-button">إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- schedule Creating container-->
+    <div id="schedule-container">
+        <div id="schedule-buttons">
+            <div></div>
+            <div></div>
+            <button style="background-color: rgb(57, 147, 57); color: white;" id="add-subject-button">إضافة مادة</button>
+            <button style="background-color: orange; color: white;" id="delete-subject-button">حذف مادة</button>
+            <button style="background-color: red; color: white;" id="clear-table-button">حذف الجدول</button>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div id="schedule-table-contianer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Periods</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1<br>7:00 AM - 7:50 AM</td>
+                        <td class="table-subjects" id="sun-1"></td>
+                        <td class="table-subjects" id="mon-1"></td>
+                        <td class="table-subjects" id="Tues-1"></td>
+                        <td class="table-subjects" id="Wedn-1"></td>
+                        <td class="table-subjects" id="Thur-1"></td>
+                    </tr>
+
+                    <tr>
+                        <td>2<br>8:00 AM - 8:50 AM</td>
+                        <td class="table-subjects" id="sun-2"></td>
+                        <td class="table-subjects" id="mon-2"></td>
+                        <td class="table-subjects" id="Tues-2"></td>
+                        <td class="table-subjects" id="Wedn-2"></td>
+                        <td class="table-subjects" id="Thur-2"></td>
+                    </tr>
+
+                    <tr>
+                        <td>3<br>9:00 AM - 9:50 AM</td>
+                        <td class="table-subjects" id="sun-3"></td>
+                        <td class="table-subjects" id="mon-3"></td>
+                        <td class="table-subjects" id="Tues-3"></td>
+                        <td class="table-subjects" id="Wedn-3"></td>
+                        <td class="table-subjects" id="Thur-3"></td>
+                    </tr>
+
+                    <tr>
+                        <td>4<br>10:00 AM - 10:50 AM</td>
+                        <td class="table-subjects" id="sun-4"></td>
+                        <td class="table-subjects" id="mon-4"></td>
+                        <td class="table-subjects" id="Tues-4"></td>
+                        <td class="table-subjects" id="Wedn-4"></td>
+                        <td class="table-subjects" id="Thur-4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>5<br>11:00 AM - 11:50 AM</td>
+                        <td class="table-subjects" id="sun-5"></td>
+                        <td class="table-subjects" id="mon-5"></td>
+                        <td class="table-subjects" id="Tues-5"></td>
+                        <td class="table-subjects" id="Wedn-5"></td>
+                        <td class="table-subjects" id="Thur-5"></td>
+                    </tr>
+
+                    <tr>
+                        <td>6<br>12:20 PM - 1:10 PM</td>
+                        <td class="table-subjects" id="sun-6"></td>
+                        <td class="table-subjects" id="mon-6"></td>
+                        <td class="table-subjects" id="Tues-6"></td>
+                        <td class="table-subjects" id="Wedn-6"></td>
+                        <td class="table-subjects" id="Thur-6"></td>
+                    </tr>
+
+                    <tr>
+                        <td>7<br>1:20 PM - 2:10 PM</td>
+                        <td class="table-subjects" id="sun-7"></td>
+                        <td class="table-subjects" id="mon-7"></td>
+                        <td class="table-subjects" id="Tues-7"></td>
+                        <td class="table-subjects" id="Wedn-7"></td>
+                        <td class="table-subjects" id="Thur-7"></td>
+                    </tr>
+
+                    <tr>
+                        <td>8<br>2:20 PM - 3:10 PM</td>
+                        <td class="table-subjects" id="sun-8"></td>
+                        <td class="table-subjects" id="mon-8"></td>
+                        <td class="table-subjects" id="Tues-8"></td>
+                        <td class="table-subjects" id="Wedn-8"></td>
+                        <td class="table-subjects" id="Thur-8"></td>
+                    </tr>
+
+                    <tr>
+                        <td>9<br>3:30 PM - 4:20 PM</td>
+                        <td class="table-subjects" id="sun-9"></td>
+                        <td class="table-subjects" id="mon-9"></td>
+                        <td class="table-subjects" id="Tues-9"></td>
+                        <td class="table-subjects" id="Wedn-9"></td>
+                        <td class="table-subjects" id="Thur-9"></td>
+                    </tr>
+
+                    <tr>
+                        <td>10<br>5:30 PM - 6:20 PM</td>
+                        <td class="table-subjects" id="sun-10"></td>
+                        <td class="table-subjects" id="mon-10"></td>
+                        <td class="table-subjects" id="Tues-10"></td>
+                        <td class="table-subjects" id="Wedn-10"></td>
+                        <td class="table-subjects" id="Thur-10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>11<br>6:30 PM - 7:20 PM</td>
+                        <td class="table-subjects" id="sun-11"></td>
+                        <td class="table-subjects" id="mon-11"></td>
+                        <td class="table-subjects" id="Tues-11"></td>
+                        <td class="table-subjects" id="Wedn-11"></td>
+                        <td class="table-subjects" id="Thur-11"></td>
+                    </tr>
+
+                    <tr>
+                        <td>12<br>8:30 PM - 8:20 PM</td>
+                        <td class="table-subjects" id="sun-12"></td>
+                        <td class="table-subjects" id="mon-12"></td>
+                        <td class="table-subjects" id="Tues-12"></td>
+                        <td class="table-subjects" id="Wedn-12"></td>
+                        <td class="table-subjects" id="Thur-12"></td>
+                    </tr>
+
+                    <tr>
+                        <td>13<br>9:30 PM - 9:20 PM</td>
+                        <td class="table-subjects" id="sun-13"></td>
+                        <td class="table-subjects" id="mon-13"></td>
+                        <td class="table-subjects" id="Tues-13"></td>
+                        <td class="table-subjects" id="Wedn-13"></td>
+                        <td class="table-subjects" id="Thur-13"></td>
+                    </tr>
+
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="font-size: 30px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
+        <div id="subsecribe-div">
+            <h3>المشاركة ماراح تاخذ منك اكثر من دقيقتين!<span class="material-symbols-outlined">description</span></h3>
+            <a href="https://forms.office.com/r/CsBDhj3mQ9">شارك في الاستبيان!</a>
+        </div>
+
+        <div id="links-div">
+            <a href="../index.html"><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href="../newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
+            <a href="../webMapPage/webMap.html"><p class="p-links">خريطة الموقع</p></a>
+            <a href="../gpaPage/gpa.html"><p class="p-links">حساب المعدل</p></a>
+            <a target="_blank" href="https://t.me/razhran"><p class="p-links">تواصل معنا</p></a>
+            <a href="../absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
+            <a href="../DistributionOfWeeks.pdf"><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+            <a href="https://t.me/JuPortalsa"><p class="p-links">قناة التليجرام</p></a>
+        </div>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+</body>
+<script src="./schedule.js"></script>
+<script src="../search.js"></script>
+</html>

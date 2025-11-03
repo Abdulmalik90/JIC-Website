@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const openModalBtn = document.getElementById('majorsButton');
     const closeModalBtn = document.querySelector('#header-modal span');
     const diplomeButton = document.getElementById('deplome-button');
-    const bacholarButton = document.getElementById('bacholar-button');
     const preparatoryButton = document.getElementById('prepare-button');
     
     // Function to open modal

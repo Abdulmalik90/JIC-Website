@@ -50,6 +50,11 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
+#top-choosing-page-buttons a {
+    display: block;
+    height: 100%;
+}
+
 #choosing-page div button:hover, #acadim-board:hover {
     background: #103291; /* smoother transition */
     transform: translateY(-3px) scale(0.95);
