@@ -172,10 +172,10 @@ function displaySubjectInTable(subject) {
 document.getElementById("add-button").addEventListener("click", ()=>{
     if(sunDayBox.checked || monDayBox.checked || tuesDayBox.checked || wednDayBox.checked || thurDayBox.checked){
         const modal = document.getElementById('modal');
-        let subName = document.getElementById("subject-name-input").value;
-        let subCode = document.getElementById("subject-code-input").value;
-        let subTeacher = document.getElementById("subject-teacher-input").value;
-        let subColor = document.getElementById("subject-color-input").value;
+        let subName = document.getElementById("subject-name-input");
+        let subCode = document.getElementById("subject-code-input");
+        let subTeacher = document.getElementById("subject-teacher-input");
+        let subColor = document.getElementById("subject-color-input");
 
         let times = {};
 
@@ -185,10 +185,14 @@ document.getElementById("add-button").addEventListener("click", ()=>{
         if (wednDayBox.checked) times.wedn = getCheckedPeriodsForDay("wedn");
         if (thurDayBox.checked) times.thur = getCheckedPeriodsForDay("thur");
 
-        let subjectInfo = new Subjects(subName, subCode, subTeacher, subColor, times);
+        let subjectInfo = new Subjects(subName.value, subCode.value, subTeacher.value, subColor.value, times);
         saveSubjectToLocalStorage(subjectInfo);
         displaySubjectInTable(subjectInfo);
         
+        subName.value = "";
+        subCode.value = "";
+        subTeacher.value = "";
+        subColor.value = "green";
         
     } else {
         
@@ -313,4 +317,61 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSubjectsList();
         if (subs.length === 0) closeDeleteModal();
     }
+});
+
+
+// exporting the schadule
+
+// png
+document.getElementById("export-png-btn").addEventListener("click", ()=>{
+    const element = document.getElementById('schedule-table');
+    html2canvas(element).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'الجدول الدراسي.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+})
+
+// pdf
+document.getElementById("export-pdf-btn").addEventListener("click", async () => {
+    const element = document.getElementById('schedule-table-contianer');
+
+    const canvas = await html2canvas(element, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
+
+    const { jsPDF } = window.jspdf; // هذه هي الطريقة الصحيحة للوصول إلى jsPDF
+    const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'pt',
+        format: 'a4'
+    });
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const imgWidth = pageWidth - 20;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+    pdf.save('الجدول الدراسي.pdf');
+});
+
+
+// excel
+document.getElementById("export-excel-btn").addEventListener("click", () => {
+    
+    const table = document.querySelector("#schedule-table");
+    if (!table) {
+        alert("لم يتم العثور على الجدول!");
+        return;
+    }
+
+    
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.table_to_sheet(table);
+
+    
+    XLSX.utils.book_append_sheet(workbook, worksheet, "الجدول الدراسي");
+
+    
+    XLSX.writeFile(workbook, "الجدول الدراسي.xlsx");
 });

@@ -145,7 +145,7 @@
         </div>
 
         <div id="schedule-table-contianer">
-            <table>
+            <table id="schedule-table">
                 <thead>
                     <tr>
                         <th style="border-top-left-radius: 15px;">Periods</th>
@@ -277,6 +277,12 @@
                     
                 </tbody>
             </table>
+
+            <div id="export-container">
+                <button id="export-png-btn">تصدير كــ png</button>
+                <button id="export-pdf-btn">تصدير كــ pdf</button>
+                <button id="export-excel-btn">تصدير كــ Excle</button>
+            </div>
         </div>
     </div>
 
@@ -306,6 +312,9 @@
         <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
     </footer>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="./schedule.js"></script>
 <script src="../search.js"></script>
 </html>
