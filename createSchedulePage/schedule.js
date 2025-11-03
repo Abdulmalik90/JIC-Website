@@ -1,49 +1,16 @@
-// Modal script
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('modal');
-    const addSubModule = document.getElementById('add-subject-button');
-    const closeModalBtn = document.querySelector('#header-modal span');
-    
-    // Function to open modal
-    function openModal() {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+class Subjects{
+    constructor(name, code, teacher, color, times){
+        this.name = name;
+        this.code = code;
+        this.teacher = teacher;
+        this.color = color;
+        this.times = times;
     }
-    
-    // Function to close modal
-    function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-    }
-    
-    // Event listeners
-    addSubModule.addEventListener('click', openModal);
-    closeModalBtn.addEventListener('click', closeModal);
-    
-    // Close modal when clicking outside the modal content
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-    
-    // Example actions for the buttons
-    preparatoryButton.addEventListener('click', function(){
-        localStorage.setItem("selectedMajor", JSON.stringify(PreparatoryYear));
-        window.location.href = "../MajorPage/majorInfo.html";
-    })
 
-    diplomeButton.addEventListener('click', function() {
-        window.location.href = "./JTImajors/JTImajors.html"
-    });
-});
+}
+
+
+
 
 
 
@@ -160,3 +127,190 @@ thurDayBox.addEventListener("change", ()=>{
         thurPeriods.innerHTML = ``
     }
 })
+
+// adding the subject
+function getCheckedPeriodsForDay(day) {
+    
+    const checkboxes = document.querySelectorAll(`input[id^="${day}-"][type="checkbox"]`);
+
+    
+    let checked = [];
+    checkboxes.forEach(box => {
+        if (box.checked) {
+            // Extract the number from the ID (e.g. "sun-3-checkbox" → 3)
+            const periodNumber = parseInt(box.id.split('-')[1]);
+            checked.push(periodNumber);
+        }
+    });
+
+    return checked;
+}
+
+function saveSubjectToLocalStorage(subject) {
+    let savedSubjects = JSON.parse(localStorage.getItem("subjects")) || [];
+    savedSubjects.push(subject);
+    localStorage.setItem("subjects", JSON.stringify(savedSubjects));
+}
+
+function displaySubjectInTable(subject) {
+    for (let day in subject.times) {
+        subject.times[day].forEach(period => {
+            const cellId = `${day}-${period}`;
+            const cell = document.getElementById(cellId);
+            if (cell) {
+                cell.style.backgroundColor = subject.color;
+                cell.innerHTML = `
+                    <strong>${subject.name}</strong><br>
+                    <small>${subject.code}</small><br>
+                    <small>teacher:${subject.teacher}</small>
+                `;
+            }
+        });
+    }
+}
+
+document.getElementById("add-button").addEventListener("click", ()=>{
+    if(sunDayBox.checked || monDayBox.checked || tuesDayBox.checked || wednDayBox.checked || thurDayBox.checked){
+        const modal = document.getElementById('modal');
+        let subName = document.getElementById("subject-name-input").value;
+        let subCode = document.getElementById("subject-code-input").value;
+        let subTeacher = document.getElementById("subject-teacher-input").value;
+        let subColor = document.getElementById("subject-color-input").value;
+
+        let times = {};
+
+        if (sunDayBox.checked) times.sun = getCheckedPeriodsForDay("sun");
+        if (monDayBox.checked) times.mon = getCheckedPeriodsForDay("mon");
+        if (tuesDayBox.checked) times.tues = getCheckedPeriodsForDay("tues");
+        if (wednDayBox.checked) times.wedn = getCheckedPeriodsForDay("wedn");
+        if (thurDayBox.checked) times.thur = getCheckedPeriodsForDay("thur");
+
+        let subjectInfo = new Subjects(subName, subCode, subTeacher, subColor, times);
+        saveSubjectToLocalStorage(subjectInfo);
+        displaySubjectInTable(subjectInfo);
+        
+        
+    } else {
+        
+        alert("الرجاء اختيار واحدة من الأيام")
+    }
+})
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedSubjects = JSON.parse(localStorage.getItem("subjects")) || [];
+    savedSubjects.forEach(subject => {
+        displaySubjectInTable(subject);
+    });
+});
+
+
+document.getElementById("clear-table-button").addEventListener("click", ()=>{
+    localStorage.removeItem("subjects");
+    document.querySelectorAll(".table-subjects").forEach(cell => {
+        cell.innerHTML = "";
+        cell.style.backgroundColor = "rgb(174, 174, 174)";
+    });
+    alert("تم حذف الجدول بالكامل!");
+});
+
+
+// Delete Subject Modal Logic
+document.addEventListener('DOMContentLoaded', function() {
+    // ========== Add Subject Modal ==========
+    const modal = document.getElementById('modal');
+    const addSubModule = document.getElementById('add-subject-button');
+    const closeModalBtn = document.querySelector('#header-modal span');
+
+    function openModal() {
+        modal.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    addSubModule.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+
+    // ========== Delete Subject Modal ==========
+    const deleteModal = document.getElementById("delete-modal");
+    const deleteSubButton = document.getElementById("delete-subject-button");
+    const closeDeleteModalBtn = document.getElementById("close-delete-modal");
+    const subjectsList = document.getElementById("subjects-list");
+
+    function openDeleteModal() {
+        updateSubjectsList();
+        deleteModal.classList.add("active");
+        deleteModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+    function closeDeleteModal() {
+        deleteModal.classList.remove("active");
+        deleteModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+    }
+
+    deleteSubButton.addEventListener("click", openDeleteModal);
+    closeDeleteModalBtn.addEventListener("click", closeDeleteModal);
+    deleteModal.addEventListener("click", (e) => { 
+        if (e.target === deleteModal) closeDeleteModal(); 
+    });
+
+    function updateSubjectsList() {
+        subjectsList.innerHTML = "";
+        const subs = JSON.parse(localStorage.getItem("subjects")) || [];
+        if (subs.length === 0) {
+            subjectsList.innerHTML = `<p style="text-align:center;">لا توجد مواد محفوظة</p>`;
+            return;
+        }
+
+        subs.forEach((subject, index) => {
+            const li = document.createElement("li");
+            li.className = 'subject-item';
+            li.innerHTML = `
+                <span><strong>${subject.name}</strong> (${subject.code || ''}) - ${subject.teacher || ''}</span>
+                <button data-index="${index}" class="delete-subject-btn">حذف</button>
+            `;
+            subjectsList.appendChild(li);
+        });
+
+        subjectsList.querySelectorAll(".delete-subject-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const idx = Number(e.currentTarget.getAttribute("data-index"));
+                deleteSubject(idx);
+            });
+        });
+    }
+
+    function deleteSubject(index) {
+        const subs = JSON.parse(localStorage.getItem("subjects")) || [];
+        if (index < 0 || index >= subs.length) return;
+        const toDelete = subs[index];
+        subs.splice(index, 1);
+        localStorage.setItem("subjects", JSON.stringify(subs));
+
+        // Clear table for this subject
+        for (let day in toDelete.times) {
+            toDelete.times[day].forEach(period => {
+                const cell = document.getElementById(`${day}-${period}`);
+                if (cell) {
+                    cell.innerHTML = "";
+                    cell.style.backgroundColor = "rgb(174, 174, 174)";
+                }
+            });
+        }
+
+        updateSubjectsList();
+        if (subs.length === 0) closeDeleteModal();
+    }
+});

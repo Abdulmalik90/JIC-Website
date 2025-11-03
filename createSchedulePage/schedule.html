@@ -119,6 +119,19 @@
         </div>
     </div>
 
+    <!-- Delete Subject Modal -->
+    <div id="delete-modal" class="delete-modal" aria-hidden="true">
+        <div class="modal-content">
+            <div id="delete-modal-header">
+            <h3>حذف مادة</h3>
+            <span class="material-symbols-outlined" id="close-delete-modal">close</span>
+            </div>
+            <div id="delete-modal-body">
+            <ul id="subjects-list"></ul>
+            </div>
+        </div>
+    </div>
+    
     <!-- schedule Creating container-->
     <div id="schedule-container">
         <div id="schedule-buttons">
@@ -135,12 +148,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Periods</th>
+                        <th style="border-top-left-radius: 15px;">Periods</th>
                         <th>Sunday</th>
                         <th>Monday</th>
                         <th>Tuesday</th>
                         <th>Wednesday</th>
-                        <th>Thursday</th>
+                        <th style="border-top-right-radius: 15px;">Thursday</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,117 +161,117 @@
                         <td>1<br>7:00 AM - 7:50 AM</td>
                         <td class="table-subjects" id="sun-1"></td>
                         <td class="table-subjects" id="mon-1"></td>
-                        <td class="table-subjects" id="Tues-1"></td>
-                        <td class="table-subjects" id="Wedn-1"></td>
-                        <td class="table-subjects" id="Thur-1"></td>
+                        <td class="table-subjects" id="tues-1"></td>
+                        <td class="table-subjects" id="wedn-1"></td>
+                        <td class="table-subjects" id="thur-1"></td>
                     </tr>
 
                     <tr>
                         <td>2<br>8:00 AM - 8:50 AM</td>
                         <td class="table-subjects" id="sun-2"></td>
                         <td class="table-subjects" id="mon-2"></td>
-                        <td class="table-subjects" id="Tues-2"></td>
-                        <td class="table-subjects" id="Wedn-2"></td>
-                        <td class="table-subjects" id="Thur-2"></td>
+                        <td class="table-subjects" id="tues-2"></td>
+                        <td class="table-subjects" id="wedn-2"></td>
+                        <td class="table-subjects" id="thur-2"></td>
                     </tr>
 
                     <tr>
                         <td>3<br>9:00 AM - 9:50 AM</td>
                         <td class="table-subjects" id="sun-3"></td>
                         <td class="table-subjects" id="mon-3"></td>
-                        <td class="table-subjects" id="Tues-3"></td>
-                        <td class="table-subjects" id="Wedn-3"></td>
-                        <td class="table-subjects" id="Thur-3"></td>
+                        <td class="table-subjects" id="tues-3"></td>
+                        <td class="table-subjects" id="wedn-3"></td>
+                        <td class="table-subjects" id="thur-3"></td>
                     </tr>
 
                     <tr>
                         <td>4<br>10:00 AM - 10:50 AM</td>
                         <td class="table-subjects" id="sun-4"></td>
                         <td class="table-subjects" id="mon-4"></td>
-                        <td class="table-subjects" id="Tues-4"></td>
-                        <td class="table-subjects" id="Wedn-4"></td>
-                        <td class="table-subjects" id="Thur-4"></td>
+                        <td class="table-subjects" id="tues-4"></td>
+                        <td class="table-subjects" id="wedn-4"></td>
+                        <td class="table-subjects" id="thur-4"></td>
                     </tr>
 
                     <tr>
                         <td>5<br>11:00 AM - 11:50 AM</td>
                         <td class="table-subjects" id="sun-5"></td>
                         <td class="table-subjects" id="mon-5"></td>
-                        <td class="table-subjects" id="Tues-5"></td>
-                        <td class="table-subjects" id="Wedn-5"></td>
-                        <td class="table-subjects" id="Thur-5"></td>
+                        <td class="table-subjects" id="tues-5"></td>
+                        <td class="table-subjects" id="wedn-5"></td>
+                        <td class="table-subjects" id="thur-5"></td>
                     </tr>
 
                     <tr>
                         <td>6<br>12:20 PM - 1:10 PM</td>
                         <td class="table-subjects" id="sun-6"></td>
                         <td class="table-subjects" id="mon-6"></td>
-                        <td class="table-subjects" id="Tues-6"></td>
-                        <td class="table-subjects" id="Wedn-6"></td>
-                        <td class="table-subjects" id="Thur-6"></td>
+                        <td class="table-subjects" id="tues-6"></td>
+                        <td class="table-subjects" id="wedn-6"></td>
+                        <td class="table-subjects" id="thur-6"></td>
                     </tr>
 
                     <tr>
                         <td>7<br>1:20 PM - 2:10 PM</td>
                         <td class="table-subjects" id="sun-7"></td>
                         <td class="table-subjects" id="mon-7"></td>
-                        <td class="table-subjects" id="Tues-7"></td>
-                        <td class="table-subjects" id="Wedn-7"></td>
-                        <td class="table-subjects" id="Thur-7"></td>
+                        <td class="table-subjects" id="tues-7"></td>
+                        <td class="table-subjects" id="wedn-7"></td>
+                        <td class="table-subjects" id="thur-7"></td>
                     </tr>
 
                     <tr>
                         <td>8<br>2:20 PM - 3:10 PM</td>
                         <td class="table-subjects" id="sun-8"></td>
                         <td class="table-subjects" id="mon-8"></td>
-                        <td class="table-subjects" id="Tues-8"></td>
-                        <td class="table-subjects" id="Wedn-8"></td>
-                        <td class="table-subjects" id="Thur-8"></td>
+                        <td class="table-subjects" id="tues-8"></td>
+                        <td class="table-subjects" id="wedn-8"></td>
+                        <td class="table-subjects" id="thur-8"></td>
                     </tr>
 
                     <tr>
                         <td>9<br>3:30 PM - 4:20 PM</td>
                         <td class="table-subjects" id="sun-9"></td>
                         <td class="table-subjects" id="mon-9"></td>
-                        <td class="table-subjects" id="Tues-9"></td>
-                        <td class="table-subjects" id="Wedn-9"></td>
-                        <td class="table-subjects" id="Thur-9"></td>
+                        <td class="table-subjects" id="tues-9"></td>
+                        <td class="table-subjects" id="wedn-9"></td>
+                        <td class="table-subjects" id="thur-9"></td>
                     </tr>
 
                     <tr>
                         <td>10<br>5:30 PM - 6:20 PM</td>
                         <td class="table-subjects" id="sun-10"></td>
                         <td class="table-subjects" id="mon-10"></td>
-                        <td class="table-subjects" id="Tues-10"></td>
-                        <td class="table-subjects" id="Wedn-10"></td>
-                        <td class="table-subjects" id="Thur-10"></td>
+                        <td class="table-subjects" id="tues-10"></td>
+                        <td class="table-subjects" id="wedn-10"></td>
+                        <td class="table-subjects" id="thur-10"></td>
                     </tr>
 
                     <tr>
                         <td>11<br>6:30 PM - 7:20 PM</td>
                         <td class="table-subjects" id="sun-11"></td>
                         <td class="table-subjects" id="mon-11"></td>
-                        <td class="table-subjects" id="Tues-11"></td>
-                        <td class="table-subjects" id="Wedn-11"></td>
-                        <td class="table-subjects" id="Thur-11"></td>
+                        <td class="table-subjects" id="tues-11"></td>
+                        <td class="table-subjects" id="wedn-11"></td>
+                        <td class="table-subjects" id="thur-11"></td>
                     </tr>
 
                     <tr>
                         <td>12<br>8:30 PM - 8:20 PM</td>
                         <td class="table-subjects" id="sun-12"></td>
                         <td class="table-subjects" id="mon-12"></td>
-                        <td class="table-subjects" id="Tues-12"></td>
-                        <td class="table-subjects" id="Wedn-12"></td>
-                        <td class="table-subjects" id="Thur-12"></td>
+                        <td class="table-subjects" id="tues-12"></td>
+                        <td class="table-subjects" id="wedn-12"></td>
+                        <td class="table-subjects" id="thur-12"></td>
                     </tr>
 
                     <tr>
-                        <td>13<br>9:30 PM - 9:20 PM</td>
+                        <td style="border-bottom-left-radius: 15px;">13<br>9:30 PM - 9:20 PM</td>
                         <td class="table-subjects" id="sun-13"></td>
                         <td class="table-subjects" id="mon-13"></td>
-                        <td class="table-subjects" id="Tues-13"></td>
-                        <td class="table-subjects" id="Wedn-13"></td>
-                        <td class="table-subjects" id="Thur-13"></td>
+                        <td class="table-subjects" id="tues-13"></td>
+                        <td class="table-subjects" id="wedn-13"></td>
+                        <td style="border-bottom-right-radius: 15px;" class="table-subjects" id="thur-13"></td>
                     </tr>
 
                     
@@ -266,6 +279,10 @@
             </table>
         </div>
     </div>
+
+    
+
+
 
 
     <!-- Footer -->
