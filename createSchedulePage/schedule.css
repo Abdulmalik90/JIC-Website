@@ -244,9 +244,16 @@
     text-shadow: 0 0 10px white;
 }
 
+#schedule-table-contianer {
+    padding: 30px;
+    overflow: scroll;
+}
+
 table {
     width: 100%;
+    min-width: 550px;
     text-align: center;
+    overflow: scroll;
 }
 
 thead {
@@ -260,6 +267,7 @@ th {
 
 td {
     background-color: rgb(0, 127, 231);
+    overflow: hidden;
     max-width: 30px;
     color: white;
     padding: 10px;
@@ -355,6 +363,11 @@ body.modal-open {
     opacity: 1;
 }
 
+/* Phone alert */
+#phone-alert {
+    display: none;
+}
+
 /* Export buttons */
 #export-container {
     width: 50%;
@@ -391,4 +404,98 @@ body.modal-open {
     box-shadow: 5px 5px 10px #333 ;
     border: 1px solid black;
     text-shadow: 2px 2px 4px white;
+}
+
+/* responsive greating */
+@media (max-width:600px) {
+    #portal-greating {
+        font-size: 50px;
+    }
+
+    #greating p {
+        font-size: 20px;
+    }
+}
+
+
+/* responsive Schedule buttons */
+@media (max-width:600px) {
+    #schedule-buttons button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:500px) {
+    #schedule-buttons button {
+        font-size: 12px;
+    }
+}
+
+/* responsive Schedule table */
+@media (max-width:1000px) {
+    #schedule-container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #schedule-table-contianer {
+        width: 100%;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+    }
+}
+
+@media (max-width:800px) {
+    th, td {
+        font-size: 10px;
+    }
+
+    #schedule-table-contianer {
+        width: 100%;
+        padding: 5px;
+        margin: 60px 0;
+
+    }
+}
+
+
+/* responsive phone alert */
+@media (max-width: 545px) {
+    #phone-alert {
+        display: block;
+        margin: auto;
+        width: 85%;
+        text-align: center;
+    }
+
+    #phone-alert h3 {
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+/* responsive export buttons */
+@media (max-width:1060px) {
+    #export-container {
+        width: 80%;
+    }
+}
+
+@media (max-width:600px) {
+    #export-container button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:460px) {
+    #export-container button {
+        font-size: 12px;
+    }
+
+    #export-container {
+        width: 95%;
+    }
 }

@@ -192,8 +192,23 @@ document.getElementById("add-button").addEventListener("click", ()=>{
         subName.value = "";
         subCode.value = "";
         subTeacher.value = "";
-        subColor.value = "green";
+        subColor.value = "";
+
+        sunPeriods.innerHTML = ``;
+        monPeriods.innerHTML = ``;
+        tuesPeriods.innerHTML = ``;
+        wednPeriods.innerHTML = ``;
+        thurPeriods.innerHTML = ``;
+        sunDayBox.checked = false;
+        monDayBox.checked = false;
+        tuesDayBox.checked = false;
+        wednDayBox.checked = false;
+        thurDayBox.checked = false;
         
+        const deleteModal = document.getElementById("modal");
+        deleteModal.classList.remove("active");
+        deleteModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
     } else {
         
         alert("الرجاء اختيار واحدة من الأيام")
@@ -324,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // png
 document.getElementById("export-png-btn").addEventListener("click", ()=>{
-    const element = document.getElementById('schedule-table');
+    const element = document.getElementById('schedule-table-contianer');
     html2canvas(element).then(canvas => {
         const link = document.createElement('a');
         link.download = 'الجدول الدراسي.png';

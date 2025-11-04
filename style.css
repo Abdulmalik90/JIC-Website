@@ -457,6 +457,27 @@
     max-width: 900px;
 }
 
+#telegram-group-div {
+    align-items: center;
+    border: black solid 1px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    width: 100%;
+    background: linear-gradient(90deg, #103b91, #4265aa);
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px;
+    transition:  transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#telegram-group-div:hover {
+    background: none; /* smoother transition */
+    background-color: #ff4b2b;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 #info-post1 {
     border-top-left-radius: 100px;
 }
@@ -817,9 +838,17 @@
         font-size: 12px !important;
     }
 
-    .info-post, #email-info-div {
+    .info-post, #email-info-div, #telegram-group-div {
         justify-content: space-evenly;
         width: 90%;
+    }
+
+    #email-info-div p, #email-info-div span {
+        font-size: 10px;
+    }
+
+    #telegram-group-div h3 {
+        font-size: 12px;
     }
 
     .info-post button {
@@ -840,6 +869,10 @@
 @media (max-width: 450px){
     #email-info-div {
         font-size: 12px;
+    }
+
+    #email-info-div p, #email-info-div span {
+        font-size: 8px;
     }
 
     #contactUs-h11, #contactUs-h12 {
