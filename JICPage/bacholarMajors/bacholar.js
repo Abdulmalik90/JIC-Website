@@ -9,7 +9,25 @@ class Majors{
         this.genders = genders;
         this.courses = courses;
     }
+
+    calcSemHours(semesterNumber) {
+        const semester = this.courses.find(s => s.semester === semesterNumber);
+        if (!semester) return 0;
+
+        return semester.courses.reduce((sum, course) => sum + course[1], 0);
+    }
+
+    // تحسب مجموع الساعات لكل التخصص
+    calcTotalHours() {
+        return this.courses
+            .filter(s => s.semester !== 0) // تجاهل المواد الاختيارية
+            .reduce((total, sem) => {
+                const semHours = sem.courses.reduce((sum, course) => sum + course[1], 0);
+                return total + semHours;
+            }, 0);
+    }
 }
+
 
 // Bachelors
 const MechanicalEng = new Majors("Mechanical Engineering", "الهنـدسـة الميكـانيكيـة", "car_gear", "بكالوريوس", 5, "./majorsImages/mechanic.png", "البنين", [

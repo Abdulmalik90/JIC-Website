@@ -24,6 +24,10 @@ window.onload = function () {
     if(majorData.courses.length !== 0){
         container.innerHTML = '';
     }
+
+    // === متغير لتجميع الساعات الكلية للخطة ===
+    let totalPlanHours = 0;
+
     // Process each semester (excluding semester 0)
     majorData.courses.forEach(sem => {
         if (sem.semester === 0) return; // skip optional courses here
@@ -54,11 +58,12 @@ window.onload = function () {
             </tr>
         `;
         table.appendChild(thead);
+
         // Create table body
         const tbody = document.createElement("tbody");
+        let semHours = 0; // لحساب مجموع ساعات هذا الفصل
         
-        
-       // Add each course as a row
+        // Add each course as a row
         sem.courses.forEach(course => {
             if (!Array.isArray(course)) {
                 console.warn("⚠️ Invalid course data:", course, "in semester", sem.semester);
@@ -68,7 +73,6 @@ window.onload = function () {
             const [title, credits, lec, lab, prereqs] = course;
             const row = document.createElement("tr");
 
-            
             row.innerHTML = `
                 <td>${title}</td>
                 <td>${credits}</td>
@@ -78,16 +82,38 @@ window.onload = function () {
             `;
             
             tbody.appendChild(row);
+            semHours += credits; // جمع ساعات المادة
         });
-        
+
+        // === إضافة صف لمجموع ساعات الفصل ===
+        const totalRow = document.createElement("tr");
+        totalRow.classList.add("total-row"); // إضافة كلاس للستايل
+        totalRow.innerHTML = `
+        <td class="total-title" style="text-align:left;">Total Cridets :${semHours}</td>
+        <td class="total-hours"></td>
+        <td colspan="3"></td>
+        `;
+        tbody.appendChild(totalRow);
+
+        totalPlanHours += semHours; // إضافة ساعات الفصل إلى المجموع الكلي
+
         table.appendChild(tbody);
         card.appendChild(table);
         container.appendChild(card);
     });
+    // === عرض مجموع الساعات الكلية في القسم العلوي ===
+    const topDiv = document.querySelector(".top-div");
+    const totalHoursDiv = document.createElement("div");
+    totalHoursDiv.classList.add("total-plan-box");
+    totalHoursDiv.innerHTML = `
+        <p><span class="material-symbols-outlined">schedule</span> 
+        إجمالي الساعات الكلية للخطة: 
+        <strong>${totalPlanHours}</strong></p>
+    `;
+    topDiv.insertAdjacentElement("afterend", totalHoursDiv);
 
     // Render Optional Courses (Semester 0)
     const optionalSem = majorData.courses.find(s => s.semester === 0);
-    console.log(optionalSem)
     if (optionalSem && optionalSem.courses.length > 0) {
 
         // Create container for optional courses
@@ -129,9 +155,3 @@ window.onload = function () {
         document.body.insertBefore(optionalContainer, footer);
     }
 };
-
-
-
-
-
-
