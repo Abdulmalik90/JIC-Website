@@ -439,7 +439,7 @@ const polyTec = new Majors("Polymer Engineering Technology", "تقنية هند�
             ["Organic and Polymer Chemistry", 4, 3, 3, ["Principles of Chemistry"]],
             ["Polymer Processing I", 3, 2, 3, ["Polymer Materials"]],
             ["Plastic Prosuct Design", 3, 2, 3, ["Polymer Science and Engineering"]],
-            ["technical Writing", 3, 3, 0, ["Frofessional Communications"]],
+            ["Technical Writing", 3, 3, 0, ["Professional Communications"]],
             ["Physical Education", 1, 0, 2, []]
         ]
     },
