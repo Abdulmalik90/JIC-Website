@@ -83,7 +83,7 @@ const newsData = [
             نبارك لجميع الخريجين ونتمنى لهم مستقبلاً زاهراً مليئاً بالنجاح والإنجاز 🌟
         </p>
     `,
-    image: "https://ibb.co/jZRbSPGP",
+    image: "https://i.postimg.cc/JnDwKtRM/IMG-8336.jpg",
     date: "2025-11-10T00:11:00",
     author: "رائـد الزهـراني",
     category: "مناسبات"
