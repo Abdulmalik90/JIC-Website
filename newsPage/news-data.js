@@ -62,8 +62,35 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "مـدخـل"
     },
+    {
+    id: 5,
+    title: "🎓 فيديو : حفل تخرّج طلاب كليات ومعاهد الهيئة الملكية بالجبيل 2025م",
+    content: `
+        <p style="direction: rtl;">
+            يسرّ <strong>منصة مدخل</strong> أن تشارك خريجي كليات ومعاهد الهيئة الملكية بالجبيل فرحتهم في هذا اليوم المميز،
+            وتهنئهم على ما حققوه من إنجاز وجهد طوال سنواتهم الدراسية 💫
+        </p>
+
+        <p style="direction: rtl;">
+            يمكنكم متابعة <strong>تسجيل بث الحفل</strong> من خلال الرابط التالي:
+        </p>
+
+        <a href="https://www.youtube.com/live/qk9Bt0jsx70?si=tsKS33U7ktPMdnF6" target="_blank" style="display: inline-block; padding: 8px 14px; background-color: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            🎥 اضغـط هنـا لمشاهدة البث المباشر
+        </a>
+
+        <p style="direction: rtl; margin-top: 12px;">
+            نبارك لجميع الخريجين ونتمنى لهم مستقبلاً زاهراً مليئاً بالنجاح والإنجاز 🌟
+        </p>
+    `,
+    image: "https://ibb.co/jZRbSPGP",
+    date: "2025-11-10T00:11:00",
+    author: "رائـد الزهـراني",
+    category: "مناسبات"
+}
     
 ];
+
 
 // دالة للحصول على خبر بواسطة ID
 function getNewsArticleById(articleId) {
