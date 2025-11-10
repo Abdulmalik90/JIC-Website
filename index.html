@@ -254,6 +254,20 @@
     <a href="https://hits.sh/juportal.online/"><img alt="Hits" src="https://hits.sh/juportal.online.svg?style=flat-square&label=Visitor&color=007ec6&labelColor=ffffff"/></a>
     
 </body>
+    <script>
+const versionKey = 'mdkhl-site-version';
+const currentVersion = '2025-11-10'; // غيّر التاريخ فقط وقت ما تسوي تحديث كبير
+
+fetch(window.location.href, { cache: "no-store" })
+  .then(() => {
+    const saved = localStorage.getItem(versionKey);
+    if (saved !== currentVersion) {
+      localStorage.setItem(versionKey, currentVersion);
+      window.location.reload(true);
+    }
+  })
+  .catch(() => {});
+</script>
     <script src="./newsPage/news-data.js"></script>
     <script src="./script.js"></script>
     <script src="./search.js"></script>
