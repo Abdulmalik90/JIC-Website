@@ -217,3 +217,47 @@ mobileSearchInput.addEventListener("keydown", (event) => {
     searchMobileResult();
     }
 });
+
+
+// dark/light theme toggle
+const themeToggle = document.getElementById("dark-button");
+const themeToggleMenu = document.getElementById("dark-button-menu");
+const htmlElement = document.documentElement;
+
+(function() {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+        return; // We're done
+    }
+
+    // If no saved preference, check their system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersDark.matches) {
+        htmlElement.setAttribute('data-theme', 'dark');
+    }
+    // No 'else' needed, as 'light' is the default
+})();
+
+function changeTheme(){
+    // Get the current theme
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    
+    // Toggle the theme
+    if (currentTheme === 'dark') {
+        // Change to light mode
+        htmlElement.setAttribute('data-theme', 'light');
+        // Save the preference
+        localStorage.setItem('theme', 'light');
+    } else {
+        // Change to dark mode
+        htmlElement.setAttribute('data-theme', 'dark');
+        // Save the preference
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// 7. Add the click event listener
+themeToggle.addEventListener('click',changeTheme);
+themeToggleMenu.addEventListener('click', changeTheme);

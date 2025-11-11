@@ -61,7 +61,7 @@ class HomeNews {
                 <h2>${article.title}</h2>
                 <p>${article.content.substring(0, 100)}...</p>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                    <span style="color: #666; font-size: 0.9em;">${formattedDate}</span>
+                    <span style="color: var(--text); font-size: 0.9em;">${formattedDate}</span>
                     <span style="background: #007bff; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">
                         ${article.category}
                     </span>
