@@ -408,10 +408,52 @@
 
 #tools-cards {
     display: flex;
+    flex-direction: row-reverse;
     width: 90%;
+    margin: 10px auto;
     justify-content: space-evenly;
 }
 
+
+.tool {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--event-card-border);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.tool img {
+    width: 60%;
+    height: 60%;
+}
+
+.tool h2, .tool p {
+    color: var(--text);
+    direction: rtl;
+    margin-top: 20px;
+}
+
+.tool a {
+    font-size: 25px;
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(90deg, #103191, #106091);
+    width: 80%;
+    margin: 40px auto;
+    padding: 18px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.tool a:hover {
+    background: #106091;
+    transform: translateY(-3px) scale(1.05);
+}
 
 /* Contact with us */
 #contict-title-container {
