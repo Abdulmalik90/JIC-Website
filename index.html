@@ -65,7 +65,7 @@
         </div>
 
         <!-- Mobile search -->
-    <div id="mobile-search">
+        <div id="mobile-search">
             <input type="search" placeholder="ابحث في مدخل" id="mobile-search-input">
             <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
             <div class="result-search-box" id="mobile-result-box">
@@ -118,39 +118,49 @@
     </div>
 
 
-    <!-- searching section -->
-    <div id="search-section">
-        <div style="margin: 40px auto; width:80%;">
+    <!-- Calender -->
+    <div id="calender-container">
+        <div id="calender-title-container">
+            <h1 class="subtitle">التقويم التفاعلي</h1>
+            <p class="p-text">ابرز الأحداث القادمة لكليات ومعاهد الهيئة الملكية📅</p>
+        </div>
 
-            <h1 class="subtitle">محــرك البحــث</h1>
-            <p class="p-text">🔍ما يحتاج تدور بكل الصفحات لان بكلمة واحدة توصل للي تبيه بسرعة</p>
-            <div id="search-section-div">
-                <input id="search-section-input" type="search" placeholder="اكتب كلمة مفتاحية">
-                <button id="search-section-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
-                <div class="result-search-sectoin-box" id="result-box"> 
-                    <ul>
-                        
-                    </ul>
-                </div>
-            </div>
-            <p id="p-map" style="margin: 10px 85px 50px auto; text-align: right;"> ضائـع؟<a href="/webMapPage/webMap.html" style="display: inline; color:blue;">خريطة الموقـع</a></p>
+        <div id="calender-events">
+
         </div>
     </div>
+    
 
-    <!-- feedback section -->
-    <div id="web-feedback">
-        <div id="feedback-container">
-            <h1 class="subtitle" id="feedback-h1">ايش هـو <span style="color: #1a4291;">مَدخـل</span>؟</h1>
-            <p id="feedback-text" style="direction: rtl;"> مـبادرة طلابيـة وغيـر رسميـة نسعـى من خلالها لاستثمـار امكانياتنـا في تسهيل حياتنا وحياتكم كطلاب في كليات ومعاهد الجبيل👥</p>
-            <div id="highlights">
-                <div id="right-hightlight"><h2>ادوات طـلابية</h2></div>
-                <div id="meddil-hightlight"><h2>تحديثات مستمـرة</h2></div>
-                <div id="left-hightlight"><h2>سهـل الاستخـدام</h2></div>
-            </div>
-            <p id="feedback-text2" style="direction: rtl;">هدفنـا تسخيـر مهـارتنا وتطويـرها من خلال تطـوير المنصـة وجعلها المرجـع الاول
-لطلاب وطالبات الجبيل الصناعيـة , لذلك قدمنا هذه النسخة التجريبية والتي
-وجدت لاستقبال اقتراحاتكم وملاحظاتكم اللي بتساعدنا نطـور مـدخـل 🙏</p>
+    <!-- Tools Library-->
+    <div id="tools-cont">
+        <div id="tools-header">
+            <h1 class="subtitle">مكتبة الأدوات</h1>
+            <p class="p-text">مجموعة أدوات هدفها تسهيل حياتك الأكاديمية😁</p>
         </div>
+
+        <div id="tools-cards">
+            <div class="tool" id="calculate-gpa-card">
+                <img src="./Images/abs-calc.png" alt="">
+                <h2></h2>
+                <p></p>
+                <a>قراءة المزيد</a>
+            </div>
+
+            <div class="tool" id="calculate-abs-card">
+                <img src="./Images/gpa-calc.png" alt="">
+                <h2></h2>
+                <p></p>
+                <a>قراءة المزيد</a>
+            </div>
+
+            <div class="tool" id="create-schedule-card">
+                <img src="./Images/creating-schedule.png" alt="">
+                <h2></h2>
+                <p></p>
+                <a>قراءة المزيد</a>
+            </div>
+        </div>
+
     </div>
 
     <!-- Contact with us -->
@@ -234,9 +244,10 @@
     
 </body>
     <script src="./newsPage/news-data.js"></script>
+    <script src="./eventsCounterPage/events.js"></script>
     <script src="./script.js"></script>
     <script src="./search.js"></script>
-    <script src="./searchSection.js"></script>
+    
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="9da46ca7-c7f4-428a-83bc-33d376f9c37b";
         (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";

@@ -101,8 +101,102 @@ function openNewsArticle(articleId) {
     window.location.href = './newsPage/news.html';
 }
 
-// تهيئة الأخبار عند تحميل الصفحة
+// Calender script section =====================================================================
+class HomeEvents {
+    constructor() {
+        // constructor is not needed for this
+    }
+
+    // getting last 3 events
+    getLatestEvents(){
+        // Check if the function from events.js exists
+        if(typeof getAllEvents == "function"){
+            const allEvents = getAllEvents();
+            
+            // Filter for events that haven't passed more than a day ago
+            const now = new Date();
+            const upcomingEvents = allEvents.filter(event => {
+                const targetDate = new Date(event.date);
+                const diff = targetDate - now;
+                return diff > - (24 * 60 * 60 * 1000); // Keep events until they are 1 day old
+            });
+
+            return upcomingEvents.slice(0, 3); // Get the 3 closest upcoming events
+        } else {
+            return this.getFallbackEvents();
+        }
+    }
+
+    getFallbackEvents(){
+        return [
+            {title: "حدث تجريبي", id:1, date:"2030-01-01T00:00:00", day:"غير معلوم"},
+            {title: "حدث تجريبي", id:2, date:"2030-01-02T00:00:00", day:"غير معلوم"},
+            {title: "حدث تجريبي", id:3, date:"2030-01-03T00:00:00", day:"غير معلوم"}
+        ]
+    }
+
+    // This function now *only* creates the static HTML.
+    // The countdown logic will be attached later.
+    createEventsCard(event){
+        // Get just the date part (e.g., 2025-11-21)
+        const simpleDate = event.date.substring(0, 10); 
+
+        return `
+            <div class="event-post" id="home-event-${event.id}">
+                <h2 class="event-title">${event.title}</h2>
+                <p class="p-event-date">${simpleDate} | يوم ${event.day}</p>
+                <div class="event-timer">
+                    <h1 class="time-day">...</h1>
+                    <h1 class="time-hour"></h1>
+                    <p class="hour-string"></p>
+                    <p class="day-string"></p>
+                </div>
+            </div>`;
+    }
+
+    renderHomeEvents(){
+        const eventContainer = document.getElementById("calender-events");
+        if(!eventContainer) return; // Make sure we are on the homepage
+
+        const latestEvents = this.getLatestEvents();
+
+        if(latestEvents.length === 0){
+            eventContainer.innerHTML = `<p style="text-align: center; color: var(--text);">لا توجد أحداث قادمة حالياً</p>`;
+            return;
+        }
+
+        // 1. Generate the HTML string
+        const eventHTML = latestEvents.map(anEvent => 
+            this.createEventsCard(anEvent)
+        ).join('');
+
+        // 2. Add the HTML to the page
+        eventContainer.innerHTML = eventHTML;
+
+        // 3. NOW, attach the live countdown to each new element
+        // Check if the function from events.js was loaded
+        if (typeof startCountdown === "function") {
+            latestEvents.forEach(event => {
+                const element = document.getElementById(`home-event-${event.id}`);
+                if (element) {
+                    // Call the working function from events.js
+                    startCountdown(event.date, element);
+                }
+            });
+        } else {
+            console.error("startCountdown function not found. Make sure events.js is loaded correctly before script.js");
+        }
+    }
+}
+
+
+// تهيئة الأخبار والأحداث عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
+    // Run Home News
     const homeNews = new HomeNews();
     homeNews.renderHomeNews();
+
+    // ADDED: Run Home Events
+    const homeEvents = new HomeEvents();
+    homeEvents.renderHomeEvents();
 });

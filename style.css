@@ -8,6 +8,8 @@
     --post-shadow: rgba(0, 0, 0, 0.2);
     --post-shadow-hover: rgba(0, 0, 0, 0.3);
     --post-titles: #2c3e50;
+    --event-card: #c8cad0;
+    --event-card-border: black;
 }
 
 [data-theme="dark"] {
@@ -20,6 +22,8 @@
     --post-shadow: rgba(255, 255, 255, 0.2);
     --post-shadow-hover: rgba(255, 255, 255, 0.3);
     --post-titles: #5e9ad6;
+    --event-card: #0A0E19;
+    --event-card-border: white;
 }
  /* الخلفية المغبشة */
 .modal {
@@ -205,6 +209,7 @@
     padding: 40px 70px 10px 0;
     font-size: 50px;
     text-align: right;
+    color: var(--text);
 }
 
 .p-text {
@@ -213,6 +218,8 @@
     text-align: right;
     max-width: 900px;
     margin-left: auto;
+    color: var(--text);
+    direction: rtl;
 }
 
 
@@ -310,123 +317,108 @@
     }
 }
 
-/* Search section */
+/* Calender Section */
+#calender-container {
+    width: 90%;
+    margin: auto;
+    color: var(--text);
+    direction: rtl;
+}
 
+#calender-title-container p, #calender-title-container h1 {
+    text-align: center;
+    margin: 10px auto;
+}
 
-#search-section-div, #result-search-sectoin-box {
+#calender-events {
     display: flex;
-    width: fit-content;
-    margin-right: 70px;
-    margin-left: auto;
+    width: 90%;
+    margin: 10px auto;
+    justify-content: space-evenly;
+    text-align: center;
 }
 
-#search-section h1, #search-section p, #search-section div {
-    padding-right: 0;
+.event-post {
+    padding: 20px 70px;
+    background-color: var(--event-card);
+    border: 1px solid var(--event-card-border);
+    border-radius: 20px;
+    width: 22%;
+    max-width: 400px;
 }
 
-#search-section div input {
-    width: 700px;
-    height: 70px;
-    margin-right: 0;
-    border: none;
-    background-color: rgb(210, 210, 210);
-    padding: 20px;
-    text-align: right;
-    border-radius: 20px 0 0 20px;
-    font-size: 20px;
-}
-
-#search-section-div button {
-    background-color: rgb(210, 210, 210);
-    margin-left: 0;
-    border: none;
-    height: 70px;
-    padding-right: 20px;
-    border-radius: 0 20px 20px 0;
-    font-size: 40px;
-}
-
-#search-section div .search-icon {
-    font-size: 30px;
-}
-
-#search-section div input:focus {
-    outline: none;
-    border: none;
-}
-
-
-
-
-/* Feedback */
-#web-feedback {
-    background-color: #eef2f5;
-    padding-bottom: 20px;
-}
-
-#feedback-container {
-    width: 80%;
-    margin: 40px auto;
-}
-
-#feedback-h1 {
-    margin-right: 0 !important;
-    padding-right: 0;
-}
-
-#feedback-text, #feedback-text2 {
-    width: 80%;
-    padding-right: 0;
-    max-width: 1000px;
-    margin: 30px 0 30px auto;
+.event-title {
     font-size: 25px;
-    text-align: right;
+    font-weight: 50;
+}
+
+.p-event-date {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.event-timer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+}
+
+
+.time-day {
+    grid-area: 1 / 1 / 2 / 2; 
+    border-left: 1px solid var(--event-card-border);
+    font-size: 60px;
+    font-weight: 100;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 15px;
+}
+
+.time-hour {
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: 60px;
+    font-weight: 100;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 15px;
+}
+
+.hour-string {
+    grid-area: 2 / 2 / 3 / 3;
     
 }
 
-#highlights {
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    gap: 10px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+.day-string {
+    grid-area: 2 / 1 / 3 / 2;
 }
 
-#highlights div {
-    background-color: white;
-    padding: 20px 35px;
-    width: 30%;
+
+/* Tools Container */
+#tools-cont {
+    background-color: var(--section-bg);
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 30px;
+}
+
+#tools-header p, #tools-header h1 {
     text-align: center;
-    font-weight: 100 !important;
+    margin: 10px auto;
 }
 
-#highlights div h2 {
-    font-size: 27px;
-    font-weight: 100 !important;
+#tools-cards {
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
 }
 
-#right-hightlight {
-    border: 2px solid rgb(0, 89, 255);
-    border-radius: 10px 10px 50px;
-}
-
-#meddil-hightlight {
-    border: 2px solid rgb(0, 181, 0);
-    border-radius: 10px;
-}
-
-#left-hightlight {
-    border: 2px solid red;
-    border-radius: 10px 10px 10px 50px;
-}
 
 /* Contact with us */
 #contict-title-container {
     width: 80%;
     margin: 40px auto;
 }
+
 #contict-title-container h1, #contict-title-container p {
     padding-right: 0;
 }
