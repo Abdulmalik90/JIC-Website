@@ -280,6 +280,34 @@ class HomeEvents {
 }
 
 
+// ===== Slider Arrows Functionality =====
+function initSliders() {
+    const arrows = document.querySelectorAll(".arrow-btn");
+    arrows.forEach(arrow => {
+        const targetSelector = arrow.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+
+        arrow.addEventListener("click", () => {
+        const scrollAmount = target.clientWidth * 0.8;
+        if (arrow.classList.contains("left")) {
+            target.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        } else {
+            target.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        }
+        });
+    });
+}
+
+// activate only when screen width ≤1235px
+window.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth <= 1235) initSliders();
+});
+window.addEventListener("resize", () => {
+    if (window.innerWidth <= 1235) initSliders();
+});
+
+
 // تهيئة الأخبار والأحداث عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     // Run Home News

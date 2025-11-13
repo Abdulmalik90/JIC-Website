@@ -143,9 +143,13 @@
             <h1 class="subtitle">آخـــر الاخبـــار</h1>
             <p class="p-text">📱خلك قريب وعلى علم بـ آخر الاحداث المهمة اللي تصير في الكلية والمعهد أول بأول</p>
         </div>
-        <div id="news">
-            <!-- سيتم تعبئة الأخبار هنا تلقائياً via JavaScript -->
+        
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#news">‹</button>
+            <div id="news"></div>
+            <button class="arrow-btn right" data-target="#news">›</button>
         </div>
+
     </div>
 
 
@@ -156,8 +160,10 @@
             <p class="p-text">ابرز الأحداث القادمة لكليات ومعاهد الهيئة الملكية📅</p>
         </div>
 
-        <div id="calender-events">
-
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#calender-events">›</button>
+            <div id="calender-events"></div>
+            <button class="arrow-btn right" data-target="#calender-events">‹</button>
         </div>
     </div>
     
@@ -168,30 +174,32 @@
             <h1 class="subtitle">مكتبة الأدوات</h1>
             <p class="p-text">مجموعة أدوات هدفها تسهيل حياتك الأكاديمية😁</p>
         </div>
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#tools-cards">‹</button>
+            <div id="tools-cards">
+                <div class="tool" id="calculate-gpa-card">
+                    <img src="./Images/abs-calc.png" alt="">
+                    <h2>أداة حساب الغيابات</h2>
+                    <p>أداة بسيطة تساعدك في حساب عدد رصيد غياباتك والغيابات المؤدية للحرمان</p>
+                    <a href="./absCalcPage/abs.html">استخدام</a>
+                </div>
 
-        <div id="tools-cards">
-            <div class="tool" id="calculate-gpa-card">
-                <img src="./Images/abs-calc.png" alt="">
-                <h2>أداة حساب الغيابات</h2>
-                <p>أداة بسيطة تساعدك في حساب عدد رصيد غياباتك والغيابات المؤدية للحرمان</p>
-                <a href="./absCalcPage/abs.html">استخدام</a>
-            </div>
+                <div class="tool" id="calculate-abs-card">
+                    <img src="./Images/gpa-calc.png" alt="">
+                    <h2>أداة حساب المعدل</h2>
+                    <p>أداة تساعدك تحسب معدلك الاكاديمي التراكمي والحالي بسهولة</p>
+                    <a href="./gpaPage/gpa.html">استخدام</a>
+                </div>
 
-            <div class="tool" id="calculate-abs-card">
-                <img src="./Images/gpa-calc.png" alt="">
-                <h2>أداة حساب المعدل</h2>
-                <p>أداة تساعدك تحسب معدلك الاكاديمي التراكمي والحالي بسهولة</p>
-                <a href="./gpaPage/gpa.html">استخدام</a>
+                <div class="tool" id="create-schedule-card">
+                    <img src="./Images/creating-schedule.png" alt="">
+                    <h2>اصنع جدولك الدراسي</h2>
+                    <p>أداة تتيح لك ترتيب جدولك حسب الفترات وتحولها لاوقات وتحفظهم بصيغ متعددة</p>
+                    <a href="./createSchedulePage/schedule.html">استخدام</a>
+                </div>
             </div>
-
-            <div class="tool" id="create-schedule-card">
-                <img src="./Images/creating-schedule.png" alt="">
-                <h2>اصنع جدولك الدراسي</h2>
-                <p>أداة تتيح لك ترتيب جدولك حسب الفترات وتحولها لاوقات وتحفظهم بصيغ متعددة</p>
-                <a href="./createSchedulePage/schedule.html">استخدام</a>
-            </div>
+            <button class="arrow-btn right" data-target="#tools-cards">›</button>
         </div>
-
     </div>
 
     <!-- Contact with us -->
