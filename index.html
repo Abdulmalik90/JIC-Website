@@ -100,8 +100,39 @@
         <h1 id="portal-greating">منصـة مَـدخـل</h1>
         <p>😉ما يحتاج تطول بحث وسؤال في القروبات مادام مَدخل بين يديك</p>
         <div id="choosing-school">
-            <a href="./JTIPage/JTI.html"><button id="institute-button">معهد الجبيل التقني</button></a>
-            <a href="./JICPage/jic.html"><button id="college-button">كلية الجبيل الصناعية</button></a>
+            <div id="buttons-top">
+                <a href="https://edugate.rcjy.edu.sa/jyup/init"><button class="greating-buttons" id="edu-button">الايدوقيت</button></a>
+                <button class="greating-buttons" id="major-button">التخصصات </button>
+                <a href="https://jic.blackboard.com/"><button class="greating-buttons" id="blackboard-button">البلاك بورد</button></a>
+            </div>
+            <a id="a-library" href=""><button class="greating-buttons" id="library-button">مكتبة مدخل</button></a>
+        </div>
+    </div>
+
+    <!-- Module choosing a mojor-->
+    <div id="modal-container-major" class="modal-container-major">
+        <div id="modal-major">
+
+            <div id="modal-major-header">
+                <span id="close-btn" class="material-symbols-outlined">close</span>
+            </div>
+
+            <div id="modal-major-body">
+                <div id="modal-body-grid">
+                    <div id="modal-jic">
+                        <h2 style="background: linear-gradient(90deg, rgb(1, 102, 1), rgb(132, 213, 120));  -webkit-background-clip:text; -webkit-text-fill-color: transparent;">تخصصات كلية الجبيل الصناعية</h2>
+                        <button id="prep-year-btn-jic">السنة التحضيرية</button>
+                        <a href="./JICPage/deplomeMajors/depMajors.html"><button>الدبلوم</button></a>
+                        <a href="./JICPage/bacholarMajors/bMajors.html"><button>البكالوريوس</button></a>
+                    </div>
+
+                    <div id="modal-jti">
+                        <h2 style="background: linear-gradient(90deg, rgb(25, 82, 147), rgb(120, 160, 213));  -webkit-background-clip:text; -webkit-text-fill-color: transparent;">تخصصات معهد الجبيل التقني</h2>
+                        <button id="prep-year-btn-jti">السنة التحضيرية</button>
+                        <a href="./JTIPage/JTImajors/JTImajors.html"><button>الدبلوم</button></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -184,10 +215,10 @@
                 <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">    
             </div>
 
-            <div id="email-info-div">
-                <p style="margin-left: 10px;">portalplatformsa@hotmail.com</p>
-                <span style="color: white;" class="material-symbols-outlined">mail</span>
-                <p style="margin-left: 30px; margin-right: 10px;">البريد الإلكتروني</p>
+            <div class="email-info-div">
+                <a id="x-link" href="https://x.com/juportall"><p style="margin-left: 10px;">@Juportal</p></a>
+                <svg style="background-color: white; border-radius:10px;" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50"><path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path></svg>
+                <p style="margin-left: 30px; margin-right: 10px; direction:rtl;">منصة X</p>
             </div>
 
             <div class="info-post" id="info-post3">
@@ -201,8 +232,10 @@
                 <img class="personal-img" src="https://cdn.vectorstock.com/i/500p/29/52/faceless-male-avatar-in-hoodie-vector-56412952.jpg" alt="">    
             </div>
 
-            <div id="telegram-group-div">
-                <a href="https://t.me/JuPortalsa" style="color: white;"><h3 style="text-align: center;">انضم لمجموعة التليجرام</h3></a>
+            <div class="email-info-div">
+                <a id="x-link" href="https://x.com/juportall"><p style="margin-left: 10px;">portalsa@hotmail.com</p></a>
+                <span class="material-symbols-outlined">mail</span>
+                <p style="margin-left: 30px; margin-right: 10px; direction:rtl;">البريد الإلكتروني</p>
             </div>
 
             <div class="info-post" id="info-post2">
@@ -238,8 +271,8 @@
             <a href="https://t.me/JuPortalsa"><p class="p-links">قناة التليجرام</p></a>
             
         </div>
-        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
         <a href="https://hits.sh/juportal.online/"><img alt="Hits" src="https://hits.sh/juportal.online.svg?style=flat-square&label=Visitor&color=007ec6&labelColor=ffffff"/></a>
+        <h2 style="text-align:center; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
     </footer>
     
 </body>

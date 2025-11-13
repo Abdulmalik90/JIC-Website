@@ -10,6 +10,9 @@
     --post-titles: #2c3e50;
     --event-card: #c8cad0;
     --event-card-border: black;
+    --info-contact-post: white;
+    --modal-major-container: rgba(0, 0, 0, 0.3);
+    --modal-major: rgb(230, 230, 230);
 }
 
 [data-theme="dark"] {
@@ -24,6 +27,9 @@
     --post-titles: #5e9ad6;
     --event-card: #0A0E19;
     --event-card-border: white;
+    --info-contact-post: #0e121d;
+    --modal-major-container: rgba(210, 210, 210, 0.3);
+    --modal-major: rgb(29, 35, 54);
 }
  /* الخلفية المغبشة */
 .modal {
@@ -143,17 +149,27 @@
 }
 
 #choosing-school {
+    width: 90%;
+    margin: auto;
+
+}
+
+#buttons-top {
     display: flex;
-    margin: 50px 25% 70px 25%;
-    justify-content: space-evenly;
-
+    flex-direction: row-reverse;
+    width: 75%;
+    margin: 30px auto 10px auto;
+    justify-content: space-between;
+    max-width: 900px;
 }
 
-#choosing-school a {
-    width: 45%;
+
+#buttons-top a, #major-button {
+    width: 32.5%;
+    cursor: pointer;
 }
 
-#choosing-school button {
+.greating-buttons {
     padding: 9px 50px;
     background: linear-gradient(70deg, #103591, #497f91);
     color: white;
@@ -164,19 +180,137 @@
     transition:  transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#choosing-school button:hover {
+.greating-buttons:hover {
     background: none; /* smoother transition */
     background-color: #ff4b2b;
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-#institute-button {
-    border-radius: 20px 7px 7px 7px;
+#edu-button {
+    border-radius: 7px 7px 20px 7px;
 }
 
-#college-button {
-    border-radius: 7px 7px 20px 7px;
+#major-button {
+    border-radius: 7px 7px 7px 7px;
+}
+
+#blackboard-button {
+    border-radius: 20px 7px 7px ;
+}
+
+#a-library {
+    width: 75%;
+    margin: 0 auto 40px auto;
+    max-width: 900px;
+}
+
+#library-button {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 7px 20px;
+}
+
+/* choosing major modal */
+#modal-container-major {
+    background-color: var(--modal-major-container);
+    position: fixed;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+}
+
+#modal-container-major.show {
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+#modal-major {
+    background-color: var(--modal-major);
+    border-radius: 20px;
+    color: var(--text);
+    width: 90%;
+    max-width: 1000px;
+}
+
+#modal-major-header {
+    background-color: #005cbf;
+    margin: 0 0 20px 0px;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 1px solid var(--event-card-border);
+}
+
+#close-btn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#close-btn:hover {
+    color: #ff4b2b;
+    transform: rotate(90deg);
+}
+
+#modal-major-body{
+
+}
+
+#modal-body-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#modal-jic {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 20px;
+}
+
+#modal-jti {
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 20px;
+    border-left: 1px solid var(--text);
+}
+
+#modal-jti a, #modal-jic a {
+    width: fit-content;
+    margin: auto;
+}
+
+#modal-jic button:hover {
+    background: linear-gradient(90deg, rgb(1, 102, 1), rgb(132, 213, 120));
+    color: white;
+    box-shadow: 1px 1px 10px;
+}
+
+#modal-jti button:hover {
+    background: linear-gradient(90deg, rgb(25, 82, 147), rgb(120, 160, 213));
+    color: white;
+    box-shadow: 1px 1px 10px;
+}
+
+#modal-jti button, #modal-jic button {
+    font-size: 17px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    
+    box-shadow: 1px 1px 5px var(--text);
+    
 }
 
 /* Last news section */
@@ -459,10 +593,13 @@
 #contict-title-container {
     width: 80%;
     margin: 40px auto;
+    
 }
 
 #contict-title-container h1, #contict-title-container p {
     padding-right: 0;
+    text-align: center;
+    margin: 10px auto;
 }
 
 #out-information {
@@ -473,7 +610,7 @@
 }
 
 .info-post {
-    border: black solid 1px;
+    border: var(--event-card-border) solid 1px;
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -482,13 +619,17 @@
     padding: 10px 20px;
     width: 100%;
     border-radius: 15px;
-    background-color:white;
+    background-color:var(--info-contact-post);
     max-width: 900px;
 }
 .info {
     display: flex;
     flex-direction: column;
     text-align: right;
+}
+
+.info p, .info h3 {
+    color: var(--text);
 }
 
 .info img {
@@ -531,7 +672,7 @@
     margin: 10px 10px 10px 30px;
 }
 
-#email-info-div {
+.email-info-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -544,6 +685,14 @@
     margin-right: auto;
     margin-left: auto;
     max-width: 900px;
+}
+
+.email-info-div a {
+    transition: all 0.3s ease-out;
+}
+
+.email-info-div a:hover {
+    color: #ff4b2b;
 }
 
 #telegram-group-div {
@@ -930,12 +1079,12 @@
         font-size: 12px !important;
     }
 
-    .info-post, #email-info-div, #telegram-group-div {
+    .info-post, .email-info-div, #telegram-group-div {
         justify-content: space-evenly;
         width: 90%;
     }
 
-    #email-info-div p, #email-info-div span {
+    .email-info-div p, .email-info-div span {
         font-size: 10px;
     }
 
@@ -959,11 +1108,11 @@
 }
 
 @media (max-width: 450px){
-    #email-info-div {
+    .email-info-div {
         font-size: 12px;
     }
 
-    #email-info-div p, #email-info-div span {
+    .email-info-div p, .email-info-div span {
         font-size: 8px;
     }
 
@@ -982,7 +1131,7 @@
         height: 60px !important;
     }
 
-    #email-info-div {
+    .email-info-div {
         font-size: 9px;
     }
 

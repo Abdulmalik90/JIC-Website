@@ -1,3 +1,93 @@
+class Majors{
+    constructor(major, arabicName, icon, degree, years, imgs, genders, courses){
+        this.major = major;
+        this.arabicName = arabicName;
+        this.icon = icon;
+        this.degree = degree;
+        this.years = years;
+        this.imgs = imgs;
+        this.genders = genders;
+        this.courses = courses;
+    }
+}
+
+// modle choosing major
+const major_button = document.getElementById("major-button");
+const major_modal = document.getElementById("modal-container-major");
+const major_close_modal = document.getElementById("close-btn");
+
+major_button.addEventListener("click", () => {
+    major_modal.classList.add("show");
+});
+
+major_close_modal.addEventListener("click", () => {
+    major_modal.classList.remove("show");
+});
+
+// jit preparatory year 
+const preparatoryYearJTI = new Majors("Preparatory Year", "السنة التحضيرية", "book_3", "السنة التحضيرية", 1, "", "بنين وبنات", [
+    {
+        semester: 1,
+        courses: [
+            ["English I (Reading and writing)", 8, 10, 0, []],
+            ["English I (Listening & Speaking)", 0, 6, 0, []],
+            ["English I (E-Learning)", 0, 0, 2, []],
+            ["English I (ESP)", 0, 3, 0, []],
+            ["Preparatory Math I", 4, 4, 0, []],
+            ["Introduction to Computer", 1, 1, 0, []]
+        ]
+    },
+    {
+        semester: 2,
+        courses: [
+            ["English II (Reading and writing)", 8, 10, 0, ["English I (Reading and writing)"]],
+            ["English II (Listening & Speaking)", 0, 6, 0, ["English I (Listening & Speaking)"]],
+            ["English II (E-Learning)", 0, 0, 2, ["English II (E-Learning)"]],
+            ["English II (ESP)", 0, 3, 0, ["English II (ESP)"]],
+            ["Preparatory Math II", 4, 4, 0, ["Preparatory Math I"]],
+            ["Study Skills", 1, 1, 0, []]
+        ]
+    }
+] )
+
+// jic proparatory year
+const preparatoryYearJIC = new Majors("Preparatory Year", "السنة التحضيرية", "book_3", "السنة التحضيرية", 1, "", "بنين وبنات", [
+    {
+        semester: 1,
+        courses: [
+            ["English I (Reading and writing)", 8, 10, 0, []],
+            ["English I (Listening & Speaking)", 0, 6, 0, []],
+            ["English I (E-Learning)", 0, 0, 2, []],
+            ["English I (ESP)", 0, 3, 0, []],
+            ["Preparatory Math I", 4, 4, 0, []],
+            ["Introduction to Computer", 1, 1, 0, []]
+        ]
+    },
+    {
+        semester: 2,
+        courses: [
+            ["English II (Reading and writing)", 8, 10, 0, ["English I (Reading and writing)"]],
+            ["English II (Listening & Speaking)", 0, 6, 0, ["English I (Listening & Speaking)"]],
+            ["English II (E-Learning)", 0, 0, 2, ["English II (E-Learning)"]],
+            ["English II (ESP)", 0, 3, 0, ["English II (ESP)"]],
+            ["Preparatory Math II", 4, 4, 0, ["Preparatory Math I"]],
+            ["Study Skills", 1, 1, 0, []]
+        ]
+    }
+] )
+
+document.getElementById("prep-year-btn-jic").addEventListener("click", ()=>{
+    localStorage.setItem("selectedMajor", JSON.stringify(preparatoryYearJIC));
+    window.location.href = "./MajorPage/majorInfo.html"
+})
+
+document.getElementById("prep-year-btn-jti").addEventListener("click", ()=>{
+    localStorage.setItem("selectedMajor", JSON.stringify(preparatoryYearJTI));
+    window.location.href = "./MajorPage/majorInfo.html"
+})
+
+
+
 // home-news.js
 class HomeNews {
     constructor() {
