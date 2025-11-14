@@ -533,6 +533,7 @@
     width: 90%;
     margin: 40px auto;
     border-radius: 30px;
+    padding-bottom: 30px;
 }
 
 #tools-header p, #tools-header h1 {
@@ -544,7 +545,7 @@
     display: flex;
     flex-direction: row-reverse;
     width: 90%;
-    margin: 10px auto;
+    margin: 40px auto;
     justify-content: space-evenly;
 }
 
@@ -581,6 +582,7 @@
     margin: 40px auto;
     padding: 18px;
     border-radius: 15px;
+    color: white;
     transition: all 0.3s ease;
 }
 
@@ -589,11 +591,89 @@
     transform: translateY(-3px) scale(1.05);
 }
 
+/* Student library */
+#student-cont {
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 30px;
+}
+
+#student-header p, #student-header h1 {
+    text-align: center;
+    margin: 10px auto;
+}
+
+#student-cards {
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+    justify-content: space-evenly;
+}
+
+
+.student-div {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--event-card-border);
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--section-bg);;
+}
+
+.student-div img {
+    width: 60%;
+    height: 60%;
+}
+
+.student-div h2, .student-div p {
+    color: var(--text);
+    direction: rtl;
+    margin-top: 20px;
+}
+
+.student-div a {
+    font-size: 25px;
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(90deg, #103191, #106091);
+    width: 80%;
+    margin: 40px auto;
+    padding: 18px;
+    border-radius: 15px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.student-div a:hover {
+    background: #106091;
+    transform: translateY(-3px) scale(1.05);
+}
+
+#student-cont .arrow-btn.left {
+    transform: scaleX(-1);
+}
+
+#student-cont .arrow-btn.right {
+    transform: scaleX(-1);
+}
+
+
 /* Contact with us */
+#contact-us {
+    background-color: var(--section-bg);
+    padding-bottom: 30px;
+    border-radius: 30px;
+    width: 90%;
+    margin: 30px auto;
+}
+
 #contict-title-container {
     width: 80%;
     margin: 40px auto;
-    
 }
 
 #contict-title-container h1, #contict-title-container p {
@@ -681,7 +761,7 @@
     padding: 10px 20px;
     width: 100%;
     background: linear-gradient(90deg, #103b91, #4265aa);
-    color: white;
+    color: white !important;
     margin-right: auto;
     margin-left: auto;
     max-width: 900px;
@@ -689,6 +769,7 @@
 
 .email-info-div a {
     transition: all 0.3s ease-out;
+    color: white;
 }
 
 .email-info-div a:hover {
@@ -816,6 +897,10 @@
 /* Making the page responsive */
 
 /* ===== Slider Arrows (≤1235px) ===== */
+
+.arrow-btn {
+    display: none;
+}
 @media (max-width: 1235px) {
     .slider-wrapper {
         position: relative;
@@ -826,12 +911,13 @@
     .arrow-btn {
         position: absolute;
         top: 50%;
+        display: block;
         transform: translateY(-50%);
         background: var(--post-shadow);
         color: white;
         border: none;
         font-size: 2.5rem;
-        padding: 5px 15px;
+        padding: 1px 18px;
         border-radius: 50%;
         cursor: pointer;
         z-index: 10;
@@ -848,7 +934,8 @@
 
     #news,
     #calender-events,
-    #tools-cards {
+    #tools-cards,
+    #student-cards {
         display: flex;
         overflow-x: auto;
         scroll-behavior: smooth;
@@ -868,23 +955,22 @@
         justify-content: flex-start; /* important: remove space-evenly! */
     }
 
-    #tools-cards::-webkit-scrollbar {
+    #tools-cards::-webkit-scrollbar, #student-cards::-webkit-scrollbar {
         display: none;
     }
 
-    .tool {
+    .tool, .student-div {
         flex: 0 0 75%;
         scroll-snap-align: start;
+        transition: transform 0.3s ease;
+        max-width: 400px;
     }
 
     .news-post,
-    .event-post,
-    .tool {
+    .event-post {
         flex: 0 0 85%;
         scroll-snap-align: start;
         transition: transform 0.3s ease;
-        
-    
         max-width: 400px;
     }
 
@@ -892,14 +978,16 @@
 
     .news-post:hover,
     .event-post:hover,
-    .tool:hover {
+    .tool:hover,
+    .student-div:hover {
         transform: scale(1.03);
     }
 
     /* Hide scrollbar */
     #news::-webkit-scrollbar,
     #calender-events::-webkit-scrollbar,
-    #tools-cards::-webkit-scrollbar {
+    #tools-cards::-webkit-scrollbar,
+    #student-cards::-webkit-scrollbar {
         display: none;
     }
 }
@@ -944,6 +1032,20 @@
     .greating-buttons {
         font-size: 15px;
     }
+
+    /* sliders */
+        /* news */
+    .news-post div h2 {
+        font-size: 18px;
+    }
+
+    .news-post div p {
+        font-size: 14px;
+    }
+
+    .news-post button {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 700px) {
@@ -958,7 +1060,7 @@
         flex: 0 0 70%;
     }
     
-    .tool {
+    .tool, .student-div {
         flex: 0 0 100%;
     }
 }
@@ -973,6 +1075,19 @@
     #a-library {
         width: 90%;
     }
+
+    /* slider */
+    .tool, .student-div {
+        flex: 0 0 70%;
+    }
+
+    .tool a, .student-div a {
+        font-size: 15px;
+    }
+
+    .event-post {
+        flex: 0 0 60%;
+    }
 }
 
 @media (max-width: 570px) {
@@ -981,6 +1096,12 @@
     .greating-buttons {
         font-size: 10px;
         padding: 9px;
+    }
+
+    /* sliders */
+        /* news */
+    .news-post img {
+        height: 150px !important;
     }
 }
 
@@ -1002,6 +1123,31 @@
 
     .p-text {
         font-size: 15px !important;
+    }
+
+    /* sliders */
+    .slider-wrapper {
+        width: 100%;
+    }
+        /* news */
+    .news-post div h2 {
+        font-size: 15px;
+    }
+
+    .news-post div p {
+        font-size: 10px;
+    }
+
+    .news-post button {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    /* slider */
+    .event-post {
+        flex: 0 0 50%;
+        max-height: 250px;
     }
 }
 
@@ -1148,6 +1294,10 @@
 }
 
 @media (max-width: 550px){
+
+    #out-information {
+        width: 90%;
+    }
     #contactUs-h11, #contactUs-h12, #contactUs-h13  {
         font-size: 17px !important;
     }
@@ -1181,6 +1331,13 @@
     .info-post img {
         width: 85px;
         height: 85px;
+    }
+
+    .email-info-div svg {
+        height: 15px;
+        width: 15px;
+        border-radius: 1px;
+        padding: 2px;
     }
 }
 
