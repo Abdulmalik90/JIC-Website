@@ -117,7 +117,7 @@ const newsData = [
             شكـراً لكم على ثقتكم , وان شاء الله حنا قدها 🌟
         </p>
     `,
-    image: "https://i.postimg.cc/JnDwKtRM/IMG-8336.jpg",
+    image: "https://i.postimg.cc/P528VX3r/iconic-logo-Bluer-full-4x.png",
     date: "2025-11-14T00:19:00",
     author: "رائـد الزهـراني",
     category: "مدخـل"
