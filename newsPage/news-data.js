@@ -122,6 +122,47 @@ const newsData = [
     author: "رائـد الزهـراني",
     category: "مدخـل"
 },
+    {
+    id: 7,
+    title: "الاختبارات: الجداول المبدئية لاختبارات كلية الجبيل الصناعية 📄",
+    content: `
+        <p style="direction: rtl;">
+            أعلنت كلية الجبيل الصناعية عن صدور <strong>الجداول المبدئية للاختبارات</strong> للفصل الدراسي الحالي،
+            وذلك لإتاحة الفرصة للطلاب والطالبات للاطلاع المبكر والاستعداد بشكل أفضل للاختبارات النهائية.
+        </p>
+
+        <p style="direction: rtl;">
+            نرفق لكم روابط تحميل الجداول حسب كل برنامج وفرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
+        </p>
+
+        <div style="direction: rtl; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 280px;">
+            <a href="https://t.me/JuPortalsa/151" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات الطلاب – بكالوريوس
+            </a>
+
+            <a href="https://t.me/JuPortalsa/152" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات الطلاب – دبلوم
+            </a>
+
+            <a href="https://t.me/JuPortalsa/155" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات الطالبات – فرع سدير
+            </a>
+
+            <a href="https://t.me/JuPortalsa/154" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات الطالبات – فرع الفيحاء
+            </a>
+        </div>
+
+        <p style="direction: rtl; margin-top: 15px;">
+            نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
+        </p>
+    `,
+    image: "https://i.postimg.cc/s2tRbPFh/shʿar-alhyyt-twly-4x.png",
+    date: "2025-11-20T00:00:00",
+    author: "رائـد الزهـراني",
+    category: "كلية الجبيل الصناعية"
+}
+
     
 ];
 
