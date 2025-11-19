@@ -17,7 +17,6 @@ const events = [
 
 /**
  * UPDATED COUNTDOWN FUNCTION
- * This function now handles BOTH the homepage layout and the events page layout.
  */
 function startCountdown(targetDateStr, element) {
     const targetDate = new Date(targetDateStr);
@@ -42,41 +41,40 @@ function startCountdown(targetDateStr, element) {
         const newTimerContainer = element.querySelector(".event-timer");
         const oldTimerEl = element.querySelector(".time"); // For events.html
 
-        // --- Case 1: Event is Today ---
-        if (
-            targetDate.getDate() === now.getDate() &&
-            targetDate.getMonth() === now.getMonth() &&
-            targetDate.getFullYear() === now.getFullYear()
-        ) {
-            clearInterval(timer);
-            if (newTimerContainer) {
-                newTimerContainer.innerHTML = "<h1>اليوم</h1>";
-            } else if (oldTimerEl) {
-                oldTimerEl.textContent = "اليوم";
-            }
+        // --- VISUAL CHECK: Is it today? ---
+        // We check this just to add the styling class, but we DO NOT return/stop here.
+        if (targetDate.toDateString() === now.toDateString()) {
             element.classList.add("today-event");
-            return;
+            element.classList.add("active-today"); // Ensure consistency with script.js logic
+        } else {
+            element.classList.remove("today-event");
+            element.classList.remove("active-today");
         }
 
-        // --- Case 2: Future Event ---
+        // --- Case 1: Future Event (Includes events happening later today) ---
         if (diff > 0) {
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-            // --- Handle "Less than an hour" for both layouts ---
-            if (days === 0 && hours === 0) {
-                if (newTimerContainer) newTimerContainer.innerHTML = "<h1>أقل من ساعة</h1>";
-                if (oldTimerEl) oldTimerEl.innerHTML = "أقل من ساعة";
+            // Handle "Less than a minute"
+            if (days === 0 && hours === 0 && minutes === 0) {
+                if (newTimerContainer) newTimerContainer.innerHTML = "<h1>أقل من دقيقة</h1>";
+                if (oldTimerEl) oldTimerEl.innerHTML = "أقل من دقيقة";
                 return;
             }
 
             // --- Logic for Homepage (new layout) ---
             if (newTimerContainer) {
+                // Get Day/Hour/Minute elements
                 const dayNumEl = element.querySelector(".time-day");
-                const hourNumEl = element.querySelector(".time-hour");
                 const dayStrEl = element.querySelector(".day-string");
+                const hourNumEl = element.querySelector(".time-hour");
                 const hourStrEl = element.querySelector(".hour-string");
+                const minNumEl = element.querySelector(".time-minute");
+                const minStrEl = element.querySelector(".minute-string");
 
+                // Text Logic
                 let dayString = "يوم";
                 if (days === 2) dayString = "يومين";
                 else if (days > 2 && days <= 10) dayString = "أيام";
@@ -85,71 +83,85 @@ function startCountdown(targetDateStr, element) {
                 if (hours === 2) hourString = "ساعتين";
                 else if (hours > 2 && hours <= 10) hourString = "ساعات";
 
+                let minString = "دقيقة";
+                if (minutes === 2) minString = "دقيقتين";
+                else if (minutes > 2 && minutes <= 10) minString = "دقائق";
+
                 // Populate Day elements
-                if (days > 0) {
-                    dayNumEl.innerHTML = days;
-                    dayStrEl.innerHTML = dayString;
-                } else {
-                    dayNumEl.innerHTML = "";
-                    dayStrEl.innerHTML = "";
-                    // Remove the border from the CSS
-                    dayNumEl.style.borderLeft = "none"; 
+                if (dayNumEl) {
+                    if (days > 0) {
+                        dayNumEl.innerHTML = days;
+                        dayStrEl.innerHTML = dayString;
+                        // Restore border if it was hidden
+                        dayNumEl.style.borderLeft = ""; 
+                    } else {
+                        // If it's today (0 days), show 00
+                        dayNumEl.innerHTML = "00";
+                        dayStrEl.innerHTML = "يوم";
+                    }
                 }
-                
+
                 // Populate Hour elements
-                if (hours > 0) {
-                    hourNumEl.innerHTML = hours;
-                    hourStrEl.innerHTML = hourString;
-                } else {
-                    hourNumEl.innerHTML = "";
-                    hourStrEl.innerHTML = "";
+                if (hourNumEl) {
+                    if (hours > 0) { 
+                        hourNumEl.innerHTML = hours;
+                        hourStrEl.innerHTML = hourString;
+                    } else {
+                        hourNumEl.innerHTML = "00";
+                        hourStrEl.innerHTML = "ساعة";
+                    }
+                }
+
+                // Populate Minute elements
+                if (minNumEl) {
+                    if (minutes > 0 || hours > 0 || days > 0) {
+                        minNumEl.innerHTML = minutes;
+                        minStrEl.innerHTML = minString;
+                    } else {
+                        minNumEl.innerHTML = "00";
+                        minStrEl.innerHTML = "دقيقة";
+                    }
                 }
             } 
             // --- Logic for Events Page (old layout) ---
             else if (oldTimerEl) {
                 let timeString = "";
                 if (days > 0) timeString += `${days} أيام`;
-                if (days > 0 && hours > 0) timeString += " : ";
+                if (days > 0 && (hours > 0 || minutes > 0)) timeString += " : ";
                 if (hours > 0) {
                     if (hours == 1) timeString += `ساعة`;
                     else if (hours == 2) timeString += `ساعتين`;
                     else timeString += `${hours} ساعات`;
+                } else if (days > 0 && minutes > 0) {
+                    timeString += `0 ساعة`;
                 }
-                timeString += `<br>${targetDate.getFullYear()}/${targetDate.getMonth() +1}/${targetDate.getDate()}`;
+                if ((days > 0 || hours > 0) && minutes > 0) timeString += " : ";
+                if (minutes > 0) {
+                    if (minutes == 1) timeString += `دقيقة`;
+                    else if (minutes == 2) timeString += `دقيقتين`;
+                    else timeString += `${minutes} دقيقة`;
+                }
+                // If everything is 0 but diff > 0 (seconds remaining), show something simple or let loop continue
+                if(timeString === "") timeString = "أقل من دقيقة";
+
+                timeString += `<br>${targetDate.getFullYear()}/${targetDate.getMonth() + 1}/${targetDate.getDate()}`;
                 oldTimerEl.innerHTML = timeString;
             }
         } 
-        // --- Case 3: Event is Happening Now ---
+        // --- Case 2: Event has started (or passed) ---
         else if (diff <= 0) {
             clearInterval(timer);
             if (newTimerContainer) {
-                newTimerContainer.innerHTML = "<h1>يحدث الآن</h1>";
+                 // Only show "Today" text if the event is actually happening/passed
+                newTimerContainer.innerHTML = "<h1>اليوم</h1>"; 
             } else if (oldTimerEl) {
-                oldTimerEl.textContent = "يحدث الآن";
+                oldTimerEl.textContent = "اليوم";
             }
             element.classList.add("today-event");
+            return;
         }
     };
 
     updateTimer(); 
     const timer = setInterval(updateTimer, 60000); // Update every minute
-}
-
-
-// This part ONLY runs on events.html because it looks for "events-container"
-const container = document.getElementById("events-container");
-if (container) {
-    // Create HTML for each event
-    events.forEach(event => {
-        const div = document.createElement("div");
-        div.className = "event";
-        // This is the OLD HTML structure for the events.html page
-        div.innerHTML = `
-            <h2>${event.title}</h2> 
-            <h3 class="day">${event.day}</h3>
-            <p class="time">...</p>
-        `;
-        container.appendChild(div);
-        startCountdown(event.date, div); // The "smarter" function will handle this
-    });
 }

@@ -797,9 +797,113 @@ const ChemicalEng = new Majors("Chemical Engineering", "الهنـدسـة ال�
         ]
     }
 ])
+const architecture = new Majors("Architecture and Planing", "العمارة والتخطيط", "apartment", "بكالوريوس", 5, "./majorsImages/architecture.png", "بنات", [
+    {
+        semester: 1,
+        courses: [
+            ["Fundamental Design Studio I", 3, null, null, ["Architectural Communication I: Visual", "Technical Drawing"]],
+            ["Architectural Communication I: Visual", 3, null, null, []],
+            ["Technical Drawing", 3, null, null, []],
+            ["Human Factors and the Built Environment", 3, null, null, []],
+            ["Arabic Language Foundation", 2, 2, 0, []],
+            ["Calculus I", 4, 4, 0, []]
+        ]
+    },
+    {
+        semester: 2,
+        courses: [
+            ["Architectural Design Studio II", 4, null, null, ["Fundamental Design Studio I", "Building Construction Technologies"]],
+            ["History and Theory of Architecture I", 3, null, null, []],
+            ["Building Construction Technologies", 3, null, null, []],
+            ["Computer Aided Design", 3, null, null, []],
+            ["Architectural Communication II: Digital", 2, null, null, []],
+            ["Academic Writing", 3, 3, 0, []],
+        ]
+    },
+    {
+        semester: 3,
+        courses:[
+            ["Architectural Design Studio III", 4, null, null, ["Architectural Design Studio II"]],
+            ["Computer Visualization and Simulation", 3, null, null, ["Computer Aided Design"]],
+            ["History and Theory of Architecture II (Islamic)", 3, null, null, ["History and Theory of Architecture I"]],
+            ["Surveying for Architecture", 3, null, null, []],
+            ["Building System I: Mechanical Installations for Building", 3, null, null, ["Building Construction Technologies"]],
+            ["Physics for Architecture", 3, null, null, []]
+        ]
+    },
+    {
+        semester: 4,
+        courses: [
+            ["Architectural Design Studio IV", 4, null, null, ["Architectural Design Studio III"]],
+            ["History and Theory of Architecture III (MODERN/CONTEMP)", 3, null, null, ["History and Theory of Architecture II"]],
+            ["Building Materials", 3, null, null, []],
+            ["Professional Communication", 3, 3, 0, ["Academic Writing"]],
+            ["Islamic Culture", 2, 2, 0, []],
+            ["Building System II: Acoustics & Illumination in Architecture", 3, null, null, ["Building System I: Mechanical Installations for Building"]],
+        ]
+    },
+    {
+        semester: 5,
+        courses: [
+            ["Architectural Design Studio V", 4, null, null, ["Architectural Design Studio IV"]],
+            ["Landscape", 3, null, null, ["Surveying for Architecture"]],
+            ["Building Codes and Regulations", 3, null, null, ["Building Materials"]],
+            ["Construction Drawings and Documentation", 3, null, null, ["Building System I: Mechanical Installations for Building"]],
+            ["Structure in Architecture", 4, null, null, ["Building Materials"]],
+            ["Arabic Communication Skills", 2, null, null, []]
+        ]
+    },
+    {
+        semester: 6,
+        courses: [
+            ["Architectural Design Studio VI", 4, null, null, ["Architectural Design Studio V", "Structure in Architecture"]],
+            ["Urban Design", 3, null, null, ["Landscape"]],
+            ["Saudi Heritage and Conservation", 3, null, null, ["History and Theory of Architecture III (MODERN/CONTEMP)"]],
+            ["Interior Design & Furniture", 2, null, null, ["History and Theory of Architecture III (MODERN/CONTEMP)"]],
+            ["Emerging Building Materials and Techniques", 3, null, null, ["Constructions Drawings and Documentation"]],
+            ["Technical Writing", 3, 3, 0, ["Professional Communication"]],
+            ["Physical Education I", 1, null, null, []]
+        ]
+    },
+    {
+        semester: 7,
+        courses: [
+            ["Architectural Design Studio VII", 4, null, null, ["Architectural Design Studio VI", "Urban Design"]],
+            ["Theories of Housing Design", 3, null, null, ["Urban Design"]],
+            ["Research Methods in Architecture", 3, null, null, ["Architectural Design Studio VII"]],
+            ["Business Principles and Practices", 3, null, null, []],
+            ["Professional Ethics in Islam", 2, null, null, ["Islamic Culture"]]
+        ]
+    },
+    {
+        semester: 8,
+        courses: [
+            ["Capstone Project: Architectural Design Studio VIII", 6, null, null, ["Architectural Design Studio VIII", "Research Methods in Architecture"]],
+            ["Project Management", 3, null, null, ["Business Principles and Practices"]],
+            ["Advance Topics in Architecture", 3, null, null, ["Emerging Building Materials and Techniques"]],
+            ["Advance Lighting Techniques", 3, null, null, ["Interior Design and Furniture"]]
+        ]
+    },
+    {
+        semester: 9,
+        courses: [
+            ["Field Training", 3, null, null, []]
+        ]
+    },
+    {
+        semester: 0,
+        courses: [
+            ["Special Topics in Humans Factors", 3, null, null, ["Human Factors and the Built Environment"]],
+            ["Applied Psychology for Architecture", 3, null, null, ["Human Factors and the Built Environment"]],
+            ["Conservation/Preservation & Adaptive Reuse", 3, null, null, ["History and Theory of Architecture III (MODERN/CONTEMP)"]],
+            ["Advanced Presentation Skills", 3, null, null, ["Computer Visualization and Simulation"]],
+            ["Building Information Modelling", 3, null, null, ["Computer Visualization and Simulation"]],
+            ["Architecture Criticism", 3, null, null, ["History and Theory of Architecture III (MODERN/CONTEMP)"]]
+        ]
+    }
+])
 const HR = new Majors("Human Resources Management", "إدارة الموارد البشرية", "diversity_3", "بكالوريوس", 5, "./majorsImages/HR.png", "بنات", [])
 const accounting = new Majors("Accounting", "محاسبة", "request_quote", "بكالوريوس", 5, "./majorsImages/accounting.png", "بنين وبنات", [])
-const architecture = new Majors("Architecture and Planing", "العمارة والتخطيط", "apartment", "بكالوريوس", 5, "./majorsImages/architecture.png", "بنات", [])
 const busniess = new Majors("Business Management", "إدارة الأعمال", "business_center", "بكالوريوس", 5, "./majorsImages/business.png", "بنين وبنات", [])
 
 const bachelors = [MechanicalEng, ManagementInfo, InstrumentationEng,

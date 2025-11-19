@@ -199,19 +199,17 @@ class HomeEvents {
 
     // getting last 3 events
     getLatestEvents(){
-        // Check if the function from events.js exists
         if(typeof getAllEvents == "function"){
             const allEvents = getAllEvents();
             
-            // Filter for events that haven't passed more than a day ago
             const now = new Date();
             const upcomingEvents = allEvents.filter(event => {
                 const targetDate = new Date(event.date);
                 const diff = targetDate - now;
-                return diff > - (24 * 60 * 60 * 1000); // Keep events until they are 1 day old
+                return diff > - (24 * 60 * 60 * 1000); 
             });
 
-            return upcomingEvents.slice(0, 3); // Get the 3 closest upcoming events
+            return upcomingEvents.slice(0, 3); 
         } else {
             return this.getFallbackEvents();
         }
@@ -225,28 +223,50 @@ class HomeEvents {
         ]
     }
 
-    // This function now *only* creates the static HTML.
-    // The countdown logic will be attached later.
     createEventsCard(event){
-        // Get just the date part (e.g., 2025-11-21)
         const simpleDate = event.date.substring(0, 10); 
 
+        // --- NEW LOGIC START: Check if the event is today ---
+        const eventDate = new Date(event.date);
+        const now = new Date();
+
+        // normalize both dates to YYYY-MM-DD
+        const eventDay = eventDate.toISOString().split("T")[0];
+        const todayDay = new Date().toISOString().split("T")[0];
+
+        const isToday = (eventDay === todayDay);
+
+        // If it is today, add the 'active-today' class
+        const specialClass = isToday ? "active-today" : "";
+        // --- NEW LOGIC END ---
+
         return `
-            <div class="event-post" id="home-event-${event.id}">
+            <div class="event-post ${specialClass}" id="home-event-${event.id}">
                 <h2 class="event-title">${event.title}</h2>
                 <p class="p-event-date">${simpleDate} | يوم ${event.day}</p>
                 <div class="event-timer">
-                    <h1 class="time-day">...</h1>
-                    <h1 class="time-hour"></h1>
-                    <p class="hour-string"></p>
-                    <p class="day-string"></p>
+                    <div class="time-section time-sectoin-day">
+                        <h1 class="time-day">...</h1>
+                        <p class="day-string"></p>
+                    </div>
+
+                    <div class="time-section time-sectoin-hour">
+                        <h1 class="time-hour"></h1>
+                        <p class="hour-string"></p>
+                    </div>
+
+                    <div class="time-section time-sectoin-min">   
+                        <h1 class="time-minute">...</h1>
+                        <p class="minute-string"></p>
+                    </div>
+
                 </div>
             </div>`;
     }
 
     renderHomeEvents(){
         const eventContainer = document.getElementById("calender-events");
-        if(!eventContainer) return; // Make sure we are on the homepage
+        if(!eventContainer) return; 
 
         const latestEvents = this.getLatestEvents();
 
@@ -255,26 +275,21 @@ class HomeEvents {
             return;
         }
 
-        // 1. Generate the HTML string
         const eventHTML = latestEvents.map(anEvent => 
             this.createEventsCard(anEvent)
         ).join('');
 
-        // 2. Add the HTML to the page
         eventContainer.innerHTML = eventHTML;
 
-        // 3. NOW, attach the live countdown to each new element
-        // Check if the function from events.js was loaded
         if (typeof startCountdown === "function") {
             latestEvents.forEach(event => {
                 const element = document.getElementById(`home-event-${event.id}`);
                 if (element) {
-                    // Call the working function from events.js
                     startCountdown(event.date, element);
                 }
             });
         } else {
-            console.error("startCountdown function not found. Make sure events.js is loaded correctly before script.js");
+            console.error("startCountdown function not found.");
         }
     }
 }
