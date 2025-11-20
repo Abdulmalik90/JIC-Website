@@ -4,15 +4,15 @@ function getAllEvents() {
 }
 
 const events = [
-    {title: "حساب المواطن", id: 1, date: "2025-11-11T00:30:00", day:"الثلاثاء"},
-    {title: "إجازة الخريف", id: 2, date: "2025-11-21T00:00:00", day:"الجمعة"},
-    {title:"نهاية إجازة الخريف", id: 3, date: "2025-11-29T00:00:00", day:"السبت"},
-    {title: "حساب المواطن", id:4, date: "2025-12-10T00:30:00", day:"الأربعاء"},
-    {title: "نهاية فترة طلبات التخصص وتغييره", id:5, date: "2025-12-10T23:59:59", day:"الخميس"},
-    {title: "بداية الإختبارات النهائية", id: 6, date: "2025-12-21T09:00:00", day:"الأحد"},
-    {title: "المكافأة الجامعية", id: 7, date: "2025-12-28T00:30:00", day:"الأحد"},
-    {title: "نهاية الإختبارات النهائية", id: 8, date: "2025-12-28T14:30:00", day:"الأحد"},
-    {title: "بداية إجازة بين الفصلين", id: 9, date: "2025-12-28T14:30:01", day:"الأحد"}
+    {title: "حساب المواطن", id: 2, date: "2025-11-11T23:30:00", day:"الثلاثاء"},
+    {title: "إجازة الخريف", id: 3, date: "2025-11-21T01:00:00", day:"الجمعة"},
+    {title:"نهاية إجازة الخريف", id: 4, date: "2025-11-29T23:00:00", day:"السبت"},
+    {title: "حساب المواطن", id: 5, date: "2025-12-10T23:30:00", day:"الأربعاء"},
+    {title: "نهاية فترة طلبات التخصص وتغييره", id: 6, date: "2025-12-10T23:59:59", day:"الخميس"},
+    {title: "بداية الإختبارات النهائية", id: 7, date: "2025-12-21T09:00:00", day:"الأحد"},
+    {title: "المكافأة الجامعية", id: 8, date: "2025-12-28T23:30:00", day:"الأحد"},
+    {title: "نهاية الإختبارات النهائية", id: 9, date: "2025-12-28T14:30:00", day:"الأحد"},
+    {title: "بداية إجازة بين الفصلين", id: 10, date: "2025-12-28T14:30:01", day:"الأحد"}
 ]
 
 /**
@@ -20,19 +20,20 @@ const events = [
  */
 function startCountdown(targetDateStr, element) {
     const targetDate = new Date(targetDateStr);
+    let timer; // <--- 1. Declare 'timer' here to prevent ReferenceError
 
     const updateTimer = () => {
         const now = new Date();
         const diff = targetDate - now;
 
         if (!element) {
-            clearInterval(timer);
+            if(timer) clearInterval(timer); // Check if timer exists before clearing
             return;
         }
 
         // Event passed more than a day ago → hide it
         if (diff < -24 * 60 * 60 * 1000) {
-            clearInterval(timer);
+            if(timer) clearInterval(timer);
             element.style.display = "none";
             return;
         }
@@ -42,31 +43,27 @@ function startCountdown(targetDateStr, element) {
         const oldTimerEl = element.querySelector(".time"); // For events.html
 
         // --- VISUAL CHECK: Is it today? ---
-        // We check this just to add the styling class, but we DO NOT return/stop here.
         if (targetDate.toDateString() === now.toDateString()) {
             element.classList.add("today-event");
-            element.classList.add("active-today"); // Ensure consistency with script.js logic
+            element.classList.add("active-today"); 
         } else {
             element.classList.remove("today-event");
             element.classList.remove("active-today");
         }
 
-        // --- Case 1: Future Event (Includes events happening later today) ---
+        // --- Case 1: Future Event ---
         if (diff > 0) {
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-            // Handle "Less than a minute"
             if (days === 0 && hours === 0 && minutes === 0) {
                 if (newTimerContainer) newTimerContainer.innerHTML = "<h1>أقل من دقيقة</h1>";
                 if (oldTimerEl) oldTimerEl.innerHTML = "أقل من دقيقة";
                 return;
             }
 
-            // --- Logic for Homepage (new layout) ---
             if (newTimerContainer) {
-                // Get Day/Hour/Minute elements
                 const dayNumEl = element.querySelector(".time-day");
                 const dayStrEl = element.querySelector(".day-string");
                 const hourNumEl = element.querySelector(".time-hour");
@@ -74,7 +71,6 @@ function startCountdown(targetDateStr, element) {
                 const minNumEl = element.querySelector(".time-minute");
                 const minStrEl = element.querySelector(".minute-string");
 
-                // Text Logic
                 let dayString = "يوم";
                 if (days === 2) dayString = "يومين";
                 else if (days > 2 && days <= 10) dayString = "أيام";
@@ -87,43 +83,20 @@ function startCountdown(targetDateStr, element) {
                 if (minutes === 2) minString = "دقيقتين";
                 else if (minutes > 2 && minutes <= 10) minString = "دقائق";
 
-                // Populate Day elements
                 if (dayNumEl) {
-                    if (days > 0) {
-                        dayNumEl.innerHTML = days;
-                        dayStrEl.innerHTML = dayString;
-                        // Restore border if it was hidden
-                        dayNumEl.style.borderLeft = ""; 
-                    } else {
-                        // If it's today (0 days), show 00
-                        dayNumEl.innerHTML = "00";
-                        dayStrEl.innerHTML = "يوم";
-                    }
+                    dayNumEl.innerHTML = days > 0 ? days : "00";
+                    dayStrEl.innerHTML = dayString;
+                    dayNumEl.style.borderLeft = ""; 
                 }
-
-                // Populate Hour elements
                 if (hourNumEl) {
-                    if (hours > 0) { 
-                        hourNumEl.innerHTML = hours;
-                        hourStrEl.innerHTML = hourString;
-                    } else {
-                        hourNumEl.innerHTML = "00";
-                        hourStrEl.innerHTML = "ساعة";
-                    }
+                    hourNumEl.innerHTML = hours > 0 ? hours : "00";
+                    hourStrEl.innerHTML = hourString;
                 }
-
-                // Populate Minute elements
                 if (minNumEl) {
-                    if (minutes > 0 || hours > 0 || days > 0) {
-                        minNumEl.innerHTML = minutes;
-                        minStrEl.innerHTML = minString;
-                    } else {
-                        minNumEl.innerHTML = "00";
-                        minStrEl.innerHTML = "دقيقة";
-                    }
+                    minNumEl.innerHTML = minutes > 0 ? minutes : "00";
+                    minStrEl.innerHTML = minString;
                 }
             } 
-            // --- Logic for Events Page (old layout) ---
             else if (oldTimerEl) {
                 let timeString = "";
                 if (days > 0) timeString += `${days} أيام`;
@@ -141,27 +114,38 @@ function startCountdown(targetDateStr, element) {
                     else if (minutes == 2) timeString += `دقيقتين`;
                     else timeString += `${minutes} دقيقة`;
                 }
-                // If everything is 0 but diff > 0 (seconds remaining), show something simple or let loop continue
                 if(timeString === "") timeString = "أقل من دقيقة";
-
                 timeString += `<br>${targetDate.getFullYear()}/${targetDate.getMonth() + 1}/${targetDate.getDate()}`;
                 oldTimerEl.innerHTML = timeString;
             }
         } 
         // --- Case 2: Event has started (or passed) ---
         else if (diff <= 0) {
-            clearInterval(timer);
+            if(timer) clearInterval(timer);
+            
             if (newTimerContainer) {
-                 // Only show "Today" text if the event is actually happening/passed
-                newTimerContainer.innerHTML = "<h1>اليوم</h1>"; 
+                // Set values to 00 instead of removing them
+                const dayNumEl = element.querySelector(".time-day");
+                const dayStrEl = element.querySelector(".day-string");
+                const hourNumEl = element.querySelector(".time-hour");
+                const hourStrEl = element.querySelector(".hour-string");
+                const minNumEl = element.querySelector(".time-minute");
+                const minStrEl = element.querySelector(".minute-string");
+
+                if(dayNumEl) { dayNumEl.innerHTML = "00"; dayStrEl.innerHTML = "يوم"; }
+                if(hourNumEl) { hourNumEl.innerHTML = "00"; hourStrEl.innerHTML = "ساعة"; }
+                if(minNumEl) { minNumEl.innerHTML = "00"; minStrEl.innerHTML = "دقيقة"; }
+                
             } else if (oldTimerEl) {
                 oldTimerEl.textContent = "اليوم";
             }
+
             element.classList.add("today-event");
+            element.classList.add("active-today");
             return;
         }
     };
 
     updateTimer(); 
-    const timer = setInterval(updateTimer, 60000); // Update every minute
+    timer = setInterval(updateTimer, 60000); // <--- 2. Assign it here
 }

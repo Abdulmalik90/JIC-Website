@@ -230,11 +230,15 @@ class HomeEvents {
         const eventDate = new Date(event.date);
         const now = new Date();
 
-        // normalize both dates to YYYY-MM-DD
-        const eventDay = eventDate.toISOString().split("T")[0];
-        const todayDay = new Date().toISOString().split("T")[0];
+        // use toDateString() to compare strictly based on Local Date (Day/Month/Year)
+        // This ignores the time and timezone offsets
+        function normalize(dateStr) {
+            const d = new Date(dateStr);
+            return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        }
 
-        const isToday = (eventDay === todayDay);
+        const isToday =
+            normalize(event.date).getTime() === normalize(Date.now()).getTime();
 
         // If it is today, add the 'active-today' class
         const specialClass = isToday ? "active-today" : "";
