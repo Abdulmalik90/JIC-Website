@@ -166,10 +166,12 @@
 }
 
 
-#buttons-top a, #major-button {
-    width: 32.5%;
+#buttons-top a {
+    width: 49%;
     cursor: pointer;
 }
+
+
 
 .greating-buttons {
     padding: 9px 50px;
@@ -191,6 +193,12 @@
 
 #edu-button {
     border-radius: 7px 7px 20px 7px;
+}
+
+#major-button-div {
+    width: 75%;
+    margin: auto;
+    max-width: 900px;
 }
 
 #major-button {
@@ -1081,7 +1089,7 @@
 @media (max-width: 600px) {
 
     /* Greating */
-    #buttons-top {
+    #buttons-top, #major-button-div {
         width: 90%;
     }
 
