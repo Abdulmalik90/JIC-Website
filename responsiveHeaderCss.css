@@ -2,12 +2,14 @@
     --nav-bg: #f0f0f0;
     --input-color: #f0f0f0;
     --text: black;
+    --hover-a-nav: #f5f5f5; 
 }
 
 [data-theme="dark"] {
     --nav-bg: #050a19;
     --input-color: #3b3e47;
     --text: white;
+    --hover-a-nav: #444444;
 }
 /* Small screens (mobile) */
 @media (max-width: 1300px) {
@@ -199,7 +201,7 @@
 .mobile-nav.active a:nth-child(4) { transition-delay: 0.4s; }
 
 .mobile-nav a:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-a-nav);
     transform: translateX(5px);
     }
 
