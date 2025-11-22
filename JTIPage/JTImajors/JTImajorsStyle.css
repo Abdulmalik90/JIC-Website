@@ -1,3 +1,11 @@
+:root {
+    --greating-text:rgb(74, 74, 74);
+}
+
+[data-theme="dark"] {
+    --greating-text:rgb(255, 255, 255);
+}
+
 /* Greating */
 
 #greating {
@@ -10,14 +18,14 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
     font-size: 30px;
     padding: 20px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 

@@ -1,4 +1,18 @@
+:root {
+    --text: black;
+    --search-jti-section: #eef2f5;
+    --modal-bg: white;
+}
 
+[data-theme="dark"] {
+    --text: rgb(255, 255, 255);
+    --search-jti-section: #0a0e19;
+    --modal-bg: #0a0e19;
+}
+
+* {
+    color: var(--text);
+}
 /* Greating */
 
 #greating {
@@ -96,6 +110,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1000;
+    color: white;
     align-items: center;
     justify-content: center;
     animation: fadeIn 0.3s ease;
@@ -126,11 +141,15 @@
 #header-modal {
     display: flex;
     background: #858585;
-    color: white;
+    color: white !important;
     padding: 15px 20px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+}
+
+#header-modal h3, #header-modal span {
+    color: white !important;
 }
 
 #header-modal span {
@@ -146,6 +165,7 @@
 
 #modal-body {
     padding: 30px 20px;
+    background-color: var(--modal-bg);
 }
 
 #modal-buttons-container {
@@ -201,22 +221,39 @@
 /* Search section */
 
 #search-section {
-    background-color: #eef2f5;
+    background-color: var(--search-jti-section);
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 30px;
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+#search-section nav {
+    padding: 0px;
+    width: 70%;
+    margin: 10px auto;
+}
+
+#search-section nav .subtitle {
+    text-align: center;
+    padding: 30px 10px 10px 10px;
+}
+
+#search-section nav .p-text {
+    margin: 5px auto;
+    padding: 10px 10px 30px 10px;
 }
 
 #search-section div {
     display: flex;
-    width: fit-content;
-    margin-right: 70px;
-    margin-left: auto;
+    
 }
 
 #search-section div input {
-    width: 700px;
     height: 70px;
     margin-right: 0;
     border: none;
-    background-color: rgb(210, 210, 210);
     padding: 20px;
     text-align: right;
     border-radius: 20px 0 0 20px;
@@ -224,13 +261,16 @@
 }
 
 #search-section div button {
-    background-color: rgb(210, 210, 210);
     margin-left: 0;
     border: none;
     height: 70px;
     padding-right: 20px;
     border-radius: 0 20px 20px 0;
     font-size: 40px;
+}
+
+#search-section-div {
+    width: 90%;
 }
 
 #search-section div .search-icon {
@@ -259,9 +299,14 @@
 /* Facilities */
 
 #nav-facilities {
-    padding: 0 !important;
-    margin-right: 20px !important;
-    margin-left: auto !important;
+    margin: 20px auto !important;
+    padding: 10px !important;
+    
+}
+
+#nav-facilities .subtitle, #nav-facilities .p-text {
+    padding: 5px;
+    text-align: center;
 }
 
 #top-buttons-fac {

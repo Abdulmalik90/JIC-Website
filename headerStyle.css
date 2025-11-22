@@ -41,7 +41,7 @@
     --footer-bg: #010510;
     --footer-h3: white !important;
     --search-border: rgb(107, 107, 107);
-    --header-image: url(./Images/logo_backgroundless.png);
+    --header-image: url(./Images/iconic\ logo\ white\ full@4x.png);
 }
 
 * {
@@ -361,7 +361,7 @@ a {
 }
 
 .result-search-sectoin-box {
-    width: 754px !important;
+    
     margin-right: 0 !important;
     margin-left: 0 !important;
     text-align: right;
@@ -445,9 +445,8 @@ a {
 #search-section-div {
     position: relative; /* This is essential for absolute positioning */
     display: flex;
-    width: fit-content;
-    margin-right: 70px;
-    margin-left: auto;
+    width: 70%;
+    margin: 30px auto;
 }
 
 /* Result box styling */
@@ -455,7 +454,7 @@ a {
     position: absolute;
     top: 100%; /* Position directly below the input */
     left: 0; /* Align with left edge of parent container */
-    width: 700px; /* Match the input width exactly */
+    width: 70%; /* Match the input width exactly */
     max-height: 300px;
     overflow-y: auto;
     background-color: var(--header);
@@ -474,7 +473,7 @@ a {
 
 /* Input and button styles (your existing styles) */
 #search-section-div input {
-    width: 700px;
+    width: 90%;
     height: 70px;
     margin-right: 0;
     border: none;
@@ -490,6 +489,7 @@ a {
     margin-left: 0;
     border: none;
     height: 70px;
+    width: 10%;
     padding-right: 20px;
     border-radius: 0 20px 20px 0;
     font-size: 40px;
@@ -589,9 +589,14 @@ footer h1 {
     width: 70%;
     font-weight: 100;
     background-color: var(--footer-h3);
+    color: black;
     padding: 10px;
     text-align: right;
     border-radius: 15px;
+}
+
+#subsecribe-div h3 span {
+    color: black;
 }
 #subsecribe-div h3 .material-symbols-outlined {
     vertical-align: middle; /* يجعل الأيقونة بمحاذاة النص عموديًا */

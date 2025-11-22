@@ -1,4 +1,22 @@
+:root {
+    --greating-text: rgb(74, 74, 74);
+    --text: black;
+    --abs-part: #eef2f5;
+    --abs-input: #d7e0e5;
+    --abs-input-border: #9c9c9c;
+}
 
+[data-theme="dark"] {
+    --greating-text: white;
+    --text: white;
+    --abs-part: #0a0e19;
+    --abs-input: #0e121d;
+    --abs-input-border: #76777a;
+}
+
+* {
+    color: var(--text);
+}
 /* Greating */
 
 #greating {
@@ -11,14 +29,14 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 80px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
     font-size: 30px;
     padding: 20px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 /* Absences Calculator */
@@ -30,7 +48,7 @@
 }
 
 #abs-container div {
-    background-color: #eef2f5;
+    background-color: var(--abs-part);
 }
 
 
@@ -52,8 +70,8 @@
     margin-top: 10px;
     padding: 10px;
     padding-left: 0px !important;
-    border: #9c9c9c solid 2px;
-    background-color: #d7e0e5;
+    border: var(--abs-input-border) solid 2px;
+    background-color: var(--abs-input);
     width: 100%;
     font-size: 20px;
     
@@ -104,8 +122,8 @@
     margin-top: 10px;
     padding: 10px;
     padding-left: 0px !important;
-    border: #9c9c9c solid 2px;
-    background-color: #d7e0e5;
+    border: var(--abs-input-border) solid 2px;
+    background-color: var(--abs-input);
     width: 100%;
     font-size: 20px;
 }

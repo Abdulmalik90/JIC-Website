@@ -497,6 +497,7 @@
 
 .active-today {
     background: linear-gradient(90deg, #103191, #106091);
+    color: white;
 }
 
 .active-today .time-section {

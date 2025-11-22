@@ -15,21 +15,48 @@
     <!-- header -->
     <header>
         <div id="logo-div">
-            <a href="../index.html"><img id="logo_image" src="../Images/logo_backgroundless.png" alt="portal logo"></a>
+            <a href=".././index.html" id="logo_image" alt="portal logo"></a>
             
         </div>
         
         <div id="header-pages">
-            <a href="/index.html#web-feedback"><p>عن مَدخل</p></a>
-            <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
-            <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+            <div class="dropdown-wrapper">
+                <p id="#pages-a">الصفحات <span class="material-symbols-outlined">arrow_drop_down</span></p>
+                <div class="dropdown_menu">
+                    <ul>
+                        <li>مكتبة الأدوات</li>
+                        <li><a href=".././absCalcPage/abs.html">حساب الغيابات</a></li>
+                        <li><a href=".././gpaPage/gpa.html">حساب المعدل</a></li>
+                        <li><a href=".././createSchedulePage/schedule.html">اصنع جدولك</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>مكتبة الطالب</li>
+                        <li><a href=".././academicRegulationsPage/regulations.html#">المستندات الرسمية</a></li>
+                        <li><a href=".././academicRegulationsPage/regulations.html#">المستندات المفيدة</a></li>
+                        <li><a href=".././academicRegulationsPage/regulations.html#">الأسئلة الشائعة</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>الكليات والمعاهد</li>
+                        <li><a href=".././JICPage/jic.html">كلية الجبيل الصناعية</a></li>
+                        <li><a href=".././JTIPage/JTI.html">معهد الجبيل التقني</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href=".././webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+            <a href=".././newsPage/news.html"><p>مدونة الأخبار</p></a>
         </div>
+
+
 
         <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
         <div id="search-div">
+            
             <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
             <div>
-                <input type="search" name="" id="search-input" placeholder="SearchOn Portal">
+                
+                <input type="search" name="" id="search-input" placeholder="ابحث في مدخل">
                 <div class="result-search-box">
                     <ul>
                         
@@ -37,46 +64,77 @@
                 </div>
             </div>
         </div>
+
+        <div id="dark-div">
+            <button  id="dark-button"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+        </div>
     </header>
 
     <!-- Navigation Bar-->
     <nav class="mobile-nav" id="mobileNav">
-        <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+        <div id="nav-header">
+            <button id="dark-button-menu"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+            <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+        </div>
 
         <!-- Mobile search -->
         <div id="mobile-search">
-            <input type="search" placeholder="SearchOn Portal" id="mobile-search-input">
+            <input type="search" placeholder="ابحث في مدخل" id="mobile-search-input">
             <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
             <div class="result-search-box" id="mobile-result-box">
                 <ul></ul>
             </div>
         </div>
-
-        <a href="/index.html#web-feedback"><p>عن مَدخل</p></a>
-        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
-        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        <a href=".././webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+        <a href=".././newsPage/news.html"><p>مدونة الأخبار</p></a>
+        <a href=".././createSchedulePage/schedule.html"><p>اصنع جدولك</p></a>
+        <a href=".././absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href=".././gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        <a href=".././academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
+        <a href=".././JICPage/jic.html"><p>كلية الجبيل الصناعية</p></a>
+        <a href=".././JTIPage/JTI.html"><p>معهد الجبيل التقني</p></a>
     </nav>
 
     <!-- Greating -->
     <div id="greating">
-        <h1 id="portal-greating">اللوائح الاكاديميــة والتخصصات</h1>
-        <p>كل ما تريد معرفته عن تخصصات كليات ومعاهد الجبيل الصناعية</p>
+        <h1 id="portal-greating">مكتـبـة الطالـب</h1>
+        <p>مكتبة مدخل مرجعك الاول لجميع اللوائح والمستندات المهمة</p>
         <div id="choosing-page">
             <div>
-                <a href="../JICPage/bacholarMajors/bMajors.html"><button id="jic-bacholar">بكالوريوس الكلية</button></a>
-                <a href="../JTIPage/JTI.html"><button id="jti-deplome">دبلوم المعهد</button></a>
-                <a href="../JICPage/deplomeMajors/depMajors.html"><button id="jic-deplome">دبلوم الكلية</button></a>
+                <a href="#questions-general-container"><button id="jic-bacholar">الاسئلة الشائعة</button></a>
+                <a href="#doc-container"><button id="jic-deplome">المستندات</button></a>
             </div>
-            <a href="/DistributionOfWeeks.pdf"><button  id="explain-section-button">توزيع الاسابيع الدراسية</button></a>
+            <a href="/DistributionOfWeeks.pdf"><button  id="explain-section-button">شروحات الايدوقيت والبلاكبورد</button></a>
         </div>
     </div>
 
-    <!-- Acadimic Documents -->
+    <!-- Formal Documents -->
     <div id="doc-container">
         <div id="doc-container2">
-            <h1>المستندات الاكاديمية</h1>
-            <p>📃جميع المستندات الاكاديمية الرسمية اللي تحتاجها في مكان واحد</p>
+            <h1>المستندات الرسمية</h1>
+            <p>جميع اللوائح والمستندات الرسمية اللتي تحتاجها في مكان واحد📃</p>
             <div id="files-container">
+                <a href="https://drive.google.com/file/d/17vQcwLfJDwGHXLGs8s_2MGK3PVpCnFtf/view?usp=sharing"><button class="file-button">كتيب إجراءات الامن والسلامة وتصاريح المركبات<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1gvpYdoW35CGwR1GsOSc_EmXTKwrHADeT/view?usp=sharing"><button class="file-button">التقويم الأكاديمي<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1pSME9O_fXB4U7Xn4Dw-UFCraSkOmVkrK/view?usp=sharing"><button class="file-button">الزي الموحد لكليات ومعاهد الجبيل<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/17YY2TOWDoLeUDEeD01QUOcAZnhfkrFUw/view?usp=sharing"><button class="file-button">تخصصات كليات ومعاهد الجبيل<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1E5-JSJCJXxjmO1XpixxI_ArveNpCf9Xd/view?usp=sharing"><button class="file-button">خريطة الكلية<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1svSajGgQT938g0-ubXgaKzuUqFUyyVHW/view?usp=sharing"><button class="file-button">دليل استخدام الايدوقيت<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1RtnUMI5MsdRIVwz2lEgaTow1gR-rbEGA/view?usp=sharing"><button class="file-button">دليل استخدام الايميل الجامعي<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/102U_rdbJCT_TE8pLcb0w6nF_7DHBCFZ4/view?usp=sharing"><button class="file-button">دليل الطالب في كليات ومعاهد الهيئة الملكية 2025<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1rum5cNP5VYTQNfVWld1kBONOeCa-jDpk/view?usp=sharing"><button class="file-button">دليل المستخدم في القبول الموحد<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/1vsKgp5-AjNKtGt0YHQf5KN09Wozf23A-/view?usp=sharing"><button class="file-button">طريقة قراءة الجدول الدراسي<span class="material-symbols-outlined">download</span></button></a>
+                <a href="https://drive.google.com/file/d/12hLeu0RHzdtbwvpPrXlwQF9ryqkhCABY/view?usp=sharing"><button class="file-button">معلومات التواصل مع قسم القبول والتسجيل<span class="material-symbols-outlined">download</span></button></a>
+            </div>
+        </div>
+    </div>
+
+     <!-- General Documents -->
+     <div id="gen-doc-container">
+        <div id="gen-doc-container2">
+            <h1>المستندات العامة</h1>
+            <p>📃 مجموعة مستندات ارشادية مفيدة وغير رسمية</p>
+            <div id="gen-files-container">
                 <a href="https://drive.google.com/file/d/17vQcwLfJDwGHXLGs8s_2MGK3PVpCnFtf/view?usp=sharing"><button class="file-button">كتيب إجراءات الامن والسلامة وتصاريح المركبات<span class="material-symbols-outlined">download</span></button></a>
                 <a href="https://drive.google.com/file/d/1gvpYdoW35CGwR1GsOSc_EmXTKwrHADeT/view?usp=sharing"><button class="file-button">التقويم الأكاديمي<span class="material-symbols-outlined">download</span></button></a>
                 <a href="https://drive.google.com/file/d/1pSME9O_fXB4U7Xn4Dw-UFCraSkOmVkrK/view?usp=sharing"><button class="file-button">الزي الموحد لكليات ومعاهد الجبيل<span class="material-symbols-outlined">download</span></button></a>
@@ -147,7 +205,7 @@
                 <!-- Accordion Item 5 -->
                 <div class="accordion-item">
                     <input type="checkbox" id="section5" name="accordion">
-                    <label style="border-radius: 0 0 15px 15px;" for="section5" class="accordion-header">حصلت على شهادة الثانوية العامة من خارج المملكة هل يجب علي معادلتها من قبل الوزارة؟</label>
+                    <label for="section5" class="accordion-header">حصلت على شهادة الثانوية العامة من خارج المملكة هل يجب علي معادلتها من قبل الوزارة؟</label>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
                             <p>حصولك على شهادة الثانوية العامة من خارج المملكة يعنى الحاجة إلى معادلة الشهادة من قبل إدارة الاختبارات في وزارة التعليم ويجب تقديمها مع باقي المستندات المطلوبة في الوقت المحدد لإنهاء إجراءات القبول.</p>

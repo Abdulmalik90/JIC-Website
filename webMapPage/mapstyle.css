@@ -1,8 +1,25 @@
-body {
-    background-color: aliceblue;
+:root {
+    --bg: aliceblue;
+    --greating-text: rgb(74, 74, 74);
+    --text: black;
+    --buttons: white;
 }
 
+[data-theme="dark"]{
+    --bg: #010510;
+    --greating-text: rgb(255, 255, 255);
+    --text: white;
+    --buttons: rgb(40, 49, 89);
 
+}
+
+body {
+    background-color: var(--bg);
+}
+
+* {
+    color: var(--text);
+}
 /* Greating */
 #greating {
     margin-top: 90px;
@@ -14,14 +31,14 @@ body {
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
     font-size: 30px;
     padding: 20px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 /* Map Container */
@@ -37,7 +54,7 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    background-color: white;
+    background-color: var(--buttons);
     border: 1px solid black;
     border-radius: 20px;
     margin: 20px auto;
@@ -62,7 +79,7 @@ body {
 }
 
 #all-pages-container a {
-    background-color: white;
+    background-color: var(--buttons);
     border: 1px solid #000000;
     margin: 10px;
     border-radius: 15px;

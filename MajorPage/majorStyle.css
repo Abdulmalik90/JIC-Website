@@ -1,3 +1,35 @@
+:root {
+    --greating: rgb(74, 74, 74);
+    --top-div: white;
+    --text: black;
+    --semester-header: #f0f0f0;
+    --semester-header-border: #ddd;
+    --table-hover: #eaf2ff;
+    --optional-container: #f8f9fa;
+    --optional-title: #2c3e50;
+    --optional-card: white;
+    --main-text-optional: #2c3e50;
+    --optional-p: #555;
+}
+
+[data-theme="dark"] {
+    --greating: rgb(255, 255, 255);
+    --top-div: #0a0e19;
+    --text: white;
+    --semester-header: #1b2337;
+    --semester-header-border: #4c5775;
+    --table-hover: #283049;
+    --optional-container: #0a0e19;
+    --optional-title: #ffffff;
+    --optional-card: #1b2337;
+    --main-text-optional: #6db6ff;
+    --optional-p: #ffffff;
+}
+
+* {
+    color: var(--text);
+}
+
 /* Greating */
 #greating {
     margin-top: 90px;
@@ -9,12 +41,12 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
-    color: rgb(74, 74, 74);
+    color: var(--greating);
 }
 
 /* Major details */
 .top-div {
-    background-color: white;
+    background-color: var(--top-div);
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
@@ -56,7 +88,7 @@
 
 /* 🔹 صف مجموع ساعات الفصل */
 .total-row {
-    background-color: #f3f8ff;
+    background-color: var(--top-div);
     font-weight: bold;
     color: #004c99;
     border-top: 2px solid #d0e2ff;
@@ -64,7 +96,7 @@
 }
 
 .total-row:hover {
-    background-color: #eaf2ff;
+    background-color: var(--table-hover);
 }
 
 .total-title {
@@ -83,26 +115,27 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90%;
-    max-width: 1000px;
+    width: 95%;
+    
     margin: 20px auto;
 }
 
 .semester-card {
-    background-color: white;
+    background-color: var(--top-div);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 15px;
     padding: 20px;
-    width: 100%;
-    max-width: 800px;
+    width: 45%;
+    max-width: 600px;
+    min-width: 300px;
 }
 
 .semester-header {
     text-align: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid var(--semester-header-border);
 }
 
 .course-table {
@@ -115,10 +148,10 @@
 }
 
 .course-table th {
-    background-color: #f5f5f5;
+    background-color: var(--semester-header);
     padding: 12px;
     text-align: left;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--semester-header-border);
 }
 
 .course-table td {
@@ -127,7 +160,7 @@
 }
 
 .course-table tr:hover {
-    background-color: #f9f9f9;
+    background-color: var(--table-hover);
 }
 
 /* Optional Courses Section */
@@ -136,7 +169,7 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--optional-container);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -145,7 +178,7 @@
     text-align: center;
     margin-top: 0;
     margin-bottom: 30px;
-    color: #2c3e50;
+    color: var(--optional-title);
     font-size: 28px;
     padding-bottom: 15px;
     border-bottom: 2px solid #e0e0e0;
@@ -159,7 +192,7 @@
 }
 
 .optional-course-card {
-    background-color: white;
+    background-color: var(--optional-card);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -176,7 +209,7 @@
 .optional-course-card h4 {
     margin-top: 0;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: var(--main-text-optional);
     font-size: 18px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
@@ -185,14 +218,21 @@
 .optional-course-card p {
     margin: 8px 0;
     font-size: 14px;
-    color: #555;
+    color: var(--optional-p);
 }
 
 .optional-course-card strong {
-    color: #2c3e50;
+    color: var(--main-text-optional);
 }
 
 /* responsivitiy */
+
+@media (max-width: 880px) {
+    th, td {
+        font-size: 12px;
+    }
+}
+
 /* Greating rsp*/
 @media (max-width:550px) {
     #greating {

@@ -1,3 +1,15 @@
+:root {
+    --header-h1: #333;
+    --text: black;
+    --news-card: #ffffff;
+}
+
+[data-theme="dark"] {
+    --header-h1: #ffffff;
+    --text: white;
+    --news-card: #141822;
+}
+
 .container {
     max-width: 1200px;
     margin: 200px auto;
@@ -11,13 +23,14 @@
 }
 
 .header h1 {
-    color: #333;
+    color: var(--header-h1);
     margin-bottom: 10px;
     font-size: 70px;
 }
 
 .header p {
     font-size: 25px;
+    color: var(--header-h1);
 }
 
 .news-grid {
@@ -28,7 +41,8 @@
 }
 
 .news-card {
-    background: white;
+    background: var(--news-card);
+    color: var(--text);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -64,7 +78,7 @@
 
 .news-title {
     font-size: 1.3em;
-    color: #333;
+    color: var(--header-h1);
     margin-bottom: 15px;
     line-height: 1.4;
     text-align: right;
@@ -79,7 +93,7 @@
 }
 
 .news-date {
-    color: #666;
+    color: var(--header-h1);
     text-align: right;
     direction: rtl;
 }

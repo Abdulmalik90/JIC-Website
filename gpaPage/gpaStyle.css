@@ -1,4 +1,24 @@
+:root {
+    --greating-text:color: rgb(74, 74, 74);
+    --gpa-part: #eef2f5;
+    --text: black;
+    --gpa-input: #d7e0e5;
+    --gpa-input-border: #9c9c9c;
+    --hover-button: white;
+}
 
+[data-theme="dark"] {
+    --greating-text: white;
+    --gpa-part: #0a0e19;
+    --text: white;
+    --gpa-input: #0e121d;
+    --gpa-input-border: #76777a;
+    --hover-button: #252a39;
+}
+
+* {
+    color: var(--text);
+}
 /* Greating */
 
 #greating {
@@ -11,14 +31,14 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
     font-size: 30px;
     padding: 20px;
-    color: rgb(74, 74, 74);
+    color: var(--greating-text);
 }
 
 /* GPA Calculation section */
@@ -29,7 +49,8 @@
 }
 
 .gpa-part {
-    background-color: #eef2f5;
+    color: var(--text);
+    background-color: var(--gpa-part);
     padding: 20px;
 }
 
@@ -51,8 +72,8 @@
 #gpa-old-info input {
     text-align: right;
     padding: 10px;
-    border: #9c9c9c solid 2px;
-    background-color: #d7e0e5;
+    border: var(--gpa-input-border) solid 2px;
+    background-color: var(--gpa-input);
     width: 100%;
     margin-right: 10px;
     min-width: 180px;
@@ -102,8 +123,8 @@
 #sub-container input, #sub-container select {
     direction: rtl;
     padding: 5px 10px;
-    border: #9c9c9c solid 1px;
-    background-color: #d7e0e5;
+    border: var(--gpa-input-border) solid 1px;
+    background-color: var(--gpa-input);
     display: block;
     margin-top: 10px;
     height: 20px;
@@ -117,7 +138,7 @@
     margin: 10px auto 10px auto;
     width: 545px;
     border: #9c9c9c solid 1px;
-    background-color: #d7e0e5;
+    background-color: var(--gpa-input);
     padding: 10px;
     font-size: 20px;
     color: #747474;
@@ -127,8 +148,8 @@
 }
 
 #add-sub-button:hover {
-    background: white; /* smoother transition */
-    color: black;
+    background: var(--hover-button); /* smoother transition */
+    color: var(--text);
     transform: translateY(3px) ;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border: #000000 solid 2px;
@@ -161,8 +182,8 @@
 #result-container input {
     text-align: right;
     padding: 10px;
-    border: #9c9c9c solid 1px;
-    background-color: #d7e0e5;
+    border: var(--gpa-input-border) solid 1px;
+    background-color: var(--gpa-input);
     width: 100%;
     margin-right: 10px;
     min-width: 180px;
