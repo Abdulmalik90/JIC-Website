@@ -20,8 +20,60 @@ const pipeLaying = new Majors("Pipe laying skill", "مهارة تمديد الأ
 const industrialElec = new Majors("Industrial electricity skill", "مهارة الكهرباء الصناعية", "dynamic_form", "الدبلوم المتوسط", 2, "./JTIimages/IndustrialElectric.png", "بنين", [])
 const netWork = new Majors("Computer network management skill", "مهارة إدارة شبكات الحاسب الآلي", "network_check", "الدبلوم المتوسط", 2, "./JTIimages/ComputerNet.png", "بنين", [])
 const industrialOp = new Majors("Factory operating skill", "مهارة تشغيل المصانع", "factory", "الدبلوم المتوسط", 2, "./JTIimages/factoryOp.png", "بنين", [])
-const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [])
-const supportInfo = new Majors("IT Support and Security", "دعم وأمن تقنية المعلومات", "security", "الدبلوم المتوسط", 2, "./JTIimages/ITsupport.png", "بنات", [])
+const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [
+    {
+    semester: 1,
+    courses: [
+        ["Advanced Computer Applications", 3, 2, 3, []],
+        ["Operating System", 3, 2, 3, []],
+        ["Cybersecurity Essentials", 2, 1, 2, []],
+        ["Introduction to IoT", 2, 1, 2, []],
+        ["Hardware Fundamentals", 3, 2, 3, []],
+        ["Networking Essentials", 3, 2, 3, []],
+        ["English Communication", 3, 3, 0, []],
+        ["Islamic Culture", 2, 2, 0, []]
+    ]
+},
+{
+    semester: 2,
+    courses: [
+        ["IoT Applications", 3, 2, 2, []],
+        ["Hardware and Soft Troubleshooting", 3, 2, 3, []],
+        ["Network Security", 4, 2, 4, []],
+        ["Cybersecurity Programming Tools", 4, 3, 3, []],
+        ["Cybersecurity Project", 2, 1, 2, []],
+        ["Technical Report Writing", 3, 3, 0, []],
+        ["Physical Education", 1, 0, 2, []]
+    ]
+}
+])
+const supportInfo = new Majors("IT Support and Security", "دعم وأمن تقنية المعلومات", "security", "الدبلوم المتوسط", 2, "./JTIimages/ITsupport.png", "بنات", [
+    {
+    semester: 1,
+    courses: [
+        ["Advanced Computer Applications", 3, 2, 3, []],
+        ["Operating System", 3, 2, 3, []],
+        ["Cybersecurity Essentials", 2, 1, 2, []],
+        ["Introduction to IoT", 2, 1, 2, []],
+        ["Hardware Fundamentals", 3, 2, 3, []],
+        ["Networking Essentials", 3, 2, 3, []],
+        ["English Communication", 3, 3, 0, []],
+        ["Islamic Culture", 2, 2, 0, []]
+    ]
+},
+{
+    semester: 2,
+    courses: [
+        ["IoT Applications", 3, 2, 2, []],
+        ["Hardware and Soft Troubleshooting", 3, 2, 3, []],
+        ["Network Security", 4, 2, 4, []],
+        ["Cybersecurity Programming Tools", 4, 3, 3, []],
+        ["Cybersecurity Project", 2, 1, 2, []],
+        ["Technical Report Writing", 3, 3, 0, []],
+        ["Physical Education", 1, 0, 2, []]
+    ]
+}
+])
 
 const deplomes = [maintenance, metalTurning, welding, operatingCranes, pipeLaying,
     industrialElec, netWork, industrialOp, computerDrawing, supportInfo
