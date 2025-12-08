@@ -162,7 +162,35 @@ const newsData = [
     author: "رائـد الزهـراني",
     category: "كلية الجبيل الصناعية"
 }
+{
+    id: 8,
+    title: "الاختبارات: جدول اختبارات اللغة الانجليزية لطلاب التحضيري بكلية الجبيل الصناعية 📄",
+    content: `
+        <p style="direction: rtl;">
+            أعلنت كلية الجبيل الصناعية عن صدور <strong>الجداول النهائية للاختبارات</strong> للفصل الدراسي الحالي،
+            وذلك لإتاحة الفرصة للطلاب والطالبات في السنة التحضيرية لمعرفة تواريخ واوقات اختباراتهم بشكل افضل.
+        </p>
 
+        <p style="direction: rtl;">
+            نرفق لكم ادناه رابط تحميل الجدول، ويمكنكم الإطلاع عليها مباشرة من خلال الزر التالي:
+        </p>
+
+        <div style="direction: rtl; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 280px;">
+            <a href="https://t.me/JuPortalsa/187" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات طلاب السنة التحضيرية
+            </a>
+
+        </div>
+
+        <p style="direction: rtl; margin-top: 15px;">
+            نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
+        </p>
+    `,
+    image: "https://i.postimg.cc/s2tRbPFh/shʿar-alhyyt-twly-4x.png",
+    date: "2025-12-09T00:00:00",
+    author: "رائـد الزهـراني",
+    category: "كلية الجبيل الصناعية"
+}
     
 ];
 
