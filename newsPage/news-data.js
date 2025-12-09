@@ -137,7 +137,7 @@ const newsData = [
         </p>
 
         <div style="direction: rtl; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 280px;">
-            <a href="https://t.me/JuPortalsa/187" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+            <a href="https://t.me/JuPortalsa/187" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
                 جدول اختبارات طلاب السنة التحضيرية
             </a>
 
@@ -165,15 +165,15 @@ const newsData = [
             نرفق لكم روابط تحميل الجداول حسب كل فرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
         </p>
 
-            <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+            <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
                 جدول اختبارات الطلاب
             </a>
 
-            <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+            <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
                 جدول اختبارات الطالبات – فرع سدير
             </a>
 
-            <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; border-radius: 8px; text-decoration: none;">
+            <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
                 جدول اختبارات الطالبات – فرع الفيحاء
             </a>
         </div>
