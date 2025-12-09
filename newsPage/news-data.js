@@ -147,7 +147,7 @@ const newsData = [
             نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
         </p>
     `,
-    image: "https://i.postimg.cc/s2tRbPFh/shʿar-alhyyt-twly-4x.png",
+    image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
     date: "2025-12-09T00:00:00",
     author: "رائـد الزهـراني",
     category: "كلية الجبيل الصناعية"
