@@ -399,7 +399,8 @@
     color: var(--text);
     display: flex;
     flex-direction: column;
-    height: auto;
+    justify-content: space-between;
+    height: 90%;
     min-height: 400px;
     text-align: right;
 }

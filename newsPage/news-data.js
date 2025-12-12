@@ -62,6 +62,130 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "مـدخـل"
     },
+    {
+    id: 5,
+    title: "🎓 فيديو : حفل تخرّج طلاب كليات ومعاهد الهيئة الملكية بالجبيل 2025م",
+    content: `
+        <p style="direction: rtl;">
+            يسرّ <strong>منصة مدخل</strong> أن تشارك خريجي كليات ومعاهد الهيئة الملكية بالجبيل فرحتهم في هذا اليوم المميز،
+            وتهنئهم على ما حققوه من إنجاز وجهد طوال سنواتهم الدراسية 💫
+        </p>
+
+        <p style="direction: rtl;">
+            يمكنكم متابعة <strong>تسجيل بث الحفل</strong> من خلال الرابط التالي:
+        </p>
+
+        <a href="https://www.youtube.com/live/qk9Bt0jsx70?si=tsKS33U7ktPMdnF6" target="_blank" style="display: inline-block; padding: 8px 14px; background-color: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            🎥 اضغـط هنـا لمشاهدة البث المباشر
+        </a>
+
+        <p style="direction: rtl; margin-top: 12px;">
+            نبارك لجميع الخريجين ونتمنى لهم مستقبلاً زاهراً مليئاً بالنجاح والإنجاز 🌟
+        </p>
+    `,
+    image: "https://i.postimg.cc/JnDwKtRM/IMG-8336.jpg",
+    date: "2025-11-10T00:11:00",
+    author: "رائـد الزهـراني",
+    category: "مناسبات"
+    },
+    {
+    id: 6,
+    title: " موجـز: الاصدار الكامل من منصة مدخل 📄",
+    content: `
+        <p style="direction: rtl;">
+            بعد مرور اسبوعين منذ الاطلاق التجريبي لمنصة مدخل قدرنا نوصل لـ 3500+ زيارة للمنصة
+            بما يعادل 10 زيارات في الساعة الواحدة , وهالشيء نفتخر فيه كبداية مع هالخدمات المحدودة 🥳
+        </p>
+        <p style="direction: rtl;">
+            وكمـوجز سريع نقدر نقول ان النسخة المكتملة من مدخل قيد التطوير و راح تشتمل مجموعات تغييرات واضافات منها :
+            - الوضع الداكن لعشاق الدارك مود
+            - تغيير كبير بالصفحة الرئيسية عشان تكون اوضح واشمل
+            - اداة انشاء الجدول الدراسي وتحويل الفترات الى اوقات
+            - مكتبة الطالب اللي راح تكون مرجعك الاول
+            - اضافة خانة توضح نسبة الغياب للمحاضرة الواحدة
+            وغيرها الكثير ان شاء الله
+        </p>
+        <p style="direction: rtl;">
+            ياليت تشاركونااقتراحاتكم من خلال الاستبيان :
+        </p>
+
+        <a href="https://www.youtube.com/live/qk9Bt0jsx70?si=tsKS33U7ktPMdnF6" target="_blank" style="display: inline-block; padding: 8px 14px; background-color: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            🫡 اضغـط هنـا لمشاركة اقتراحاتك
+        </a>
+
+        <p style="direction: rtl; margin-top: 12px;">
+            شكـراً لكم على ثقتكم , وان شاء الله حنا قدها 🌟
+        </p>
+    `,
+    image: "https://i.postimg.cc/P528VX3r/iconic-logo-Bluer-full-4x.png",
+    date: "2025-11-14T00:19:00",
+    author: "رائـد الزهـراني",
+    category: "مدخـل"
+    },
+    {
+    id: 7,
+    title: "الاختبارات: جدول اختبارات اللغة الانجليزية لطلاب التحضيري بكلية الجبيل الصناعية 📄",
+    content: `
+        <p style="direction: rtl;">
+            أعلنت كلية الجبيل الصناعية عن صدور الجداول النهائية للاختبارات للفصل الدراسي الحالي،
+            وذلك لإتاحة الفرصة للطلاب والطالبات في السنة التحضيرية لمعرفة تواريخ واوقات اختباراتهم بشكل افضل.
+        </p>
+
+        <p style="direction: rtl;">
+            نرفق لكم ادناه رابط تحميل الجدول، ويمكنكم الإطلاع عليها مباشرة من خلال الزر التالي:
+        </p>
+
+        <div style="direction: rtl; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 280px;">
+            <a href="https://t.me/JuPortalsa/187" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                جدول اختبارات طلاب السنة التحضيرية
+            </a>
+
+        </div>
+
+        <p style="direction: rtl; margin-top: 15px;">
+            نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
+        </p>
+    `,
+    image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
+    date: "2025-12-09T00:00:00",
+    author: "رائـد الزهـراني",
+    category: "كلية الجبيل الصناعية"
+    },
+    {
+        id: 8,
+        title: "الاختبارات: جداول الاختبارات النهائية لطلاب وطالبات كلية الجبيل الصناعية 📄",
+        content: `
+            <p style="direction: rtl;">
+                أعلنت كلية الجبيل الصناعية عن صدور الجداول المعتمدة للاختبارات للفصل الدراسي الحالي،
+                وذلك لإتاحة الفرصة للطلاب والطالبات للاطلاع المبكر والاستعداد بشكل أفضل للاختبارات النهائية.
+            </p>
+            
+            <p style="direction: rtl;">
+                نرفق لكم روابط تحميل الجداول حسب كل فرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
+            </p>
+
+                <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطلاب
+                </a>
+
+                <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطالبات – فرع سدير
+                </a>
+
+                <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطالبات – فرع الفيحاء
+                </a>
+            </div>
+
+            <p style="direction: rtl; margin-top: 15px;">
+                نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
+            </p>
+        `,
+        image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
+        date: "2025-12-09T12:00:00",
+        author: "رائـد الزهـراني",
+        category: "كلية الجبيل الصناعية"
+    }, 
     
 ];
 
