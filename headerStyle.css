@@ -236,6 +236,7 @@ a {
     /* Keep your existing transition/margin */
     margin-left: 10px;
     transition: transform 0.3s ease;
+    
 }
 
 #logo_image:hover {
