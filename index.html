@@ -358,5 +358,27 @@ if ('serviceWorker' in navigator) {
     });
 }
 </script>
+<script>
+        // الدالة التي تقوم بإنشاء وسم السكربت وتحميله
+        function loadScriptWithCacheBust(url) {
+            // الحصول على ختم الزمن بالمللي ثانية (يتغير في كل تحميل)
+            var cacheBuster = new Date().getTime(); 
+            
+            // إنشاء وسم <script>
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            
+            // إضافة المسار مع Cache Buster
+            // مثال: js/main.js?v=1734091566000
+            script.src = url + '?v=' + cacheBuster;
+            
+            // إضافة الوسم إلى نهاية الجسم (Body)
+            document.body.appendChild(script); 
+        }
 
+        // 🚨 يجب عليك الآن استدعاء الدالة لملفات JavaScript التي تريد تحميلها
+        loadScriptWithCacheBust('js/main.js'); 
+        // إذا كان لديك ملف آخر
+        // loadScriptWithCacheBust('js/other_script.js'); 
+</script>
 </html>
