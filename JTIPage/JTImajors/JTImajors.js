@@ -18,6 +18,38 @@ const welding = new Majors("Industrial welding skill", "مهارة اللحام 
 const operatingCranes = new Majors("Operating cranes and heavy equipment skill", "مهارة تشغيل الرافعات والمعدات الثقيلة", "precision_manufacturing", "الدبلوم المتوسط", 2, "./JTIimages/operatingCranes.png", "بنين",[])
 const pipeLaying = new Majors("Pipe laying skill", "مهارة تمديد الأنابيب", "valve", "الدبلوم المتوسط", 2, "./JTIimages/pipeLaying.png", "بنين", [])
 const industrialElec = new Majors("Industrial electricity skill", "مهارة الكهرباء الصناعية", "dynamic_form", "الدبلوم المتوسط", 2, "./JTIimages/IndustrialElectric.png", "بنين", [])
+const INCT = new Majors("Industrial Instrumentation and Control Skills", "مهارات الآلات الدقيقة والتحكم", "./JTIimages/IndustrialElectric.png", "لدبلوم المتوسط", 2, "", "بنين", [
+    {
+        semester: 1, 
+        courses: [
+            ["Electrical Circuits", 3, 1, 5, []],
+            ["Electronic Circuits", 3, 1, 5, []],
+            ["Instruments Principles & Calibration and Maintenance", 3, 1, 5, []],
+            ["Principles of Control", 3, 1, 5, []],
+            ["Instrumentation Skills Practice 1", 2, 1, 2, []],
+            ["English Communication", 3, 3, 0, []],
+            ["Islamic Culture", 2, 2, 0, []]
+        ]
+    },
+    {
+        semester: 2,
+        courses: [
+            ["Distributed Control System Operation (DCS)", 3, 1, 5, []],
+            ["Electronic Circuits Troubleshooting", 3, 1, 5, []],
+            ["Electronic Instrumentation", 3, 1, 5, []],
+            ["PLC Programming and Interfacing & Micro-Controller", 3, 1, 5, []],
+            ["Piping and Instrumentation Diagrams Reading", 2, 1, 2, []],
+            ["Instrumentation Skills Practice 2", 2, 1, 2, ["Instrumentation Skills Practice 1"]],
+            ["Technical Report Writing", 3, 3, 0, []],
+            ["Physical Education", 1, 0, 2, []]
+        ]
+    },
+    {
+        semester: 3,
+        courses: [
+            ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []]
+        ]
+    }
 const netWork = new Majors("Computer network management skill", "مهارة إدارة شبكات الحاسب الآلي", "network_check", "الدبلوم المتوسط", 2, "./JTIimages/ComputerNet.png", "بنين", [])
 const industrialOp = new Majors("Factory operating skill", "مهارة تشغيل المصانع", "factory", "الدبلوم المتوسط", 2, "./JTIimages/factoryOp.png", "بنين", [])
 const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [])
