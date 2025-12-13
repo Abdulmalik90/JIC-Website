@@ -53,7 +53,7 @@ const newsData = [
                 <li>بتاريــخ الاول من شهــر نوفمبــر.</li>
             </ul>
             <p style="direction: rtl;">قـنـاة الاخبـار:</p>
-            <a href="https://t.me/newsjuc">اضغـط هنـا للانضمام لقناة الاخبار</a>
+            <a href="https://t.me/newsjuc"</a>
             
 
         `,
@@ -106,7 +106,7 @@ const newsData = [
             وغيرها الكثير ان شاء الله
         </p>
         <p style="direction: rtl;">
-            ياليت تشاركونا <strong>اقتراحاتكم</strong> من خلال الاستبيان :
+            ياليت تشاركونااقتراحاتكم من خلال الاستبيان :
         </p>
 
         <a href="https://www.youtube.com/live/qk9Bt0jsx70?si=tsKS33U7ktPMdnF6" target="_blank" style="display: inline-block; padding: 8px 14px; background-color: #007bff; color: white; border-radius: 6px; text-decoration: none;">
@@ -127,7 +127,7 @@ const newsData = [
     title: "الاختبارات: جدول اختبارات اللغة الانجليزية لطلاب التحضيري بكلية الجبيل الصناعية 📄",
     content: `
         <p style="direction: rtl;">
-            أعلنت كلية الجبيل الصناعية عن صدور <strong>الجداول النهائية للاختبارات</strong> للفصل الدراسي الحالي،
+            أعلنت كلية الجبيل الصناعية عن صدور الجداول النهائية للاختبارات للفصل الدراسي الحالي،
             وذلك لإتاحة الفرصة للطلاب والطالبات في السنة التحضيرية لمعرفة تواريخ واوقات اختباراتهم بشكل افضل.
         </p>
 
@@ -151,43 +151,43 @@ const newsData = [
     author: "رائـد الزهـراني",
     category: "كلية الجبيل الصناعية"
     },
-   {
-    id: 8,
-    title: "الاختبارات: جداول الاختبارات النهائية لطلاب وطالبات كلية الجبيل الصناعية 📄",
-    content: `
-        <p style="direction: rtl;">
-            أعلنت كلية الجبيل الصناعية عن صدور <strong>الجداول المعتمدة للاختبارات</strong> للفصل الدراسي الحالي،
-            وذلك لإتاحة الفرصة للطلاب والطالبات للاطلاع المبكر والاستعداد بشكل أفضل للاختبارات النهائية.
-        </p>
-        
-        <p style="direction: rtl;">
-            نرفق لكم روابط تحميل الجداول حسب كل فرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
-        </p>
+    {
+        id: 8,
+        title: "الاختبارات: جداول الاختبارات النهائية لطلاب وطالبات كلية الجبيل الصناعية 📄",
+        content: `
+            <p style="direction: rtl;">
+                أعلنت كلية الجبيل الصناعية عن صدور الجداول المعتمدة للاختبارات للفصل الدراسي الحالي،
+                وذلك لإتاحة الفرصة للطلاب والطالبات للاطلاع المبكر والاستعداد بشكل أفضل للاختبارات النهائية.
+            </p>
+            
+            <p style="direction: rtl;">
+                نرفق لكم روابط تحميل الجداول حسب كل فرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
+            </p>
 
-            <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                جدول اختبارات الطلاب
-            </a>
+                <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطلاب
+                </a>
 
-            <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                جدول اختبارات الطالبات – فرع سدير
-            </a>
+                <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطالبات – فرع سدير
+                </a>
 
-            <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                جدول اختبارات الطالبات – فرع الفيحاء
-            </a>
-        </div>
+                <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                    جدول اختبارات الطالبات – فرع الفيحاء
+                </a>
+            </div>
 
-        <p style="direction: rtl; margin-top: 15px;">
-            نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
-        </p>
-    `,
-    image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
-    date: "2025-12-09T12:00:00",
-    author: "رائـد الزهـراني",
-    category: "كلية الجبيل الصناعية"
-}, 
+            <p style="direction: rtl; margin-top: 15px;">
+                نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
+            </p>
+        `,
+        image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
+        date: "2025-12-09T12:00:00",
+        author: "رائـد الزهـراني",
+        category: "كلية الجبيل الصناعية"
+    }, 
+    
 ];
-
 
 // دالة للحصول على خبر بواسطة ID
 function getNewsArticleById(articleId) {

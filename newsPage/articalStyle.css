@@ -1,19 +1,33 @@
+:root {
+    --text: black;
+    --artical-cont: white;
+    --title: #2c3e50;
+}
+
+[data-theme="dark"] {
+    --text: white;
+    --artical-cont: #141822;
+    --title: #dedede;
+}
+
 /* article.css */
 .article-container {
     max-width: 800px;
     margin: 200px auto 50px;
     padding: 30px;
-    background: white;
-    border-radius: 15px;
+    background: var(--artical-cont);
+    border-radius: 25px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    color: var(--text);
 }
 
 .article-title {
-    color: #2c3e50;
-    font-size: 2.5em;
+    color: var(--title);
+    font-size: 2.1em;
     margin-bottom: 20px;
     text-align: right;
     line-height: 1.4;
+    font-family: 'Tajawal';
 }
 
 .article-meta {
@@ -22,7 +36,8 @@
     padding-bottom: 20px;
     border-bottom: 2px solid #ecf0f1;
     text-align: right;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    font-family: 'Tajawal';
 }
 
 .article-meta span {
@@ -30,11 +45,12 @@
 }
 
 .article-category {
-    background: #3498db;
+    background: #086bad;
     color: white;
     padding: 5px 12px;
-    border-radius: 20px;
+    border-radius: 9px;
     font-size: 0.9em;
+    font-family: 'Tajawal';
 }
 
 .article-image-container {
@@ -46,14 +62,14 @@
     width: 100%;
     max-height: 500px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 17px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .article-content {
     font-size: 1.2em;
     line-height: 1.8;
-    color: #2c3e50;
+    color: var(--text);
     text-align: right;
 }
 
@@ -79,30 +95,31 @@
 
 .back-btn, .share-btn {
     padding: 12px 25px;
-    margin: 0 10px;
+    margin: 0 15px;
     border: none;
-    border-radius: 8px;
+    border-radius: 13px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em;
     transition: all 0.3s ease;
+    margin-bottom: 2%;
 }
 
 .back-btn {
-    background: #95a5a6;
+    background: #6c7e80;
     color: white;
 }
 
 .back-btn:hover {
-    background: #7f8c8d;
+    background: #df0c0c;
 }
 
 .share-btn {
-    background: #3498db;
+    background: #0364a5;
     color: white;
 }
 
 .share-btn:hover {
-    background: #2980b9;
+    background: #ad1212;
 }
 
 .error-container {
@@ -132,7 +149,7 @@
     }
     
     .back-btn, .share-btn {
-        width: 100%;
-        margin: 5px 0;
+        width: 75%;
+        margin: 5px auto;
     }
 }
