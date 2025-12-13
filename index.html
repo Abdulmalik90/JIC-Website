@@ -42,7 +42,7 @@
                         <li>مكتبة الأدوات</li>
                         <li><a href="./absCalcPage/abs.html">حساب الغيابات</a></li>
                         <li><a href="./gpaPage/gpa.html">حساب المعدل</a></li>
-                        <li><a href="./createSchedulePage/schedule.html">اصنع جدولك</a></li>
+                        <li><a href="./createSchedulePage/schedule.html">صمـم جدولك</a></li>
                     </ul>
     
                     <ul>
@@ -53,9 +53,9 @@
                     </ul>
     
                     <ul>
-                        <li>الكليات والمعاهد</li>
-                        <li><a href="./JICPage/jic.html">كلية الجبيل الصناعية</a></li>
-                        <li><a href="./JTIPage/JTI.html">معهد الجبيل التقني</a></li>
+                        <li>قنوات الاخبار</li>
+                        <li><a href="https://t.me/newsjuc">اخبار الكلية والمعهد بالتليجرام</a></li>
+                        <li><a href="https://x.com/juportall">اخبار منصة مدخل بتويتر</a></li>
                     </ul>
                 </div>
             </div>
@@ -98,28 +98,28 @@
                 <ul></ul>
             </div>
         </div>
-        <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
         <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
-        <a href="./createSchedulePage/schedule.html"><p>اصنع جدولك</p></a>
+        <a href="./createSchedulePage/schedule.html"><p>صمم جدولك</p></a>
         <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
         <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
         <a href="./academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
-        <a href="./JICPage/jic.html"><p>كلية الجبيل الصناعية</p></a>
-        <a href="./JTIPage/JTI.html"><p>معهد الجبيل التقني</p></a>
+        <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+        <a href="https://t.me/newsjuc"><p>اخبار الكلية والمعهد بالتليجرام</p></a>
+        <a href="https://x.com/i/communities/1823043306739110132"><p>مجتمع طـلاب الكلية عبر تويتر</p></a>
     </nav>
 
     <div id="noticeModal" class="modal">
         <div class="modal-content">
             <h2>🫡 لازم تعـرف</h2>
             <p>
-            مبـادرة مَدخـل عبارة عن مجهـود <strong>طلابي</strong> بالكامل،  
-            ولا تمثل إدارة كليات أو معاهد الجبيل الصناعية.
+           اننا <strong>مجموعة طـلاب</strong> سخرنا قدراتنا في تطوير وتصميم 
+           هالمبادرة ومالنا اي علاقة رسمية بالادارة نهائياً
             </p>
             <p>
-            النسخـة الحـالية <strong>تجريبية</strong>، هدفنـا منها نختـبر المنصـة وناخـذ آرائكـم منهـا 🙏
+           حالياً المنصة تحت التطوير , ونحتاج آرائكم 🙏
             </p>
             <div class="actions">
-            <button id="continueBtn">متابعــة</button>
+            <button id="continueBtn">! فهمــت</button>
             </div>
         </div>
     </div>
@@ -238,21 +238,21 @@
                     <img src="./Images/Official_doc.png" alt="">
                     <h2>المستنـدات الرسميـة</h2>
                     <p>جميع المستندات الرسمية لكليات ومعاهد الهيئة الملكية بالجبيل من لوائح وأنظمة</p>
-                    <a href="./absCalcPage/abs.html">شيك عليهـا</a>
+                    <a href="./academicRegulationsPage/regulations.html#doc-container">شيك عليهـا</a>
                 </div>
 
                 <div class="student-div" id="benefit-docutments">
                     <img src="./Images/benifit_doc.png" alt="">
                     <h2>المستنـدات المفيـدة</h2>
                     <p>مكتبة تشمل جميع المستندات الغير رسمية التي تفيد طلاب كلية ومعهد الجبيل الصناعية</p>
-                    <a href="./gpaPage/gpa.html">شيك عليهـا</a>
+                    <a href="./academicRegulationsPage/regulations.html#gen-doc-container">شيك عليهـا</a>
                 </div>
 
                 <div class="student-div" id="comman-questions">
                     <img src="./Images/comman_questions.png" alt="">
                     <h2>الاسئلـة الشائعـة</h2>
                     <p>قسم يحوي العديد من الاجابات على الاسئلة الشائعة عن كليات ومعاهد الجبيل الصناعية</p>
-                    <a href="./createSchedulePage/schedule.html">شيك عليهـا</a>
+                    <a href="./academicRegulationsPage/regulations.html#questions-general-container">شيك عليهـا</a>
                 </div>
             </div>
             <button class="arrow-btn right" data-target="#student-cards">‹</button>
@@ -333,17 +333,26 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("noticeModal");
-    const continueBtn = document.getElementById("continueBtn");
+ const modal = document.getElementById("noticeModal");
+ const continueBtn = document.getElementById("continueBtn");
 
-    if (!localStorage.getItem("visited")) {
-        modal.style.display = "flex"; 
-    }
+    // 🚨 1. تغيير المفتاح المستخدم لتمثيل الإصدار الجديد
+    const NEW_KEY = "visited_v2"; 
+    
+    // (اختياري) يمكنك حذف المفتاح القديم لتنظيف localStorage
+    // localStorage.removeItem("visited"); 
 
-    continueBtn.addEventListener("click", () => {
-        localStorage.setItem("visited", "true");
-        modal.style.display = "none";
-    });
+    // 2. التحقق من المفتاح الجديد
+ if (!localStorage.getItem(NEW_KEY)) {
+ // المفتاح الجديد غير موجود، لذا اعرض النافذة
+ modal.style.display = "flex"; 
+ }
+
+    // 3. عند الضغط على "استمرار"، يتم حفظ المفتاح الجديد
+ continueBtn.addEventListener("click", () => {
+ localStorage.setItem(NEW_KEY, "true"); 
+ modal.style.display = "none";
+  });
 });
 </script>
 

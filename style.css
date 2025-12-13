@@ -1,20 +1,19 @@
 :root {
-    --main-title1: #1c3f7a;
+    --main-title1: #104091;
     --main-title2: #0074d9;
     --text-shadow: none;
     --text: black;
     --section-bg: #eef2f5;
-    --Raed: #636363;
     --post-bg: white;
     --post-shadow: rgba(0, 0, 0, 0.2);
     --post-shadow-hover: rgba(0, 0, 0, 0.3);
     --post-titles: #2c3e50;
-    --event-card: #eef2f5;
+    --event-card: #c8cad0;
     --event-card-border: black;
     --info-contact-post: white;
     --modal-major-container: rgba(0, 0, 0, 0.3);
     --modal-major: rgb(230, 230, 230);
-    --time-section-bg: #f8f8f8;
+    --time-section-bg: #e0e0e0;
     
 }
 
@@ -23,7 +22,6 @@
     --main-title2: white;
     --text-shadow: white;
     --text: white;
-    --Raed: #C7c7c7;
     --section-bg: #0a0e19;
     --post-bg: #0b0e16;
     --post-shadow: rgba(255, 255, 255, 0.2);
@@ -140,6 +138,7 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
+    text-shadow: 2px 2px 15px var(--text-shadow);
     background: linear-gradient(to right, var(--main-title1), var(--main-title2)); /* الأزرق الغامق إلى الفاتح */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -176,12 +175,12 @@
 
 
 .greating-buttons {
-    padding: 11px 50px;
-    background: linear-gradient(-120deg, #103291, #146394);
+    padding: 9px 50px;
+    background: linear-gradient(70deg, #103591, #497f91);
     color: white;
     border: none;
     width: 100%;
-    font-size: 21px;
+    font-size: 20px;
     cursor: pointer;
     transition:  transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -194,7 +193,7 @@
 }
 
 #edu-button {
-    border-radius: 17px 17px 25px 17px;
+    border-radius: 7px 7px 20px 7px;
 }
 
 #major-button-div {
@@ -204,11 +203,11 @@
 }
 
 #major-button {
-    border-radius: 25px 17px 27px ;
+    border-radius: 20px 7px 20px ;
 }
 
 #blackboard-button {
-    border-radius: 25px 17px 17px ;
+    border-radius: 20px 7px 7px ;
 }
 
 #a-library {
@@ -328,17 +327,17 @@
 /* Last news section */
 
 #last-news {
-    width: 87%;
-    margin: 90px auto;
+    width: 90%;
+    margin: 20px auto;
     background-color: var(--section-bg);
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 20px 10px;
 }
 
 #last-news-title-container {
     width: 80%;
     margin: 40px auto;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 
 #last-news-title-container h1, #last-news-title-container p {
@@ -348,7 +347,7 @@
 }
 
 #last-news-title-container h1 {
-    font-size: 40px ;
+    font-size: 50px ;
 }
 
 .subtitle {
@@ -393,18 +392,16 @@
 
 .news-post {
     background: var(--post-bg);
-    padding: 27px;
-    border-radius: 30px;
-    border: 1px solid var(--event-card-border);
-    transition: transform 0.3s ease;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--post-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: var(--text);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 90%;
+    height: auto;
     min-height: 400px;
     text-align: right;
-    margin-bottom: 10px;
 }
 
 .news-post:hover {
@@ -415,8 +412,7 @@
 .news-post h2 {
     color: var(--post-titles);
     margin: 15px 0;
-    font-size: 1.2em;
-    text-align: right;
+    font-size: 1.4em;
     line-height: 1.4;
     
 }
@@ -429,13 +425,13 @@
 }
 
 .news-post button {
-    background: linear-gradient(90deg, #103191, #106091);
+    background: #007bff;
     color: white;
     border: none;
-    padding: 14px 25px;
-    border-radius: 17px;
+    padding: 12px 25px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1em;
     transition: all 0.3s ease;
     margin-top: auto;
 }
@@ -469,7 +465,7 @@
 /* Calender Section */
 #calender-container {
     width: 90%;
-    margin: 70px auto;
+    margin: 30px auto;
     color: var(--text);
     direction: rtl;
 }
@@ -488,14 +484,14 @@
 }
 
 .event-post {
-    padding: 18px 30px;
+    padding: 20px 30px;
     background-color: var(--event-card);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border-radius: 40px;
-    width: 25%;
+    border-radius: 20px;
+    width: 22%;
     max-width: 400px;
 }
 
@@ -510,14 +506,14 @@
 
 .event-title {
     font-size: 25px;
-    font-weight: 30px;
-    margin-top: 25px;
+    font-weight: 50;
+    margin-top: 20px;
 }
 
 .p-event-date {
-    font-size: 18px;
-    margin: 10px;
-    color: var(--Raed);
+    font-size: 12px;
+    margin-bottom: 20px;
+
 }
 
 .event-timer {
@@ -531,21 +527,22 @@
     background-color: var(--time-section-bg);
     width: 25%;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 20px;
     margin: 5px;
 }
 
 .time-sectoin-day {
-    border-radius: 15px 15px 15px 30px;
+    border-radius: 35px 20px 20px 35px;
 }
 
 .time-sectoin-min {
-    border-radius: 15px 30px 15px 15px;
+    border-radius: 20px 35px 35px 20px;
 }
 
 .time-section h1 {
     font-size: 50px;
     font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .time-day {
@@ -571,8 +568,8 @@
 #tools-cont {
     background-color: var(--section-bg);
     width: 90%;
-    margin: 70px auto;
-    border-radius: 50px;
+    margin: 40px auto;
+    border-radius: 30px;
     padding-bottom: 30px;
 }
 
@@ -597,42 +594,31 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--event-card-border);
-    padding: 20px;
-    border-radius: 40px;
+    padding: 30px;
+    border-radius: 20px;
 }
 
 .tool img {
-    width: 45%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
 }
 
-.tool h2 {
-    color: var(--text);
-    font-size: 27px;
-    direction: rtl;
-    text-align: center;
-    margin-top: 35px;
-}
-
-.tool p {
+.tool h2, .tool p {
     color: var(--text);
     direction: rtl;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .tool a {
-    font-size: 20px;
-    font-weight: 20px;
-    font-family:"Tajawal";
+    font-size: 25px;
+    font-weight: 200;
     text-align: center;
     cursor: pointer;
     background: linear-gradient(90deg, #103191, #106091);
     width: 80%;
-    margin: 10px auto;
-    padding: 14px;
-    border-radius: 25px;
+    margin: 40px auto;
+    padding: 18px;
+    border-radius: 15px;
     color: white;
     transition: all 0.3s ease;
 }
@@ -656,7 +642,7 @@
 
 #student-cards {
     display: flex;
-    width: 88%;
+    width: 90%;
     margin: 10px auto;
     justify-content: space-evenly;
 }
@@ -669,42 +655,32 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--event-card-border);
-    padding: 20px;
-    border-radius: 40px;
+    padding: 30px;
+    border-radius: 20px;
     background-color: var(--section-bg);;
 }
 
 .student-div img {
-    width: 55%;
-    height: 55%;
+    width: 60%;
+    height: 60%;
 }
 
-.student-div h2 {
-    color: var(--text);
-    font-size: 27px;
-    direction: rtl;
-    text-align: center;
-    margin-top: 35px;
-}
-.student-div p {
+.student-div h2, .student-div p {
     color: var(--text);
     direction: rtl;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .student-div a {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 200;
-    font-family:"Tajawal";
     text-align: center;
     cursor: pointer;
     background: linear-gradient(90deg, #103191, #106091);
     width: 80%;
-    margin: 20px auto;
-    padding: 14px;
-    border-radius: 25px;
+    margin: 40px auto;
+    padding: 18px;
+    border-radius: 15px;
     color: white;
     transition: all 0.3s ease;
 }
@@ -726,10 +702,10 @@
 /* Contact with us */
 #contact-us {
     background-color: var(--section-bg);
-    width: 87%;
-    margin: 40px auto;
+    width: 90%;
+    margin: 30px auto;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 30px;
 }
 
 #contict-title-container {
@@ -749,41 +725,36 @@
     text-align: center;
 }
 
-#contict-title-container h3 {
-    padding: 5px;
-    margin: 10px auto 30px auto;
-    font-family:"Tajawal";
-}
-
 #out-information {
     display: flex;
     justify-content: space-between;
     width: 80%;
     margin: 20px auto 40px auto;
     padding-bottom: 80px;
+    
     flex-wrap: wrap;
 }
 
 .member-card {
     border: 2px solid var(--event-card-border);
-    border-radius: 40px;
+    border-radius: 30px;
     width: 25%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5px 30px;
+    padding: 5px 10px;
 }
 
 .member-card img {
-    margin: 20px auto;
-    width: 80%;
-    border-radius: 10px;
+    margin: 10px auto;
+    width: 70%;
+    border-radius: 30px;
 }
 
 .member-card h4 {
     margin: 10px;
-    font-size: 29px;
+    font-size: 30px;
     color: var(--text);
 }
 
@@ -791,7 +762,7 @@
     margin: 5px auto;
     max-width: 90%;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--text);
 }
 
@@ -804,7 +775,6 @@
     color: white;
     cursor: pointer;
     font-size: 20px;
-    font-family:"Tajawal";
     transition: all 0.3s ease-in;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1357,6 +1327,41 @@
 
     }
 }
+/* 1. تنسيق الغلاف الذي يغطي الشاشة بالكامل */
+#loader-wrapper {
+    position: fixed; /* يثبت مكانه فوق كل شيء */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* لون الخلفية (أبيض مثلاً) */
+    z-index: 9999; /* لضمان ظهوره فوق أي عنصر آخر في الموقع */
+    display: flex;
+    justify-content: center; /* توسيط الأيقونة أفقياً */
+    align-items: center; /* توسيط الأيقونة عمودياً */
+    transition: all 0.5s ease-in-out; /* تأثير اختفاء ناعم */
+}
 
+/* 2. تصميم دائرة التحميل نفسها */
+.loader {
+    border: 8px solid #f3f3f3; /* لون الإطار الخارجي الفاتح */
+    border-top: 8px solid #3498db; /* لون الجزء الذي يدور (الأزرق) - غيره كما تحب */
+    border-radius: 50%; /* يجعلها دائرية */
+    width: 60px; /* حجم الدائرة */
+    height: 60px;
+    animation: spin 1s linear infinite; /* أمر التحريك */
+}
+
+/* 3. تعريف حركة الدوران */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 4. كلاس لإخفاء اللودر سنستخدمه بالجافاسكربت لاحقاً */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 /* Contact with us section responsive */
 
