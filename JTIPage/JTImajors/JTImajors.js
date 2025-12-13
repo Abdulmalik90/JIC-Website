@@ -12,8 +12,74 @@ class Majors{
 }
 
 
-const maintenance = new Majors("Industrial machinery maintenance skill", "مهارة صيانة الآلات الصناعية", "build", "الدبلوم المتوسط", 2, "./JTIimages/maintenanceSkill.png", "بنين", [])
-const metalTurning = new Majors("metal turning and shaping skill", "مهارة خراطة وتشكيل المعادن", "dermatology", "الدبلوم المتوسط", 2, "./JTIimages/metalShaping.png", "بنين", [])
+const maintenance = new Majors("Industrial machinery maintenance skill", "مهارة صيانة الآلات الصناعية", "build", "الدبلوم المتوسط", 2, "./JTIimages/maintenanceSkill.png", "بنين", [
+{
+        semester: 1,
+        courses: [
+            ["Introduction to Maintenance", 2, 1, 4, []],
+            ["Industrial Blueprint Reading", 2, 1, 3, []],
+            ["Metal Fabrication", 3, 1, 5, []],
+            ["Machine Elements", 3, 2, 3, []],
+            ["Mechanical Power Transmissions", 3, 1, 4, []],
+            ["Rigging and Hoisting", 3, 1, 4, []],
+            ["English Communication", 3, 3, 0, []],
+            ["Physical Education", 1, 0, 2, []]
+        ]
+},
+    {
+        semester: 2,
+        courses: [
+            ["Hydraulics and Pneu-matics", 2, 1, 3, []],
+            ["Machine Alignment", 2, 1, 3, []],
+            ["Stationary Equipment", 3, 1, 5, []],
+            ["Rotating Equipment", 4, 1, 7, []],
+            ["Prime Movers", 3, 2, 2, []],
+            ["Vibration Analysis", 2, 1, 3, []],
+            ["Technical Report Writing", 3, 3, 0, []],
+            ["Islamic Culture", 2, 2, 0, []]
+        ]
+},
+    {
+        semester: 3, 
+        courses: [
+            ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []]
+        ]
+}
+])
+const metalTurning = new Majors("metal turning and shaping skill", "مهارة خراطة وتشكيل المعادن", "dermatology", "الدبلوم المتوسط", 2, "./JTIimages/metalShaping.png", "بنين", [
+{
+        semester: 1,
+        courses: [
+            ["Mechanical Drawing", 1, 0, 2, []],
+            ["Engineering Materials", 1, 0, 2, []],
+            ["Metrology and Gauging", 2, 1, 2, []],
+            ["General Machining Practices", 3, 1, 5, []],
+            ["Lathe Operations", 5, 1, 9, []],
+            ["Milling Operations", 3, 1, 6, []],
+            ["English Communication", 3, 3, 0, []],
+            ["Physical Education", 1, 0, 2, []]
+        ]
+},
+    {
+        semester: 2,
+        courses: [
+            ["Grinding Operations", 2, 1, 4, []],
+            ["CNC Milling", 3, 1, 6, []],
+            ["CNC Lathe", 3, 1, 4, []],
+            ["Heat Treatment", 2, 1, 2, []],
+            ["Non-Conventional Machining", 3, 1, 4, []],
+            ["Manufacturing Project", 2, 1, 4, []],
+            ["Technical Report Writing", 3, 3, 0, []],
+            ["Islamic Culture", 2, 2, 0, []]
+        ]
+},
+    {
+        semester: 3,
+        courses: [
+            ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []]
+        ]
+}
+])
 const welding = new Majors("Industrial welding skill", "مهارة اللحام الصناعي", "destruction", "الدبلوم متوسط", 2, "./JTIimages/welding.png", "بنين", [])
 const operatingCranes = new Majors("Operating cranes and heavy equipment skill", "مهارة تشغيل الرافعات والمعدات الثقيلة", "precision_manufacturing", "الدبلوم المتوسط", 2, "./JTIimages/operatingCranes.png", "بنين",[])
 const pipeLaying = new Majors("Pipe laying skill", "مهارة تمديد الأنابيب", "valve", "الدبلوم المتوسط", 2, "./JTIimages/pipeLaying.png", "بنين", [])
