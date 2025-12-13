@@ -24,28 +24,25 @@ major_close_modal.addEventListener("click", () => {
     major_modal.classList.remove("show");
 });
 
-// jit preparatory year 
-const preparatoryYearJTI = new Majors("Preparatory Year", "السنة التحضيرية", "book_3", "السنة التحضيرية", 1, "", "بنين وبنات", [
+// jti preparatory year 
+const preparatoryYearJTI = new Majors("Basic Skills", "السنة التحضيرية", "book_3", "السنة التحضيرية", 1, "", "بنين وبنات", [
     {
         semester: 1,
         courses: [
-            ["English I (Reading and writing)", 8, 10, 0, []],
-            ["English I (Listening & Speaking)", 0, 6, 0, []],
-            ["English I (E-Learning)", 0, 0, 2, []],
-            ["English I (ESP)", 0, 3, 0, []],
-            ["Preparatory Math I", 4, 4, 0, []],
-            ["Introduction to Computer", 1, 1, 0, []]
+            ["Technical Drawing", 2, 1, 2, []],
+            ["Introduction to Safety", 2, 2, 0, []],
+            ["Occupational Health and Safety", 4, 4, 0, []],
+            ["Computer Application", 2, 1, 2, []],
+            ["English I", 8, 20, 1, []]
         ]
     },
     {
         semester: 2,
         courses: [
-            ["English II (Reading and writing)", 8, 10, 0, ["English I (Reading and writing)"]],
-            ["English II (Listening & Speaking)", 0, 6, 0, ["English I (Listening & Speaking)"]],
-            ["English II (E-Learning)", 0, 0, 2, ["English II (E-Learning)"]],
-            ["English II (ESP)", 0, 3, 0, ["English II (ESP)"]],
-            ["Preparatory Math II", 4, 4, 0, ["Preparatory Math I"]],
-            ["Study Skills", 1, 1, 0, []]
+            ["Industrial Plant Safety", 4, 3, 2, []],
+            ["Workshop Skills Safety", 3, 2, 2, []],
+            ["Technical Mathematics", 3, 3, 0, []],
+            ["English II", 8, 20, 1, ["English I"]]
         ]
     }
 ] )
