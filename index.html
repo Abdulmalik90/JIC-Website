@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./headerStyle.css?v=1.1">
-    <link rel="stylesheet" href="./responsiveHeaderCss.css?v=1.1">
+    
+    <link rel="stylesheet" href="./headerStyle.css?v=1.2">
+    <link rel="stylesheet" href="./responsiveHeaderCss.css?v=1.2">
+    <link rel="stylesheet" href="style.css?v=1.2">
+    
     <meta name="google-site-verification" content="rywqqtc05o9Tz-IlLdMIwTBcyXxOCAfW0yN9UvgSBCI"/>
     <meta name="msvalidate.01" content="AF34EB602F9C9CDE0C667BB3316E0C79" />
-    <link rel="stylesheet" href="style.css?v=1.1">
     <title>منصة مدخل | الرئيسية</title>
     <meta name="description" content="مبادرة مدخل لطلاب كليات ومعاهد الجبيل الصناعية">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -19,10 +21,13 @@
     <meta name="apple-mobile-web-app-title" content="Portal" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="manifest" href="manifest.json">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="theme-color" content="#0050d5">
 </head>
 <body>
-    <!-- header -->
     <header>
         <div id="logo-div">
             <a href="./index.html" id="logo_image" alt="portal logo"></a>
@@ -80,14 +85,12 @@
         </div>
     </header>
 
-    <!-- Navigation Bar-->
     <nav class="mobile-nav" id="mobileNav">
         <div id="nav-header">
             <button id="dark-button-menu"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
             <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
         </div>
 
-        <!-- Mobile search -->
         <div id="mobile-search">
             <input type="search" placeholder="ابحث في مدخل" id="mobile-search-input">
             <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
@@ -105,7 +108,6 @@
         <a href="./JTIPage/JTI.html"><p>معهد الجبيل التقني</p></a>
     </nav>
 
-    <!-- alert -->
     <div id="noticeModal" class="modal">
         <div class="modal-content">
             <h2>🫡 لازم تعـرف</h2>
@@ -122,7 +124,6 @@
         </div>
     </div>
 
-    <!-- greating -->
     <div id="greating">
         <h1 id="portal-greating">منصـة مَـدخـل</h1>
         <p>😉ما يحتاج تطول بحث وسؤال في القروبات مادام مَدخل بين يديك</p>
@@ -136,7 +137,6 @@
         </div>
     </div>
 
-    <!-- Module choosing a mojor-->
     <div id="modal-container-major" class="modal-container-major">
         <div id="modal-major">
 
@@ -164,7 +164,6 @@
     </div>
 
 
-    <!-- last news -->
     <div id="last-news">
         <div id="last-news-title-container">
             <h1>آخـــر الاخبـــار</h1>
@@ -180,7 +179,6 @@
     </div>
 
 
-    <!-- Calender -->
     <div id="calender-container">
         <div id="calender-title-container">
             <h1 class="subtitle">التقويــم التفـاعلي</h1>
@@ -195,7 +193,6 @@
     </div>
     
 
-    <!-- Tools Library-->
     <div id="tools-cont">
         <div id="tools-header">
             <h1 class="subtitle">مكتبـة الأدوات</h1>
@@ -229,7 +226,6 @@
         </div>
     </div>
 
-    <!-- Student Library-->
     <div id="student-cont">
         <div id="student-header">
             <h1 class="subtitle">مكتبـة الطـالـب</h1>
@@ -263,7 +259,6 @@
         </div>
     </div>
 
-    <!-- Contact with us -->
     <div id="contact-us">
 
         <div id="contict-title-container">
@@ -300,7 +295,6 @@
     </div>
 
 
-    <!-- Footer -->
     <footer>
         <h3 style="font-size: 26px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
         <div id="subsecribe-div">
@@ -324,10 +318,10 @@
     </footer>
     
 </body>
-    <script src="./newsPage/news-data.js"></script>
-    <script src="./eventsCounterPage/events.js"></script>
-    <script src="./script.js"></script>
-    <script src="./search.js"></script>
+    <script src="./newsPage/news-data.js?v=1.2"></script>
+    <script src="./eventsCounterPage/events.js?v=1.2"></script>
+    <script src="./script.js?v=1.2"></script>
+    <script src="./search.js?v=1.2"></script>
     
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="9da46ca7-c7f4-428a-83bc-33d376f9c37b";
@@ -342,9 +336,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("noticeModal");
     const continueBtn = document.getElementById("continueBtn");
 
-    // يظهر أول مرة فقط
     if (!localStorage.getItem("visited")) {
-      modal.style.display = "flex"; // يخليها بالمنتصف تلقائيًا
+        modal.style.display = "flex"; 
     }
 
     continueBtn.addEventListener("click", () => {
@@ -355,12 +348,15 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js")
-    .then(() => console.log("✅ Service Worker Registered"))
-    .catch((err) => console.log("❌ SW registration failed:", err));
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+            // This unregisters the worker, clearing the "messy" cache
+            console.log("⚠️ Unregistering Service Worker to fix cache...");
+            registration.unregister();
+        } 
+    });
 }
 </script>
-<!-- Hello World -->
 
 </html>
