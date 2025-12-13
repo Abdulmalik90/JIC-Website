@@ -1,62 +1,55 @@
 // 1. **مفتاح الكاش الإجباري (Cache Name)**
-// 🚨🚨 هام: قم بتغيير رقم الإصدار (v1.0.0) إلى رقم جديد (مثل v1.0.1) في كل مرة تحدث فيها الموقع.
-// هذا التغيير هو ما يجبر الـ Service Worker على التنصيب مجدداً وحذف الكاش القديم.
-const CACHE_NAME = 'mySiteStaticCache-v2.0.0';
+// 🚨🚨 قم بتغيير رقم الإصدار (v1.0.1) إلى رقم جديد في كل مرة تحدث فيها ملفات CSS/JS الثابتة.
+const CACHE_NAME = 'mySiteStaticCache-v2.0.1';
 
-// قائمة بالملفات الثابتة الأساسية التي يجب تخزينها فوراً عند التنصيب
+// قائمة بالملفات الثابتة التي يجب تخزينها فوراً (App Shell).
+// 💡 تم استبعاد الصفحة الرئيسية وملفات HTML الديناميكية من هذه القائمة.
 const ASSETS_TO_CACHE = [
-    '/', // الصفحة الرئيسية
-    '/index.html',
     '/mainstyle.css',
     '/script.js',
-    '/404.html' // مثال لملف صورة
-    // أضف جميع ملفاتك الأساسية هنا
+    '/404.html' 
+    // أضف ملفات CSS و JS الثابتة فقط هنا
 ];
+
+// اسم الكاش الخاص بالصفحات الديناميكية أو البيانات (اختياري)
+const DYNAMIC_CACHE_NAME = 'mySiteDynamicCache';
 
 // ======================================================================
 // 🛠️ مرحلة التنصيب (Install Event)
 // ======================================================================
-// يتم تشغيل هذا الحدث مرة واحدة عند تسجيل الـ SW لأول مرة أو عند تغيير CACHE_NAME.
 self.addEventListener('install', event => {
-    console.log('[Service Worker] Install Event: New version is installing.');
-    // انتظار الانتهاء من تخزين جميع الملفات الأساسية في الكاش الجديد
+    console.log('[Service Worker] Installing new version.');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                console.log(`[Service Worker] Caching shell assets to ${CACHE_NAME}`);
+                console.log(`[Service Worker] Caching static assets to ${CACHE_NAME}`);
                 return cache.addAll(ASSETS_TO_CACHE);
             })
             .catch(error => {
-                console.error('[Service Worker] Caching failed:', error);
+                console.error('[Service Worker] Static caching failed:', error);
             })
     );
-    // إجبار الـ SW الجديد على الانتقال فوراً إلى مرحلة التفعيل دون انتظار إغلاق الصفحات القديمة (اختياري)
     self.skipWaiting(); 
 });
 
 // ======================================================================
 // 🧹 مرحلة التفعيل (Activate Event) - تنظيف الكاشات القديمة
 // ======================================================================
-// يتم تشغيل هذا الحدث بعد التنصيب بنجاح، ومهمته الأساسية هي إزالة الكاشات القديمة.
 self.addEventListener('activate', event => {
-    console.log('[Service Worker] Activate Event: Cleaning up old caches.');
-    const cacheWhitelist = [CACHE_NAME];
+    console.log('[Service Worker] Activating and cleaning old caches.');
+    const cacheWhitelist = [CACHE_NAME, DYNAMIC_CACHE_NAME]; // حافظ على أسماء الكاشات الحديثة
 
     event.waitUntil(
-        // جلب جميع أسماء الكاشات المخزنة حالياً
         caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames.map(cacheName => {
-                    // إذا كان اسم الكاش لا يطابق اسم الكاش الجديد، فقم بحذفه
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
                         console.log(`[Service Worker] Deleting old cache: ${cacheName}`);
                         return caches.delete(cacheName);
                     }
                 })
             );
-        })
-        // التأكد من أن الـ SW الجديد يسيطر فوراً على جميع الصفحات المفتوحة
-        .then(() => self.clients.claim())
+        }).then(() => self.clients.claim())
     );
 });
 
@@ -64,10 +57,32 @@ self.addEventListener('activate', event => {
 // 🌐 مرحلة الجلب (Fetch Event) - تحديد استراتيجيات الكاش
 // ======================================================================
 self.addEventListener('fetch', event => {
-    // تجاهل الطلبات التي ليست HTTP (مثل chrome-extension://)
-    if (!event.request.url.startsWith('http')) return;
     
-    // استراتيجية للملفات الأساسية (Cache then Network fallback)
+    const requestUrl = new URL(event.request.url);
+
+    // 1. استراتيجية Network First للملفات التي تتحدث باستمرار (مثل HTML)
+    // هذا يضمن أن يتم محاولة جلب أحدث نسخة من الشبكة أولاً
+    if (event.request.mode === 'navigate' || requestUrl.pathname === '/') {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // الرد من الشبكة ناجح، قم بتخزين نسخة احتياطية في الكاش قبل إرجاعها
+                    return caches.open(DYNAMIC_CACHE_NAME).then(cache => {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    });
+                })
+                .catch(() => {
+                    // في حال فشل الاتصال بالشبكة (وضع عدم الاتصال)، أعد آخر نسخة محفوظة
+                    return caches.match(event.request);
+                })
+        );
+        return; // إنهاء معالجة الطلب
+    }
+
+
+    // 2. استراتيجية Cache First للملفات الثابتة (CSS, JS)
+    // هذا يحسن الأداء بجلب الملفات الثابتة فوراً من الكاش
     event.respondWith(
         caches.match(event.request)
             .then(response => {
@@ -77,10 +92,7 @@ self.addEventListener('fetch', event => {
                 }
                 
                 // إذا لم يوجد، اذهب إلى الشبكة
-                return fetch(event.request).catch(error => {
-                    console.error('[Service Worker] Fetch failed; returning offline page if available.', error);
-                    // يمكنك هنا إرجاع صفحة "أنت غير متصل" (Offline Page) إذا كان الطلب للصفحة الرئيسية
-                });
+                return fetch(event.request);
             })
     );
 });
