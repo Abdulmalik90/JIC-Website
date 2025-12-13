@@ -43,7 +43,7 @@
 .news-card {
     background: var(--news-card);
     color: var(--text);
-    border-radius: 12px;
+    border-radius: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -109,10 +109,10 @@
 .read-more-btn {
     width: 100%;
     padding: 12px;
-    background: #007bff;
+    background: #004ea1;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 14px;
     cursor: pointer !important; 
     font-size: 1em;
     transition: all 0.3s ease;

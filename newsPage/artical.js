@@ -12,13 +12,13 @@ class ArticleRenderer {
         console.log('Article ID from storage:', articleId);
         
         if (!articleId) {
-            this.showError('لم يتم العثور على المقال');
+            this.showError('مالقينا اللي تدور عنه, متاكد من الرابط؟');
             return;
         }
 
         // التحقق من وجود الدالة
         if (typeof getNewsArticleById !== 'function') {
-            this.showError('نظام الأخبار غير متاح حالياً');
+            this.showError('نظام الأخبار معلق اللحين');
             return;
         }
 
@@ -27,7 +27,7 @@ class ArticleRenderer {
         console.log('Found article:', this.currentArticle);
         
         if (!this.currentArticle) {
-            this.showError('المقال غير موجود');
+            this.showError('الظاهر ان الخبر انحذف او فيه مشكلة صايرة');
             return;
         }
 
@@ -47,7 +47,7 @@ class ArticleRenderer {
             <div class="article-container">
                 <h1 class="article-title">${this.currentArticle.title}</h1>
                 <div class="article-meta">
-                    <span>كتبه: ${this.currentArticle.author} </span>
+                    <span>بكتـابـة : ${this.currentArticle.author} </span>
                     <span> | </span>
                     <span> ${formattedDate} </span>
                     <span> | </span>
@@ -63,10 +63,10 @@ class ArticleRenderer {
                 </div>
                 <div class="article-actions">
                     <button onclick="window.history.back()" class="back-btn">
-                        ← العودة إلى الأخبار
+                        📰 العودة إلى الأخبار
                     </button>
                     <button onclick="shareArticle()" class="share-btn">
-                        📤 مشاركة
+                        📤 شـارك الخبر
                     </button>
                 </div>
             </div>
@@ -112,11 +112,11 @@ function shareArticle() {
     if (navigator.share) {
         navigator.share({
             title: document.title,
-            text: 'اكتشف هذا الخبر المميز',
+            text: 'شوف هالخبر في منصة مدخل',
             url: window.location.href
         });
     } else {
-        alert('المشاركة غير متاحة في هذا المتصفح. يمكنك نسخ الرابط يدوياً.');
+        alert('المشاركة غير متاحة في هذا المتصفح. لكن تقدر تنسخ الرابط يدوياً.');
     }
 }
 
