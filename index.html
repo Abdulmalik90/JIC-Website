@@ -6,9 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
-    <link rel="stylesheet" href="./headerStyle.css?v=1.2">
-    <link rel="stylesheet" href="./responsiveHeaderCss.css?v=1.2">
-    <link rel="stylesheet" href="./mainStyle.css?v=1.2">
+    <link rel="stylesheet" href="./headerStyle.css?v=2.0">
+    <link rel="stylesheet" href="./responsiveHeaderCss.css?v=2.0">
+    <link rel="stylesheet" href="./mainStyle.css?v=2.0">
     
     <meta name="google-site-verification" content="rywqqtc05o9Tz-IlLdMIwTBcyXxOCAfW0yN9UvgSBCI"/>
     <meta name="msvalidate.01" content="AF34EB602F9C9CDE0C667BB3316E0C79" />
@@ -348,37 +348,17 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for(let registration of registrations) {
-            // This unregisters the worker, clearing the "messy" cache
-            console.log("⚠️ Unregistering Service Worker to fix cache...");
-            registration.unregister();
-        } 
-    });
-}
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            // 💡 ملاحظة: لا تستخدم Cache Busting هنا إذا كنت تستخدم الطريقة رقم 1 (تغيير CACHE_NAME).
+            // إذا واجهت مشاكل، يمكنك إضافته مؤقتاً: /sw.js?v=NEW_VERSION
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('Service Worker registered with scope: ', registration.scope);
+            }).catch(error => {
+                console.log('Service Worker registration failed: ', error);
+            });
+        });
+    }
 </script>
-<script>
-        // الدالة التي تقوم بإنشاء وسم السكربت وتحميله
-        function loadScriptWithCacheBust(url) {
-            // الحصول على ختم الزمن بالمللي ثانية (يتغير في كل تحميل)
-            var cacheBuster = new Date().getTime(); 
-            
-            // إنشاء وسم <script>
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            
-            // إضافة المسار مع Cache Buster
-            // مثال: js/main.js?v=1734091566000
-            script.src = url + '?v=' + cacheBuster;
-            
-            // إضافة الوسم إلى نهاية الجسم (Body)
-            document.body.appendChild(script); 
-        }
 
-        // 🚨 يجب عليك الآن استدعاء الدالة لملفات JavaScript التي تريد تحميلها
-        loadScriptWithCacheBust('js/main.js'); 
-        // إذا كان لديك ملف آخر
-        // loadScriptWithCacheBust('js/other_script.js'); 
-</script>
 </html>
