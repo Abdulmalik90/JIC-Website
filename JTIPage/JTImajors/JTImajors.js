@@ -80,7 +80,37 @@ const metalTurning = new Majors("metal turning and shaping skill", "مهارة �
         ]
 }
 ])
-const welding = new Majors("Industrial welding skill", "مهارة اللحام الصناعي", "destruction", "الدبلوم متوسط", 2, "./JTIimages/welding.png", "بنين", [])
+const welding = new Majors("Industrial welding skill", "مهارة اللحام الصناعي", "destruction", "الدبلوم متوسط", 2, "./JTIimages/welding.png", "بنين", [ 
+{
+        semseter: 1,
+        courses: [
+            ["Symbols for Welding and Blueprint Reading", 1, 0, 2, []],
+            ["Welding Process Technology", 1, 0, 2, []],
+            ["Oxyacetylene Welding and Cutting", 2, 1, 3, []],
+            ["Basic Shielded Metal Arc Welding", 4, 1, 7, []],
+            ["Gas Metal Arc Welding and Flux Cored Arc Welding", 6, 2, 10, []],
+            ["Weldability of Metal", 1, 0, 2, []],
+            ["English Communication", 3, 3, 0, []],
+            ["Physical Education", 1, 0, 2, []]
+        ]
+},
+    {
+        semester: 2,
+        courses: [
+            ["Advanced Shielded Metal Arc Welding", 6, 2, 10, []],
+            ["Welding Inspection and Quality Control", 6, 2, 10, []],
+            ["Project", 2, 1, 3, []],
+            ["Technical Report Writing", 3, 3, 0, []],
+            ["Islamic Culture", 2, 2, 0, []]
+        ]
+},
+    {
+        semester: 3,
+        courses: [
+            ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []],
+        ]
+}
+])
 const operatingCranes = new Majors("Operating cranes and heavy equipment skill", "مهارة تشغيل الرافعات والمعدات الثقيلة", "precision_manufacturing", "الدبلوم المتوسط", 2, "./JTIimages/operatingCranes.png", "بنين",[])
 const pipeLaying = new Majors("Pipe laying skill", "مهارة تمديد الأنابيب", "valve", "الدبلوم المتوسط", 2, "./JTIimages/pipeLaying.png", "بنين", [])
 const industrialElec = new Majors("Industrial electricity skill", "مهارة الكهرباء الصناعية", "dynamic_form", "الدبلوم المتوسط", 2, "./JTIimages/IndustrialElectric.png", "بنين", [])
