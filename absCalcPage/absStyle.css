@@ -3,15 +3,15 @@
     --text: black;
     --abs-part: #eef2f5;
     --abs-input: #d7e0e5;
-    --abs-input-border: #9c9c9c;
+    --abs-input-border: #838383;
 }
 
 [data-theme="dark"] {
     --greating-text: white;
     --text: white;
     --abs-part: #0a0e19;
-    --abs-input: #0e121d;
-    --abs-input-border: #76777a;
+    --abs-input: #111624;
+    --abs-input-border: #949494;
 }
 
 * {
@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
-    border-radius: 30px 30px 15px 15px;
+    border-radius: 25px 25px 15px 15px;
 }
 
 #abs-info label {
@@ -73,22 +73,19 @@
     border: var(--abs-input-border) solid 2px;
     background-color: var(--abs-input);
     width: 100%;
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'tajawal';
     
 }
 
 .info-part {
-    padding: 35px 0;
+    padding: 3%;
     margin-bottom: 20px;
-    width: 40%;
-}
-
-#sub-name-input {
-    border-radius: 15px 15px 30px 15px;
+    width: 87%;
 }
 
 #lectures-count-input {
-    border-radius: 15px 15px 15px 30px;
+    border-radius: 15px 15px 15px 15px;
 }
 
 
@@ -96,19 +93,22 @@
 
 #result-div {
     margin-top: 20px;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
-#result-div h1 {
+#result-div h3 {
     text-align: right;
     padding: 20px 5%;
+    font-family: 'tajawal';
+    font-size: 45px;
+    font-weight: 500;
 }
 
 #abs-result {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
-    border-radius: 30px 30px 15px 15px;
+    border-radius: 25px 25px 15px 15px;
 }
 
 #abs-result label {
@@ -125,34 +125,36 @@
     border: var(--abs-input-border) solid 2px;
     background-color: var(--abs-input);
     width: 100%;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .result-part {
     padding: 15px 0;
-    margin-bottom: 20px;
-    width: 40%;
+    margin-bottom: 15px;
+    width: 39%;
 }
 
 
 #allowed-abs-input, #notallowed-abs-input {
     border-radius: 15px;
+    font-family: 'tajawal';
+    margin: auto ;
 }
 
 #result-button-div {
     width:88%;
     margin: 0 auto 10px auto;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
 }
 
 #result-button {
-    padding: 10px 20px;
+    padding: 12px 22px;
     width: 100%;
-    font-size: 20px;
-    background: linear-gradient(90deg, rgb(0, 145, 255), rgb(60, 60, 60));
+    font-size: 22px;
+    background: linear-gradient(-120deg, #103291, #146394);
     color: white;
     border: none;
-    border-radius: 15px 15px 30px 30px;
+    border-radius: 15px 15px 25px 25px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -174,6 +176,7 @@
     margin-bottom: 40px;
     border-radius: 15px 15px 30px 30px;
     padding: 20px 30px;
+    font-family: 'tajawal';
 }
 
 #how-count h3 {
@@ -293,19 +296,21 @@
 @media (max-width:470px) {
     #result-div .subtitle {
         font-size: 25px ;
+        margin: auto;
     }
 
     .result-part label {
-        font-size: 10px !important;
+        font-size: 12px !important;
     }
 
     .result-part input {
-        font-size: 9px !important;
+        font-size: 10px !important;
     }
 
     #result-button {
-        font-size: 13px;
-        padding: 5px;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 10px 10px 19px 19px;
     }
 }
 
@@ -313,20 +318,20 @@
 
 @media (max-width: 800px) {
     #how-count h3 {
-        font-size: 15px;
+        font-size: 20px;
     }
 
     #how-count p, #how-count b {
-        font-size: 13px;
+        font-size: 15px;
     }
 }
 
 @media (max-width: 500px) {
     #how-count h3 {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     #how-count p, #how-count b {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
