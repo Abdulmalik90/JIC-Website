@@ -35,7 +35,7 @@ const maintenance = new Majors("Industrial Millwright Skills", "مهارة صي�
             ["Rotating Equipment", 4, 1, 7, []],
             ["Prime Movers", 3, 2, 2, []],
             ["Vibration Analysis", 2, 1, 3, []],
-            ["Technical Report Writing" 3, 3, 0, []],
+            ["Technical Report Writing", 3, 3, 0, []],
             ["Islamic Culture", 2, 2, 0, []]
         ]
 },
