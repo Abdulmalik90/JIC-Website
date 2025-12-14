@@ -172,7 +172,7 @@ const pipeLaying = new Majors("Industrial Pipefitting Skills", "مهارة تم�
         semester: 3,
         courses: [
             ["Cooperative Training Program", 4, "15 weeks", "600 Hours", []]
-            ]
+        ]
 }
 ])
 const industrialElec = new Majors("Industrial Electrical Skill", "مهارة الكهرباء الصناعية", "dynamic_form", "الدبلوم المتوسط", 2, "./JTIimages/IndustrialElectric.png", "بنين", [
@@ -250,7 +250,7 @@ const netWork = new Majors("Network Administration Skills", "مهارة إدار
             ["Computer Hardware & Operating System", 2, 1, 4, []],
             ["PC Essentials", 3, 2, 3, []],
             ["Network Technology", 3, 2, 3, []],
-            ["Nerwork Fundamentals", 4, 3, 4, []],
+            ["Network Fundamentals", 4, 3, 4, []],
             ["Network Fundamentals-Integration", 1, 0, 3, []],
             ["English Communication", 3, 3, 0, []],
             ["Islamic Culture", 2, 2, 0, []]
@@ -307,7 +307,8 @@ const industrialOp = new Majors("Process Operation Skills", "مهارات تشغ
         semester: 3, 
         courses: [
             ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []],
-        }
+        ]
+    }
             
 ])
 const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [
@@ -367,6 +368,12 @@ const supportInfo = new Majors("IT Support and Security", "دعم وأمن تق�
         ["Cybersecurity Project", 2, 1, 2, []],
         ["Technical Report Writing", 3, 3, 0, []],
         ["Physical Education", 1, 0, 2, []]
+    ]
+},
+{
+    semester: 3,
+    courses: [
+        ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []]
     ]
 }
 ])
