@@ -44,8 +44,9 @@
 /* GPA Calculation section */
 
 .container {
-    width: fit-content;
-    margin: 30px auto;
+    width: 70%;
+    margin: 30px auto 80px auto;
+    max-width: 1000px;
 }
 
 .gpa-part {
@@ -58,7 +59,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    border-radius: 25px 25px 10px  10px;
+    border-radius: 25px 25px 15px  15px;
     margin-bottom: 10px;
 }
 
@@ -73,16 +74,21 @@
     text-align: right;
     padding: 10px;
     border: var(--gpa-input-border) solid 2px;
+    padding-left: 0px !important;
     background-color: var(--gpa-input);
     width: 100%;
     margin-right: 10px;
     min-width: 180px;
+    font-family: 'tajawal';
 }
 
 #gpa-hours-div, #gpa-div {
     margin: 30px;
     padding-left: 30px;
     padding-right: 30px;
+    padding: 3%;
+    margin-bottom: 20px;
+    width: 40%;
 }
 
 #gpa-hours-div {
@@ -90,7 +96,7 @@
 }
 
 #gpa-hours-div input {
-    border-radius: 10px 10px 30px 10px;
+    border-radius: 10px 25px 13px 10px;
 }
 
 #gpa-div {
@@ -98,14 +104,14 @@
 }
 
 #gpa-div input {
-    border-radius: 10px 10px 10px 30px;
+    border-radius: 20px 13px 10px 25px;
 }
 
 /* ---------------- */
 
 #gpa-current-info {
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 18px;
 }
 
 #sub-container {
@@ -122,12 +128,13 @@
 
 #sub-container input, #sub-container select {
     direction: rtl;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border: var(--gpa-input-border) solid 1px;
     background-color: var(--gpa-input);
     display: block;
     margin-top: 10px;
-    height: 20px;
+    height: 18px;
+    font-family: 'tajawal';
 }
 
 #sub-container select {
@@ -135,15 +142,15 @@
 }
 
 #add-sub-button {
-    margin: 10px auto 10px auto;
-    width: 545px;
+    margin: 10px auto;
+    width: 700px;
     border: #9c9c9c solid 1px;
     background-color: var(--gpa-input);
     padding: 10px;
     font-size: 20px;
     color: #747474;
     cursor: pointer;
-    border-radius: 10px 10px 30px;
+    border-radius: 15px 15px 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -157,11 +164,17 @@
 
 /* ----------------------- */
 
-
+#gpa-result {
+    border-radius: 18px;
+    margin-bottom: 10px;
+}
 
 #gpa-result h1 {
     text-align: right;
-    padding-right: 30px;
+    padding: 20px 5%;
+    font-family: 'tajawal';
+    font-size: 45px;
+    font-weight: 500;
 }
 
 #result-container {
@@ -188,13 +201,13 @@
     margin-right: 10px;
     min-width: 180px;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: 'tajawal';
 }
 
 #gpa-total, #gpa-current {
-    margin: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 5%;
+    width: 40%;
 }
 
 #gpa-total {
@@ -203,7 +216,7 @@
 }
 
 #gpa-total input {
-    border-radius: 10px 30px 10px 10px ;
+    border-radius: 15px 15px 15px 15px ;
 }
 
 #gpa-current {
@@ -213,21 +226,22 @@
 }
 
 #gpa-current input {
-    border-radius: 30px 10px 10px 10px;
+    border-radius: 15px 15px 15px 15px;
 }
 
 
 #show-button-container {
-    width: fit-content;
-    margin: 10px auto;
+    width:95%;
+    margin: 0 auto 10px auto;
+    padding-bottom: 25px;
 }
 
 #show-gpa-button {
-    width: 530px;
-    padding: 20px 10px;
+    padding: 15px 22px;
+    width: 100%;
     text-align: center;
-    border-radius: 10px 10px 20px 20px;
-    font-size: 20px;
+    border-radius: 15px 15px 25px 25px;
+    font-size: 22px;
     color: white;
     border: #747474 solid 1px;
     background: linear-gradient(-120deg, #103291, #1577b4); 
@@ -279,14 +293,14 @@
 
 @media (max-width: 700px) {
     #gpa-sec {
-        width: 90%;
+        width: 89%;
     }
 }
 
     /* Old GPA Information responsive */
 @media (max-width:700px) {
     #gpa-hours-div, #gpa-div {
-        width: 50% !important;
+        width: 40% !important;
     }
 
     #gpa-hours-div {
@@ -309,7 +323,7 @@
 
 @media (max-width: 630px) {
     .gpa-part {
-        width: 90%;
+        width: 89%;
     }
 
     #hours-input, #gpa-input  {
@@ -321,7 +335,6 @@
 @media (max-width: 580px) {
 
     #gpa-old-info {
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -332,11 +345,11 @@
     #hours-input, #gpa-input  {
         min-width: 0 !important;
         width: 90% !important;
-        margin: 5px auto !important;
+        margin: 0px auto !important;
     }
 
     #hours-input, #gpa-input {
-        border-radius: 30px 15px !important;
+        border-radius: 15px 15px !important;
     }
 
     #gpa-old-info div label {
@@ -371,7 +384,7 @@
     }
 
     #hours-part {
-        width: 20% !important;
+        width:20% !important;
     }
 
     #hours-part input {
@@ -382,7 +395,7 @@
 
 @media (max-width: 395px) {
     #sub-container label {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 
@@ -394,7 +407,7 @@
     }
 
     #result-container div {
-        width: 45%;
+        width: 40%;
     }
 
     #gpa-total {
@@ -404,7 +417,7 @@
     #new-total-gpa, #semester-gpa {
         min-width: 0 !important;
         font-size: 15px !important;
-        width: 100% !important;
+        width:100% !important;
         margin: 0 auto !important;
     }
 
@@ -425,7 +438,7 @@
 @media (max-width: 630px) {
 
     #show-button-container{
-        width: 95%;
+        width: 100%;
     }
 
     #show-gpa-button {
