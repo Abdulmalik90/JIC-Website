@@ -82,7 +82,7 @@ const metalTurning = new Majors("Industrial Machining Skills", "مهارة خر�
 ])
 const welding = new Majors("Industrial welding skill", "مهارة اللحام الصناعي", "destruction", "الدبلوم متوسط", 2, "./JTIimages/welding.png", "بنين", [
     {
-        semseter: 1,
+        semester: 1,
         courses: [
             ["Symbols for Welding and Blueprint Reading", 1, 0, 2, []],
             ["Welding Process Technology", 1, 0, 2, []],
@@ -157,7 +157,7 @@ const pipeLaying = new Majors("Industrial Pipefitting Skills", "مهارة تم�
         ]
 },
     {
-        semestre: 2,
+        semester: 2,
         courses: [
             ["Advanced Pipefitting", 5, 2, 7, []],
             ["Pipe Fabrication", 5, 2, 7, []],
@@ -307,6 +307,7 @@ const industrialOp = new Majors("Process Operation Skills", "مهارات تشغ
         semester: 3, 
         courses: [
             ["Cooperative Training Program", 4, "15 Weeks", "600 Hours", []],
+        }
             
 ])
 const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [
