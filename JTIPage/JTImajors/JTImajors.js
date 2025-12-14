@@ -371,7 +371,7 @@ const supportInfo = new Majors("IT Support and Security", "دعم وأمن تق�
 }
 ])
 
-const deplomes = [maintenance, metalTurning, welding, operatingCranes, pipeLaying,
+const deplomes = [maintenance, metalTurning, welding, inct, operatingCranes, pipeLaying,
     industrialElec, netWork, industrialOp, computerDrawing, supportInfo
 ]
 
