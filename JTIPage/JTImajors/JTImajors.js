@@ -209,7 +209,7 @@ const industrialElec = new Majors("Industrial Electrical Skill", "مهارة ا�
         ]
 }
 ])
-const inct = new Majors("Industrial Instrumentation and Control Skills", "مهارات الآلات الدقيقة والتحكم", "./JTIimages/IndustrialElectric.png", "لدبلوم المتوسط", 2, "", "بنين", [
+const inct = new Majors("Industrial Instrumentation and Control Skills", "مهارات الآلات الدقيقة والتحكم", "dynamic_form", "الدبلوم المتوسط", 2, "./JTIimages/IndustrialElectric.png", "بنين", [
     {
         semester: 1, 
         courses: [
