@@ -205,7 +205,7 @@
 
 @media (max-width: 630px) {
     #portal-greating {
-        font-size: 50px;
+        font-size: 45px;
     }
 
     #greating p {
@@ -215,11 +215,11 @@
 
 @media (max-width: 490px) {
     #portal-greating {
-        font-size: 40px;
+        font-size: 45px;
     }
 
     #greating p {
-        font-size: 15px;
+        font-size: 18px;
     }
 }
 
@@ -318,20 +318,20 @@
 
 @media (max-width: 800px) {
     #how-count h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #how-count p, #how-count b {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
 @media (max-width: 500px) {
     #how-count h3 {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     #how-count p, #how-count b {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
