@@ -281,11 +281,11 @@
 
 @media (max-width: 400px) {
     #portal-greating {
-        font-size: 35px;
+        font-size: 45px;
     }
 
     #greating p {
-        font-size: 15px;
+        font-size: 18px;
     }
 }
 
