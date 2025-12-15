@@ -55,8 +55,8 @@ body {
     padding-bottom: 10px;
     text-align: center;
     background-color: var(--buttons);
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
     margin: 20px auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
@@ -65,13 +65,18 @@ body {
 #home-button:hover {
     background: #71b1c1; /* smoother transition */
     transform: translateY(3px) scale(1.02);
+    color: rgb(47, 47, 47);
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+#home-button, #all-pages-container {
+    font-family: 'tajawal';
 }
 
 #all-pages-container {
     display: flex;
     margin: 20px auto;
-    width: 90%;
+    width: 100%;
     max-width: 1100px;
     justify-content: center;
     gap: 5px;
@@ -83,7 +88,7 @@ body {
     border: 1px solid #000000;
     margin: 10px;
     border-radius: 15px;
-    padding: 10px 70px;
+    padding: 10px 30px;
     font-size: 22px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,4 +100,34 @@ body {
     color: rgb(47, 47, 47);
     transform: translateY(3px) scale(1.02);
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1000px) {
+    #portal-greating {
+        font-size: 60px;
+    }
+
+    #greating p {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 630px) {
+    #portal-greating {
+        font-size: 40px;
+    }
+
+    #greating p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 490px) {
+    #portal-greating {
+        font-size: 40px;
+    }
+
+    #greating p {
+        font-size: 18px;
+    }
 }
