@@ -77,9 +77,8 @@ body {
 }
 
 #choosing-page div button, #explain-section-button {
-    font-size: 22px;
-    font-weight: 530;
-    padding: 10px;
+    font-size: 21px;
+    padding: 11px 50px;
     color: white;
     background: var(--greating-buttons);
     border: none;
@@ -330,6 +329,34 @@ input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     .accordion-content-inner {
         padding: 15px;
     }
+
+    #choosing-page div button, #explain-section-button {
+    font-size: 21px;
+    padding: 7px 7px;
+    color: white;
+    background: var(--greating-buttons);
+    border: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    }
+
+    #greating {
+    margin: 190px auto 50px auto;
+    text-align: center;
+    width: 90%;
+    }
+
+    #portal-greating {
+    font-size: 45px;
+    font-weight: 500;
+    color: var(--greating-text);
+    }
+
+    #greating p {
+    font-size: 20px;
+    color: var(--greating-text);
+    }
+
 }
 
     /* Alternating colors for accordion items */
