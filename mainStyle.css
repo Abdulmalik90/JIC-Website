@@ -1044,7 +1044,7 @@
     }
 
     .greating-buttons {
-        font-size: 18px;
+        font-size: 17px;
     }
     
 
@@ -1106,17 +1106,19 @@
 
     /* Greating */
     .greating-buttons {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     /* sliding */
+        /* events */
     .event-post {
-        flex: 0 0 70%;
+        flex: 0 0 90%;
     }
     
     .tool, .student-div {
         flex: 0 0 100%;
     }
+        
 }
 
 @media (max-width: 600px) {
@@ -1132,7 +1134,7 @@
 
     /* slider */
     .tool, .student-div {
-        flex: 0 0 70%;
+        flex: 0 0 80%;
     }
 
     .tool a, .student-div a {
@@ -1140,7 +1142,7 @@
     }
 
     .event-post {
-        flex: 0 0 60%;
+        flex: 0 0 87%;
     }
 
     /* Contact with Us */
@@ -1162,7 +1164,7 @@
 
     /* Greating */
     .greating-buttons {
-        font-size: 10px;
+        font-size: 12px;
         padding: 9px;
     }
 
