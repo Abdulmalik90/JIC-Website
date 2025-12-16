@@ -28,15 +28,15 @@
 #portal-greating {
     text-align: center;
     margin-top: 190px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 500;
-    font-size: 85px;
+    font-size: 65px;
     color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
-    font-size: 30px;
+    font-size: 27px;
     padding: 20px;
     color: var(--greating-text);
 }
@@ -107,6 +107,10 @@
     border-radius: 20px 13px 10px 25px;
 }
 
+#grade-part {
+    
+}
+
 /* ---------------- */
 
 #gpa-current-info {
@@ -117,7 +121,9 @@
 #sub-container {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 10px auto;
 }
 
 #sub-container label {
@@ -138,7 +144,32 @@
 }
 
 #sub-container select {
-    height: 32px !important;
+    
+}
+
+#sub-name-part{
+    width: 33%;
+}
+
+#sub-name-part input {
+    width: 90%;
+    height: 18.35px;
+}
+
+#hours-part {
+    width: 25%;
+    
+}
+
+#hours-part input{
+    width: 90%;
+    margin: 10px auto;
+    height: 18.35px;
+}
+
+#grade-part select {
+    height: 40px;
+    margin: 10px 0 10px auto;
 }
 
 #add-sub-button {
@@ -161,6 +192,8 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border: #000000 solid 2px;
 }
+
+
 
 /* ----------------------- */
 
@@ -259,33 +292,33 @@
 /* Making the page responsive */
 
 /* Greating responsive */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     #portal-greating {
-        font-size: 60px;
+        font-size: 50px;
     }
 
     #greating p {
-        font-size: 25px;
+        font-size: 22px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 670px) {
     #portal-greating {
         font-size: 45px;
     }
 
     #greating p {
-        font-size: 20px;
+        font-size: 17px;
     }
 }
 
 @media (max-width: 400px) {
     #portal-greating {
-        font-size: 45px;
+        font-size: 40px;
     }
 
     #greating p {
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 
@@ -298,7 +331,7 @@
 }
 
     /* Old GPA Information responsive */
-@media (max-width:700px) {
+@media (max-width:800px) {
     #gpa-hours-div, #gpa-div {
         width: 40% !important;
     }
@@ -319,6 +352,10 @@
     #gpa-old-info div label {
         margin-right: 10px;
     }
+
+    #gpa-old-info div label {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 630px) {
@@ -329,6 +366,10 @@
     #hours-input, #gpa-input  {
         min-width: 0 !important;
         width: 90%;
+    }
+
+    #gpa-old-info div label {
+        font-size: 13px;
     }
 }
 
@@ -353,12 +394,46 @@
     }
 
     #gpa-old-info div label {
-        font-size: 13px;
+        font-size: 10px;
     }
 }
 
     /* gpa current informatin responsive */
-@media (max-width: 650px) {
+@media (max-width: 1200px) {
+     #add-button-div {
+        width: 90% !important;
+    }
+    #add-sub-button {
+        width: 100%;
+    }
+
+    #sub-container label {
+        text-align: right;
+        font-size: 15px;
+    }
+    
+    #sub-container div {
+        width: 30%;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    #sub-name-part input, #grade-part select {
+        min-width: 0 !important;
+        width: 90%;
+    }
+
+    #hours-part {
+        width:20% !important;
+    }
+
+    #hours-part input {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 600px) {
     #add-button-div {
         width: 90% !important;
     }
@@ -367,8 +442,8 @@
     }
 
     #sub-container label {
-        text-align: center;
-        font-size: 12px;
+        text-align: right;
+        font-size: 13px;
     }
     
     #sub-container div {
@@ -393,7 +468,7 @@
     }
 }
 
-@media (max-width: 395px) {
+@media (max-width: 420px) {
     #sub-container label {
         font-size: 11px;
     }

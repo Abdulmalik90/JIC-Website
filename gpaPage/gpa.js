@@ -39,7 +39,7 @@ document.getElementById("add-sub-button").addEventListener("click", function() {
         }
         newSelector.appendChild(newOption)
     }
-    newSelector.style = "min-width:200px; height:28px; border-radius:20px 10px 10px 10px;"
+    newSelector.style = "min-width:200px; border-radius:20px 10px 10px 10px;"
     newSelector.setAttribute("required", "")
     gradesDiv.appendChild(newSelector)
     numberOfSub++
