@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>404 - الصفحة غير موجودة</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+  <title>404 - الصفحة غير موجودة | مدخل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #3b82f6; /* أزرق مضيء للدارك مود */
+      --primary-dark: #1748a3; /* لون الهوية */
+      --bg-dark: #0f172a; /* كحلي غامق جداً */
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       height: 100vh;
@@ -15,505 +27,520 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background-color: #f5f7fb;
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(0, 0, 0, 0.02) 0,
-        rgba(0, 0, 0, 0.02) 1px,
-        transparent 1px,
-        transparent 20px
-      );
-      color: #1c1c1c;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       overflow: hidden;
+      /* خلفية شبكية أنيقة */
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
       touch-action: none;
     }
 
-    /* المحتوى الأساسي */
+    /* تأثير إضاءة خلفية */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* === المحتوى الرئيسي === */
     .main-content {
-      transition: opacity 0.3s;
+      transition: all 0.5s ease;
       padding: 20px;
+      z-index: 10;
     }
 
     h1 {
-      font-size: 8rem;
+      font-size: 10rem;
       margin: 0;
-      color:#1748a3;
       font-weight: 800;
       line-height: 1;
+      background: linear-gradient(135deg, #fff 20%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+      letter-spacing: -5px;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      color: var(--text-main);
     }
 
     p {
-      font-size: 1.4rem;
-      margin-top: 10px;
-      color: #333;
-      margin-bottom: 30px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
     }
 
-    /* الأزرار */
+    /* === الأزرار === */
     .actions {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 1.1rem;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 1rem;
       text-decoration: none;
-      transition: 0.3s;
+      transition: all 0.3s ease;
       cursor: pointer;
-      border: none;
       font-family: "Tajawal";
       font-weight: bold;
-      outline: none;
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
     }
 
+    /* زر العودة (Primary) */
     .btn-primary {
-      background-color:#1748a3;
+      background: var(--primary);
       color: white;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     }
-    .btn-primary:hover { background-color: #1a5cd6; }
-
-    .btn-secondary {
-      background-color: transparent;
-      border: 2px solid #1748a3;
-      color: #1748a3;
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
     }
-    .btn-secondary:hover { background-color: #eef4ff; }
 
-    /* واجهة اللعبة */
+    /* زر اللعبة (Glass Style) */
+    .btn-game {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+    .btn-game:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+    .btn-game::before {
+      content: '👾';
+      margin-left: 8px;
+    }
+
+    /* === واجهة اللعبة (Overlay) === */
     #game-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(245, 247, 251, 0.98);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(15px);
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 100;
+      animation: fadeIn 0.3s ease;
     }
 
-    canvas {
-      background: #fff;
-      border: 3px solid #1748a3;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(23, 72, 163, 0.2);
-      max-width: 95%;
-      max-height: 70vh; 
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+    /* رأس اللعبة */
     .game-header {
       display: flex;
       justify-content: space-between;
-      width: 320px;
+      width: 360px;
       max-width: 90%;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       align-items: center;
-      font-weight: bold;
-      color: #1748a3;
+      color: var(--text-main);
+      font-size: 1rem;
     }
-    
-    .stats-container {
-        display: flex;
-        gap: 15px;
-        font-size: 1.1rem;
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      gap: 10px;
     }
+    .stat-box b { color: var(--primary); }
 
     .close-game {
-      background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #777; font-family: "Tajawal";
-    }
-
-    /* رسالة التحدي العائمة */
-    .milestone-msg {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(23, 72, 163, 0.95);
-      color: white;
-      padding: 10px 25px;
-      border-radius: 30px;
-      font-weight: bold;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      color: #fff;
       font-size: 1.2rem;
-      opacity: 0;
-      transition: opacity 0.5s, transform 0.5s;
-      pointer-events: none;
-      z-index: 10;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      white-space: nowrap;
+      cursor: pointer;
+      transition: 0.2s;
     }
-    .milestone-msg.show {
-      opacity: 1;
-      transform: translate(-50%, -60%);
+    .close-game:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+
+    /* الكانفس */
+    canvas {
+      background: #f1f5f9; /* فاتح عشان التباين مع الشعار */
+      border-radius: 16px;
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+      border: 4px solid #1e293b;
+      image-rendering: pixelated;
     }
 
-    /* أزرار التحكم للجوال */
+    /* أزرار التحكم بالموبايل */
     .mobile-controls {
       display: none;
       gap: 20px;
-      margin-top: 20px;
-      width: 320px;
+      margin-top: 25px;
+      width: 360px;
       max-width: 90%;
-      direction: ltr; 
+      direction: ltr;
     }
 
     .control-btn {
       flex: 1;
-      padding: 15px;
-      background: #1748a3;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
       color: white;
-      border-radius: 12px;
-      border: none;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
       font-size: 1.5rem;
-      box-shadow: 0 4px 0 #0f306e;
-      transition: 0.1s;
       cursor: pointer;
+      transition: 0.1s;
     }
-    .control-btn:active { transform: translateY(4px); box-shadow: none; }
+    .control-btn:active { background: var(--primary); transform: scale(0.95); }
 
-    @media (max-width: 1024px) {
-      h1 { font-size: 5rem; }
-      .mobile-controls { display: flex; }
-      canvas { width: 90%; }
+    /* === شاشة الخسارة (Modal) === */
+    #gameOverModal {
+      display: none;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 320px;
+      max-width: 90%;
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 200;
     }
+
+    #gameOverModal h2 { color: #f87171; margin: 0 0 10px 0; font-size: 2rem; }
+    #gameOverModal .final-score { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 10px; }
+    #gameOverModal .high-score-alert { 
+      color: #fbbf24; font-weight: bold; margin-bottom: 25px; 
+      padding: 5px 10px; background: rgba(251, 191, 36, 0.1); 
+      border-radius: 8px; display: inline-block;
+    }
+    
+    .modal-btns { display: flex; flex-direction: column; gap: 12px; }
+    .modal-btns button { width: 100%; border:none; padding: 15px; border-radius: 12px; font-weight:bold; cursor: pointer; font-family:"Tajawal"; }
+    .btn-retry { background: var(--text-main); color: var(--bg-dark); }
+    .btn-home { background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.2) !important; }
+
+    /* تحسينات للجوال */
+    @media (max-width: 768px) {
+      h1 { font-size: 6rem; }
+      .subtitle { font-size: 1.5rem; }
+      .mobile-controls { display: flex; }
+      #gameOverModal { padding: 25px; }
+    }
+
   </style>
 </head>
 <body>
+
   <div class="main-content" id="mainContent">
-    <h1>404</h1>
-    <p>معليش الظاهر صارت مشكلة او ان الصفحة محذوفة !<br>جرب لعبة مدخل المخفية وورينا كم نقطة تقدر تجيب 🏆</p>
+    <h1 style="margin-bottom: 20px;">404</h1>
+    <div class="subtitle">الظاهر الصفحة محذوفة او انتقلت لرابط ثاني !</div>
+    <p>تقدر ترجع للصفحة الرئيسية او تجرب لعبتنا المخفيه 🤭</p>
     
     <div class="actions">
-      <a href="../index.html" class="btn btn-primary">العودة إلى الرئيسية</a>
-      <button onclick="startGame()" class="btn btn-secondary">🎮 العب لعبة</button>
+      <a href="https://juportal.online" class="btn btn-primary">العودة للرئيسية</a>
+      <button onclick="initGame()" class="btn btn-game">العب لعبة مدخل</button>
     </div>
   </div>
 
   <div id="game-overlay">
     <div class="game-header">
-      <div class="stats-container">
-          <span>الزوار: <span id="scoreVal">0</span></span>
-          <span style="color:#e67e22">🏆 الأعلـى: <span id="highScoreVal">0</span></span>
+      <div class="stat-box">
+          <span>🎯 <b id="scoreVal">0</b></span>
+          <span style="border-right:1px solid rgba(255,255,255,0.2); padding-right:10px"></span>
+          <span>⚡ <b id="levelVal">1</b></span>
       </div>
-      <button onclick="stopGame()" class="close-game">✕ خروج</button>
+      <div class="stat-box" style="border-color: rgba(251, 191, 36, 0.3)">
+          <span>🏆 <b id="highScoreVal" style="color:#fbbf24">0</b></span>
+      </div>
+      <button onclick="quitGame()" class="close-game">✕</button>
     </div>
     
-    <div id="milestoneMsg" class="milestone-msg">كفو عليك! تعديت الـ 50.. استمر يابطل 🔥</div>
-
     <canvas id="gameCanvas"></canvas>
     
+    <div id="gameOverModal">
+      <h2 style="font-size: 20px;">👾افا الفيروس طرحك !</h2>
+      <p class="final-score">جمّعت <span id="finalScore" style="color:white; font-weight:bold">0</span> زائر</p>
+      <div class="high-score-alert" id="newRecordMsg" style="display:none">🎉 رقم قياسي جديد!</div>
+      
+      <div class="modal-btns">
+        <button onclick="restartGame()" class="btn-retry">🔄 حاول مرة ثانية</button>
+        <button onclick="window.location.href='https://juportal.online'" class="btn-home">🏠 العودة للمنصة</button>
+      </div>
+    </div>
+
     <div class="mobile-controls">
       <button class="control-btn" id="leftBtn">◀</button>
       <button class="control-btn" id="rightBtn">▶</button>
     </div>
-    <p style="font-size: 0.9rem; margin-top:15px; color:#555">ساعد "مدخل" لتجميع الزوار وتفادي الفيروسات 🫡</p>
+    <p style="font-size: 0.9rem; margin-top:20px; color:#64748b">سـاعد مدخل في تجميع الزوار والاخبار 👨🏻‍💻 وانتبه من الفيروسات ☠️</p>
   </div>
 
   <script>
+    /* === إعدادات الكانفس === */
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
     const overlay = document.getElementById("game-overlay");
     const mainContent = document.getElementById("mainContent");
+    const gameOverModal = document.getElementById("gameOverModal");
+    const newRecordMsg = document.getElementById("newRecordMsg");
+    
     const scoreEl = document.getElementById("scoreVal");
+    const levelEl = document.getElementById("levelVal");
     const highScoreEl = document.getElementById("highScoreVal");
-    const milestoneEl = document.getElementById("milestoneMsg");
-
-    const playerImg = new Image();
-    playerImg.src = './favicon-96x96.png'; // تأكد إن الصورة موجودة
+    const finalScoreEl = document.getElementById("finalScore");
 
     let highScore = localStorage.getItem('madkhal_highscore') || 0;
     highScoreEl.innerText = highScore;
 
-    let width = 320;
-    let height = 450;
-    
-    function resizeCanvas() {
-        if (window.innerWidth < 400) {
-            width = window.innerWidth - 30;
-        } else {
-            width = 350;
-        }
-        canvas.width = width;
-        canvas.height = height;
-    }
-    resizeCanvas();
+    const playerImg = new Image();
+    playerImg.src = 'favicon-96x96.png'; 
 
+    let width, height;
     let gameLoop;
     let isRunning = false;
     let score = 0;
+    let level = 1;
     let frame = 0;
-    let gameSpeed = 3;
-    let particles = []; 
     
-    // متغير عشان نعرف إذا وصل 50
-    let passedMilestone = false;
+    const goodItems = ['📰', '🤓', '👧🏻', '👩🏻', '👷🏻‍♂️', '🙍🏻‍♂️', '👩🏻‍💻'];
+    const badItems = ['👾', '☠️'];
 
-    let madkhal = {
-      x: width / 2 - 25,
-      y: height - 60,
-      w: 50,
-      h: 50,
-      speed: 7
+    let player = {
+      x: 0, y: 0, size: 50, speed: 8, dx: 0
     };
 
-    let drops = [];
-    let leftPressed = false;
-    let rightPressed = false;
+    let items = [];
 
-    function startGame() {
-      mainContent.style.opacity = "0";
-      resizeCanvas();
-      setTimeout(() => {
-        mainContent.style.display = "none";
-        overlay.style.display = "flex";
-        resetGame();
+    /* === تهيئة اللعبة === */
+    function resizeCanvas() {
+        if (window.innerWidth < 450) {
+            width = window.innerWidth - 30;
+            height = window.innerHeight * 0.60; // ارتفاع مناسب للجوال
+        } else {
+            width = 380;
+            height = 550;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        
+        player.y = height - player.size - 10;
+        if(player.x === 0 || player.x > width) player.x = width / 2 - player.size / 2;
+    }
+
+    function initGame() {
+        resizeCanvas();
+        mainContent.style.opacity = "0";
+        mainContent.style.transform = "scale(0.9)";
+        setTimeout(() => {
+            mainContent.style.display = "none";
+            overlay.style.display = "flex";
+            gameOverModal.style.display = "none";
+            resetState();
+            isRunning = true;
+            loop();
+        }, 300);
+    }
+
+    function quitGame() {
+        isRunning = false;
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        setTimeout(() => {
+          mainContent.style.opacity = "1";
+          mainContent.style.transform = "scale(1)";
+        }, 50);
+    }
+
+    function restartGame() {
+        gameOverModal.style.display = "none";
+        resetState();
         isRunning = true;
         loop();
-      }, 300);
     }
 
-    function stopGame() {
-      isRunning = false;
-      cancelAnimationFrame(gameLoop);
-      overlay.style.display = "none";
-      mainContent.style.display = "flex";
-      setTimeout(() => { mainContent.style.opacity = "1"; }, 50);
-      milestoneEl.classList.remove("show"); // إخفاء الرسالة لو كانت طالعة
+    function resetState() {
+        score = 0;
+        level = 1;
+        scoreEl.innerText = 0;
+        levelEl.innerText = 1;
+        items = [];
+        player.x = width / 2 - player.size / 2;
+        frame = 0;
+        newRecordMsg.style.display = "none";
     }
 
-    function resetGame() {
-      score = 0;
-      scoreEl.innerText = "0";
-      drops = [];
-      particles = [];
-      madkhal.x = width / 2 - 25;
-      frame = 0;
-      gameSpeed = 3;
-      passedMilestone = false;
-      milestoneEl.classList.remove("show");
-    }
-
-    function saveHighScore() {
-        if(score > highScore) {
-            highScore = score;
-            localStorage.setItem('madkhal_highscore', highScore);
-            highScoreEl.innerText = highScore;
-        }
-    }
-
-    function spawnDrop() {
-      if(!isRunning) return;
-      let type = Math.random() > 0.3 ? 'good' : 'bad';
-      let size = 18;
-      let dropX = Math.random() * (width - size);
-      
-      // زيادة الصعوبة كل ما زاد السكور
-      let speedVar = (score > 50) ? 3 : 2; 
-
-      drops.push({
-        x: dropX,
-        y: -20,
-        size: size,
-        type: type,
-        speed: Math.random() * speedVar + gameSpeed
-      });
-    }
-
-    function createParticles() {
-        for(let i=0; i<60; i++) {
-            particles.push({
-                x: width/2,
-                y: height/2, // تنفجر من النص
-                vx: (Math.random() - 0.5) * 12,
-                vy: (Math.random() - 0.5) * 12,
-                life: 60, // تعيش فترة أقصر عشان ما تغطي اللعب
-                color: `hsl(${Math.random()*360}, 70%, 50%)`
-            });
-        }
-    }
-
-    function updateParticles() {
-        for(let i=0; i<particles.length; i++) {
-            let p = particles[i];
-            p.x += p.vx;
-            p.y += p.vy;
-            p.life--;
-            p.vy += 0.5; // جاذبية بسيطة
-            if(p.life <= 0) {
-                particles.splice(i, 1);
-                i--;
-            }
-        }
-    }
-
-    function triggerMilestone() {
-        passedMilestone = true;
-        // إظهار الرسالة
-        milestoneEl.classList.add("show");
-        // إطلاق الاحتفال
-        createParticles();
+    /* === منطق اللعب === */
+    function spawnItem() {
+        const isGood = Math.random() > 0.3; 
+        const emojiList = isGood ? goodItems : badItems;
+        const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+        const size = 32;
+        const x = Math.random() * (width - size);
+        const baseSpeed = 3 + (level * 0.6); 
         
-        // إخفاء الرسالة بعد 3 ثواني
-        setTimeout(() => {
-            milestoneEl.classList.remove("show");
-        }, 3000);
+        items.push({
+            x: x, y: -40,
+            emoji: emoji,
+            type: isGood ? 'good' : 'bad',
+            speed: baseSpeed,
+            size: size
+        });
     }
 
     function update() {
-      
-      // منطق الوصول لـ 50
-      if (score >= 50 && !passedMilestone) {
-          triggerMilestone();
-      }
+        if (rightPressed && player.x + player.size < width) player.x += player.speed;
+        if (leftPressed && player.x > 0) player.x -= player.speed;
 
-      if (leftPressed && madkhal.x > 0) madkhal.x -= madkhal.speed;
-      if (rightPressed && madkhal.x + madkhal.w < width) madkhal.x += madkhal.speed;
+        let spawnRate = Math.max(20, 60 - (level * 3));
+        if (frame % spawnRate === 0) spawnItem();
 
-      // تسريع وتيرة نزول العناصر مع الوقت
-      let spawnRate = (score > 60) ? 30 : 40;
-      if (frame % spawnRate === 0) spawnDrop();
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+            item.y += item.speed;
 
-      for (let i = 0; i < drops.length; i++) {
-        let d = drops[i];
-        d.y += d.speed;
+            // كشف التصادم
+            if (
+                item.x < player.x + player.size &&
+                item.x + item.size > player.x &&
+                item.y < player.y + player.size &&
+                item.y + item.size > player.y
+            ) {
+                if (item.type === 'good') {
+                    score++;
+                    scoreEl.innerText = score;
+                    if (score > 0 && score % 50 === 0) {
+                        level++;
+                        levelEl.innerText = level;
+                    }
+                    items.splice(i, 1);
+                    i--;
+                    continue;
+                } else {
+                    gameOver();
+                    return;
+                }
+            }
 
-        // التحقق من التصادم
-        if (
-          d.y + d.size >= madkhal.y && 
-          d.y <= madkhal.y + madkhal.h &&
-          d.x + d.size >= madkhal.x && 
-          d.x <= madkhal.x + madkhal.w
-        ) {
-          if (d.type === 'good') {
-            score++;
-            scoreEl.innerText = score;
-            if(score % 10 === 0) gameSpeed += 0.5;
-            drops.splice(i, 1);
-            i--;
-            continue;
-          } else {
-            gameOver();
-            return;
-          }
+            if (item.y > height) {
+                items.splice(i, 1);
+                i--;
+            }
         }
-
-        if (d.y > height) {
-          drops.splice(i, 1);
-          i--;
-        }
-      }
-      frame++;
+        frame++;
     }
 
     function draw() {
-      ctx.clearRect(0, 0, width, height);
+        ctx.clearRect(0, 0, width, height);
 
-      // رسم الشعار
-      if (playerImg.complete && playerImg.naturalHeight !== 0) {
-        ctx.drawImage(playerImg, madkhal.x, madkhal.y, madkhal.w, madkhal.h);
-      } else {
-        ctx.fillStyle = "#1748a3";
-        ctx.fillRect(madkhal.x, madkhal.y, madkhal.w, madkhal.h);
-      }
-
-      // رسم العناصر
-      for (let d of drops) {
-        if (d.type === 'good') {
-          ctx.beginPath();
-          ctx.arc(d.x + d.size/2, d.y + d.size/2, d.size/2, 0, Math.PI * 2);
-          ctx.fillStyle = "#1748a3";
-          ctx.fill();
+        if (playerImg.complete && playerImg.naturalHeight !== 0) {
+            ctx.drawImage(playerImg, player.x, player.y, player.size, player.size);
         } else {
-          ctx.fillStyle = "#e74c3c";
-          ctx.fillRect(d.x, d.y, d.size, d.size);
-          ctx.strokeStyle = "white";
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(d.x, d.y);
-          ctx.lineTo(d.x + d.size, d.y + d.size);
-          ctx.moveTo(d.x + d.size, d.y);
-          ctx.lineTo(d.x, d.y + d.size);
-          ctx.stroke();
+            ctx.fillStyle = "#1748a3";
+            ctx.fillRect(player.x, player.y, player.size, player.size);
         }
-      }
 
-      // رسم الاحتفال فوق كل شيء
-      for(let p of particles) {
-          ctx.fillStyle = p.color;
-          ctx.fillRect(p.x, p.y, 5, 5);
-      }
+        ctx.font = "30px Arial";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        
+        for (let item of items) {
+            ctx.fillText(item.emoji, item.x, item.y);
+        }
     }
 
     function loop() {
-      if (!isRunning && particles.length === 0) return; 
-      update();
-      if(particles.length > 0) updateParticles();
-      draw();
-      gameLoop = requestAnimationFrame(loop);
+        if (!isRunning) return;
+        update();
+        draw();
+        gameLoop = requestAnimationFrame(loop);
     }
 
     function gameOver() {
-      saveHighScore();
-      isRunning = false;
-      ctx.fillStyle = "rgba(231, 76, 60, 0.95)";
-      ctx.fillRect(20, height/2 - 60, width - 40, 120);
-      
-      ctx.fillStyle = "#fff";
-      ctx.font = "bold 22px Tajawal";
-      ctx.textAlign = "center";
-      ctx.fillText("دخل فيروس للمنصة! 👾", width/2, height/2 - 15);
-      
-      ctx.font = "18px Tajawal";
-      ctx.fillText("جبت: " + score, width/2, height/2 + 20);
-      
-      ctx.font = "14px Tajawal";
-      if(score >= highScore && score > 0) {
-          ctx.fillText("🎉 رقم قياسي جديد!", width/2, height/2 + 45);
-      } else {
-          ctx.fillText("أعلى رقم: " + highScore, width/2, height/2 + 45);
-      }
+        isRunning = false;
+        finalScoreEl.innerText = score;
+        
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('madkhal_highscore', highScore);
+            highScoreEl.innerText = highScore;
+            newRecordMsg.style.display = "inline-block";
+        } else {
+            newRecordMsg.style.display = "none";
+        }
 
-      canvas.onclick = () => {
-        canvas.onclick = null;
-        resetGame();
-        isRunning = true;
-        loop();
-      };
+        gameOverModal.style.display = "block";
     }
 
-    const setDir = (dir, val) => {
-        if(dir === 'left') leftPressed = val;
-        if(dir === 'right') rightPressed = val;
-    };
+    /* === التحكم === */
+    let leftPressed = false;
+    let rightPressed = false;
+
+    function handleInput(btn, dir) {
+        const start = (e) => { 
+            if(e.cancelable) e.preventDefault(); 
+            if(dir === 'l') leftPressed = true; else rightPressed = true; 
+        };
+        const end = (e) => { 
+            if(e.cancelable) e.preventDefault(); 
+            if(dir === 'l') leftPressed = false; else rightPressed = false; 
+        };
+
+        btn.addEventListener("touchstart", start, {passive: false});
+        btn.addEventListener("touchend", end);
+        btn.addEventListener("mousedown", start);
+        btn.addEventListener("mouseup", end);
+        btn.addEventListener("mouseleave", end);
+    }
 
     const lBtn = document.getElementById("leftBtn");
     const rBtn = document.getElementById("rightBtn");
 
-    const handleInput = (btn, dir) => {
-        btn.addEventListener("touchstart", (e) => { e.preventDefault(); setDir(dir, true); });
-        btn.addEventListener("touchend", (e) => { e.preventDefault(); setDir(dir, false); });
-        btn.addEventListener("mousedown", () => setDir(dir, true));
-        btn.addEventListener("mouseup", () => setDir(dir, false));
-    };
+    handleInput(lBtn, 'l');
+    handleInput(rBtn, 'r');
 
-    handleInput(lBtn, 'left');
-    handleInput(rBtn, 'right');
-
-    document.addEventListener("keydown", e => {
-      if(e.key === "ArrowLeft") leftPressed = true;
-      if(e.key === "ArrowRight") rightPressed = true;
-    });
-    document.addEventListener("keyup", e => {
-      if(e.key === "ArrowLeft") leftPressed = false;
-      if(e.key === "ArrowRight") rightPressed = false;
+    document.addEventListener("keydown", (e) => {
+        if(e.key === "ArrowLeft") leftPressed = true;
+        if(e.key === "ArrowRight") rightPressed = true;
     });
 
-    window.addEventListener('resize', resizeCanvas);
+    document.addEventListener("keyup", (e) => {
+        if(e.key === "ArrowLeft") leftPressed = false;
+        if(e.key === "ArrowRight") rightPressed = false;
+    });
+
+    window.addEventListener('resize', () => {
+        if(isRunning) resizeCanvas();
+    });
 
   </script>
 </body>
-
 </html>
