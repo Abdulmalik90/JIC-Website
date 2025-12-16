@@ -162,7 +162,7 @@ function displaySubjectInTable(subject) {
                 cell.innerHTML = `
                     <strong>${subject.name}</strong><br>
                     <small>${subject.code}</small><br>
-                    <small>teacher:${subject.teacher}</small>
+                    <small>${subject.teacher}</small>
                 `;
             }
         });
@@ -211,7 +211,7 @@ document.getElementById("add-button").addEventListener("click", ()=>{
         document.body.style.overflow = 'auto';
     } else {
         
-        alert("الرجاء اختيار واحدة من الأيام")
+        alert("يبدو لي انك ماحددت الوقت زين")
     }
 })
 
@@ -229,7 +229,7 @@ document.getElementById("clear-table-button").addEventListener("click", ()=>{
         cell.innerHTML = "";
         cell.style.backgroundColor = "rgb(174, 174, 174)";
     });
-    alert("تم حذف الجدول بالكامل!");
+    alert("ابشرك! انحذف الجدول بالكامل");
 });
 
 
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         subjectsList.innerHTML = "";
         const subs = JSON.parse(localStorage.getItem("subjects")) || [];
         if (subs.length === 0) {
-            subjectsList.innerHTML = `<p style="text-align:center;">لا توجد مواد محفوظة</p>`;
+            subjectsList.innerHTML = `<p style="text-align:center;">مافيه مواد عشان تحذفها اصلاً</p>`;
             return;
         }
 
