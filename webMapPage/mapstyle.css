@@ -28,7 +28,6 @@ body {
 #portal-greating {
     text-align: center;
     margin-top: 190px;
-    margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
     color: var(--greating-text);
@@ -44,33 +43,7 @@ body {
 /* Map Container */
 #map-container {
     width: 90%;
-    margin: 100px auto 200px auto;
-}
-
-#home-button {
-    width: 90%;
-    max-width: 1000px;
-    font-size: 22px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    background-color: var(--buttons);
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 15px;
-    margin: 20px auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-}
-
-#home-button:hover {
-    background: #71b1c1; /* smoother transition */
-    transform: translateY(3px) scale(1.02);
-    color: rgb(47, 47, 47);
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-}
-
-#home-button, #all-pages-container {
-    font-family: 'tajawal';
+    margin: 20px auto 100px auto;
 }
 
 #all-pages-container {
