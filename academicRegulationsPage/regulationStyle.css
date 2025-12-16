@@ -2,7 +2,7 @@
     --greating-text:#222222;
     --text: rgb(15, 15, 15);
     --Raed: #ffffff;
-    --greating-buttons: linear-gradient(70deg, #103591, #497f91);
+    --greating-buttons: linear-gradient(-120deg, #103291, #146394);
     --section-bg: #eef2f5;
     --doc-buttons: rgb(35, 61, 78);
     --accordion-item1: #eef4ff;
@@ -14,7 +14,7 @@
     --greating-text:white;
     --text: white;
     --Raed: #ffffff;
-    --greating-buttons: linear-gradient(70deg, #103591, #497f91);
+    --greating-buttons: linear-gradient(-120deg, #103291, #146394);
     --section-bg: #0a0e19;
     --doc-buttons: #181c26;
     --accordion-item1: #141822;
@@ -93,10 +93,9 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-#jic-bacholar {border-radius: 30px 15px 15px;}
-#jti-deplome {border-radius: 15px;}
-#jic-deplome {border-radius: 15px 15px 30px;}
-#explain-section-button {border-radius: 15px 30px;}
+#jic-bacholar {border-radius:25px 17px 25px 17px;}
+#jic-deplome {border-radius: 17px 27px 27px;}
+#explain-section-button {border-radius: 17px 17px 27px;}
 
 /* Formal Documents */
 #gen-doc-container {
@@ -155,6 +154,10 @@ body {
 
 #gen-files-container button span {
     margin-left: 5px;
+}
+
+#Icon {
+    color: #eef4ff;
 }
 
 /* General Documents */
@@ -419,7 +422,7 @@ input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     }
 
     #choosing-page div button, #explain-section-button {
-    font-size: 15px;
+    font-size: 14px;
     padding:6px 6px;
     color: white;
     background: var(--greating-buttons);
