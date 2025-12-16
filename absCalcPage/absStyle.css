@@ -26,15 +26,15 @@
 #portal-greating {
     text-align: center;
     margin-top: 190px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 500;
-    font-size: 80px;
+    font-size: 65px;
     color: var(--greating-text);
 }
 
 #greating p {
     text-align: center;
-    font-size: 30px;
+    font-size: 27px;
     padding: 20px;
     color: var(--greating-text);
 }
@@ -272,6 +272,17 @@
     .result-part input {
         font-size: 15px !important;
     }
+
+    #portal-greating {
+    font-size: 50px;
+    font-weight: 500;
+    color: var(--greating-text);
+    }
+
+    #greating p {
+    font-size: 22px;
+    color: var(--greating-text);
+    }
 }
 
 @media (max-width: 700px) {
@@ -311,6 +322,17 @@
         font-size: 14px;
         padding: 10px;
         border-radius: 10px 10px 19px 19px;
+    }
+
+    #portal-greating {
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--greating-text);
+    }
+
+    #greating p {
+    font-size: 18px;
+    color: var(--greating-text);
     }
 }
 
