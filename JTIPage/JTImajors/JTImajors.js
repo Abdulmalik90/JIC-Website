@@ -311,30 +311,28 @@ const industrialOp = new Majors("Process Operation Skills", "مهارات تشغ
     }
             
 ])
-const computerDrawing = new Majors("Computer drawing and design skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [
+const computerDrawing = new Majors("Computer Aided Drafting & Design Skills", "مهارة الرسم والتصميم بالحاسب الآلي", "draw", "الدبلوم المتوسط", 2, "./JTIimages/computerDrawing.png", "بنين وبنات", [
     {
     semester: 1,
     courses: [
-        ["Advanced Computer Applications", 3, 2, 3, []],
-        ["Operating System", 3, 2, 3, []],
-        ["Cybersecurity Essentials", 2, 1, 2, []],
-        ["Introduction to IoT", 2, 1, 2, []],
-        ["Hardware Fundamentals", 3, 2, 3, []],
-        ["Networking Essentials", 3, 2, 3, []],
+        ["AutoCAD 2D and 3D", 5, 2, 7, []],
+        ["Microstation 2D and 3D", 5, 2, 7, []],
+        ["Industrial Drafting Process", 3, 1, 5, []],
+        ["Solid Works", 2, 1, 2, []],
+        ["3D Max", 2, 1, 2 ,[]],
         ["English Communication", 3, 3, 0, []],
-        ["Islamic Culture", 2, 2, 0, []]
+        ["Physical Education", 1, 0, 2, []]
     ]
 },
 {
     semester: 2,
     courses: [
-        ["IoT Applications", 3, 2, 2, []],
-        ["Hardware and Soft Troubleshooting", 3, 2, 3, []],
-        ["Network Security", 4, 2, 4, []],
-        ["Cybersecurity Programming Tools", 4, 3, 3, []],
-        ["Cybersecurity Project", 2, 1, 2, []],
-        ["Technical Report Writing", 3, 3, 0, []],
-        ["Physical Education", 1, 0, 2, []]
+        ["Mechanical CADD Applications", 5, 2, 7, []],
+        ["Archirectural CADD Applications", 5, 2, 7, []],
+        ["Smart Plant P&ID", 5, 2, 7, []],
+        ["Project", 1, 0, 3, []],
+        ["Technical Report Writing", 3, 0, 3, []],
+        ["Islamic Culture", 2, 2, 0, []]
     ]
 },
 {
