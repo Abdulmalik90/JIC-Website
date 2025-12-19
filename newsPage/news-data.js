@@ -235,7 +235,7 @@ const newsData = [
                  الاطلاع على ملف خطة التسكين الرسمية
                 </a>
         `,
-        image: "https://i.postimg.cc/NFBmrYRh/aʿlan-mdkhl-2026.png",
+        image: "https://i.postimg.cc/SxqnPTPd/photo-5915583621177740085-y.jpg",
         date: "2025-12-19T21:00:00",
         author: "رائـد الزهـراني",
         category: "السكن الطلابي"
