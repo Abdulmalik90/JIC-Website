@@ -216,6 +216,30 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "منصـة مدخـل"
     },
+    {
+        id: 10,
+        title: "📄 الاعلان عن الخطة الزمنية لاسكان طلاب كلية ومعهد الجبيل التقني ",
+        content: `
+            <p style="direction: rtl;">
+              
+📌 الخطة الزمنية لاسكان طلاب الكلية والمعهد التقني للفصل الدراسي 472
+
+⏳يبدا التجديد غداً الخميس 18 ديسمبر .
+
+🗓️ تمت اضافة جميع احداث الخطة الزمنية للتقويم التفاعلي بصفحة منصة مدخل الرئيسية 
+            </p>
+                <a href="https://juportal.online" target="_blank" style="padding: 10px; background-color: #004792ff; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                  👀 شيك التقويم التفاعلي
+                </a>
+                <a href="https://t.me/JuPortalsa/257" target="_blank" style="padding: 10px; background-color: #004792ff; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
+                 الاطلاع على ملف خطة التسكين الرسمية
+                </a>
+        `,
+        image: "https://i.postimg.cc/NFBmrYRh/aʿlan-mdkhl-2026.png",
+        date: "2025-12-19T21:00:00",
+        author: "رائـد الزهـراني",
+        category: "السكن الطلابي"
+    },
 ];
 
 // دالة للحصول على خبر بواسطة ID
