@@ -9,9 +9,190 @@
     <link rel="stylesheet" href="../headerStyle.css">
     <link rel="stylesheet" href="../responsiveHeaderCss.css">
     <title>مدخل معهد الجبيل التقني</title>
+    <style>
+        /* ريست بسيط */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            /* عشان نمنع السكرول والنافذة طالعة */
+            overflow: hidden; 
+            height: 100vh;
+        }
+
+        /* هذا الـ Overlay اللي يغطي الشاشة كلها */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* لون اسود شفاف */
+            backdrop-filter: blur(10px); /* هنا سحر البلور */
+            -webkit-backdrop-filter: blur(10px); /* عشان متصفحات سفاري */
+            z-index: 9999; /* عشان يكون فوق كل شي */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        /* هذا البوكس الأبيض (النافذة المنبثقة) */
+        .login-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .login-card h2 { margin-bottom: 15px; color: #333; }
+        .login-card p { margin-bottom: 20px; color: #666; font-size: 0.9rem; }
+
+        /* تنسيق الحقول */
+        .input-group2 { margin-bottom: 15px; }
+        
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="password"]:focus { border-color: #007bff; }
+
+        
+        button:hover { background: #0056b3; }
+
+        .error-msg {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none; /* مخفي افتراضياً */
+        }
+
+        /* حركة ظهور البوكس */
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* محتوى الصفحة الأصلي (مثال) */
+        .main-content {
+            padding: 50px;
+            text-align: center;
+            background: #f9f9f9;
+            min-height: 100vh;
+        }
+        /* تنسيق يخلي الأزرار جنب بعض */
+        .buttons-row {
+    display: flex;
+    gap: 10px; /* مسافة بينهم */
+    margin-top: 15px;
+}
+
+/* تنسيق عام للأزرار عشان نضمن الشكل */
+        .buttons-row button {
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* الزر الأساسي (دخول) */
+        .btn-primary {
+    background: linear-gradient(-120deg, #096951, #149094);
+    color: white;
+    flex: 1; /* ياخذ مساحة أكبر شوي */
+}
+.btn-primary:hover { background: #0056b3; }
+
+/* الزر الثانوي (رجوع) */
+.btn-secondary {
+    background: linear-gradient(-120deg, #103291, #146394);
+    color: #ffffff;
+    flex: 2; /* أصغر شوي */
+}
+.btn-secondary:hover { background: #d3d9df; }
+    </style>
 </head>
 <body>
-    <!-- header -->
+    <div id="lock-screen">
+        <div class="login-card">
+            <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
+            <h2>استبدلنا الصفحة</h2>
+            <p>استغنينا عن الصفحة وصارت الرئيسية هي دليلك 🙏</p>
+            <p style="margin-top: -13px;">اذا ودك تشوف الصفحة الرمز " 12345 " حياك</p>
+
+            <div class="input-group2">
+                <input type="password" id="passInput" placeholder="أدخل الرمز هنا...">
+            </div>
+            
+            <div class="buttons-row">
+                 <button onclick="unlockPage()" class="btn-primary">دخول</button>
+                 <button onclick="goBack()" class="btn-secondary">الرئيسية</button>
+            </div>
+
+            <p id="errorText" class="error-msg">الرمز خطأ، حاول مرة ثانية!</p>
+        </div>
+    </div>
+ <script>
+       function unlockPage() {
+            const pass = document.getElementById('passInput').value;
+            const lockScreen = document.getElementById('lock-screen');
+            const errorText = document.getElementById('errorText');
+
+            // حط الباسوورد حقك هنا
+            if (pass === '12345') {
+                // نخفي القفل
+                lockScreen.style.opacity = '0';
+                
+                // نرجع السكرول للصفحة عشان يقدر ينزل ويطلع
+                document.body.style.overflow = 'auto';
+
+                // نشيل العنصر تماماً من الصفحة بعد ما يختفي الأنيميشن
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                }, 500);
+            } else {
+                // لو غلط
+                errorText.style.display = 'block';
+                // حركة اهتزاز بسيطة للحقل (اختياري)
+                document.querySelector('.login-card').style.animation = 'none';
+                setTimeout(() => {
+                    document.querySelector('.login-card').style.animation = 'shake 0.3s';
+                }, 10);
+            }
+        }
+
+        // عشان يضغط انتر بدل ما يضغط الزر
+        document.getElementById('passInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                unlockPage();
+            }
+        });
+        function goBack() {
+    // غير الرابط هذا لرابط صفحتك الرئيسية
+    window.location.href = '../index.html'; 
+}
+    </script>
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
     <header>
         <div id="logo-div">
             <a href=".././index.html" id="logo_image" alt="portal logo"></a>
@@ -24,16 +205,16 @@
                 <div class="dropdown_menu">
                     <ul>
                         <li>مكتبة الأدوات</li>
-                        <li><a href="./absCalcPage/abs.html">حساب الغيابات</a></li>
-                        <li><a href="./gpaPage/gpa.html">حساب المعدل</a></li>
-                        <li><a href="./createSchedulePage/schedule.html">صمـم جدولك</a></li>
+                        <li><a href="../absCalcPage/abs.html">حساب الغيابات</a></li>
+                        <li><a href="../gpaPage/gpa.html">حساب المعدل</a></li>
+                        <li><a href="../createSchedulePage/schedule.html">صمـم جدولك</a></li>
                     </ul>
     
                     <ul>
                         <li>مكتبة الطالب</li>
-                        <li><a href="./academicRegulationsPage/regulations.html#">المستندات الرسمية</a></li>
-                        <li><a href="./academicRegulationsPage/regulations.html#">المستندات المفيدة</a></li>
-                        <li><a href="./academicRegulationsPage/regulations.html#">الأسئلة الشائعة</a></li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">المستندات الرسمية</a></li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">المستندات المفيدة</a></li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">الأسئلة الشائعة</a></li>
                     </ul>
     
                     <ul>
@@ -43,8 +224,8 @@
                     </ul>
                 </div>
             </div>
-            <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
-            <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
+            <a href="../webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+            <a href="../newsPage/news.html"><p>مدونة الأخبار</p></a>
         </div>
 
 
@@ -82,12 +263,12 @@
                 <ul></ul>
             </div>
         </div>
-        <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
-        <a href="./createSchedulePage/schedule.html"><p>صمم جدولك</p></a>
-        <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
-        <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
-        <a href="./academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
-        <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+        <a href="../newsPage/news.html"><p>مدونة الأخبار</p></a>
+        <a href="../createSchedulePage/schedule.html"><p>صمم جدولك</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        <a href="../academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
+        <a href="../webMapPage/webMap.html"><p>خريطة الموقع</p></a>
         <a href="https://t.me/newsjuc"><p>اخبار الكلية والمعهد بالتليجرام</p></a>
         <a href="https://x.com/i/communities/1823043306739110132"><p>مجتمع طـلاب الكلية عبر تويتر</p></a>
     </nav>
