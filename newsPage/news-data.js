@@ -241,7 +241,7 @@ const newsData = [
         category: "السكن الطلابي"
     },
     {
-        id: 10,
+        id: 11,
         title: "📢 تلبيةً لاحتياجات الطلاب: مكتبة كلية الجبيل الصناعية تعلن عن تمديد ساعات العمل ",
         content: `
             <p style="direction: rtl;">
@@ -266,7 +266,7 @@ const newsData = [
         image: "https://i.postimg.cc/FF7DdrNY/Whats-App-Image-2025-12-08-at-11-36-46-PM.jpg",
         date: "2025-12-22T06:00:00",
         author: "رائـد الزهـراني",
-        category: "السكن الطلابي"
+        category: "مكتبة الكلية"
     },
 ];
 
