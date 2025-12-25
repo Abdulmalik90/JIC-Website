@@ -92,22 +92,15 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* محتوى الصفحة الأصلي (مثال) */
-        .main-content {
-            padding: 50px;
-            text-align: center;
-            background: #f9f9f9;
-            min-height: 100vh;
-        }
         /* تنسيق يخلي الأزرار جنب بعض */
-        .buttons-row {
+    .buttons-row {
     display: flex;
     gap: 10px; /* مسافة بينهم */
     margin-top: 15px;
 }
 
 /* تنسيق عام للأزرار عشان نضمن الشكل */
-        .buttons-row button {
+    .buttons-row button {
     padding: 12px;
     border: none;
     border-radius: 15px;
@@ -118,7 +111,7 @@
 }
 
 /* الزر الأساسي (دخول) */
-        .btn-primary {
+    .btn-primary {
     background: linear-gradient(-120deg, #096951, #149094);
     color: white;
     flex: 1; /* ياخذ مساحة أكبر شوي */
