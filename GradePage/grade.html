@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./Gradestyle.css">
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../responsiveHeaderCss.css">
+    <title>حاسبة الدرجات</title>
+</head>
+<body>
+    <header>
+        <div id="logo-div">
+            <a href="../index.html" id="logo_image" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <div class="dropdown-wrapper">
+                <p id="#pages-a">الصفحات <span class="material-symbols-outlined">arrow_drop_down</span></p>
+                <div class="dropdown_menu">
+                    <ul>
+                        <li>مكتبة الأدوات</li>
+                        <li><a href="../absCalcPage/abs.html">حساب الغيابات</a></li>
+                        <li><a href="../gpaPage/gpa.html">حساب المعدل</a></li>
+                        <li><a href="../createSchedulePage/schedule.html">صمـم جدولك</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>مكتبة الطالب</li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">المستندات الرسمية</a></li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">المستندات المفيدة</a></li>
+                        <li><a href="../academicRegulationsPage/regulations.html#">الأسئلة الشائعة</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>قنوات الاخبار</li>
+                        <li><a href="https://t.me/newsjuc">اخبار الكلية والمعهد بالتليجرام</a></li>
+                        <li><a href="https://x.com/juportall">اخبار منصة مدخل بتويتر</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+            <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
+        </div>
+
+
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                
+                <input type="search" name="" id="search-input" placeholder="ابحث في مدخل">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="dark-div">
+            <button  id="dark-button"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div id="nav-header">
+            <button id="dark-button-menu"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+            <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+        </div>
+
+        <div id="mobile-search">
+            <input type="search" placeholder="ابحث في مدخل" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+        <a href="../newsPage/news.html"><p>مدونة الأخبار</p></a>
+        <a href="../createSchedulePage/schedule.html"><p>صمم جدولك</p></a>
+        <a href="../absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="../gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        <a href="../academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
+        <a href="../webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+        <a href="https://t.me/newsjuc"><p>اخبار الكلية والمعهد بالتليجرام</p></a>
+        <a href="https://x.com/i/communities/1823043306739110132"><p>مجتمع طـلاب الكلية عبر تويتر</p></a>
+    </nav>
+    <div id="lock-screen">
+        <div class="login-card">
+            <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
+            <h2> تحت الانشاء</h2>
+            <p>الصفحة تحت الانشاء للحين , تعال بعدين🙏</p>
+            <p style="margin-top: -13px;">تقدر تشيك عليها اذا عندك الباس</p>
+
+            <div class="input-group2">
+                <input type="password" id="passInput" placeholder="أدخل الرمز هنا...">
+            </div>
+            
+            <div class="buttons-row">
+                 <button onclick="unlockPage()" class="btn-primary">دخول</button>
+                 <button onclick="goBack()" class="btn-secondary">الرئيسية</button>
+            </div>
+
+            <p id="errorText" class="error-msg">الرمز خطأ، حاول مرة ثانية!</p>
+        </div>
+    </div>
+ <script>
+       function unlockPage() {
+            const pass = document.getElementById('passInput').value;
+            const lockScreen = document.getElementById('lock-screen');
+            const errorText = document.getElementById('errorText');
+
+            // حط الباسوورد حقك هنا
+            if (pass === '12345') {
+                // نخفي القفل
+                lockScreen.style.opacity = '0';
+                
+                // نرجع السكرول للصفحة عشان يقدر ينزل ويطلع
+                document.body.style.overflow = 'auto';
+
+                // نشيل العنصر تماماً من الصفحة بعد ما يختفي الأنيميشن
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                }, 500);
+            } else {
+                // لو غلط
+                errorText.style.display = 'block';
+                // حركة اهتزاز بسيطة للحقل (اختياري)
+                document.querySelector('.login-card').style.animation = 'none';
+                setTimeout(() => {
+                    document.querySelector('.login-card').style.animation = 'shake 0.3s';
+                }, 10);
+            }
+        }
+
+        // عشان يضغط انتر بدل ما يضغط الزر
+        document.getElementById('passInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                unlockPage();
+            }
+        });
+        function goBack() {
+    // غير الرابط هذا لرابط صفحتك الرئيسية
+    window.location.href = '../index.html'; 
+}
+    </script>
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+<!-- greating -->
+    <div id="greating">
+        <h1 id="portal-greating">حاسبــة الدرجــات</h1>
+        <p>احسب معدلك التراكمي والفصلي بسهولة مع منصة مَدخل</p>
+    </div>
+
+<main class="main-content">
+        <div class="container">
+
+        <div class="input-card">
+            <div class="input-group">
+                <label for="studentMark">درجتك المكتوبة</label>
+                <input type="number" id="studentMark" placeholder="مثلاً: 18">
+            </div>
+
+            <div class="input-group">
+                <label for="examTotal">الدرجة الكلية للاختبار</label>
+                <input type="number" id="examTotal" placeholder="مثلاً: 20">
+            </div>
+
+            <div class="input-group">
+                <label for="realWeight">الوزن الفعلي (بالخطة)</label>
+                <input type="number" id="realWeight" placeholder="مثلاً: 5">
+            </div>
+        </div>
+
+        <div class="result-card" id="resultCard" style="display: none;">
+            <h3>النتيجة</h3>
+            <div class="result-box">
+                <span class="value" id="finalResult">0.00</span>
+                <span class="label">درجتك المحولة</span>
+                
+            </div>
+        </div>
+
+        <button class="action-btn" onclick="calculateWeight()">احسب الدرجة</button>
+
+        <div class="disclaimer">
+            <p>درجتك الحالية و المجموع الحالي هما الدرجات المراد التحويل منهم , الوزن الفعلي هو المجموع الصحيح</p>
+        </div>
+    </div>
+</main>
+       <!-- Footer -->
+    <footer>
+        <h3 style="font-size: 30px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
+        <div id="subsecribe-div">
+            <h3>المشاركة ماراح تاخذ منك اكثر من دقيقتين!<span class="material-symbols-outlined">description</span></h3>
+            <a href="https://forms.office.com/r/CsBDhj3mQ9">شارك في الاستبيان!</a>
+        </div>
+
+        <div id="links-div">
+            <a href="/index.html"><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href="/newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
+            <a href="/webMapPage/webMap.html"><p class="p-links">خريطة الموقع</p></a>
+            <a href="/createSchedulePage/schedule.html"><p class="p-links">صمم جدولك</p></a>
+            <a target="_blank" href="https://t.me/razhran"><p class="p-links">تواصل معنا</p></a>
+            <a href="/absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
+            <a href="/DistributionOfWeeks.pdf"><p class="p-links">توزيع الاسابيع الدراسية</p></a>
+            <a href="https://t.me/JuPortalsa"><p class="p-links">قناة التليجرام</p></a>
+        </div>
+        <h2 style="text-align:center; font-weight: 400; font-family: 'tajawal'; font-size: 18px ; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+    </footer>
+    
+
+
+</body>
+<script src="./Gradescript.js"></script>
+<script src="../search.js"></script>
+</html>
