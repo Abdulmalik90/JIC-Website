@@ -126,7 +126,7 @@
 }
 .btn-secondary:hover { background: #d3d9df; }
 
-/* إعدادات عامة */
+/* الصفحة وستايلها*/
 body {
     margin: 0;
     display: flex;
@@ -234,6 +234,7 @@ body {
 .result-box .value {
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: 'tajawal';
     color: #164B79; /* الأزرق الغامق */
 }
 
@@ -258,14 +259,6 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* التنويه السفلي */
-.disclaimer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.75rem;
-    color: #888;
-}
-
 /* Making the page responsive */
 
 @media (max-width: 900px) {
@@ -277,11 +270,7 @@ body {
         font-size: 22px;
     }
 
-    .disclaimer {
-    font-size: 10px;
-    }
-
-            .action-btn {
+    .action-btn {
     font-size: 20px; 
     }
 }
@@ -295,12 +284,12 @@ body {
         font-size: 17px;
     }
 
-    .disclaimer {
-    font-size: 8px; 
+    .action-btn {
+    font-size: 17px; 
     }
 
-        .action-btn {
-    font-size: 17px; 
+    .result-box .value {
+    font-size: 1rem;
     }
 
 }
@@ -314,12 +303,7 @@ body {
         font-size: 15px;
     }
 
-        .disclaimer {
-    font-size: 6px; 
-    }
-
     .action-btn {
     font-size: 15px; 
     }
-
 }
