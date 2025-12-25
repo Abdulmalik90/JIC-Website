@@ -115,53 +115,48 @@
     
             </div>
     
-            <div class="gpa-part" id="gpa-current-info">
-                <div id="sub-container">
+            <div id="gpa-current-info">
+                 <div class="subject-row"> <div class="input-group name-part"> <label>اسم المادة</label>
+                 <input id="subName-input0" type="text" placeholder="اسم المادة">
+           </div>
 
-                    <div id="sub-name-part">
-                        <label for="">اسم المادة</label>
-                        <input id="subName-input0" style="border-radius: 15px 15px 15px 15px;" required type="text" placeholder="رياضيات">
-                    </div>
+        <div class="input-group hours-part"> <label>الساعات</label>
+            <input id="cridet-input0" type="number" placeholder="الكريدت">
+        </div>
 
-                    <div id="hours-part">
-                        <label for="">الساعات</label>
-                        <input style="border-radius: 10px;" max="10" min="0" required type="number" name="" id="cridet-input0" placeholder="الكريدت">
-                    </div>
+        <div class="input-group grade-part"> <label>علامتـك</label>
+            <select id="grad-select0">
+                <option value="" disabled selected>اختر</option>
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+                </select>
+        </div>
 
-                    <div id="grade-part">
-                        <label for="">علامتك النهائية</label>
-                        <select required style="min-width:200px; border-radius:15px 15px 15px 15px;" name="" id="grad-select0">
-                            <option value="" disabled selected>اضغط هنا</option>
-                            <option value="A+">A+</option>
-                            <option value="A">A</option>
-                            <option value="B+">B+</option>
-                            <option value="B">B</option>
-                            <option value="C+">C+</option>
-                            <option value="C">C</option>
-                            <option value="D+">D+</option>
-                            <option value="D">D</option>
-                            <option value="F">F</option>
-                        </select>
-                    </div>
+    </div>
 
-                </div>
-                <div id="add-button-div" style="width: fit-content; margin:auto;">
-                    <button id="add-sub-button">إضافة مادة</button>
-                </div>
-            </div>
-    
+    <div id="add-button-div">
+        <button id="add-sub-button">+ إضافة مادة</button>
+    </div>
+</div>
             <div class="gpa-part" id="gpa-result">
                 <h1 id="h1-result" class="subtitle">النتيجة</h1>
 
                 <div id="result-container">
                     <div id="gpa-total">
                         <label for="new-total-gpa"> معدلك التراكمي الجديد</label>
-                        <input readonly style="color: #0072bf;" id="new-total-gpa" max="4" min="0" oninput="validateMax(this)" type="number" placeholder="التراكمي من 4">
+                        <input readonly id="new-total-gpa" max="4" min="0" oninput="validateMax(this)" type="number" placeholder="التراكمي من 4">
                     </div>
         
                     <div id="gpa-current">
                         <label for="semester-gpa"> معدلك هذا الفصل</label>
-                        <input readonly style="color: #129346;" id="semester-gpa" max="4" min="0" oninput="validateMax(this)" type="number" placeholder="الفصلي من 4">
+                        <input readonly id="semester-gpa" max="4" min="0" oninput="validateMax(this)" type="number" placeholder="الفصلي من 4">
                     </div>
 
                 </div>

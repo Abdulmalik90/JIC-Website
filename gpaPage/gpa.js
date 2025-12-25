@@ -1,112 +1,156 @@
+// 1. تعريف نظام النقاط
+const gradePoints = {
+    "A+": 4.00,
+    "A": 3.75,
+    "B+": 3.50,
+    "B": 3.00,
+    "C+": 2.50,
+    "C": 2.00,
+    "D+": 1.50,
+    "D": 1.00,
+    "F": 0.00
+};
 
-// add more inputs for subjects grades
-const SubjectNameDiv = document.getElementById("sub-name-part")
-const hoursDiv = document.getElementById("hours-part")
-const gradesDiv = document.getElementById("grade-part")
-let numberOfSub = 1
+let numberOfSub = 1;
+
+// ==========================================
+// 1. إضافة مادة جديدة
+// ==========================================
 document.getElementById("add-sub-button").addEventListener("click", function() {
+    const container = document.getElementById('gpa-current-info');
+    const buttonDiv = document.getElementById('add-button-div');
+    
+    const firstRow = container.querySelector('.subject-row');
+    
+    if (firstRow) {
+        const newRow = firstRow.cloneNode(true);
+        
+        const nameInput = newRow.querySelector('.name-part input');
+        const hoursInput = newRow.querySelector('.hours-part input');
+        const gradeSelect = newRow.querySelector('.grade-part select');
 
-    // adding the input of the name of the subject
-    const newSubjectName = document.createElement("input")
-    newSubjectName.id = `subName-input${numberOfSub}`
-    newSubjectName.style = "border-radius: 10px 10px 10px 10px;"
-    newSubjectName.setAttribute("required", "")
-    newSubjectName.type = "text"
-    newSubjectName.placeholder = "رياضيات"
-    SubjectNameDiv.appendChild(newSubjectName)
-
-    // adding the input of the credit of the subject
-    const newCredit = document.createElement("input")
-    newCredit.id = `cridet-input${numberOfSub}`
-    newCredit.style = "border-radius: 10px;"
-    newCredit.setAttribute("required", "")
-    newCredit.type = "number"
-    newCredit.placeholder = "الكريدت"
-    newCredit.max = "10"
-    newCredit.min = "0"
-    hoursDiv.appendChild(newCredit)
-
-    // adding the selector for grades
-    const grades = ["اضغط هنا", "A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
-    const newSelector = document.createElement("select")
-    newSelector.id = `grad-select${numberOfSub}`
-    for(let i = 0; i < grades.length; i++){
-        let newOption = document.createElement("option")
-        newOption.textContent = grades[i]
-        if(i == 0) {
-            newOption.setAttribute("disabled", "")
-            newOption.setAttribute("selected", "")
+        if(nameInput) { 
+            nameInput.value = ''; 
+            nameInput.id = `subName-input${numberOfSub}`;
         }
-        newSelector.appendChild(newOption)
+        
+        if(hoursInput) { 
+            hoursInput.value = ''; 
+            hoursInput.id = `cridet-input${numberOfSub}`; 
+        }
+        
+        if(gradeSelect) { 
+            gradeSelect.selectedIndex = 0; 
+            gradeSelect.id = `grad-select${numberOfSub}`; 
+        }
+
+        container.insertBefore(newRow, buttonDiv);
+        numberOfSub++;
     }
-    newSelector.style = "min-width:200px; border-radius:20px 10px 10px 10px;"
-    newSelector.setAttribute("required", "")
-    gradesDiv.appendChild(newSelector)
-    numberOfSub++
-})
+});
 
 
-
-
-
-
-
-// showing the GPA
+// ==========================================
+// 2. زر حساب المعدل (مع الشروط الجديدة) 🛡️
+// ==========================================
 document.getElementById("show-gpa-button").addEventListener("click", (e) => {
     e.preventDefault();
 
-    // Semester GPA
-    let subjectsGrades = []
-    let subjectCount = SubjectNameDiv.querySelectorAll('input').length;
-    let totalHours = 0;
-    let isValid = true;
-
-    for(let i = 0; i < subjectCount; i++){
-        let tempHours = parseFloat(document.getElementById(`cridet-input${i}`).value) || 0;
-        let tempGrade = document.getElementById(`grad-select${i}`).value;
-
-        if(isNaN(tempHours)) {
-            alert(`الرجاء إدخال ساعات صحيحة للمادة ${i+1}`);
-            isValid = false;
-            break;
-        }
-        
-        if(!tempGrade) {
-            alert(`الرجاء اختيار درجة للمادة ${i+1}`);
-            isValid = false;
-            break;
-        }
-        totalHours += tempHours
-
-        let gradePoint;
-        switch(tempGrade){
-            case 'A+': gradePoint = 4.0; break;
-            case 'A': gradePoint = 3.75; break;
-            case "B+": gradePoint = 3.5; break;
-            case "B": gradePoint = 3.0; break;
-            case "C+": gradePoint = 2.5; break;
-            case "C": gradePoint = 2.0; break;
-            case "D+": gradePoint = 1.5; break;
-            case "D": gradePoint = 1.0; break;
-            case "F": gradePoint = 0.0; break;
-            default: gradePoint = 0.0
-        }
-        subjectsGrades.push(gradePoint * tempHours)
+    // --- (الشرط الأول) التحقق من المعدل التراكمي السابق ---
+    let oldGPA = parseFloat(document.getElementById("gpa-input").value) || 0;
+    
+    if (oldGPA > 4.00) {
+        alert("تأكد من معدلك التراكمي الحالي، لا يمكن أن يتجاوز 4.00!");
+        return; // يوقف الكود هنا وما يكمل
+    }
+    if (oldGPA < 0) {
+        alert("المعدل لا يمكن أن يكون بالسالب!");
+        return;
     }
 
-    if(!isValid) return;
+    // متغيرات الحساب
+    let currentSemesterPoints = 0; 
+    let currentSemesterHours = 0;  
+    let isValid = true;            
 
-    let totalPoints = subjectsGrades.reduce((sum, grade) => sum + grade, 0);
-    let semesterGPA = totalPoints / totalHours;
+    const rows = document.querySelectorAll('.subject-row');
 
-    // Total GPA
+    // اللوب على المواد
+    for (let i = 0; i < rows.length; i++) {
+        let row = rows[i];
+        
+        let hoursInput = row.querySelector('.hours-part input');
+        let gradeSelect = row.querySelector('.grade-part select');
+        
+        let tempHours = parseFloat(hoursInput.value);
+        let tempGrade = gradeSelect.value;
+
+        // --- التحقق من الساعات ---
+        if (isNaN(tempHours)) {
+            // اذا الخانة فاضية نتجاهلها، اذا فيها كلام غير الأرقام نوقف
+            if(hoursInput.value !== "") { 
+                 alert(`الرجاء إدخال رقم صحيح للساعات في المادة رقم ${i + 1}`);
+                 isValid = false; break;
+            } else {
+                continue; 
+            }
+        }
+
+        // --- (الشرط الثاني) التحقق ان الساعات ما تتجاوز 10 ---
+        if (tempHours > 10) {
+            alert(`عدد الساعات في المادة رقم ${i + 1} كبير جداً (أكثر من 10)! تأكد من الرقم.`);
+            isValid = false; 
+            break; // يوقف اللوب
+        }
+        
+        if (tempHours < 0) {
+            alert(`عدد الساعات في المادة رقم ${i + 1} لا يمكن أن يكون بالسالب.`);
+            isValid = false; 
+            break;
+        }
+
+        // --- التحقق من الدرجة ---
+        if (!tempGrade || tempGrade === "اضغط هنا" || tempGrade === "اختر") {
+             alert(`الرجاء اختيار درجة للمادة رقم ${i + 1}`);
+             isValid = false;
+             break;
+        }
+
+        // الحسابات
+        currentSemesterHours += tempHours;
+        let points = gradePoints[tempGrade];
+        if (points === undefined) points = 0;
+        currentSemesterPoints += (points * tempHours);
+    }
+
+    if (!isValid) return; // اذا فيه أي خطأ نوقف
+
+    // --- النتائج النهائية ---
+
+    // 1. المعدل الفصلي
+    let semesterGPA = 0;
+    if (currentSemesterHours > 0) {
+        semesterGPA = currentSemesterPoints / currentSemesterHours;
+    }
+
+    // 2. المعدل التراكمي
     let oldHours = parseFloat(document.getElementById("hours-input").value) || 0;
-    let oldGrade = parseFloat(document.getElementById("gpa-input").value) || 0;
-    let totalGPA = (oldHours + totalHours) > 0 
-        ? ((oldGrade * oldHours) + (semesterGPA * totalHours)) / (oldHours + totalHours): 0;
+    
+    let totalPointsAll = (oldGPA * oldHours) + currentSemesterPoints;
+    let totalHoursAll = oldHours + currentSemesterHours;
+    
+    let totalGPA = 0;
+    if (totalHoursAll > 0) {
+        totalGPA = totalPointsAll / totalHoursAll;
+    }
+    
+    // شرط أخير: لو المعدل الجديد تجاوز 4 (بسبب خطأ حسابي نادر) نرجعه 4
+    if (totalGPA > 4.00) totalGPA = 4.00;
+    if (semesterGPA > 4.00) semesterGPA = 4.00;
 
-    document.getElementById("new-total-gpa").value = totalGPA.toFixed(2)
-    document.getElementById("semester-gpa").value = semesterGPA.toFixed(2)
-
-
-})
+    // عرض النتائج
+    document.getElementById("new-total-gpa").value = totalGPA.toFixed(2);
+    document.getElementById("semester-gpa").value = semesterGPA.toFixed(2);
+    
+    document.getElementById("gpa-result").scrollIntoView({ behavior: 'smooth' });
+});
