@@ -147,6 +147,7 @@ body {
     font-weight: 500;
     font-size: 65px;
     color: var(--greating-text);
+    font-family: 'Handicrafts';
 }
 
 #greating p {
