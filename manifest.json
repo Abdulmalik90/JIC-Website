@@ -3,7 +3,7 @@
   "short_name": "مدخل",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "/index.html",
+  "start_url": "./WepAppPage/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0050d5",
