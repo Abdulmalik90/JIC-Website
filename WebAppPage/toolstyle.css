@@ -1,0 +1,439 @@
+/* توحيد الخط لكل عناصر الأدوات */
+button, 
+input, 
+select, 
+textarea, 
+label,
+.tab-item {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+/* إذا تبي تخلي الأزرار عريضة (Bold) عشان تبان أفخم */
+.calc-btn, 
+.app-btn, 
+.action-btn {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px; /* تعطي جمالية بسيطة للخط العربي */
+}
+
+/* =========================================
+   تنسيق القائمة الجانبية (تفتح من اليسار)
+   ========================================= */
+
+/* 1. طبقة التعتيم الخلفية */
+#sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; /* تحت القائمة مباشرة */
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+#sidebarOverlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. القائمة نفسها */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* 👈 غيرناها: مخفية يسار الشاشة */
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff !important;
+    z-index: 9999; /* أعلى طبقة */
+    transition: left 0.3s ease-in-out; /* 👈 الحركة تعتمد على اليسار */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* 👈 الظل صار يمين القائمة */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* حالة الفتح */
+#sidebar.active {
+    left: 0; /* 👈 ترجع للصفر (تظهر) */
+}
+
+/* 3. محتويات القائمة */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.close-btn {
+    background: #f5f5f5;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    background: #ffebeb;
+    color: #d93025;
+}
+
+.sidebar-menu { list-style: none; padding: 0; margin: 0; }
+.sidebar-menu li { margin-bottom: 8px; }
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.sidebar-menu i { font-size: 18px; } 
+
+/* شريط التبويبات */
+.tabs-container {
+    display: flex;
+    overflow-x: auto;
+    background: white;
+    padding: 10px 15px;
+    gap: 10px;
+    position: sticky;
+    top: 60px; /* تحت الهيدر مباشرة */
+    z-index: 90;
+    scrollbar-width: none;
+    border-bottom: 1px solid #eee;
+}
+
+.tabs-container::-webkit-scrollbar { display: none; }
+
+.tab-item {
+    white-space: nowrap;
+    padding: 8px 16px;
+    background: #f0f2f5;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.tab-item.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 82, 204, 0.2);
+}
+
+/* إدارة عرض المحتوى */
+.tool-view {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tool-view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* لوحة تنبيه "للموقع فقط" */
+.desktop-only-notice {
+    text-align: center;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-top: 30px;
+}
+
+.desktop-only-notice i {
+    font-size: 50px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.desktop-only-notice h3 {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.desktop-only-notice p {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Placeholder */
+.tool-placeholder {
+    text-align: center;
+    padding: 50px 0;
+    color: #ccc;
+}
+.tool-placeholder i { font-size: 40px; display: block; margin-bottom: 10px; }
+
+/* تصميم كرت الأداة */
+.tool-card {
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.tool-header-info {
+    display: flex;
+    gap: 10px;
+    background: #f0f7ff;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    color: #0052cc;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* مجموعات الإدخال */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 15px;
+    color: var(--primary-color);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;
+    border: 2px solid #f0f2f5;
+    border-radius: 15px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    background: #fcfdfe;
+}
+
+/* الزر */
+.calc-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 25px;
+}
+
+.calc-btn:active { transform: scale(0.98); }
+
+/* شبكة النتائج */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    animation: slideUp 0.4s ease;
+}
+
+.result-box {
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-box.safe { background: #e6f4ea; color: #1e7e34; }
+.result-box.danger { background: #fce8e8; color: #d93025; }
+
+.res-label { font-size: 11px; font-weight: 700; margin-bottom: 5px; opacity: 0.8; }
+.res-value { font-size: 24px; font-weight: 900; }
+.res-unit { font-size: 11px; font-weight: 600; }
+
+/* إخلاء المسؤولية */
+.disclaimer {
+    border-top: 1px dashed #eee;
+    padding-top: 15px;
+}
+
+.disclaimer h4 { font-size: 13px; margin-bottom: 5px; color: #666; display: flex; align-items: center; gap: 5px; }
+.disclaimer p { font-size: 11px; color: #888; line-height: 1.5; margin-bottom: 8px; }
+.formula { font-size: 10px; color: #999; text-align: center; background: #f9f9f9; padding: 5px; border-radius: 5px; }
+.formula span { color: var(--primary-color); font-weight: bold; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تنسيقات حاسبة المعدل */
+/* تنسيق حقول الساعات والمعدل الحالي في الأعلى */
+.gpa-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.gpa-inputs-grid .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gpa-inputs-grid label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.gpa-inputs-grid input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #f0f2f5; /* نفس لون حدود حاسبة الغياب */
+    border-radius: 12px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    text-align: center; /* توسيط الأرقام أجمل */
+    transition: 0.3s;
+    background: #fff;
+}
+
+.gpa-inputs-grid input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    background: #fcfdfe;
+}
+.gpa-card { margin-bottom: 15px; }
+.card-subtitle { 
+    font-size: 14px; 
+    color: var(--primary-color); 
+    margin-bottom: 15px; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.gpa-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.subjects-container { margin-top: 20px; }
+
+.subject-card {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 12px;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #888;
+}
+
+.sub-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.full-width { grid-column: span 2; }
+
+.subject-card input, .subject-card select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: 'Tajawal';
+    font-size: 14px;
+}
+
+.remove-sub {
+    background: #ffeded;
+    color: #ff4d4d;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.control-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* كرت النتيجة الذهبي */
+.result-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fffdf0 100%);
+    border: 2px solid #ffde59;
+}
+
+.res-title { text-align: center; font-size: 16px; margin-bottom: 15px; }
+
+.result-box.blue { background: #eef4ff; color: #0052cc; border: 1px solid #d0e1ff; }
+.result-box.gold { background: #fff9db; color: #856404; border: 1px solid #ffeeba; }

@@ -1,0 +1,422 @@
+/* =========================================
+   تنسيق القائمة الجانبية (تفتح من اليسار)
+   ========================================= */
+
+/* 1. طبقة التعتيم الخلفية */
+#sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; /* تحت القائمة مباشرة */
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+#sidebarOverlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. القائمة نفسها */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* 👈 غيرناها: مخفية يسار الشاشة */
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff !important;
+    z-index: 9999; /* أعلى طبقة */
+    transition: left 0.3s ease-in-out; /* 👈 الحركة تعتمد على اليسار */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* 👈 الظل صار يمين القائمة */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* حالة الفتح */
+#sidebar.active {
+    left: 0; /* 👈 ترجع للصفر (تظهر) */
+}
+
+/* 3. محتويات القائمة */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.close-btn {
+    background: #f5f5f5;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    background: #ffebeb;
+    color: #d93025;
+}
+
+.sidebar-menu { list-style: none; padding: 0; margin: 0; }
+.sidebar-menu li { margin-bottom: 8px; }
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.sidebar-menu i { font-size: 18px; }
+
+/* =========================================
+   تنسيق شريط التبويبات (Tabs Styling)
+   ========================================= */
+
+.tabs-container {
+    display: flex;          /* يخلي العناصر جنب بعض */
+    overflow-x: auto;       /* يسمح بالسحب يمين ويسار */
+    background: white;
+    padding: 10px 15px;
+    gap: 10px;              /* مسافة بين الأزرار */
+    position: sticky;
+    top: 60px;              /* يثبت الشريط تحت الهيدر */
+    z-index: 90;
+    scrollbar-width: none;  /* يخفي شريط السكرول للمنظر */
+    border-bottom: 1px solid #eee;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;          /* يخفي شريط السكرول في كروم */
+}
+
+.tab-item {
+    white-space: nowrap;    /* يمنع النص ينزل سطر جديد */
+    padding: 8px 16px;
+    background: #f0f2f5;    /* لون خلفية رمادي فاتح */
+    border-radius: 20px;    /* حواف دائرية */
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    user-select: none;
+}
+
+.tab-item.active {
+    background: var(--primary-color); /* لون أزرق عند التفعيل */
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 82, 204, 0.2);
+}
+
+/* =========================================
+   إدارة عرض الأقسام (هذا الكود هو اللي يمنع التداخل)
+   ========================================= */
+
+/* 1. الوضع الافتراضي: إخفاء الكل */
+.lib-view {
+    display: none; /* 👈 هذا السطر هو الأهم، يخفي كل الأقسام */
+    padding: 20px;
+    padding-bottom: 100px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 2. الوضع النشط: إظهار القسم اللي عنده كلاس active بس */
+.lib-view.active {
+    display: block; /* 👈 يظهر القسم المختار فقط */
+}
+
+/* حركة ظهور ناعمة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   تنسيق كروت المستندات (رسمية - مفيدة - إلخ)
+   ========================================= */
+
+.doc-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 16px; /* حواف ناعمة */
+    text-decoration: none; /* يشيل الخط اللي تحت الرابط */
+    color: inherit;
+    border: 1px solid #f2f2f2; /* حدود خفيفة جداً */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); /* ظل خفيف */
+    transition: all 0.2s ease-in-out;
+}
+
+/* تأثير لما تضغط أو تمرر الماوس */
+.doc-card:active, 
+.doc-card:hover {
+    transform: translateY(-2px); /* يرتفع الكرت شوي */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    border-color: #e0e0e0;
+}
+
+/* حاوية الأيقونة */
+.doc-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px; /* عشان ما تصغر بالجوال */
+    background-color: #f0f7ff; /* خلفية سماوية فاتحة */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color); /* لون الأيقونة أزرق */
+    font-size: 20px;
+}
+
+/* النصوص داخل الكرت */
+.doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.doc-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.doc-info p {
+    margin: 0;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* =========================================
+   تنسيق الأسئلة الشائعة (FAQ Accordion)
+   ========================================= */
+
+/* الصندوق الخارجي للسؤال */
+.faq-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    overflow: hidden; /* ضروري عشان يخفي النص لما يقفل */
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+/* عند فتح السؤال، نعطيه ظل أقوى شوي */
+.faq-item.open {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    border-color: var(--primary-color); /* تلوين الحدود بالأزرق عند الفتح */
+}
+
+/* عنوان السؤال (الجزء القابل للضغط) */
+.faq-question {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-dark);
+    cursor: pointer;
+    background: white;
+    user-select: none; /* يمنع تحديد النص بالغلط */
+}
+
+/* أيقونة السهم */
+.faq-question i {
+    font-size: 16px;
+    color: #999;
+    transition: transform 0.3s ease; /* حركة دوران ناعمة */
+}
+
+/* تدوير السهم لما يكون السؤال مفتوح */
+.faq-item.open .faq-question i {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
+
+/* منطقة الجواب (مخفية افتراضياً) */
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0; /* الارتفاع صفر = مخفي */
+    overflow: hidden;
+    background: #fafafa; /* لون خلفية خفيف جداً للجواب */
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7; /* مسافة بين الأسطر للقراءة المريحة */
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+/* تنسيق الروابط داخل الجواب */
+.faq-answer ul {
+    margin: 10px 0;
+    padding-right: 20px;
+}
+
+.faq-answer li {
+    margin-bottom: 5px;
+}
+
+/* عند الفتح (يضاف هذا الكلاس بواسطة الجافاسكربت) */
+.faq-item.open .faq-answer {
+    padding: 15px 20px 20px 20px; /* مسافة داخلية */
+    max-height: 1000px; /* رقم كبير عشان يكفي أي نص */
+    border-top: 1px solid #eee; /* خط فاصل خفيف بين السؤال والجواب */
+}
+
+/* =========================================
+   تنسيق قسم الموارد الإضافية (الفريق والروابط)
+   ========================================= */
+
+/* بوكس النبذة */
+.about-platform-box {
+    text-align: center;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    padding: 30px 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+
+.about-platform-box h3 { margin: 15px 0 10px; color: var(--primary-color); }
+.about-platform-box p { font-size: 12px; color: #666; line-height: 1.6; max-width: 90%; margin: 0 auto; }
+
+/* عناوين الأقسام */
+.section-header-small h3 {
+    font-size: 15px;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    padding-right: 5px;
+}
+
+/* حاوية السحب (مشتركة للفريق والروابط) */
+.horizontal-scroll-wrapper {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 20px; /* مسافة عشان الظل ما ينقص */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.horizontal-scroll-wrapper::-webkit-scrollbar { display: none; }
+
+/* --- 1. تنسيق كروت الفريق --- */
+.team-card {
+    min-width: 260px; /* عرض ثابت ومناسب للجوال */
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    scroll-snap-align: center; /* يوقف الكرت في النص لما توقف سحب */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* حاوية الصورة (4:3 Ratio) */
+.team-img-container {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* النسبة السحرية للصور الشخصية */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background: #eee;
+}
+
+.team-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* يملأ الصورة بدون تمطيط */
+}
+
+/* معلومات العضو */
+.team-info h4 { margin: 0 0 5px; font-size: 15px; font-weight: 800; color: #333; }
+.major-badge { 
+    background: #eef4ff; color: var(--primary-color); 
+    padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; 
+    display: inline-block; margin-bottom: 10px;
+}
+.team-info p { font-size: 11px; color: #777; line-height: 1.5; margin-bottom: 15px; height: 50px; /* ارتفاع ثابت عشان المحاذاة */ overflow: hidden; }
+
+/* زر التواصل */
+.contact-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+.contact-btn:hover { background: var(--primary-color); color: white; }
+
+
+/* --- 2. تنسيق روابط المصادر (مربعات) --- */
+.links-wrapper { padding-left: 20px; } /* مسافة في النهاية */
+
+.link-square-card {
+    min-width: 110px;
+    height: 110px;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    scroll-snap-align: start;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.link-square-card:active { transform: scale(0.95); }
+.link-square-card i { font-size: 28px; margin-bottom: 5px; }
+.link-square-card span { font-size: 11px; font-weight: 700; }
+
+/* ألوان الكروت */
+.bb-card { background: linear-gradient(135deg, #6c3483, #8e44ad); } /* بنفسجي للبلاك بورد */
+.edu-card { background: linear-gradient(135deg, #2980b9, #3498db); } /* أزرق للإيدوقيت */
+.jic-card { background: linear-gradient(135deg, #16a085, #1abc9c); } /* تركواز للكلية */
+.jti-card { background: linear-gradient(135deg, #d35400, #e67e22); } /* برتقالي للمعهد */
+.rc-card { background: linear-gradient(135deg, #2c3e50, #34495e); } /* كحلي للهيئة */
