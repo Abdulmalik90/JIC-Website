@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="./headerStyle.css?v=2.0">
     <link rel="stylesheet" href="./responsiveHeaderCss.css?v=2.0">
+    <link rel="stylesheet" href="./mainStyle.css?v=2.0">
     
     <meta name="google-site-verification" content="rywqqtc05o9Tz-IlLdMIwTBcyXxOCAfW0yN9UvgSBCI"/>
     <meta name="msvalidate.01" content="AF34EB602F9C9CDE0C667BB3316E0C79" />
@@ -361,5 +362,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            // 💡 ملاحظة: لا تستخدم Cache Busting هنا إذا كنت تستخدم الطريقة رقم 1 (تغيير CACHE_NAME).
+            // إذا واجهت مشاكل، يمكنك إضافته مؤقتاً: /sw.js?v=NEW_VERSION
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('Service Worker registered with scope: ', registration.scope);
+            }).catch(error => {
+                console.log('Service Worker registration failed: ', error);
+            });
+        });
+    }
+</script>
 
 </html>
