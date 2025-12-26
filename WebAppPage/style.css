@@ -296,22 +296,22 @@ body {
 
 /* --- ألوان التدرجات (Gradients) --- */
 .blue-gradient {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #4facfe 0%, #007c83 100%);
     box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
 }
 
 .purple-gradient {
-    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    background: linear-gradient(135deg, #7a64ac 0%, #97a2ff 100%);
     box-shadow: 0 8px 15px rgba(161, 140, 209, 0.25);
 }
 
 .orange-gradient {
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    background: linear-gradient(135deg, #f6d365 0%, #ec937a 100%);
     box-shadow: 0 8px 15px rgba(253, 160, 133, 0.25);
 }
 
 .green-gradient { /* لون إضافي للخريطة */
-    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    background: linear-gradient(135deg, #63e2b1 0%, #41a1d1 100%);
     box-shadow: 0 8px 15px rgba(132, 250, 176, 0.25);
 }
 
@@ -897,4 +897,5 @@ body {
     font-size: 14px;
     cursor: pointer;
     width: 100%;
+
 }
