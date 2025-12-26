@@ -5,9 +5,21 @@ const CACHE_NAME = 'mySiteStaticCache-v2.0.1';
 // قائمة بالملفات الثابتة التي يجب تخزينها فوراً (App Shell).
 // 💡 تم استبعاد الصفحة الرئيسية وملفات HTML الديناميكية من هذه القائمة.
 const ASSETS_TO_CACHE = [
-    '/mainstyle.css',
-    '/script.js',
-    '/404.html' 
+    './', 
+    './WebAppPage/index.html',        // 👈 لازم نذكر اسم المجلد
+    './WebAppPage/style.css',
+    './WebAppPage/script.js',
+    './WebAppPage/tools.html',
+    './WebAppPage/toolstyle.css',
+    './WebAppPage/toolsjava.js',
+    './WebAppPage/library.html',
+    './WebAppPage/libstyle.css',
+    './WebAppPage/libscript.js',
+    './WebAppPage/news.html',
+    './WebAppPage/news-style.css',
+    './WebAppPage/news-script.js',
+    './WebAppPage/logo.png',          // تأكد وين مكان اللوقو بالضبط
+    './WebAppPage/Images/person.png',
     // أضف ملفات CSS و JS الثابتة فقط هنا
 ];
 
