@@ -1,20 +1,21 @@
-const CACHE_NAME = 'madkhal-app-v2'; // غيرنا الرقم عشان يجبر المتصفح يحدث
+const CACHE_NAME = 'madkhal-app-v3'; // غيرنا الإصدار عشان يحدث الكاش
 const ASSETS_TO_CACHE = [
-    // لاحظ: شلنا './' لأن ما عندك صفحة رئيسية في الروت
-    './WebAppPage/index.html',       
-    './WebAppPage/style.css',
-    './WebAppPage/script.js',
-    './WebAppPage/tools.html',
-    './WebAppPage/toolstyle.css',
-    './WebAppPage/toolsjava.js',
-    './WebAppPage/library.html',
-    './WebAppPage/libstyle.css',
-    './WebAppPage/libscript.js',
-    './WebAppPage/news.html',
-    './WebAppPage/news-style.css',
-    './WebAppPage/news-script.js',
-    './WebAppPage/logo.png',
-    './WebAppPage/Images/person.png',
+    // شلنا './' لأن ما فيه ملف في الروت، وركزنا على المجلد WepAppPage
+    './WepAppPage/index.html',       
+    './WepAppPage/style.css',
+    './WepAppPage/script.js',
+    './WepAppPage/tools.html',
+    './WepAppPage/toolstyle.css',
+    './WepAppPage/toolsjava.js',
+    './WepAppPage/library.html',
+    './WepAppPage/libstyle.css',
+    './WepAppPage/libscript.js',
+    './WepAppPage/news.html',
+    './WepAppPage/news-style.css',
+    './WepAppPage/news-script.js',
+    './WepAppPage/logo.png',
+    './WepAppPage/Images/person.png',
+    // الروابط الخارجية تبقى كما هي
     'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap',
     'https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'
 ];
@@ -23,13 +24,13 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('Opened cache');
+            console.log('Opened cache for WepAppPage assets');
             return cache.addAll(ASSETS_TO_CACHE);
         })
     );
 });
 
-// 2. التفعيل وتنظيف القديم
+// 2. التفعيل وتنظيف الكاش القديم
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -44,7 +45,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// 3. جلب البيانات (الشبكة أولاً، ثم الكاش)
+// 3. الجلب
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         fetch(event.request).catch(() => {
