@@ -204,3 +204,37 @@ document.addEventListener("DOMContentLoaded", () => {
         // حفظ في الذاكرة عشان ما تطلع له مرة ثانية لمدة معينة (أو للأبد)
     });
 });
+
+/* =========================================
+   نظام الوضع الليلي (Dark Mode Logic)
+   ========================================= */
+
+const toggleSwitch = document.querySelector('#checkbox');
+const currentTheme = localStorage.getItem('theme');
+
+// 1. أول ما يفتح التطبيق، شيك هل فيه وضع محفوظ؟
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true; // شغل الزر إذا كان محفوظ دارك
+    }
+}
+
+// 2. دالة التبديل
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); // احفظ الاختيار
+        console.log("Dark Mode ON 🌙");
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light'); // احفظ الاختيار
+        console.log("Dark Mode OFF ☀️");
+    }
+}
+
+// 3. مراقبة الضغط على الزر
+if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', switchTheme, false);
+}

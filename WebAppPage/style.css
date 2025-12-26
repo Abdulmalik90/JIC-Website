@@ -1,28 +1,48 @@
 /* =========================================
-   1. المتغيرات وإعدادات الصفحة الأساسية
+   1. المتغيرات ونظام الألوان (Light & Dark)
    ========================================= */
 :root {
-    --primary-color: #0052cc;      /* اللون الرئيسي (أزرق مدخل) */
-    --bg-color: #f8f9fa;           /* لون الخلفية للصفحة (رمادي فاتح جداً) */
-    --text-dark: #1f2937;          /* لون النصوص الغامقة */
-    --text-light: #6b7280;         /* لون النصوص الثانوية */
-    --nav-height: 70px;            /* ارتفاع البار السفلي */
-    --header-height: 60px;         /* ارتفاع الهيدر العلوي */
+    /* --- الوضع النهاري (الافتراضي) --- */
+    --primary-color: #0052cc;       /* أزرق مدخل الرسمي */
+    --bg-color: #f8f9fa;            /* خلفية الصفحة */
+    --surface-color: #ffffff;       /* لون الكروت والقوائم */
+    --text-dark: #1f2937;           /* النصوص الرئيسية */
+    --text-light: #6b7280;          /* النصوص الفرعية */
+    --border-color: #e5e7eb;        /* لون الحدود والفواصل */
+    --header-bg: rgba(255, 255, 255, 0.85); /* خلفية الهيدر الشفافة */
+    --shadow-color: rgba(0, 0, 0, 0.05);    /* لون الظل */
+    
+    /* --- أبعاد ثابتة --- */
+    --nav-height: 70px;
+    --header-height: 60px;
+}
+
+/* --- الوضع الليلي (Dark Mode) --- */
+[data-theme="dark"] {
+    --primary-color: #60a5fa;       /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
+    --bg-color: #121212;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
+    --surface-color: #1e1e1e;       /* رمادي غامق للكروت */
+    --text-dark: #e4e6eb;           /* أبيض مريح للعين (أوف وايت) */
+    --text-light: #9ca3af;          /* رمادي فاتح */
+    --border-color: #2d2d2d;        /* حدود غامقة */
+    --header-bg: rgba(30, 30, 30, 0.85); /* هيدر غامق شفاف */
+    --shadow-color: rgba(0, 0, 0, 0.3);  /* ظل أثقل للوضع الليلي */
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent; /* إزالة الوميض الأزرق عند اللمس في الجوال */
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     font-family: 'Tajawal', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-dark);
-    padding-bottom: calc(var(--nav-height) + 20px); /* مسافة عشان المحتوى ما يختفي وراء البار السفلي */
-    overflow-x: hidden; /* منع الحركة الأفقية للصفحة كاملة */
+    padding-bottom: calc(var(--nav-height) + 20px);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; /* تنعيم التحويل بين الوضعين */
 }
 
 /* =========================================
@@ -34,16 +54,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* خلف كل العناصر */
-    pointer-events: none; /* عشان ما تمنع الضغط على الأزرار */
+    z-index: -1;
+    pointer-events: none;
     overflow: hidden;
 }
 
 .emoji-bg-item {
     position: absolute;
-    opacity: 0.08; /* شفافية عالية جداً (للديكور فقط) */
+    opacity: 0.08;
     font-size: 24px;
-    filter: grayscale(0.6); /* جعل الألوان باهتة قليلاً */
+    filter: grayscale(0.6);
+}
+
+/* في الدارك مود نخفف الإيموجي زيادة عشان ما تشوش */
+[data-theme="dark"] .emoji-bg-item {
+    opacity: 0.05;
 }
 
 /* =========================================
@@ -55,15 +80,15 @@ body {
     align-items: center;
     padding: 10px 20px;
     height: var(--header-height);
-    background: rgba(255, 255, 255, 0.85); /* خلفية شبه شفافة */
-    backdrop-filter: blur(12px); /* تأثير الزجاج الضبابي */
+    background: var(--header-bg); /* استخدام المتغير */
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 10px var(--shadow-color);
+    transition: background 0.3s ease;
 }
 
-/* حاوية الشعار (يمين) */
 .logo-container img {
     width: 40px;
     height: 40px;
@@ -71,14 +96,12 @@ body {
     object-fit: cover;
 }
 
-/* عنوان الصفحة (وسط) */
 .page-title {
     font-size: 18px;
     font-weight: 700;
     color: var(--text-dark);
 }
 
-/* زر القائمة البرجر (يسار) */
 .menu-btn {
     cursor: pointer;
     width: 40px;
@@ -92,22 +115,21 @@ body {
 }
 
 .menu-btn:active {
-    background: rgba(0,0,0,0.05);
+    background: var(--border-color);
 }
 
 /* =========================================
-   تنسيق القائمة الجانبية (تفتح من اليسار)
+   4. تنسيق القائمة الجانبية (Sidebar)
    ========================================= */
 
-/* 1. طبقة التعتيم الخلفية */
 #sidebarOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 998; /* تحت القائمة مباشرة */
+    background-color: rgba(0, 0, 0, 0.6); /* تعتيم أغمق شوي */
+    z-index: 998;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
@@ -118,46 +140,43 @@ body {
     visibility: visible;
 }
 
-/* 2. القائمة نفسها */
 #sidebar {
     position: fixed;
     top: 0;
-    left: -280px; /* 👈 غيرناها: مخفية يسار الشاشة */
+    left: -280px;
     width: 280px;
     height: 100%;
-    background-color: #ffffff !important;
-    z-index: 9999; /* أعلى طبقة */
-    transition: left 0.3s ease-in-out; /* 👈 الحركة تعتمد على اليسار */
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* 👈 الظل صار يمين القائمة */
+    background-color: var(--surface-color) !important; /* صار ياخذ لون الثيم */
+    z-index: 9999;
+    transition: left 0.3s ease-in-out, background-color 0.3s ease;
+    box-shadow: 5px 0 15px var(--shadow-color);
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-/* حالة الفتح */
 #sidebar.active {
-    left: 0; /* 👈 ترجع للصفر (تظهر) */
+    left: 0;
 }
 
-/* 3. محتويات القائمة */
 .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 15px;
 }
 
 .close-btn {
-    background: #f5f5f5;
+    background: var(--bg-color); /* زر الإغلاق ياخذ لون الخلفية */
     border: none;
     width: 35px;
     height: 35px;
     border-radius: 50%;
     font-size: 16px;
     cursor: pointer;
-    color: #555;
+    color: var(--text-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,12 +188,17 @@ body {
     color: #d93025;
 }
 
+/* في الدارك مود، الهوفر حق زر الإغلاق يكون أغمق */
+[data-theme="dark"] .close-btn:hover {
+    background: #4a1b1b;
+}
+
 .sidebar-menu { list-style: none; padding: 0; margin: 0; }
 .sidebar-menu li { margin-bottom: 8px; }
 
 .sidebar-menu a {
     text-decoration: none;
-    color: #444;
+    color: var(--text-dark); /* النص يتغير تلقائي */
     font-size: 15px;
     display: flex;
     align-items: center;
@@ -187,9 +211,15 @@ body {
 
 .sidebar-menu a:hover, 
 .sidebar-menu a.active {
-    background-color: #f0f7ff;
+    background-color: var(--bg-color); /* بدال الأزرق الفاتح، نستخدم لون الخلفية */
     color: var(--primary-color);
     font-weight: 700;
+}
+
+/* هذا عشان نضبط لون الهوفر في الدارك مود */
+[data-theme="dark"] .sidebar-menu a:hover,
+[data-theme="dark"] .sidebar-menu a.active {
+    background-color: rgba(96, 165, 250, 0.15); /* أزرق شفاف خفيف */
 }
 
 .sidebar-menu i { font-size: 18px; }
@@ -208,14 +238,13 @@ body {
     color: var(--primary-color);
     margin-bottom: 8px;
     font-weight: 800;
-    /* تأثير التوهج */
-    text-shadow: 0 0 15px rgba(0, 82, 204, 0.3);
+    text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
     animation: glowPulse 3s infinite alternate;
 }
 
 @keyframes glowPulse {
     0% { text-shadow: 0 0 10px rgba(0, 82, 204, 0.1); }
-    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.5); }
+    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.4); }
 }
 
 .sub-text {
@@ -224,7 +253,7 @@ body {
 }
 
 /* =========================================
-   6. قسم الاختصارات (Shortcuts) - التصميم الجديد
+   6. قسم الاختصارات (Shortcuts)
    ========================================= */
 .shortcuts-section {
     padding: 10px 20px;
@@ -232,30 +261,27 @@ body {
 
 .section-title {
     text-align: right;
-    font-size: 15px; /* خط أصغر حسب طلبك */
+    font-size: 15px;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #555;
+    color: var(--text-light); /* تغيير للون المتغير */
     padding-right: 5px;
 }
 
-/* الحاوية القابلة للسحب */
 .shortcuts-grid {
     display: flex;
     gap: 12px;
-    overflow-x: auto; /* تفعيل السكرول الأفقي */
-    padding: 5px 5px 20px 5px; /* مسافة للظل */
-    scroll-snap-type: x mandatory; /* لمحاذاة العناصر */
-    /* إخفاء شريط التمرير */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE */
+    overflow-x: auto;
+    padding: 5px 5px 20px 5px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
 }
 
 .shortcuts-grid::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none; 
 }
 
-/* الكارد المربع الملون */
 .shortcut-card {
     position: relative;
     min-width: 110px;
@@ -263,27 +289,25 @@ body {
     border-radius: 20px;
     text-decoration: none;
     color: white;
-    flex-shrink: 0; /* منع التقلص */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px var(--shadow-color);
     transition: transform 0.2s;
     overflow: hidden;
     scroll-snap-align: start;
 }
 
 .shortcut-card:active {
-    transform: scale(0.96); /* تصغير عند الضغط */
+    transform: scale(0.96);
 }
 
-/* الأيقونة داخل الكارد (فوق يسار) */
 .shortcut-icon {
     position: absolute;
     top: 15px;
-    left: 15px; /* لأنك طلبتها في الزاوية */
+    left: 15px;
     font-size: 22px;
     opacity: 0.9;
 }
 
-/* النص داخل الكارد (تحت يمين) */
 .shortcut-text {
     position: absolute;
     bottom: 15px;
@@ -294,7 +318,7 @@ body {
     line-height: 1.4;
 }
 
-/* --- ألوان التدرجات (Gradients) --- */
+/* التدرجات تبقى كما هي لأنها جميلة في الوضعين */
 .blue-gradient {
     background: linear-gradient(135deg, #4facfe 0%, #007c83 100%);
     box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
@@ -310,7 +334,7 @@ body {
     box-shadow: 0 8px 15px rgba(253, 160, 133, 0.25);
 }
 
-.green-gradient { /* لون إضافي للخريطة */
+.green-gradient {
     background: linear-gradient(135deg, #63e2b1 0%, #41a1d1 100%);
     box-shadow: 0 8px 15px rgba(132, 250, 176, 0.25);
 }
@@ -324,15 +348,16 @@ body {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    background: white;
+    background: var(--surface-color); /* صار ياخذ لون الثيم */
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    box-shadow: 0 -5px 25px rgba(0,0,0,0.06);
+    box-shadow: 0 -5px 25px var(--shadow-color);
     z-index: 1000;
-    padding-bottom: env(safe-area-inset-bottom); /* لدعم الايفون الجديد */
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: background 0.3s ease;
 }
 
 .nav-item {
@@ -341,7 +366,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #b0b0b0; /* لون الأيقونات غير المفعلة */
+    color: var(--text-light); /* بدال الرمادي الثابت */
     font-size: 11px;
     font-weight: 500;
     transition: 0.3s;
@@ -355,33 +380,30 @@ body {
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* الحالة النشطة (Active) */
 .nav-item.active {
     color: var(--primary-color);
 }
 
 .nav-item.active i {
-    transform: translateY(-5px); /* رفع الأيقونة للأعلى */
+    transform: translateY(-5px);
     color: var(--primary-color);
 }
 
 /* =========================================
    8. المودال (Pop-up Styling)
    ========================================= */
-
-/* الخلفية المعتمة */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* تعتيم الخلفية */
-    backdrop-filter: blur(4px); /* ضبابية */
-    z-index: 3000; /* فوق كل شي */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 3000;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* يخلي المودال يطلع من تحت */
+    align-items: flex-end;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
@@ -392,27 +414,24 @@ body {
     visibility: visible;
 }
 
-/* صندوق المحتوى */
 .modal-content {
-    background: white;
+    background: var(--surface-color); /* المودال صار يدعم الدارك مود */
     width: 100%;
-    max-width: 500px; /* ما يعرض مرة في الايباد */
+    max-width: 500px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     padding: 25px;
     box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
-    transform: translateY(100%); /* مخفي تحت الشاشة */
+    transform: translateY(100%);
     transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    max-height: 85vh; /* ما يغطي الشاشة كلها */
+    max-height: 85vh;
     overflow-y: auto;
 }
 
-/* حركة الظهور */
 .modal-overlay.active .modal-content {
-    transform: translateY(0); /* يطلع مكانه */
+    transform: translateY(0);
 }
 
-/* رأس المودال */
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -427,20 +446,30 @@ body {
 }
 
 .modal-close-btn {
-    background: #f0f2f5;
+    background: var(--bg-color); /* زر الإغلاق */
     border: none;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     font-size: 16px;
-    color: #666;
+    color: var(--text-light);
     cursor: pointer;
+    transition: 0.2s;
 }
+
+[data-theme="dark"] .modal-close-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* =========================================
+   8. تكملة المودال والأزرار
+   ========================================= */
 
 /* أقسام التخصصات */
 .major-title {
     font-size: 14px;
-    color: #888;
+    color: var(--text-light); /* تم التعديل */
     margin-bottom: 10px;
 }
 
@@ -452,13 +481,13 @@ body {
 
 .modal-divider {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color); /* تم التعديل */
     margin: 20px 0;
 }
 
 /* الأزرار داخل المودال */
 .app-btn {
-    display: block; /* عشان ياخذ العرض كامل */
+    display: block;
     width: 100%;
     padding: 14px;
     border-radius: 12px;
@@ -482,19 +511,24 @@ body {
     background-color: rgba(0, 82, 204, 0.2);
 }
 
+/* تعديل للدارك مود: نخلي الخلفية أوضح شوي */
+[data-theme="dark"] .app-btn.primary {
+    background-color: rgba(96, 165, 250, 0.15);
+}
+
 /* الستايل الثانوي (رمادي) */
 .app-btn.secondary {
-    background-color: #f8f9fa;
-    color: #333;
-    border: 1px solid #eee;
+    background-color: var(--bg-color); /* تم التعديل */
+    color: var(--text-dark); /* تم التعديل */
+    border: 1px solid var(--border-color); /* تم التعديل */
 }
 
 .app-btn.secondary:active {
-    background-color: #e9ecef;
+    filter: brightness(0.95); /* تأثير ضغط عام */
 }
 
 /* =========================================
-   9. قسم الأحداث القادمة (Events Widget) - التصميم الجديد
+   9. قسم الأحداث القادمة (Events Widget)
    ========================================= */
 
 .events-section {
@@ -502,12 +536,11 @@ body {
     margin-top: 15px;
 }
 
-/* الكونتينر القابل للسحب */
 .events-wrapper {
     display: flex;
-    gap: 12px; /* مسافة أقل بين الكروت */
+    gap: 12px;
     overflow-x: auto;
-    padding: 5px 5px 25px 5px; /* زيادة مسافة الظل تحت */
+    padding: 5px 5px 25px 5px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 }
@@ -516,20 +549,24 @@ body {
     display: none;
 }
 
-/* --- تصميم الكرت الجديد (Modern Widget Style) --- */
+/* --- تصميم الكرت --- */
 #calender-events > div {
-    min-width: 240px; /* عرض مناسب للجوال */
-    background: white;
-    border-radius: 24px; /* زوايا دائرية أكثر نعومة */
+    min-width: 240px;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
+    border-radius: 24px;
     padding: 20px 18px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.07); /* ظل أنعم وأفخم */
+    box-shadow: 0 8px 20px var(--shadow-color); /* تم التعديل */
     position: relative;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    /* شلنا الخط الأزرق العريض */
     transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid rgba(0, 82, 204, 0.05); /* إطار أزرق فاتح جداً */
+    border: 1px solid rgba(0, 82, 204, 0.05);
+}
+
+/* حدود خفيفة في الدارك مود */
+[data-theme="dark"] #calender-events > div {
+    border: 1px solid var(--border-color);
 }
 
 #calender-events > div:active {
@@ -537,100 +574,113 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* --- تنسيق النصوص الداخلية (تحديث لتصحيح الحوسة) --- */
+/* --- تنسيق النصوص الداخلية --- */
 
-/* العنوان الرئيسي للحدث */
 #calender-events h3 {
     margin: 0 0 15px 0;
     font-size: 16px;
-    color: var(--text-dark);
+    color: var(--text-dark); /* تم التعديل */
     font-weight: 800;
-    text-align: center; /* توسيط العنوان ليعطي شكل أجمل */
+    text-align: center;
     line-height: 1.4;
-    height: 42px; /* ارتفاع ثابت عشان ما ينقز التصميم لو العنوان سطرين */
+    height: 42px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* حاوية العداد التنازلي (الشريط الأزرق الفاتح) */
+/* حاوية العداد التنازلي */
 #calender-events .event-timer {
-    background: #f0f7ff; /* لون أزرق ثلجي فاتح جداً */
+    background: #f0f7ff; /* أزرق ثلجي فاتح للوضع النهاري */
     border-radius: 16px;
     padding: 12px 10px;
     display: flex !important;
-    align-items: center; /* توسيط عمودي */
-    justify-content: center; /* توسيط أفقي */
-    gap: 8px; /* مسافة بين العناصر */
-    direction: ltr; /* الأرقام من اليسار لليمين */
-    margin: 0 auto !important; /* توسيط البوكس نفسه */
-    width: 100%; /* ياخذ العرض كامل */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    direction: ltr;
+    margin: 0 auto !important;
+    width: 100%;
     border: 1px solid #e1effe;
 }
 
-/* (الوحدات) كل رقم وتحته كلمته نخليهم في بوكس لحالهم */
+/* تعديل العداد للوضع الليلي */
+[data-theme="dark"] #calender-events .event-timer {
+    background: rgba(96, 165, 250, 0.1); /* أزرق غامق شفاف */
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
 #calender-events .event-timer > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 45px; /* عرض ثابت لكل خانة عشان ما تهتز الأرقام */
+    min-width: 45px;
 }
 
-/* تنسيق أرقام العداد (كبير وواضح) */
+/* تنسيق الأرقام */
 #calender-events .event-timer span[style*="font-size: 20px"] {
     font-size: 22px !important;
-    color: var(--primary-color) !important;
+    color: var(--primary-color) !important; /* تم التعديل */
     font-weight: 800 !important;
-    line-height: 1; /* يمنع المسافات الزايدة فوق وتحت الرقم */
+    line-height: 1;
     margin-bottom: 2px;
 }
 
-/* تنسيق كلمة (يوم/ساعة/دقيقة) */
+/* تنسيق الكلمات (يوم/ساعة) */
 #calender-events .event-timer span[style*="font-size: 11px"] {
     font-size: 10px !important;
-    color: #7b8ab5 !important; /* لون رمادي مزرق */
+    color: #7b8ab5 !important;
     font-weight: 600;
 }
 
-/* الفواصل بين الأرقام (:) - ضبطنا مكانها */
+/* تعديل الكلمات للدارك مود */
+[data-theme="dark"] #calender-events .event-timer span[style*="font-size: 11px"] {
+    color: var(--text-light) !important;
+}
+
+/* الفواصل (:) */
 #calender-events .event-timer > span[style*="color: #ddd"] {
-    color: #cbd5e1 !important; /* لون هادي */
+    color: #cbd5e1 !important;
     font-size: 20px !important;
-    margin-top: -12px !important; /* نرفع النقطتين عشان تحاذي الأرقام مو الكلمات */
+    margin-top: -12px !important;
     font-weight: 300;
 }
 
-/* التاريخ واليوم (أسفل الكرت) */
+[data-theme="dark"] #calender-events .event-timer > span[style*="color: #ddd"] {
+    color: #4b5563 !important;
+}
+
+/* التاريخ واليوم أسفل الكرت */
 #calender-events > div > div[style*="font-size: 12px"] {
     margin-top: auto;
     padding-top: 15px;
     font-size: 11px !important;
-    color: #9ca3af !important;
+    color: var(--text-light) !important; /* تم التعديل */
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: center; /* توسيط التاريخ */
+    justify-content: center;
     gap: 6px;
-    direction: rtl; /* عشان التاريخ يجي صح */
+    direction: rtl;
 }
+
 /* =========================================
-   10. قسم الأخبار (News Widget) - التصميم النهائي
+   10. قسم الأخبار (News Widget)
    ========================================= */
 
 .news-section {
     padding: 0 20px 20px 20px;
     margin-top: 20px;
-    margin-bottom: 80px; /* مسافة كافية عشان البار السفلي ما يغطي */
+    margin-bottom: 80px;
 }
 
-/* حاوية السحب */
 .news-wrapper {
     display: flex;
     gap: 15px;
     overflow-x: auto;
-    padding: 10px 5px 30px 5px; /* مسافة للظل */
+    padding: 10px 5px 30px 5px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 }
@@ -639,13 +689,12 @@ body {
     display: none;
 }
 
-/* --- تصميم كرت الخبر --- */
 .news-card {
-    min-width: 280px; /* عرض الكرت */
-    height: 240px;    /* ارتفاع الكرت */
-    background: white;
+    min-width: 280px;
+    height: 240px;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px var(--shadow-color); /* تم التعديل */
     overflow: hidden;
     scroll-snap-align: start;
     position: relative;
@@ -656,19 +705,21 @@ body {
     border: 1px solid rgba(0,0,0,0.03);
 }
 
+[data-theme="dark"] .news-card {
+    border: 1px solid var(--border-color);
+}
+
 .news-card:active {
     transform: scale(0.97);
 }
 
-/* صورة الخبر */
 .news-card-img {
     width: 100%;
     height: 140px;
     object-fit: cover;
-    background-color: #eee; /* لون مؤقت لو الصورة ما حملت */
+    background-color: var(--border-color); /* عشان ما تطلع بيضاء ساطعة لو ما حملت */
 }
 
-/* محتوى الخبر */
 .news-card-content {
     padding: 12px 15px;
     flex-grow: 1;
@@ -677,7 +728,6 @@ body {
     justify-content: space-between;
 }
 
-/* تصنيف الخبر (التاج الملون) */
 .news-category {
     position: absolute;
     top: 10px;
@@ -692,24 +742,21 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* عنوان الخبر */
 .news-card-title {
     font-size: 14px;
-    color: var(--text-dark);
+    color: var(--text-dark); /* تم التعديل */
     font-weight: 700;
     line-height: 1.5;
     margin: 0;
-    /* تحديد سطرين فقط */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* تاريخ الخبر */
 .news-card-date {
     font-size: 11px;
-    color: #999;
+    color: var(--text-light); /* تم التعديل */
     margin-top: 8px;
     display: flex;
     align-items: center;
@@ -717,31 +764,27 @@ body {
 }
 
 /* =========================================
-   تنسيق الشاشات الكبيرة (iPad & PC Fix) - الحل النهائي
+   تنسيق الشاشات الكبيرة (iPad & PC Fix)
    ========================================= */
 
 @media (min-width: 500px) {
     
-    /* 1. إعداد الخلفية ومنع الاهتزاز */
     html {
-        background-color: #f0f2f5;
+        background-color: var(--bg-color); /* تم التعديل */
         overflow-x: hidden;
     }
 
-    /* 2. جسم التطبيق (الجوال الوهمي) */
     body {
         width: 480px;
         min-height: 100vh;
-        margin: 0 auto; /* توسيط الجسم */
-        background-color: #ffffff;
+        margin: 0 auto;
+        background-color: var(--surface-color); /* تم التعديل: الجوال يصير لونه زي الثيم */
         position: relative;
-        box-shadow: 0 0 40px rgba(0,0,0,0.15); /* ظل لإبراز التطبيق */
-        border-right: 1px solid #eee;
-        border-left: 1px solid #eee;
+        box-shadow: 0 0 40px rgba(0,0,0,0.15);
+        border-right: 1px solid var(--border-color); /* تم التعديل */
+        border-left: 1px solid var(--border-color); /* تم التعديل */
     }
 
-    /* 3. تثبيت وتوسيط الهيدر والناف بار (خدعة margin: auto) */
-    /* هذه الطريقة تضمن تطابقهم مع الجسم 100% */
     .top-header, 
     .bottom-nav, 
     .news-filter-container, 
@@ -750,16 +793,20 @@ body {
         position: fixed !important;
         left: 0 !important;
         right: 0 !important;
-        width: 480px !important; /* نلتزم بعرض التطبيق */
-        margin: 0 auto !important; /* هذا السطر هو السر */
-        transform: none !important; /* نلغي أي تحويل سابق */
+        width: 480px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+        background-color: var(--surface-color); /* ضمان الخلفية */
     }
 
-    /* ترتيب الطبقات */
+    /* إصلاح خاص للهيدر الشفاف في الـ PC */
+    .top-header {
+        background-color: var(--header-bg) !important;
+    }
+
     .top-header { top: 0; z-index: 1000; }
     .bottom-nav { bottom: 0; z-index: 1000; }
     
-    /* 4. القائمة الجانبية (Sidebar) 🛠️ */
     #sidebar {
         position: fixed !important;
         top: 0 !important;
@@ -767,38 +814,30 @@ body {
         width: 280px !important;
         height: 100% !important;
         z-index: 9999 !important;
-        
-        /* حساب دقيق لبداية القائمة من حافة التطبيق اليسرى */
         left: 50% !important;
-        margin-left: -240px !important; /* (نصف عرض التطبيق 480 ÷ 2) بالسالب */
-        
-        /* الحركة والظهور */
-        transform: translateX(-100%) !important; /* مخفية لليسار */
+        margin-left: -240px !important;
+        transform: translateX(-100%) !important;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        
-        /* إصلاحات إضافية */
         right: auto !important;
         border-radius: 0 !important;
-        overflow-y: auto !important; /* عشان لو القائمة طويلة نقدر نسوي سكرول */
+        overflow-y: auto !important;
+        background-color: var(--surface-color) !important; /* تم التعديل */
     }
 
-    /* عند الفتح */
     #sidebar.active {
-        transform: translateX(0) !important; /* تظهر في مكانها الصحيح */
+        transform: translateX(0) !important;
         box-shadow: 5px 0 25px rgba(0,0,0,0.15) !important;
     }
 
-    /* 5. طبقة التعتيم (Overlay) */
-    /* تغطي فقط شاشة الجوال الوهمية */
     #sidebarOverlay {
         position: fixed !important;
         top: 0;
         bottom: 0;
-        width: 480px !important; /* تغطي التطبيق فقط */
+        width: 480px !important;
         left: 0 !important;
         right: 0 !important;
-        margin: 0 auto !important; /* تتسنتر مع التطبيق */
-        z-index: 9998 !important; /* فوق الهيدر وتحت القائمة */
+        margin: 0 auto !important;
+        z-index: 9998 !important;
     }
 }
 
@@ -807,22 +846,23 @@ body {
    ========================================= */
 .pwa-popup {
     position: fixed;
-    bottom: -100%; /* مخفية تحت الشاشة */
+    bottom: -100%;
     left: 0;
     right: 0;
     width: 100%;
-    max-width: 480px; /* التزام بعرض الجوال */
+    max-width: 480px;
     margin: 0 auto;
-    background: white;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
     box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
     border-radius: 20px 20px 0 0;
     z-index: 99999;
     padding: 20px;
     transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid var(--border-color); /* إضافة حد علوي خفيف */
 }
 
 .pwa-popup.show {
-    bottom: 0; /* تظهر */
+    bottom: 0;
 }
 
 .pwa-content {
@@ -847,13 +887,13 @@ body {
 .pwa-text h3 {
     margin: 0 0 5px;
     font-size: 16px;
-    color: #333;
+    color: var(--text-dark); /* تم التعديل */
 }
 
 .pwa-text p {
     margin: 0;
     font-size: 12px;
-    color: #666;
+    color: var(--text-light); /* تم التعديل */
 }
 
 .pwa-close {
@@ -863,18 +903,18 @@ body {
     background: none;
     border: none;
     font-size: 20px;
-    color: #999;
+    color: var(--text-light); /* تم التعديل */
     cursor: pointer;
     padding: 5px;
 }
 
 /* تعليمات الآيفون */
 .install-instructions {
-    background: #f9f9f9;
+    background: var(--bg-color); /* تم التعديل */
     padding: 15px;
     border-radius: 12px;
     font-size: 13px;
-    color: #444;
+    color: var(--text-dark); /* تم التعديل */
 }
 
 .install-instructions ol {
@@ -897,5 +937,81 @@ body {
     font-size: 14px;
     cursor: pointer;
     width: 100%;
+}
+/* =========================================
+   تنسيق زر الوضع الليلي (Toggle Switch)
+   ========================================= */
 
+/* الحاوية العامة للسطر */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* يوزع المسافة بينهم */
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+/* النص والأيقونة */
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* شكل السويتش (الإطار) */
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 44px;
+}
+
+.theme-switch input {
+    display: none; /* إخفاء مربع الاختيار العادي */
+}
+
+/* شكل الدائرة والخلفية */
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* الدائرة البيضاء المتحركة */
+.slider:before {
+    background-color: #fff;
+    bottom: 3px;
+    content: "";
+    height: 18px;
+    left: 3px; /* مكانها وهي طافية */
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* حالة التشغيل (أزرق) */
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+/* حركة الدائرة لليسار عند التشغيل */
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* تحسين الهوفر في الدارك مود */
+[data-theme="dark"] .slider {
+    background-color: #333; /* لون السويتش وهو طافي في الليلي */
 }
