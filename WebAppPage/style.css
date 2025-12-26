@@ -801,3 +801,100 @@ body {
         z-index: 9998 !important; /* فوق الهيدر وتحت القائمة */
     }
 }
+
+/* =========================================
+   تصميم نافذة التثبيت (PWA Install Popup)
+   ========================================= */
+.pwa-popup {
+    position: fixed;
+    bottom: -100%; /* مخفية تحت الشاشة */
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 480px; /* التزام بعرض الجوال */
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px 20px 0 0;
+    z-index: 99999;
+    padding: 20px;
+    transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pwa-popup.show {
+    bottom: 0; /* تظهر */
+}
+
+.pwa-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pwa-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.pwa-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.pwa-text h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.pwa-text p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.pwa-close {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* تعليمات الآيفون */
+.install-instructions {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #444;
+}
+
+.install-instructions ol {
+    padding-right: 20px;
+    margin: 10px 0 0;
+}
+
+.install-instructions li {
+    margin-bottom: 5px;
+}
+
+/* زر التثبيت (أندرويد) */
+.install-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
