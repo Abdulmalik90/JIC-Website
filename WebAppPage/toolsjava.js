@@ -30,8 +30,8 @@ document.getElementById("result-button").addEventListener("click", () => {
         return;
     }
 
-    // المعادلة حقتك (16 أسبوع، 20%)
-    let totalAbs = classPerWeek * 16 * 0.20;
+    // المعادلة حقتك (15 أسبوع، 20%)
+    let totalAbs = classPerWeek * 15 * 0.20;
     let allowedAbs = Math.floor(totalAbs);
 
     // إذا كانت النسبة بالضبط عدد صحيح، ننقص واحد للمسموح حسب منطقك

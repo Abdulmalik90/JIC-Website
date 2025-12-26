@@ -139,3 +139,68 @@ function renderNews() {
 
 // تشغيل الدالة
 renderNews();
+
+document.addEventListener("DOMContentLoaded", () => {
+    let deferredPrompt;
+    const pwaPopup = document.getElementById('pwa-install-popup');
+    const installBtn = document.getElementById('pwa-install-btn');
+    const closeBtn = document.getElementById('close-pwa-popup');
+    const iosInstructions = document.getElementById('ios-instructions');
+
+    // التأكد من أن المستخدم لم يقم بإغلاق النافذة سابقاً
+    const isDismissed = localStorage.getItem('pwa-popup-dismissed');
+
+    // 1. التعامل مع الأندرويد والكمبيوتر (حدث beforeinstallprompt)
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // منع ظهور النافذة الافتراضية للمتصفح فوراً
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // إذا لم يكن المستخدم قد أغلق النافذة سابقاً، أظهرها
+        if (!isDismissed) {
+            showPopup('android');
+        }
+    });
+
+    // 2. التعامل مع الآيفون (iOS)
+    // نتحقق إذا كان الجهاز iOS وأنه ليس في وضع "Standalone" (أي يعمل داخل المتصفح)
+    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
+
+    if (isIos && !isInStandaloneMode && !isDismissed) {
+        showPopup('ios');
+    }
+
+    // دالة إظهار النافذة
+    function showPopup(platform) {
+        if (platform === 'android') {
+            installBtn.style.display = 'block';
+            iosInstructions.style.display = 'none';
+        } else if (platform === 'ios') {
+            installBtn.style.display = 'none';
+            iosInstructions.style.display = 'block';
+        }
+        
+        // تأخير بسيط للظهور الجمالي
+        setTimeout(() => {
+            pwaPopup.classList.add('show');
+        }, 3000); // تظهر بعد 3 ثواني من فتح الموقع
+    }
+
+    // عند الضغط على زر التثبيت (للأندرويد)
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            deferredPrompt = null;
+            pwaPopup.classList.remove('show');
+        }
+    });
+
+    // إغلاق النافذة وحفظ الاختيار
+    closeBtn.addEventListener('click', () => {
+        pwaPopup.classList.remove('show');
+        // حفظ في الذاكرة عشان ما تطلع له مرة ثانية لمدة معينة (أو للأبد)
+    });
+});
