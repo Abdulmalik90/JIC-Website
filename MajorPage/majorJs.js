@@ -89,7 +89,7 @@ window.onload = function () {
         const totalRow = document.createElement("tr");
         totalRow.classList.add("total-row"); // إضافة كلاس للستايل
         totalRow.innerHTML = `
-        <td class="total-title" style="text-align:left;">Total Cridets :${semHours}</td>
+        <td class="total-title" style="text-align:left;">Total Credits :${semHours}</td>
         <td class="total-hours"></td>
         <td colspan="3"></td>
         `;
