@@ -290,7 +290,7 @@ const newsData = [
 
             <div style="text-align: center; margin-top: 15px;">
                 <p><strong>جرب التطبيق وثبته الآن:</strong></p>
-                <a href="https://juportal.online/WebAppPage/index.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">ادخل المنصة 📱</a>
+                <a href="https://juportal.online/WebAppPage/index.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">الدخول لنسخة التطبيق 📱</a>
             </div>
         `,
         image: "https://i.postimg.cc/zfGz2DDR/Gemini.png", // 👈 لا تنس تحط رابط الصورة الفخمة هنا
