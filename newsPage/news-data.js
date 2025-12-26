@@ -268,6 +268,36 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "مكتبة الكلية"
     },
+    {
+        id: 12,
+        title: "🚀 إطلاق النسخة التجريبية لتطبيق الويب الخاص بـ 'مدخل'!",
+        content: `
+            <p style="direction: rtl;">
+           حياكم الله .. يسعدنا أن نعلن لكم عن إطلاق <strong>النسخة التجريبية (Beta)</strong> من تطبيق "مدخل".
+            </p>
+            
+            <p style="direction: rtl;">
+            ربطنا تقريباً معظم المنصة في التطبيق المصغر هذا , واللي يعتبر تطبيق ويب يغنيك عن كثير مصادر ويختصر عليك
+            </p>
+
+            <p>
+            لما تكون بصفحة التطبيق , اضغط علامة المشاركة بالمتصفح , ثم اضفط اضافة للشاشة الرئيسية او Add to screen عشان يصير تطبيق معك وين ما كنت
+            </p>
+
+            <p style="direction: rtl;">
+           رايكم يصنع فرق , في حالة واجهتكم اي مشاكل او عندكم استفسارات , تقدر تتواصل معنا من خلال علامة الدردشة بالرئيسية
+            </p>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <p><strong>جرب التطبيق وثبته الآن:</strong></p>
+                <a href="https://juportal.online/WebAppPage/index.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">ادخل المنصة 📱</a>
+            </div>
+        `,
+        image: "https://i.postimg.cc/zfGz2DDR/Gemini.png", // 👈 لا تنس تحط رابط الصورة الفخمة هنا
+        date: "2025-12-26T09:00:00",
+        author: "رائـد الزهـراني",
+        category: "تطبيق مدخل"
+    },
 ];
 
 // دالة للحصول على خبر بواسطة ID
