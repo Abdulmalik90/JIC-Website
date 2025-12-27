@@ -206,35 +206,51 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================
-   نظام الوضع الليلي (Dark Mode Logic)
+   نظام الوضع الليلي + تغيير الشعار
    ========================================= */
 
 const toggleSwitch = document.querySelector('#checkbox');
 const currentTheme = localStorage.getItem('theme');
+const appLogo = document.querySelector('.logo-container img'); // مسكنا الشعار
 
-// 1. أول ما يفتح التطبيق، شيك هل فيه وضع محفوظ؟
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true; // شغل الزر إذا كان محفوظ دارك
+// دالة تحديث الشعار
+function updateLogo(theme) {
+    if (appLogo) {
+        if (theme === 'dark') {
+            // هنا حط اسم ملف شعار الدارك
+            appLogo.src = 'logo-dark.png'; 
+        } else {
+            // هنا حط اسم ملف الشعار الأصلي
+            appLogo.src = 'logo.png'; 
+        }
     }
 }
 
-// 2. دالة التبديل
+// 1. عند فتح التطبيق
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateLogo(currentTheme); // نحدث الشعار مباشرة
+
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+// 2. عند ضغط الزر
 function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark'); // احفظ الاختيار
+        localStorage.setItem('theme', 'dark');
+        updateLogo('dark'); // اقلب الشعار لدارك
         console.log("Dark Mode ON 🌙");
     } else {
         document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light'); // احفظ الاختيار
+        localStorage.setItem('theme', 'light');
+        updateLogo('light'); // رجع الشعار الأصلي
         console.log("Dark Mode OFF ☀️");
     }
 }
 
-// 3. مراقبة الضغط على الزر
 if (toggleSwitch) {
     toggleSwitch.addEventListener('change', switchTheme, false);
 }
