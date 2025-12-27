@@ -1,8 +1,8 @@
 {
   "name": "منصة مدخل",
   "short_name": "مدخل",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/WebAppPage/",
+  "scope": "/WebAppPage/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0050d5",
