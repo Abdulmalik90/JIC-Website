@@ -1,5 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     
+    /* =========================================
+   إخفاء شاشة التحميل عند اكتمال الصفحة
+   ========================================= */
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    
+    if (preloader) {
+        // تأخير بسيط جداً (نص ثانية) عشان يمدي المستخدم يشوف اللوقو والحركة الحلوة
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            
+            // نحذفه من الصفحة نهائياً بعد ما تختفي الحركة عشان ما يثقل الجهاز
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // نفس مدة الـ transition في الـ CSS
+        }, 500); 
+    }
+});
+    
     // ============================================
     // أكواد تعمل أول ما الصفحة تشتغل (مثل الإيموجي والقائمة)
     // ============================================
@@ -120,7 +140,7 @@ function renderNews() {
         card.className = 'news-card';
         // هنا الرابط يوديك لصفحة التفاصيل (عدلها حسب نظام موقعك)
         // إذا تبيها تفتح تفاصيل الخبر، ممكن تحتاج صفحة news-details.html?id=...
-        card.href = '../newsPage/news.html'; 
+        card.href = './news.html'; 
         
         card.innerHTML = `
             <div class="news-category">${article.category}</div>
