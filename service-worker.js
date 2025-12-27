@@ -1,4 +1,4 @@
-const CACHE_NAME = 'madkhal-app-v9';
+const CACHE_NAME = 'madkhal-app-v5';
 
 const ASSETS_TO_CACHE = [
   '/WebAppPage/',
@@ -54,3 +54,4 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
