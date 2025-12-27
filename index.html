@@ -360,7 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            // 💡 ملاحظة: لا تستخدم Cache Busting هنا إذا كنت تستخدم الطريقة رقم 1 (تغيير CACHE_NAME).
+            // إذا واجهت مشاكل، يمكنك إضافته مؤقتاً: /sw.js?v=NEW_VERSION
+            navigator.serviceWorker.register('/Service-Worker.js').then(registration => {
+                console.log('Service Worker registered with scope: ', registration.scope);
+            }).catch(error => {
+                console.log('Service Worker registration failed: ', error);
+            });
+        });
+    }
+</script>
 
 
 </html>
