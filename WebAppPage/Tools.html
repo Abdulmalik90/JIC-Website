@@ -214,10 +214,55 @@
         </div>
     </div>
 
+    <div class="container">
+<div class="tool-card" id="course-calc-card">
+    
+    <h3 class="calc-title">حساب درجات المادة</h3>
+    
+    <div style="margin-bottom: 20px;">
+        <input type="text" id="course-name" class="main-input" placeholder="اسم المادة (اختياري)">
+    </div>
+
+    <div id="rows-container">
+        </div>
+
+    <div class="buttons-gap">
+        <button id="calculate-btn" class="action-btn">احسب النتيجة</button>
+        <button id="add-row-btn" class="add-btn">+ صف جديد</button>
+    </div>
+
+    <div id="final-result" class="results-wrapper" style="display: none;">
+        
+        <div class="res-card">
+            <span class="res-lbl">المجموع الكلي</span>
+            <div class="res-val" id="total-score-display">0 / 0</div>
+            <div class="res-sub" id="total-percentage-display">0%</div>
+        </div>
+
+        <div class="grade-res-card">
+            <span class="res-lbl">التقدير</span>
+            <div class="grade-val" id="final-grade-display">-</div>
+        </div>
+    </div>
+    
+    <button id="save-result-btn" class="save-btn" style="display: none;">
+        📥 حفظ المادة في السجل
+    </button>
+
+</div>
+
+<div id="saved-courses-section" style="max-width: 600px; margin: 30px auto; display: none;">
+    <h4 style="color: var(--text-dark); margin-bottom: 15px; padding-right: 10px;">📦 المواد المحفوظة</h4>
+    <div id="saved-list-container">
+        </div>
+    <button id="clear-all-btn" class="clear-btn">حذف السجل كامل</button>
+</div>
+</div>
+
     <div class="desktop-only-notice" style="margin-top: 20px; padding: 20px;">
         <i class="fi fi-rr-lock" style="font-size: 30px;"></i>
-        <h4 style="font-size: 14px;">حاسبة الدرجات الكاملة</h4>
-        <p style="font-size: 11px;">الأداة الشاملة لحساب درجات المادة كاملة تحت الانشاء للحين.</p>
+        <h4 style="font-size: 14px;">حاسبة الدرجات</h4>
+        <p style="font-size: 11px;">الأداة الشاملة لحساب درجات المادة كاملة لمستخدمين التطبيق حالياً فقط.</p>
     </div>
 </div>
 
@@ -229,9 +274,22 @@
                 <a href="../index.html" class="app-btn primary">الانتقال للموقع</a>
             </div>
             </div>
-        </div>
+       
 
     </main>
+
+    <div id="custom-popup-overlay" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-icon" id="popup-icon">🔔</div>
+        <h3 id="popup-title">تنبيه</h3>
+        <p id="popup-message">نص الرسالة هنا...</p>
+        
+        <div class="popup-actions">
+            <button id="popup-cancel-btn" class="pop-btn cancel">إلغاء</button>
+            <button id="popup-confirm-btn" class="pop-btn confirm">موافق</button>
+        </div>
+    </div>
+</div>
 
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item">
@@ -250,5 +308,7 @@
 
     <script src="toolsjava.js"></script>
     <script src="script.js"></script>
+
+    
 </body>
 </html>

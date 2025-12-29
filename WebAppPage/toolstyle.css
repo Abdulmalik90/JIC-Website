@@ -650,3 +650,478 @@ label,
     100% { transform: rotate(360deg); }
 }
 
+/* =========================================
+   تنسيق أداة حساب الدرجات (تصميم الكبسولة)
+   متوافق مع متغيرات style.css الرئيسية
+   ========================================= */
+
+/* حاوية الأداة */
+#course-calc-card {
+    background: var(--surface-color); /* أبيض في اللايت، رمادي في الدارك */
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* العنوان */
+.calc-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 800;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+/* تنسيق الصف (الكبسولة) */
+.grade-row {
+    background: var(--bg-color); /* خلفية أغمق شوي من الكرت */
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* تنسيق الصفوف الداخلية (القائمة فوق، والخانات تحت) */
+.row-top {
+    display: flex;
+    justify-content: space-between; /* يوزع المسافة بين القائمة وزر الحذف */
+    align-items: center;
+    margin-bottom: 12px;
+    padding-left: 40px; /* مكان لزر الحذف */
+}
+
+.row-bottom {
+    display: flex;
+    gap: 10px;
+}
+
+/* حقول الإدخال والقوائم */
+.grade-row select, 
+.grade-row input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid var(--border-color); /* ياخذ حدود الثيم */
+    border-radius: 12px;
+    padding: 0 15px;
+    
+    background: var(--surface-color); /* خلفية الحقل */
+    color: var(--text-dark); /* لون النص (أسود/أبيض) */
+    
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* التركيز */
+.grade-row input:focus, 
+.grade-row select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1); /* إذا ما عندك rgb عادي يشتغل بدونه */
+}
+
+/* تنسيق خاص للأرقام (إنجليزي) */
+.grade-row input[type="number"] {
+    direction: ltr;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* القائمة المنسدلة */
+.grade-row select {
+    cursor: pointer;
+    font-weight: 600;
+    appearance: none; /* إخفاء السهم الافتراضي */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 16px;
+    padding-left: 30px;
+}
+
+/* خانة الكتابة المخصصة (أخرى) */
+.custom-input-title {
+    text-align: right !important;
+    direction: rtl !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* زر الحذف (X) */
+.delete-btn {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid #ffcccc;
+    background: #fff5f5;
+    color: #ff4d4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+    z-index: 2;
+}
+
+/* تعديل زر الحذف في الدارك مود */
+[data-theme="dark"] .delete-btn {
+    background: rgba(255, 77, 77, 0.15);
+    border-color: rgba(255, 77, 77, 0.3);
+}
+
+.delete-btn:hover {
+    background: #ff4d4d;
+    color: white;
+    border-color: #ff4d4d;
+}
+
+/* الأزرار السفلية */
+.buttons-gap {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* زر الحساب (يأخذ ستايل calc-btn من ملفك) */
+.action-btn {
+    flex: 2;
+    background: var(--primary-color);
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-btn {
+    flex: 1;
+    background: var(--bg-color);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================
+   تنسيق النتائج
+   ========================= */
+.results-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.res-card {
+    flex: 1;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* كرت التقدير */
+.grade-res-card {
+    flex: 1;
+    background: var(--primary-color); /* لون التطبيق */
+    color: white;
+    border-radius: 16px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.res-lbl {
+    font-size: 12px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.res-val {
+    font-size: 22px;
+    font-weight: 800;
+    direction: ltr;
+}
+
+.res-sub {
+    font-size: 13px;
+    font-weight: 600;
+    direction: ltr;
+    margin-top: 4px;
+    color: var(--primary-color);
+}
+
+/* تحسينات الدارك مود للنتيجة */
+[data-theme="dark"] .res-sub { color: #64b5f6; }
+
+.grade-val {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+/* كلاس الخطأ */
+.input-error {
+    border-color: #ff4d4d !important;
+    background-color: rgba(255, 77, 77, 0.05) !important;
+}
+
+/* تحسين للجوال */
+@media (max-width: 480px) {
+    .results-wrapper { flex-direction: column; }
+    .grade-row { padding: 12px; }
+}
+
+/* تنسيق خانة اسم المادة العلوية */
+.main-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--bg-color);
+    color: var(--text-dark);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    text-align: right;
+    outline: none;
+    transition: 0.3s;
+}
+
+.main-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+/* زر الحفظ الأخضر */
+.save-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #198754; /* أخضر */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Tajawal';
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    animation: fadeIn 0.5s ease;
+}
+.save-btn:hover { background: #157347; }
+
+/* تنسيق كرت المادة المحفوظة */
+.saved-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* خط ملون يمين الكرت يعبر عن القريد */
+.saved-card::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--grade-color, var(--primary-color));
+}
+
+.saved-info h4 {
+    margin: 0 0 5px 0;
+    color: var(--text-dark);
+    font-size: 16px;
+}
+
+.saved-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-sub); /* تأكد إن عندك هالمتغير أو استخدم color: #888 */
+}
+
+/* الدارك مود للنصوص الفرعية */
+[data-theme="dark"] .saved-info p { color: #aaa; }
+
+.saved-grade {
+    text-align: center;
+    background: var(--bg-color);
+    padding: 8px 15px;
+    border-radius: 10px;
+    min-width: 60px;
+}
+
+.saved-grade .letter {
+    display: block;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--grade-color, var(--text-dark));
+}
+
+.saved-grade .percent {
+    font-size: 11px;
+    color: var(--text-dark);
+    direction: ltr;
+}
+
+/* زر حذف الكرت */
+.del-saved-btn {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+/* زر حذف الكل */
+.clear-btn {
+    background: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Tajawal';
+    margin-top: 10px;
+    font-size: 13px;
+}
+.clear-btn:hover { background: #ff4d4d; color: white; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   تصميم النوافذ المنبثقة (Custom Popups)
+   ========================================= */
+
+/* الخلفية المعتمة */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* تعتيم الخلفية */
+    backdrop-filter: blur(5px); /* تأثير ضبابي عصري */
+    z-index: 9999; /* فوق كل شيء */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+/* إظهار النافذة */
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* صندوق المحتوى */
+.popup-content {
+    background: var(--bg-card); /* أبيض أو رمادي غامق حسب المود */
+    padding: 30px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    transform: scale(0.8);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ارتداد ناعمة */
+}
+
+.popup-overlay.active .popup-content {
+    transform: scale(1);
+}
+
+/* الأيقونة */
+.popup-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    animation: popIcon 0.5s ease;
+}
+
+/* النصوص */
+.popup-content h3 {
+    color: var(--text-dark); /* يأخذ لون النص حسب المود */
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.popup-content p {
+    color: var(--text-sub); /* لون فرعي */
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* الأزرار */
+.popup-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pop-btn {
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-family: 'Tajawal';
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    flex: 1;
+    transition: 0.2s;
+}
+
+.pop-btn.confirm {
+    background: var(--primary-color);
+    color: white;
+}
+
+.pop-btn.cancel {
+    background: var(--bg-body); /* لون الخلفية العادية */
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    display: none; /* مخفي افتراضياً */
+}
+
+/* تأثير بسيط للأيقونة */
+@keyframes popIcon {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
