@@ -280,7 +280,7 @@ function renderPlanDetails(majorData) {
 
             const table = document.createElement("table");
             table.classList.add("course-table");
-            table.innerHTML = `<thead><tr><th>المادة</th><th>ساعات</th><th>نظري</th><th>عملي</th><th>سابق</th></tr></thead>`;
+            table.innerHTML = `<thead><tr><th>المادة</th><th>ساعات</th><th>نظري</th><th>عملي</th><th>مُتطلب</th></tr></thead>`;
 
             const tbody = document.createElement("tbody");
             let semHours = 0;
@@ -318,4 +318,5 @@ function renderPlanDetails(majorData) {
 
     const totalBox = document.getElementById('total-hours-container');
     if(totalBox) totalBox.innerHTML = `<div class="total-plan-box">إجمالي ساعات الخطة: ${totalPlanHours}</div>`;
+
 }
