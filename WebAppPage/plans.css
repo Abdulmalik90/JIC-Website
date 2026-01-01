@@ -1,0 +1,382 @@
+/* =========================================
+   تنسيقات صفحة الخطط (Plans)
+   تعتمد على متغيرات style.css الرئيسية
+   ========================================= */
+
+/* شريط التبديل العلوي */
+.plans-main-tabs {
+    display: flex;
+    background: var(--surface-color, #fff);
+    padding: 6px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color, #eee);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.plan-tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-color, #666);
+    font-family: 'Tajawal';
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.plan-tab.active {
+    background: var(--primary-color, #103291);
+    color: white;
+    box-shadow: 0 4px 10px rgba(16, 50, 145, 0.2);
+}
+
+/* الفلاتر الفرعية (Chips) */
+.plans-sub-filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+}
+.plans-sub-filters::-webkit-scrollbar { display: none; }
+
+.sub-filter-btn {
+    white-space: nowrap;
+    padding: 10px 18px;
+    background: var(--surface-color, #fff);
+    border: 1px solid var(--border-color, #eee);
+    border-radius: 25px;
+    color: var(--text-color, #333);
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Tajawal';
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sub-filter-btn.active {
+    background: rgba(16, 50, 145, 0.1);
+    color: var(--primary-color, #103291);
+    border-color: var(--primary-color, #103291);
+    font-weight: 700;
+}
+
+/* شبكة التخصصات */
+.majors-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* عمودين للجوال */
+    gap: 15px;
+    animation: fadeIn 0.4s ease;
+}
+
+.major-card-btn {
+    background: var(--surface-color, #fff);
+    border: 1px solid var(--border-color, #eee);
+    padding: 20px 10px;
+    border-radius: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    min-height: 130px;
+}
+
+.major-card-btn:active { transform: scale(0.98); }
+
+.major-card-btn i {
+    font-size: 30px;
+    color: var(--primary-color, #103291);
+    background: rgba(16, 50, 145, 0.05);
+    padding: 12px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.major-card-btn span {
+    color: var(--text-color, #333);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* واجهة التفاصيل */
+#plan-detail-view { animation: slideUp 0.4s ease; }
+
+.back-to-majors-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-color, #103291);
+    font-family: 'Tajawal';
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0;
+}
+.back-to-majors-btn i { font-size: 18px; transform: rotate(180deg); }
+
+.plan-summary-card {
+    background: var(--surface-color, #fff);
+    border: 1px solid var(--border-color, #eee);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.major-title-head {
+    color: var(--primary-color, #103291);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.plan-meta-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-top: 1px dashed var(--border-color, #eee);
+    padding-top: 20px;
+    gap: 15px;
+}
+
+.meta-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.meta-item .label { font-size: 11px; color: #888; }
+.meta-item .value { font-size: 14px; font-weight: 800; color: var(--text-color, #333); }
+
+.total-plan-box {
+    margin-top: 15px;
+    background: rgba(16, 50, 145, 0.06);
+    padding: 10px 15px;
+    border-radius: 12px;
+    color: var(--primary-color, #103291);
+    font-weight: 700;
+    font-size: 13px;
+    display: inline-block;
+}
+
+/* جداول المواد */
+.semester-card {
+    background: var(--surface-color, #fff);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #eee);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.semester-header {
+    background: var(--primary-color, #103291);
+    color: white;
+    padding: 12px 15px;
+}
+.semester-header h2 { font-size: 15px; margin: 0; }
+
+.course-table-wrapper { overflow-x: auto; width: 100%; }
+
+.course-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+
+.course-table th {
+    background: var(--bg-body, #f4f6f8);
+    color: #666;
+    font-size: 12px;
+    padding: 10px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.course-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-color, #eee);
+    color: var(--text-color, #333);
+    font-size: 13px;
+}
+
+.course-table tr:last-child td { border-bottom: none; }
+
+.total-row td { background: var(--bg-body, #f4f6f8); font-weight: bold; }
+.total-title { color: var(--primary-color, #103291); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   تنسيق النافذة المنبثقة (Popup)
+   ========================================= */
+
+/* الخلفية المعتمة */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* لون أسود شفاف */
+    backdrop-filter: blur(5px); /* تغبيش الخلفية */
+    z-index: 99999; /* فوق كل شيء */
+    display: none; /* مخفي افتراضياً */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* عند التفعيل */
+.popup-overlay.active {
+    display: flex; /* يصير مرن عشان التوسط */
+    opacity: 1;
+}
+
+/* الصندوق نفسه */
+.popup-content {
+    background: var(--bg-card); /* أبيض أو داكن حسب المود */
+    padding: 30px;
+    border-radius: 24px;
+    width: 85%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-overlay.active .popup-content {
+    transform: scale(1);
+}
+
+/* الأيقونة */
+.popup-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+    display: block;
+    animation: bounce 0.6s;
+}
+
+/* النصوص */
+.popup-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.popup-content p {
+    margin: 0 0 25px 0;
+    color: var(--text-sub);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* الأزرار */
+.popup-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.pop-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.pop-btn.confirm {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.2);
+}
+
+.pop-btn.cancel {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-sub);
+}
+
+/* تأثير بسيط للأيقونة */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* =========================================
+   تحديثات الدارك مود (إصلاح النصوص السوداء)
+   ========================================= */
+
+@media (prefers-color-scheme: dark) {
+    
+    /* 1. إصلاح نصوص كروت التخصصات في الشبكة */
+    .major-card-btn span {
+        color: var(--text-main) !important; /* يجبر النص يصير فاتح */
+    }
+    .major-card-btn {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+    }
+
+    /* 2. إصلاح صفحة التفاصيل (الملخص العلوي) */
+    .plan-summary-card {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+    }
+    .meta-item .label { color: var(--text-sub); }
+    .meta-item .value { color: var(--text-main) !important; }
+    
+    /* 3. إصلاح جداول المواد (أهم جزء) */
+    .semester-card {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+    }
+    
+    .course-table td {
+        color: var(--text-main) !important; /* يخلي أسماء المواد والدرجات بيضاء */
+        border-bottom-color: var(--border-color);
+    }
+
+    .course-table th {
+        background-color: var(--surface-color); /* لون خلفية العناوين (نظري/عملي) */
+        color: var(--text-sub);
+        border-bottom-color: var(--border-color);
+    }
+
+    /* صف المجموع أسفل الجدول */
+    .total-row td {
+        background-color: var(--surface-color) !important;
+        color: var(--text-main) !important;
+    }
+
+    /* 4. إصلاح النافذة المنبثقة (Popup) */
+    .popup-content {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+    }
+    .popup-content h3 { color: var(--primary-color); }
+    .popup-content p { color: var(--text-main); }
+    
+    /* زر الإلغاء في الدارك مود */
+    .pop-btn.cancel {
+        color: var(--text-main);
+        border-color: var(--border-color);
+    }
+}
