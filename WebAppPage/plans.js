@@ -249,10 +249,11 @@ function closePlanView() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// محرك رسم الجداول
+// محرك رسم الجداول (محدث لدعم المواد الاختيارية)
 function renderPlanDetails(majorData) {
     if (!majorData) return;
 
+    // 1. تعبئة البيانات العلوية
     document.getElementById("portal-greating").textContent = majorData.arabicName;
     document.getElementById("majorDegree").textContent = majorData.degree;
     document.getElementById("majorYears").textContent = majorData.years + " سنوات";
@@ -264,7 +265,10 @@ function renderPlanDetails(majorData) {
     let totalPlanHours = 0;
 
     if (Array.isArray(majorData.courses)) {
+        
+        // 2. رسم الفصول الدراسية الأساسية
         majorData.courses.forEach(sem => {
+            // نتجاهل المواد الاختيارية (0) هنا، بنرسمها تحت لحالها
             if (sem.semester === 0) return;
 
             const card = document.createElement("div");
@@ -303,20 +307,73 @@ function renderPlanDetails(majorData) {
                 });
             }
 
+            // صف المجموع للفصل
             const totalRow = document.createElement("tr");
             totalRow.className = "total-row";
             totalRow.innerHTML = `<td class="total-title">مجموع الساعات</td><td>${semHours}</td><td colspan="3"></td>`;
             tbody.appendChild(totalRow);
 
-            totalPlanHours += semHours;
+            totalPlanHours += semHours; // جمع الساعات الأساسية فقط
             table.appendChild(tbody);
             tableWrapper.appendChild(table);
             card.appendChild(tableWrapper);
             container.appendChild(card);
         });
+
+        // 3. رسم المواد الاختيارية (Semester 0) في النهاية
+        const optionalSem = majorData.courses.find(s => s.semester === 0);
+        
+        if (optionalSem && optionalSem.courses && optionalSem.courses.length > 0) {
+            
+            // فاصل بسيط
+            const divider = document.createElement("div");
+            divider.style.cssText = "margin: 30px 0 15px 0; border-top: 2px dashed var(--border-color); position: relative;";
+            divider.innerHTML = `<span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--bg-body); padding: 0 10px; color: var(--text-sub); font-size: 12px;">نهاية الخطة الأساسية</span>`;
+            container.appendChild(divider);
+
+            const card = document.createElement("div");
+            card.classList.add("semester-card");
+            // إضافة كلاس مميز عشان لو حبيت تغير لونه بالـ CSS مستقبلاً
+            card.classList.add("optional-semester"); 
+
+            const header = document.createElement("div");
+            header.classList.add("semester-header");
+            // تغيير لون الهيدر قليلاً لتمييزه (اختياري، أو خليه نفس الستايل)
+            header.innerHTML = `<h2>المواد الاختيارية (Elective Courses)</h2>`;
+            card.appendChild(header);
+
+            const tableWrapper = document.createElement("div");
+            tableWrapper.classList.add("course-table-wrapper");
+
+            const table = document.createElement("table");
+            table.classList.add("course-table");
+            table.innerHTML = `<thead><tr><th>المادة</th><th>ساعات</th><th>نظري</th><th>عملي</th><th>سابق</th></tr></thead>`;
+
+            const tbody = document.createElement("tbody");
+
+            optionalSem.courses.forEach(course => {
+                const [title, credits, lec, lab, prereqs] = course;
+                const row = document.createElement("tr");
+                let prereqText = (Array.isArray(prereqs) && prereqs.length > 0) ? prereqs.join(', ') : '-';
+                
+                row.innerHTML = `
+                    <td style="font-weight:bold">${title}</td>
+                    <td>${credits}</td>
+                    <td>${lec}</td>
+                    <td>${lab}</td>
+                    <td style="font-size:11px; color:var(--text-sub)">${prereqText}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            table.appendChild(tbody);
+            tableWrapper.appendChild(table);
+            card.appendChild(tableWrapper);
+            container.appendChild(card);
+        }
     }
 
+    // تحديث إجمالي الساعات
     const totalBox = document.getElementById('total-hours-container');
-    if(totalBox) totalBox.innerHTML = `<div class="total-plan-box">إجمالي ساعات الخطة: ${totalPlanHours}</div>`;
-
+    if(totalBox) totalBox.innerHTML = `<div class="total-plan-box">إجمالي ساعات الخطة الأساسية: ${totalPlanHours}</div>`;
 }
