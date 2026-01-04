@@ -369,7 +369,7 @@ const manufacturingTec = new Majors("Manufacturing engineering technology", "ØªÙ
             ["Computer Applicaton", 1, 0, 3, []],
             ["Technical Writing", 3, 3, 0, ["Professional Communication"]],
             ["Strength of Materials", 3, 2, 3, ["Integral Calculus", "Applied Mechanics"]],
-            ["Production Technical Drawing", 1, 2, 3, ["Engineering Drawing"]],
+            ["Production Technical Drawing", 2, 2, 3, ["Engineering Drawing"]],
             ["Manufacturing Processes II", 4, 2, 4, ["Manufacturing Process I"]],
             ["Metallurgy", 3, 2, 2, ["Principle of Chemistry"]],
             ["Metrology and Quality Control", 2, 1, 2, ["Workshop Technology"]],
