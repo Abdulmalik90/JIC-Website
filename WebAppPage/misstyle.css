@@ -1,0 +1,433 @@
+/* =========================================
+   تصميم صفحة المفقودات - misstyle.css
+   ========================================= */
+
+/* شريط البحث والفلتر */
+.filter-container {
+    padding: 15px 20px;
+    background: var(--bg-body);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: -50px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    font-family: 'Tajawal', sans-serif;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-sub);
+}
+
+.category-filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-sub);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* شبكة العناصر */
+.missing-grid-container {
+    padding: 20px;
+    padding-bottom: 80px; /* مسافة للناف بار */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* كرت المفقودات */
+.missing-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.missing-card:active {
+    transform: scale(0.98);
+}
+
+/* صورة العنصر */
+.item-image {
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* التاج (مفقود/موجود) */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.status-lost { background: #dc3545; } /* أحمر */
+.status-found { background: #28a745; } /* أخضر */
+
+.item-content {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.item-date {
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.item-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: var(--text-main);
+}
+
+.item-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* معلومات التواصل */
+.contact-info-box {
+    background: var(--surface-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.info-row i { color: var(--primary-color); }
+
+/* زر الإضافة العائم */
+.fab-add-btn {
+    position: fixed;
+    bottom: 90px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+    background: #0052cc;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 15px rgba(16, 50, 145, 0.4);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: 0.2s;
+}
+
+.fab-add-btn:active { transform: scale(0.9); }
+
+/* تنسيق النافذة الكاملة */
+.popup-content.full-height {
+    height: 85vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.popup-content iframe {
+    flex-grow: 1;
+    width: 100%;
+}
+.popup-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* =========================================
+   تنسيق قسم المفقودات (نسخة كربونية من الأخبار)
+   ========================================= */
+
+/* 1. الأب (المسؤول عن إبعاد المحتوى عن حواف الشاشة) */
+/* هذا ينسخ خصائص .news-section */
+.missing-section {
+    padding: 0 20px 20px 20px; /* نفس مسافة الأخبار بالضبط */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* 2. حاوية السكرول (المسؤولة عن ترتيب الكروت) */
+/* هذا ينسخ خصائص .news-wrapper */
+.horizontal-scroll-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 5px 30px 5px; /* مسافة بسيطة عشان الظل ما ينقص */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.horizontal-scroll-container::-webkit-scrollbar { display: none; }
+
+
+/* 3. الكرت المصغر (تنسيق الكرت نفسه) */
+.missing-card-mini {
+    min-width: 220px; /* العرض */
+    height: 230px;    /* الطول */
+    
+    background: var(--surface-color); 
+    border-radius: 20px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    
+    overflow: hidden;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.2s;
+}
+
+/* دعم الدارك مود للحدود */
+[data-theme="dark"] .missing-card-mini {
+    border: 1px solid var(--border-color);
+}
+
+.missing-card-mini:active {
+    transform: scale(0.97);
+}
+
+/* باقي تنسيقات الصور والنصوص (ما تغيرت) */
+.missing-card-mini .item-image {
+    width: 100%;
+    height: 130px;
+    position: relative;
+    background-color: var(--border-color);
+}
+
+.missing-card-mini .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.missing-card-mini .item-content {
+    padding: 12px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.missing-card-mini .item-title {
+    font-size: 14px;
+    color: var(--text-dark); /* تأكد أن هذا المتغير موجود أو استخدم var(--text-main) */
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.missing-card-mini .item-date {
+    font-size: 11px;
+    color: var(--text-light); /* تأكد أن هذا المتغير موجود أو استخدم var(--text-sub) */
+}
+
+/* التاج (مفقود/موجود) */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    backdrop-filter: blur(4px);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+.status-lost { background: rgba(220, 53, 69, 0.9); }
+.status-found { background: rgba(40, 167, 69, 0.9); }
+/* =========================================
+   تحديث: إصلاح ألوان النافذة (الإصلاح النهائي)
+   ========================================= */
+
+/* 1. الخلفية المظللة (Overlay) */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999999 !important;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* 2. صندوق المحتوى - الشكل الأساسي */
+.popup-content {
+    width: 90%;
+    max-width: 350px;
+    padding: 25px 20px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    position: relative;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
+    
+    /* حركة الظهور */
+    animation: popupPop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+/* 3. ☀️ الوضع الفاتح (Light Mode) - إجبار الألوان */
+/* هذا الكود يشتغل لما تكون الصفحة بوضع اللايت */
+[data-theme="light"] .popup-content {
+    background-color: #ffffff !important; /* خلفية بيضاء */
+    color: #000000 !important;            /* نص أسود */
+}
+[data-theme="light"] .popup-content h3,
+[data-theme="light"] .popup-content h4,
+[data-theme="light"] .popup-content p {
+    color: #1a1a1a !important;            /* تأكيد النص الأسود للعناوين */
+}
+[data-theme="light"] .popup-header .close-btn {
+    color: #555555 !important;            /* زر إغلاق غامق */
+}
+
+/* 4. 🌙 الوضع الليلي (Dark Mode) - إجبار الألوان */
+/* هذا الكود يشتغل لما تكون الصفحة بوضع الدارك */
+[data-theme="dark"] .popup-content {
+    background-color: #1e1e1e !important; /* خلفية رمادي غامق */
+    color: #ffffff !important;            /* نص أبيض */
+    border-color: #333 !important;
+}
+[data-theme="dark"] .popup-content h3,
+[data-theme="dark"] .popup-content h4,
+[data-theme="dark"] .popup-content p {
+    color: #ffffff !important;            /* تأكيد النص الأبيض للعناوين */
+}
+[data-theme="dark"] .popup-header .close-btn {
+    color: #cccccc !important;            /* زر إغلاق فاتح */
+}
+
+/* =========================================
+   تنسيقات عامة (ما تتأثر بالألوان)
+   ========================================= */
+
+.popup-content h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.popup-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* زر الإغلاق */
+.popup-header {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+
+/* زر التليجرام */
+.popup-content .app-btn {
+    background-color: var(--primary-color, #0052cc); /* أزرق */
+    color: #fff !important; /* النص دايماً أبيض */
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.2);
+    text-decoration: none;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px;
+}
+
+@keyframes popupPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

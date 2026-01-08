@@ -274,3 +274,4 @@ function switchTheme(e) {
 if (toggleSwitch) {
     toggleSwitch.addEventListener('change', switchTheme, false);
 }
+
