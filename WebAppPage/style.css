@@ -340,18 +340,19 @@ body {
 }
 
 /* =========================================
-   7. البار السفلي (Bottom Navigation)
+   7. البار السفلي (Bottom Navigation) - خماسي العناصر
    ========================================= */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: var(--nav-height);
-    background: var(--surface-color); /* صار ياخذ لون الثيم */
-    display: flex;
-    justify-content: space-around;
+    height: var(--nav-height); /* تأكد أن المتغير معرف، أو حط مثلا 70px */
+    background: var(--surface-color); /* ياخذ لون الثيم */
+    display: flex; /* حافظنا على الفليكس */
     align-items: center;
+    
+    /* الستايل الجمالي القديم حقك */
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     box-shadow: 0 -5px 25px var(--shadow-color);
@@ -366,27 +367,37 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--text-light); /* بدال الرمادي الثابت */
-    font-size: 11px;
+    color: var(--text-light); 
+    
+    /* ⚠️ التعديلات عشان يكفي 5 عناصر */
+    width: 20%;      /* قسمنا المساحة على 5 (100/5 = 20) */
+    font-size: 10px; /* صغرنا الخط تكه عشان الكلمات ما تتلاصق */
+    
     font-weight: 500;
     transition: 0.3s;
-    width: 25%;
     height: 100%;
 }
 
+/* تنسيق الأيقونة */
 .nav-item i {
-    font-size: 22px;
+    font-size: 20px; /* صغرناها شوي من 22 لـ 20 عشان التناسق */
     margin-bottom: 5px;
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* حالة التفعيل (Active) */
 .nav-item.active {
     color: var(--primary-color);
 }
 
 .nav-item.active i {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* نفس الأنيميشن القديم */
     color: var(--primary-color);
+}
+
+/* تحسين للنص عشان ما ينزل سطرين */
+.nav-item span {
+    white-space: nowrap;
 }
 
 /* =========================================
@@ -673,7 +684,7 @@ body {
 .news-section {
     padding: 0 20px 20px 20px;
     margin-top: 20px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
 
 .news-wrapper {
@@ -761,6 +772,42 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+/* =========================================
+ Missing Part
+   ========================================= */
+
+/* تنسيق موحد لكل عناوين الأقسام */
+.section-header {
+    display: flex;
+    justify-content: space-between; /* يوزع المسافة: العنوان يمين والزر يسار */
+    align-items: center;
+    padding: 0 5px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.section-header h2 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الايقونة والنص */
+}
+
+.view-all {
+    font-size: 13px;
+    color: var(--text-sub);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.view-all:hover {
+    color: var(--primary-color);
 }
 
 /* =========================================
