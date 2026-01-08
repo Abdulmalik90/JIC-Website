@@ -5,7 +5,7 @@
 // ⚙️ إعدادات الرابط
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQm4RK50J554bcCBsbkRg_P7-KryGy0kgSdjYgoSvlLASdi7pUuOgvif-5vJgdzOZBXVUlhAbPg2Lsh/pub?output=csv";
 // صورة افتراضية (لو ما رفع صورة)
-const DEFAULT_IMAGE = "https://s6.imgcdn.dev/YlLt5d.png"; 
+const DEFAULT_IMAGE = "Missing.png"; 
 // (تأكد انك تحط صورة بهذا الاسم في مجلد الصور عندك، أو حط أي رابط صورة من النت)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -215,4 +215,5 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+
 }
