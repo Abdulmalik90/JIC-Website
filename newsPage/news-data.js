@@ -316,7 +316,7 @@ const newsData = [
 
             <div style="text-align: center; margin-top: 15px;">
                 <p><strong>لرؤيـة قسم المفقودات</strong></p>
-                <a href="https://juportal.online/WebAppPage/missing.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">الدخول لنسخة التطبيق 📱</a>
+                <a href="https://juportal.online/WebAppPage/missing.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">الدخول لقسم المفقودات 📱</a>
             </div>
         `,
         image: "https://i.postimg.cc/J0fP2rgy/unnamed.jpg",
