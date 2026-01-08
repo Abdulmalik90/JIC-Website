@@ -298,6 +298,32 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "تطبيق مدخل"
     },
+        {
+        id: 13,
+        title: "🚀 إطلاق قسـم المفقـودات في تطبيق مـدخـل!",
+        content: `
+            <p style="direction: rtl;">
+            نعلن وبالتعاون مع قناة مفقـودات JIC عن اطلاق قسم المفقودات من خلال تطبيق مدخل
+            </p>
+            
+            <p style="direction: rtl;">
+وذلك سعياً منا في تطوير خدماتنا وجمع كل الموارد المفيدة لطلاب كليات ومعاهد الجبيل الصناعية في مكان واحـد
+            </p>
+
+            <p style="direction: rtl;">
+            في حالة فقدانك او عثورك على شيء مفقود تقدر ببساطة تبلغ عليه من خلال الضغط على علامة الزائد في صفحة المفقودات .
+            </p>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <p><strong>لرؤيـة قسم المفقودات</strong></p>
+                <a href="https://juportal.online/WebAppPage/missing.html" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">الدخول لنسخة التطبيق 📱</a>
+            </div>
+        `,
+        image: "https://i.postimg.cc/J0fP2rgy/unnamed.jpg",
+        date: "2026-01-08T06:00:00",
+        author: "رائـد الزهـراني",
+        category: "تطبيق مدخل"
+    },
 ];
 
 // دالة للحصول على خبر بواسطة ID
