@@ -275,3 +275,25 @@ if (toggleSwitch) {
     toggleSwitch.addEventListener('change', switchTheme, false);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    // نحدد اسم مفتاح الجلسة (عشان المتصفح يتذكر)
+    const POPUP_KEY = 'portal_popup_v1';
+    
+    // إذا ما قد شافه في هذي الجلسة
+    if (!localStorage.getItem(POPUP_KEY)) {
+        setTimeout(() => {
+            document.getElementById('custom-popup').classList.add('active');
+        }, 1000); // يطلع بعد ثانية وحدة من دخول الموقع
+    }
+});
+
+function closePopup() {
+    const popup = document.getElementById('custom-popup');
+    const POPUP_KEY = 'portal_popup_v1';
+    
+    // إخفاء النافذة
+    popup.classList.remove('active');
+    
+    // حفظ في الذاكرة أنه شافه خلاص
+    localStorage.setItem(POPUP_KEY, 'true');
+}
