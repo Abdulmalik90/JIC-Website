@@ -1140,7 +1140,7 @@ input:checked + .slider:before {
 }
 
 /* خلفية الشاشة (الظلام) */
-.popup-overlay {
+.popup-overlay1 {
     position: fixed;
     top: 0;
     left: 0;
@@ -1151,14 +1151,14 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
 }
 
 /* ظهور النافذة */
-.popup-overlay.active {
+.popup-overlay1.active {
     opacity: 1 !important;
     visibility: visible !important;
     display: flex !important;
@@ -1177,7 +1177,7 @@ input:checked + .slider:before {
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-.popup-overlay.active .popup-box {
+.popup-overlay1.active .popup-box {
     transform: scale(1);
 }
 
