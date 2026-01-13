@@ -3,8 +3,9 @@
    ========================================= */
 :root {
     /* --- الوضع النهاري (الافتراضي) --- */
-    --primary-color: #0052cc;       /* أزرق مدخل الرسمي */
+    --primary-color: linear-gradient(90deg, #103191, #106091);       /* أزرق مدخل الرسمي */
     --bg-color: #f8f9fa;            /* خلفية الصفحة */
+    --primary-text: #1a60bb;          /* خلفية الخط الرسمي */
     --surface-color: #ffffff;       /* لون الكروت والقوائم */
     --text-dark: #1f2937;           /* النصوص الرئيسية */
     --text-light: #6b7280;          /* النصوص الفرعية */
@@ -19,8 +20,9 @@
 
 /* --- الوضع الليلي (Dark Mode) --- */
 [data-theme="dark"] {
-    --primary-color: #60a5fa;       /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
+    --primary-color: linear-gradient(90deg, #103191, #106091);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
     --bg-color: #121212;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
+    --primary-text: #5eaae9;          /* خلفية الخط الرسمي */
     --surface-color: #1e1e1e;       /* رمادي غامق للكروت */
     --text-dark: #e4e6eb;           /* أبيض مريح للعين (أوف وايت) */
     --text-light: #9ca3af;          /* رمادي فاتح */
@@ -166,7 +168,11 @@ body {
     margin-bottom: 30px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 15px;
+    font-family: 'Tajawal'; 
+    font-weight:800; 
+    color:var(--primary-text);
 }
+
 
 .close-btn {
     background: var(--bg-color); /* زر الإغلاق ياخذ لون الخلفية */
@@ -212,7 +218,7 @@ body {
 .sidebar-menu a:hover, 
 .sidebar-menu a.active {
     background-color: var(--bg-color); /* بدال الأزرق الفاتح، نستخدم لون الخلفية */
-    color: var(--primary-color);
+    color: var(--primary-text);
     font-weight: 700;
 }
 
@@ -235,7 +241,7 @@ body {
 
 .glow-text {
     font-size: 22px;
-    color: var(--primary-color);
+    color: var(--primary-text);
     margin-bottom: 8px;
     font-weight: 800;
     text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
@@ -319,24 +325,24 @@ body {
 }
 
 /* التدرجات تبقى كما هي لأنها جميلة في الوضعين */
-.blue-gradient {
-    background: linear-gradient(135deg, #4facfe 0%, #007c83 100%);
-    box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
-}
-
 .purple-gradient {
-    background: linear-gradient(135deg, #7a64ac 0%, #97a2ff 100%);
+    background: linear-gradient(135deg, #836ee0 0%, #4d1b9e 100%);
     box-shadow: 0 8px 15px rgba(161, 140, 209, 0.25);
 }
 
 .orange-gradient {
-    background: linear-gradient(135deg, #f6d365 0%, #ec937a 100%);
-    box-shadow: 0 8px 15px rgba(253, 160, 133, 0.25);
+    background: linear-gradient(135deg, #f8db7c 0%, #da8b15 100%);
+    box-shadow: 0 8px 15px rgba(250, 155, 129, 0.25);
 }
 
 .green-gradient {
-    background: linear-gradient(135deg, #63e2b1 0%, #41a1d1 100%);
+    background: linear-gradient(135deg, #51c7b3 0%, #0d7c52 100%);
     box-shadow: 0 8px 15px rgba(132, 250, 176, 0.25);
+}
+
+.blue-gradient1 {
+    background: linear-gradient(135deg, #65b7da 0%, #1537b3 100%);
+    box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
 }
 
 /* =========================================
@@ -387,12 +393,12 @@ body {
 
 /* حالة التفعيل (Active) */
 .nav-item.active {
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 .nav-item.active i {
     transform: translateY(-5px); /* نفس الأنيميشن القديم */
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 /* تحسين للنص عشان ما ينزل سطرين */
@@ -453,7 +459,7 @@ body {
 .modal-header h3 {
     margin: 0;
     font-size: 18px;
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 .modal-close-btn {
@@ -515,7 +521,7 @@ body {
 /* الستايل الأساسي (أزرق) */
 .app-btn.primary {
     background-color: rgba(0, 82, 204, 0.08);
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 .app-btn.primary:active {
@@ -633,7 +639,7 @@ body {
 /* تنسيق الأرقام */
 #calender-events .event-timer span[style*="font-size: 20px"] {
     font-size: 22px !important;
-    color: var(--primary-color) !important; /* تم التعديل */
+    color: var(--primary-text) !important; /* تم التعديل */
     font-weight: 800 !important;
     line-height: 1;
     margin-bottom: 2px;
@@ -800,14 +806,14 @@ body {
 
 .view-all {
     font-size: 13px;
-    color: var(--primary-color);
+    color: var(--primary-text);
     text-decoration: none;
     font-weight: 600;
     transition: 0.2s;
 }
 
 .view-all:hover {
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 /* =========================================
@@ -1023,7 +1029,7 @@ body {
 
 /* شكل الدائرة والخلفية */
 .slider {
-    background-color: #ccc;
+    background-color: #a0a0a0;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -1050,7 +1056,7 @@ body {
 
 /* حالة التشغيل (أزرق) */
 input:checked + .slider {
-    background-color: var(--primary-color);
+    background-color: var(--primary-text);
 }
 
 /* حركة الدائرة لليسار عند التشغيل */
@@ -1165,7 +1171,7 @@ input:checked + .slider:before {
 }
 
 /* صندوق التنبيه نفسه */
-.popup-box {
+.popup-box1 {
     background: white;
     padding: 30px;
     border-radius: 30px;
@@ -1177,12 +1183,12 @@ input:checked + .slider:before {
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-.popup-overlay1.active .popup-box {
+.popup-overlay1.active .popup-box1 {
     transform: scale(1);
 }
 
 /* الأيقونة */
-.popup-icon {
+.popup-icon1 {
     width: 60px;
     height: 60px;
     background: #dee5fa; /* خلفية زرقاء فاتحة */
@@ -1196,13 +1202,13 @@ input:checked + .slider:before {
 }
 
 /* النصوص */
-.popup-title {
+.popup-title1 {
     margin: 0 0 10px;
     font-size: 1.2rem;
     color: #333;
 }
 
-.popup-text {
+.popup-text1 {
     font-size: 0.95rem;
     color: #666;
     margin-bottom: 25px;
@@ -1210,13 +1216,13 @@ input:checked + .slider:before {
 }
 
 /* الأزرار */
-.popup-buttons {
+.popup-buttons1 {
     display: flex;
     gap: 10px;
     justify-content: center;
 }
 
-.popup-buttons .btn-primary {
+.popup-buttons1 .btn-primary {
     background: linear-gradient(90deg, #103191, #106091);
     color: white;
     border: none;
@@ -1228,7 +1234,7 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-.popup-buttons .btn-secondary {
+.popup-buttons1 .btn-secondary {
     background: #f3f4f6;
     color: #4b5563;
     font-family: 'tajawal';
@@ -1240,7 +1246,7 @@ input:checked + .slider:before {
     flex: 1;
 }
 
-.popup-buttons .btn-secondary:hover {
+.popup-buttons1 .btn-secondary:hover {
     background: #e5e7eb;
 }
 

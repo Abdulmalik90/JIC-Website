@@ -280,22 +280,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const POPUP_KEY = 'portal_popup_v1';
     
     // إذا ما قد شافه في هذي الجلسة
-    if (!sessionStorage.getItem(POPUP_KEY)) {
+    if (!localStorage.getItem(POPUP_KEY)) {
         setTimeout(() => {
-            document.getElementById('custom-popup').classList.add('active');
+            document.getElementById('custom-popup1').classList.add('active');
         }, 1000); // يطلع بعد ثانية وحدة من دخول الموقع
     }
 });
 
 function closePopup() {
-    const popup = document.getElementById('custom-popup');
+    const popup = document.getElementById('custom-popup1');
     const POPUP_KEY = 'portal_popup_v1';
     
     // إخفاء النافذة
     popup.classList.remove('active');
     
     // حفظ في الذاكرة أنه شافه خلاص
-    sessionStorage.setItem(POPUP_KEY, 'true');
+    localStorage.setItem(POPUP_KEY, 'true');
 }
 
 

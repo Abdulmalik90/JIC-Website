@@ -8,7 +8,7 @@
     display: flex;
     background: var(--surface-color, #fff);
     padding: 6px;
-    border-radius: 16px;
+    border-radius: 20px;
     margin-bottom: 20px;
     margin-top: -50px;
     border: 1px solid var(--border-color, #eee);
@@ -20,10 +20,10 @@
     padding: 12px;
     border: none;
     background: transparent;
-    color: var(--text-color, #666);
+    color: var(--text-color, #bdbdbd);
     font-family: 'Tajawal';
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: 16px;
     cursor: pointer;
     transition: 0.3s;
     font-size: 14px;
@@ -52,7 +52,7 @@
     background: var(--surface-color, #fff);
     border: 1px solid var(--border-color, #eee);
     border-radius: 25px;
-    color: var(--text-color, #333);
+    color: var(--text-color, #858585);
     cursor: pointer;
     transition: 0.2s;
     font-family: 'Tajawal';

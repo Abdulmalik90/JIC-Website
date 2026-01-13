@@ -209,49 +209,31 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================= */
 
 // دالة إظهار رسالة تنبيه عادية (بديل alert)
-function showAlert(title, message, icon = '🔔') {
-    const overlay = document.getElementById('custom-popup-overlay');
-    document.getElementById('popup-icon').textContent = icon;
-    document.getElementById('popup-title').textContent = title;
-    document.getElementById('popup-message').textContent = message;
-    
-    // إعداد الأزرار
-    document.getElementById('popup-cancel-btn').style.display = 'none';
-    const confirmBtn = document.getElementById('popup-confirm-btn');
-    confirmBtn.textContent = 'موافق';
-    
-    // إغلاق النافذة عند الضغط
-    confirmBtn.onclick = closePopup;
-    
-    overlay.classList.add('active');
-}
+document.addEventListener('DOMContentLoaded', () => {
 
-// دالة التأكيد (بديل confirm) - تأخذ دالة للتنفيذ في حال الموافقة
-function showConfirm(title, message, onYes, icon = '⚠️') {
-    const overlay = document.getElementById('custom-popup-overlay');
-    document.getElementById('popup-icon').textContent = icon;
-    document.getElementById('popup-title').textContent = title;
-    document.getElementById('popup-message').textContent = message;
-    
-    // إظهار زر الإلغاء
-    const cancelBtn = document.getElementById('popup-cancel-btn');
-    cancelBtn.style.display = 'block';
-    cancelBtn.onclick = closePopup;
+    window.showAlert = function (title, message, icon = '🔔') {
+        const overlay = document.getElementById('custom-popup-overlay3');
+        const cancelBtn = document.getElementById('popup-cancel-btn3');
+        const confirmBtn = document.getElementById('popup-confirm-btn3');
 
-    // إعداد زر الموافقة لتنفيذ الأمر
-    const confirmBtn = document.getElementById('popup-confirm-btn');
-    confirmBtn.textContent = 'نعم، تابع';
-    confirmBtn.onclick = () => {
-        closePopup();
-        onYes(); // تنفيذ الدالة المرسلة
+        if (!overlay || !confirmBtn) return;
+
+        document.getElementById('popup-icon3').textContent = icon;
+        document.getElementById('popup-title3').textContent = title;
+        document.getElementById('popup-message3').textContent = message;
+
+        cancelBtn.style.display = 'none';
+        confirmBtn.textContent = 'موافق';
+        confirmBtn.onclick = closePopup;
+
+        overlay.classList.add('active');
     };
-    
-    overlay.classList.add('active');
-}
 
-function closePopup() {
-    document.getElementById('custom-popup-overlay').classList.remove('active');
-}
+    window.closePopup = function () {
+        document.getElementById('custom-popup-overlay3')?.classList.remove('active');
+    };
+
+});
 
 /* =========================================
    باقي دوال التطبيق (محدثة لتستخدم التنبيهات)
@@ -426,7 +408,7 @@ function getGradeColor(grade) {
     // ==========================================
     
     // 1. تبي تقفل الصفحة؟ حط true .. تبي تفتحها؟ حط false
-    const IS_MAINTENANCE_MODE = true; 
+    const IS_MAINTENANCE_MODE = false; 
 
     // 2. رسالة التنبيه اللي بتظهر للطلاب
     const MAINTENANCE_MSG = {

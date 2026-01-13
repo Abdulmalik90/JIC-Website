@@ -46,7 +46,7 @@
 
 .filter-btn {
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 1px solid var(--border-color);
     background: var(--bg-card);
     color: var(--text-sub);
@@ -58,7 +58,7 @@
 }
 
 .filter-btn.active {
-    background: var(--primary-color);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
     border-color: var(--primary-color);
 }
@@ -169,13 +169,13 @@
 .info-row i { color: var(--primary-color); }
 
 /* زر الإضافة العائم */
-.fab-add-btn {
+.fab-add-btn2 {
     position: fixed;
     bottom: 90px;
     left: 20px;
     width: 55px;
     height: 55px;
-    background: #0052cc;
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
     border-radius: 50%;
     border: none;
@@ -189,21 +189,21 @@
     transition: 0.2s;
 }
 
-.fab-add-btn:active { transform: scale(0.9); }
+.fab-add-btn2:active { transform: scale(0.9); }
 
 /* تنسيق النافذة الكاملة */
-.popup-content.full-height {
+.popup-content2.full-height {
     height: 85vh;
     max-height: 800px;
     display: flex;
     flex-direction: column;
     padding: 0;
 }
-.popup-content iframe {
+.popup-content2 iframe {
     flex-grow: 1;
     width: 100%;
 }
-.popup-header {
+.popup-header2 {
     padding: 15px;
     border-bottom: 1px solid var(--border-color);
 }
@@ -319,7 +319,7 @@
    ========================================= */
 
 /* 1. الخلفية المظللة (Overlay) */
-.popup-overlay {
+.popup-overlay2 {
     position: fixed;
     top: 0;
     left: 0;
@@ -334,12 +334,11 @@
 }
 
 /* 2. صندوق المحتوى - الشكل الأساسي */
-.popup-content {
+.popup-content2 {
     width: 90%;
     max-width: 350px;
     padding: 25px 20px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     position: relative;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.1);
@@ -350,32 +349,32 @@
 
 /* 3. ☀️ الوضع الفاتح (Light Mode) - إجبار الألوان */
 /* هذا الكود يشتغل لما تكون الصفحة بوضع اللايت */
-[data-theme="light"] .popup-content {
+[data-theme="light"] .popup-content2 {
     background-color: #ffffff !important; /* خلفية بيضاء */
     color: #000000 !important;            /* نص أسود */
 }
-[data-theme="light"] .popup-content h3,
-[data-theme="light"] .popup-content h4,
-[data-theme="light"] .popup-content p {
+[data-theme="light"] .popup-content2 h3,
+[data-theme="light"] .popup-content2 h4,
+[data-theme="light"] .popup-content2 p {
     color: #1a1a1a !important;            /* تأكيد النص الأسود للعناوين */
 }
-[data-theme="light"] .popup-header .close-btn {
+[data-theme="light"] .popup-header2 .close-btn2 {
     color: #555555 !important;            /* زر إغلاق غامق */
 }
 
 /* 4. 🌙 الوضع الليلي (Dark Mode) - إجبار الألوان */
 /* هذا الكود يشتغل لما تكون الصفحة بوضع الدارك */
-[data-theme="dark"] .popup-content {
+[data-theme="dark"] .popup-content2 {
     background-color: #1e1e1e !important; /* خلفية رمادي غامق */
     color: #ffffff !important;            /* نص أبيض */
     border-color: #333 !important;
 }
-[data-theme="dark"] .popup-content h3,
-[data-theme="dark"] .popup-content h4,
-[data-theme="dark"] .popup-content p {
+[data-theme="dark"] .popup-content2 h3,
+[data-theme="dark"] .popup-content2 h4,
+[data-theme="dark"] .popup-content2 p {
     color: #ffffff !important;            /* تأكيد النص الأبيض للعناوين */
 }
-[data-theme="dark"] .popup-header .close-btn {
+[data-theme="dark"] .popup-header2 .close-btn2 {
     color: #cccccc !important;            /* زر إغلاق فاتح */
 }
 
@@ -383,13 +382,13 @@
    تنسيقات عامة (ما تتأثر بالألوان)
    ========================================= */
 
-.popup-content h4 {
+.popup-content2 h4 {
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.popup-content p {
+.popup-content2 p {
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 25px;
@@ -397,13 +396,13 @@
 }
 
 /* زر الإغلاق */
-.popup-header {
+.popup-header2 {
     position: absolute;
     top: 15px;
     left: 15px;
     z-index: 10;
 }
-.close-btn {
+.close-btn2 {
     background: transparent;
     border: none;
     font-size: 24px;
@@ -413,8 +412,8 @@
 }
 
 /* زر التليجرام */
-.popup-content .app-btn {
-    background-color: var(--primary-color, #0052cc); /* أزرق */
+.popup-content2 .app-btn2 {
+    background: linear-gradient(90deg, #103191, #106091); /* أزرق */
     color: #fff !important; /* النص دايماً أبيض */
     border-radius: 12px;
     padding: 12px;

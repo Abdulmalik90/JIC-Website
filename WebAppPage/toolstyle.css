@@ -117,7 +117,7 @@ label,
 .sidebar-menu a:hover, 
 .sidebar-menu a.active {
     background-color: var(--bg-color);
-    color: var(--primary-color);
+    color: var(--primary-text);
     font-weight: 700;
 }
 
@@ -280,7 +280,7 @@ label,
 .input-wrapper i {
     position: absolute;
     right: 15px;
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 .input-wrapper input {
@@ -309,13 +309,13 @@ label,
 /* الزر */
 .calc-btn {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     border: none;
     border-radius: 15px;
-    background: var(--primary-color);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
     margin-bottom: 25px;
@@ -394,7 +394,7 @@ label,
     padding: 5px; 
     border-radius: 5px; 
 }
-.formula span { color: var(--primary-color); font-weight: bold; }
+.formula span { color: var(--primary-text); font-weight: bold; }
 
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -451,7 +451,7 @@ label,
 
 .card-subtitle { 
     font-size: 14px; 
-    color: var(--primary-color); 
+    color: var(--primary-text); 
     margin-bottom: 15px; 
     display: flex; 
     align-items: center; 
@@ -669,7 +669,7 @@ label,
 /* العنوان */
 .calc-title {
     text-align: center;
-    color: var(--primary-color);
+    color: var(--primary-text);
     font-weight: 800;
     margin-bottom: 25px;
     font-size: 20px;
@@ -794,9 +794,9 @@ label,
 /* زر الحساب (يأخذ ستايل calc-btn من ملفك) */
 .action-btn {
     flex: 2;
-    background: var(--primary-color);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
-    padding: 14px;
+    padding: 12px;
     border-radius: 14px;
     border: none;
     font-weight: 700;
@@ -809,7 +809,7 @@ label,
     background: var(--bg-color);
     color: var(--text-dark);
     border: 1px solid var(--border-color);
-    padding: 14px;
+    padding: 12px;
     border-radius: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -869,7 +869,7 @@ label,
     font-weight: 600;
     direction: ltr;
     margin-top: 4px;
-    color: var(--primary-color);
+    color: var(--primary-text);
 }
 
 /* تحسينات الدارك مود للنتيجة */
@@ -1026,7 +1026,7 @@ label,
    ========================================= */
 
 /* الخلفية المعتمة */
-.popup-overlay {
+.popup-overlay3 {
     position: fixed;
     top: 0;
     left: 0;
@@ -1044,13 +1044,13 @@ label,
 }
 
 /* إظهار النافذة */
-.popup-overlay.active {
+.popup-overlay3.active {
     opacity: 1;
     visibility: visible;
 }
 
 /* صندوق المحتوى */
-.popup-content {
+.popup-content3 {
     background: var(--bg-card); /* أبيض أو رمادي غامق حسب المود */
     padding: 30px;
     border-radius: 24px;
@@ -1063,25 +1063,25 @@ label,
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ارتداد ناعمة */
 }
 
-.popup-overlay.active .popup-content {
+.popup-overlay3.active .popup-content3 {
     transform: scale(1);
 }
 
 /* الأيقونة */
-.popup-icon {
+.popup-icon3 {
     font-size: 40px;
     margin-bottom: 15px;
     animation: popIcon 0.5s ease;
 }
 
 /* النصوص */
-.popup-content h3 {
+.popup-content3 h3 {
     color: var(--text-dark); /* يأخذ لون النص حسب المود */
     margin-bottom: 10px;
     font-size: 20px;
 }
 
-.popup-content p {
+.popup-content3 p {
     color: var(--text-sub); /* لون فرعي */
     margin-bottom: 25px;
     font-size: 15px;
@@ -1089,13 +1089,13 @@ label,
 }
 
 /* الأزرار */
-.popup-actions {
+.popup-actions3 {
     display: flex;
     gap: 10px;
     justify-content: center;
 }
 
-.pop-btn {
+.pop-btn3 {
     padding: 12px 25px;
     border-radius: 12px;
     font-family: 'Tajawal';
@@ -1107,12 +1107,12 @@ label,
     transition: 0.2s;
 }
 
-.pop-btn.confirm {
-    background: var(--primary-color);
+.pop-btn3.confirm {
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
 }
 
-.pop-btn.cancel {
+.pop-btn3.cancel {
     background: var(--bg-body); /* لون الخلفية العادية */
     color: var(--text-dark);
     border: 1px solid var(--border-color);
