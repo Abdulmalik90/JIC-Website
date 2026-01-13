@@ -169,7 +169,6 @@ label,
     background: var(--primary-color);
     color: white; /* النص يبقى أبيض حتى في الدارك */
     box-shadow: 0 4px 10px rgba(0, 82, 204, 0.2);
-    border-color: var(--primary-color);
 }
 
 /* إدارة عرض المحتوى */

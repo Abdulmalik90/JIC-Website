@@ -60,7 +60,6 @@
 .filter-btn.active {
     background: linear-gradient(90deg, #103191, #106091);
     color: white;
-    border-color: var(--primary-color);
 }
 
 /* شبكة العناصر */
