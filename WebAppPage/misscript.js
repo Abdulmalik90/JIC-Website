@@ -194,16 +194,16 @@ function filterItems() {
 
 // جعل الدوال عامة (Global) عشان زر HTML يقدر يشوفها
 window.openAddModal = function() {
-    const modal = document.getElementById('add-modal');
+    const modal = document.getElementById('add-modal2');
     if (modal) {
         modal.style.display = 'flex';
     } else {
-        console.error("خطأ: لم يتم العثور على نافذة id='add-modal'");
+        console.error("خطأ: لم يتم العثور على نافذة id='add-modal2'");
     }
 }
 
 window.closeAddModal = function() {
-    const modal = document.getElementById('add-modal');
+    const modal = document.getElementById('add-modal2');
     if (modal) {
         modal.style.display = 'none';
     }
@@ -211,7 +211,7 @@ window.closeAddModal = function() {
 
 // إغلاق النافذة عند الضغط خارجها
 window.onclick = function(event) {
-    const modal = document.getElementById('add-modal');
+    const modal = document.getElementById('add-modal2');
     if (event.target == modal) {
         modal.style.display = "none";
     }
