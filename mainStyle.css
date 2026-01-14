@@ -51,19 +51,19 @@
 
   /* المحتوى */
 .modal-content {
-    background: #fff;
-    border-radius: 18px;
-    padding: 2rem;
-    max-width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
     width: 90%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    direction: rtl;
-    text-align: right;
-    animation: fadeIn 0.4s ease;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* أنميشن مطاطي حلو */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .modal-content h2 {
-    color: #0050d5;
+    color: #1850aa;
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
@@ -71,12 +71,12 @@
 .modal-content p {
     color: #333;
     line-height: 1.9;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     margin: 10px 0;
 }
 
 .modal-content strong {
-    color: #0050d5;
+    color: #1f57b1;
 }
 
 .actions {
@@ -85,18 +85,21 @@
 }
 
 .modal-content button {
-    background-color: #0050d5;
+    background: linear-gradient(-120deg, #103291, #146394);
     color: white;
     border: none;
-    padding: 10px 28px;
-    border-radius: 8px;
+    padding: 13px 130px;
+    border-radius: 15px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .modal-content button:hover {
-    background-color: #003fa8;
+    background: none; /* smoother transition */
+    background-color: #ff4b2b;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
@@ -115,17 +118,21 @@
     .modal-content {
         padding: 1.5rem;
         font-size: 0.95rem;
-        border-radius: 14px;
+        border-radius: 25px;
     }
 
     .modal-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+    }
+
+     .modal-content p {
+        font-size: 1.2rem;
     }
 
     .modal-content button {
         width: 100%;
         padding: 12px;
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 }
 
