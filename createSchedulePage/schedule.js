@@ -63,6 +63,12 @@ function craetingPeriodsCheckboxs(day, arabicDay, container){
 
                 <input type="checkbox" id="${day}-13-checkbox" class="checkbox-input-period">
                 <label for="${day}-13-checkbox" class="checkbox-label">13</label>
+
+                 <input type="checkbox" id="${day}-14-checkbox" class="checkbox-input-period">
+                <label for="${day}-14-checkbox" class="checkbox-label">14</label>
+
+                 <input type="checkbox" id="${day}-15-checkbox" class="checkbox-input-period">
+                <label for="${day}-15-checkbox" class="checkbox-label">15</label>
             </div>
         `
 }
