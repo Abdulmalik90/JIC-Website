@@ -10,6 +10,7 @@ let keyWords2 = [
     "تخصصات دبلوم الكلية",
     "تخصصات دبلوم المعهد",
     "اصنع جدولك"
+    "تطبيق الجوال"
 ];
 
 const resultBox2 = document.getElementById("result-box");
@@ -82,8 +83,12 @@ function searchResult2(){
             window.location.href = "/academicRegulationsPage/regulations.html"
             break;
 
-        case "اصنع جدولك" || "إصنع جدولك":
+        case "اصنع جدولك" || "صمم جدولك":
             window.location.href = "/createSchedulePage/schedule.html"
+            break;
+
+        case "تطبيق مدخل" || "تطبيق الجوال":
+            window.location.href = "/WebAppPage/index.html"
             break;
 
     }
