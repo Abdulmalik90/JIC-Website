@@ -324,6 +324,45 @@ const newsData = [
         author: "رائـد الزهـراني",
         category: "تطبيق مدخل"
     },
+
+          {
+‏        id: 14,
+‏        title: "⚡️ دعوة لحضور بوث نادي الهندسة الكهربائية!",
+‏        content: `
+‏            <p style="direction: rtl;">
+            يدعوكم نادي الهندسة الكهربائية
+لحضور البوث التعريفي بالنادي ⚡
+            </p>
+            
+‏            <p style="direction: rtl;">
+
+✨ تعرّف على:
+	•	تجارب الطلاب في النادي
+	•	تأثير النادي الإيجابي
+	•	مميزات الانضمام
+	•	اللجان المناسبة لك
+
+‏            </p>
+
+‏            <p style="direction: rtl;">
+            📅 التاريخ: الثلاثاء 3 فبراير 2026
+⏰ الوقت: من 10:00 صباحًا إلى 1:00 ظهرًا
+📍 المكان: مبنى اللغة الإنجليزية – أمام مقهى الفنار
+
+يشرفنا حضوركم ومشاركتكم 🌟
+
+            </p>
+
+‏            <div style="text-align: center; margin-top: 15px;">
+‏                <p><strong>انضم لقروب اخبار النادي</strong></p>
+‏                <a href="https://chat.whatsapp.com/KJJeLQMBpcF2v0Xd2nrEIH" target="_blank" style="display: inline-block; background-color: #0052cc; color: white; padding: 12px 25px; text-decoration: none; border-radius: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,82,204,0.3);">الانضمام للمجموعة بالواتساب 📱</a>
+‏            </div>
+        `,
+‏        image: "https://i.postimg.cc/Hx0BdmrN/56f396e9-d29d-43d4-8464-5f2458342c66.jpg",
+‏        date: "2026-02-02T03:16:00",
+‏        author: "نادي الهندسة الكهربائية ",
+‏        category: "أندية طلابية"
+    },
 ];
 
 // دالة للحصول على خبر بواسطة ID
