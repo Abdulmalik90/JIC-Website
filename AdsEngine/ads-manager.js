@@ -5,18 +5,18 @@
 (function() {
     const ADS_DB = [
         // --- أخبار ---
-        { id: 101, type: "news_feed", client: "مطعم الجامعة", image: "https://placehold.co/1080x1350/0052cc/white?text=Burger", link: "#", active: true },
-        { id: 102, type: "news_feed", client: "نون", image: "https://placehold.co/1080x1350/F6C000/black?text=Noon", link: "#", active: true },
-        { id: 103, type: "news_feed", client: "جرير", image: "https://placehold.co/1080x1350/e11d48/white?text=Jarir", link: "#", active: true },
+        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/yxTLnC1P/alaʿlanat-aʿlanat-alakhbar.png", link: "../WebAppPage/Tools.html", active: true },
+        { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/RhTgGxSG/alaʿlanat-aʿlanat-alakhbar-copy.png", link: "../WebAppPage/news.html", active: true },
+        { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
 
         // --- أحداث ---
-        { id: 201, type: "event_feed", client: "نادي الحاسب", image: "https://placehold.co/1200x700/e11d48/white?text=Club", link: "#", active: true },
-        { id: 202, type: "event_feed", client: "ستاربكس", image: "https://placehold.co/1200x700/00704A/white?text=Coffee", link: "#", active: true },
-        { id: 203, type: "event_feed", client: "دانكن", image: "https://placehold.co/1200x700/DD6E42/white?text=hughk", link: "#", active: true },
+        { id: 201, type: "event_feed", client: " مساحة اعلانية ", image: "https://i.postimg.cc/ZqBxTmfY/original-events.png", link: "../WebAppPage/index.html", active: false },
+        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/pTzGhngb/alaʿlanat-aʿlanat-alahdath.png", link: "../WebAppPage/library.html", active: true },
+        { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/JnZ6DBSf/alaʿlanat-aʿlanat-alahdath-copy.png", link: "../WebAppPage/library.html", active: true },
 
         // --- مكتبة ---
-        { id: 301, type: "library_banner", client: "جرير", image: "https://placehold.co/1200x300/e11d48/white?text=Jarir", link: "#", active: true },
-        { id: 302, type: "library_banner", client: "إكسترا", image: "https://placehold.co/1200x300/2d2d2d/white?text=Extra", link: "#", active: true }
+        { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/7ZbyCm9B/alaʿlanat.png", link: "../WebAppPage/Tools.html", active: true },
+        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/WzFv8h8W/original-banner.png", link: "#", active: false }
     ];
 
     window.AdsManager = {
