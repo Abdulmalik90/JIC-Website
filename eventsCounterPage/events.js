@@ -9,9 +9,8 @@ const events = [
     {title: "تجديد السكن الطلابي", id: 8, date: "2025-12-18T00:00:00", day:"الخميس"},
     {title: "بداية الإختبارات النهائية", id: 9, date: "2025-12-21T09:00:00", day:"الأحد"},
     {title: "ايداع المكافأت", id: 10, date: "2025-12-28T00:00:01", day:"الأحد"},
-    {title: "نهـايـة تجديد السكن", id: 11, date: "2025-12-30T00:00:00", day:"الثلاثـاء"},
+    {title: "نهاية تجديد السكن", id: 11, date: "2025-12-30T00:00:00", day:"الثلاثـاء"},
     {title: "نهاية الإختبارات النهائية", id: 12, date: "2025-12-31T14:30:01", day:"الاربعاء"},
-    {title: "نهاية فترة تسجيل المقررات الاخيرة", id: 26, date: "2026-01-08T11:00:00", day:"الثلاثاء"},
     {title: "ايداع حساب المواطن", id: 13, date: "2026-01-11T00:00:01", day:"الأحد"},
     {title: "حجز السكن الدراسي", id: 14, date: "2026-01-13T00:00:01", day:"الثلاثـاء"},
     {title: "بداية الفصل الثاني", id: 15, date: "2026-01-18T07:00:01", day:"الأحد"},
@@ -24,7 +23,16 @@ const events = [
     {title: "اجازة يوم التأسيس", id: 22, date: "2026-02-22T00:00:00", day:"الأحد"},
     {title: "إيداع المكافأت", id: 23, date: "2026-02-26T00:00:00", day:"الخميس"},
     {title: "اجازة عيد الفطر المبارك", id: 24, date: "2026-03-06T00:00:00", day:"الجمعة"},
-    {title: "بداية الاختبارات النصفية", id: 25, date: "2026-03-29T70:00:00", day:"الأحد"}
+    {title: "بداية الاختبارات النصفية", id: 25, date: "2026-03-29T07:00:00", day:"الأحد"},
+    {title: "حساب المواطن", id: 26, date: "2026-04-09T00:00:00", day:"الخميس"},
+    {title: "ايداع المكافأت", id: 27, date: "2026-04-27T00:00:00", day:"الاثنين"},
+    {title: "حساب المواطن", id: 28, date: "2026-05-10T00:00:00", day:"الاحد"},
+    {title: "نهاية فترة طلبات التخصص", id: 29, date: "2026-05-14T00:00:00", day:"الخميس"},
+    {title: "نهاية فترة الاعتذار", id: 30, date: "2026-05-19T00:00:00", day:"الثلاثاء"},
+    {title: "اجازة عيد الاضحى", id: 31, date: "2026-05-22T00:00:00", day:"الجمعة"},
+    {title: "ايداع المكافأت", id: 32, date: "2026-05-27T00:00:00", day:"الاربعاء"},
+    {title: "بداية الاختبارات النهائية", id: 33, date: "2026-06-02T07:00:00", day:"الثلاثاء"},
+    {title: "نهاية الاختبارات النهائية", id: 34, date: "2026-06-15T03:00:00", day:"الاثنين"},
 ];
 
 // 2. دالة ترتيب الأحداث
@@ -113,39 +121,44 @@ function startCountdown(targetDateStr, element) {
 }
 
 // 4. الدالة الجديدة: رسم البطاقات داخل الصفحة (هذي اللي كانت ناقصتك!)
+// ========================================================
+// ملف: eventsCounterPage/events.js
+// الوظيفة: بطاقات أحداث + إعلانات مطابقة للتصميم 100%
+// ========================================================
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("calender-events");
     
-    // تأكد ان العنصر موجود
-    if (!container) {
-        console.error("عنصر #calender-events غير موجود في HTML");
+    if (!container) return;
+
+    // تنظيف
+    container.innerHTML = "";
+
+    if (typeof getAllEvents === 'undefined') {
+        container.innerHTML = "<p style='text-align:center; color:#999;'>عذراً، لا يمكن تحميل الأحداث.</p>";
         return;
     }
-
-    // تنظيف الحاوية
-    container.innerHTML = "";
 
     const allEvents = getAllEvents();
     const now = new Date();
 
-    // فلترة الأحداث: نجيب بس اللي ما انتهت (أو انتهت اليوم)
     const activeEvents = allEvents.filter(event => {
         const eventDate = new Date(event.date);
-        // نعرض الأحداث المستقبلية + أحداث آخر 24 ساعة
         return eventDate > now - (24 * 60 * 60 * 1000);
     });
 
-    // لو ما فيه أحداث
     if (activeEvents.length === 0) {
         container.innerHTML = "<p style='width:100%; text-align:center; color:#999;'>لا توجد أحداث قادمة</p>";
         return;
     }
 
-    // تكرار الأحداث وإنشاء البطاقات
-    activeEvents.forEach(event => {
+    // ---------------------------------------------------------
+    // 1. تكرار الأحداث (كودك الأصلي)
+    // ---------------------------------------------------------
+    activeEvents.forEach((event, index) => {
         const card = document.createElement("div");
+        // الكرت هنا بياخذ ستايل الـ CSS الافتراضي للموقع (Shadow, Radius, etc.)
         
-        // بناء هيكل البطاقة HTML (مطابق لتصميمك في PWA)
         card.innerHTML = `
             <h3>${event.title}</h3>
             
@@ -173,10 +186,63 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // إضافة البطاقة للحاوية
         container.appendChild(card);
+        if (typeof startCountdown !== 'undefined') startCountdown(event.date, card);
 
-        // تشغيل العداد لهذي البطاقة
-        startCountdown(event.date, card);
+        // ---------------------------------------------------------
+        // 2. حقن الإعلان (مطابق للتصميم الأصلي)
+        // ---------------------------------------------------------
+        if ((index + 1) % 3 === 0) {
+            if (window.AdsManager) {
+                const ad = window.AdsManager.getAd('event_feed');
+                
+                if (ad) {
+                    const adCard = document.createElement("div");
+                    adCard.className = "dynamic-event-ad"; // للتعرف عليه فقط
+                    
+                    // 💡 التعديل الجذري:
+                    // 1. padding: 0 -> عشان الصورة تعبي الكرت للحواف (تلغي حشوة الـ CSS الافتراضية)
+                    // 2. overflow: hidden -> عشان الزوايا تكون دائرية زي اخوياه
+                    // 3. min-height -> عشان يكون نفس طول كرت الحدث تقريباً
+                    // 4. لا يوجد حدود ولا هوامش خارجية (يأخذ من الـ Grid مباشرة)
+                    adCard.style.cssText = "padding: 0 !important; overflow: hidden; position: relative; cursor: pointer; min-height: 200px; display: flex;";
+
+                    adCard.setAttribute('data-href', ad.link);
+                    adCard.onclick = function() { window.open(this.getAttribute('data-href'), '_blank'); };
+
+                    adCard.innerHTML = `
+                        <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 4px; z-index: 2;">إعلان</span>
+                        
+                        <img class="event-ad-img" src="${ad.image}" alt="${ad.client}" 
+                             style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.5s ease;" 
+                             alt="إعلان">
+                    `;
+                    
+                    container.appendChild(adCard);
+                }
+            }
+        }
     });
+
+    // ---------------------------------------------------------
+    // 3. التحديث التلقائي (7 ثواني)
+    // ---------------------------------------------------------
+    function updateEventAds() {
+        if (!window.AdsManager) return;
+        const adUnits = document.querySelectorAll('.dynamic-event-ad');
+        adUnits.forEach(unit => {
+            const newAd = window.AdsManager.getAd('event_feed');
+            if (newAd) {
+                const img = unit.querySelector('.event-ad-img');
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = newAd.image;
+                    unit.setAttribute('data-href', newAd.link);
+                    img.style.opacity = '1';
+                }, 500);
+            }
+        });
+    }
+
+    setInterval(updateEventAds, 7000);
 });
