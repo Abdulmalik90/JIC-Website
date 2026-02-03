@@ -335,3 +335,135 @@ body, input, h1, h2, h3, p, span, div {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* =========================================
+   تنسيقات صفحة العروض (مربوطة بمتغيرات مدخل)
+   ========================================= */
+
+/* حاوية أزرار التبديل */
+.switch-wrapper {
+    /* تم الربط بـ bg-color عشان تتغير مع الثيم */
+    background-color: var(--bg-color); 
+    padding: 5px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    /* الظل مربوط بالمتغير */
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+    border: 1px solid var(--border-color); /* إضافة حدود خفيفة للوضوح */
+}
+
+/* الأزرار نفسها */
+.switch-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    /* ربط لون النص بالمتغير الفرعي */
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* حالة الزر النشط */
+.switch-btn.active {
+    /* الخلفية تأخذ لون السطح (أبيض في النهاري / رمادي غامق في الليلي) */
+    background-color: var(--surface-color);
+    /* النص يأخذ اللون الرسمي */
+    color: var(--primary-text);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.switch-btn:hover:not(.active) {
+    background-color: var(--border-color); /* تأثير هوفر خفيف */
+}
+
+/* تنسيق كرت العرض */
+.offer-card {
+    /* أهم تعديل: الخلفية الآن مربوطة بـ surface-color */
+    background: var(--surface-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: relative;
+    margin-bottom: 15px;
+    /* الحدود مربوطة بـ border-color */
+    border: 1px solid var(--border-color);
+}
+
+.offer-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4757; /* هذا لون تنبيه ثابت يفضل بقاؤه */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.offer-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.offer-content {
+    padding: 15px;
+}
+
+.offer-content h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    /* ربط العنوان بالمتغير الرئيسي */
+    color: var(--text-dark);
+}
+
+.offer-content p {
+    font-size: 13px;
+    /* ربط الوصف بالمتغير الفرعي */
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.offer-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    /* جعلت خلفية الزر من لون الخلفية العام ليتناسب مع الوضعين */
+    background: var(--bg-color);
+    /* النص باللون الرسمي */
+    color: var(--primary-text);
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid var(--border-color); /* حدود خفيفة للزر */
+}
+
+.offer-btn :hover {
+background: red;
+}
+
+/* أنميشن بسيط للتبديل */
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

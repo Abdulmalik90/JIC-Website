@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #888; font-size: 12px;">
-            ✍️ كتبه: ${article.author}
+            ✍️ بكتابة: ${article.author}
         </div>
     `;
 });

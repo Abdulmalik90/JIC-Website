@@ -76,14 +76,14 @@
     <div class="tool-card">
         <div class="tool-header-info">
             <i class="fi fi-rr-info"></i>
-            <span>أدخل مجموع عدد ساعات محاضرات المادة في الأسبوع لمعرفة الحد المسموح للغياب.</span>
+            <span>أدخل مجموع عدد ساعات محاضرات المادة في الأسبوع (نظري + عملي) لمعرفة رصيد غيابات المادة.</span>
         </div>
 
         <div class="input-group">
             <label>عدد المحاضرات / الساعات أسبوعياً</label>
             <div class="input-wrapper">
                 <i class="fi fi-rr-clock"></i>
-                <input type="number" id="lectures-count-input" placeholder="مثال: 4" max="22" min="1">
+                <input type="number" id="lectures-count-input" placeholder="مثال: 4" max="40" min="1">
             </div>
         </div>
 
@@ -104,12 +104,13 @@
 
         <div class="disclaimer">
             <h4><i class="fi fi-rr-shield-check"></i> إخلاء مسؤولية:</h4>
-            <p>تعتمد الأداة على معادلة الـ 20% (15 أسبوع). قد تختلف الحسبة أحياناً بزيادة محاضرة واحدة، لذا جرى التنويه.</p>
+            <p>هذه الاداة مبنية على المعادلة المعلنة رسمياً من قبل الجهات الرسمية بالكلية وتم وضع معيار احترازي للحرص على تجنب المشاكل</p>
             <div class="formula">
                 المعادلة: <span>ساعات الأسبوع × 15 × 20%</span>
             </div>
         </div>
     </div>
+    <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
 </div>
 
         <div id="gpa-tool" class="tool-view">
@@ -172,6 +173,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
         <div id="grades-tool" class="tool-view">
@@ -264,6 +266,7 @@
         <h4 style="font-size: 14px;">حاسبة الدرجات</h4>
         <p style="font-size: 11px;">الأداة الشاملة لحساب درجات المادة كاملة لمستخدمين التطبيق حالياً فقط.</p>
     </div>
+    <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
 </div>
 
         <div id="schedule-tool" class="tool-view">
@@ -273,7 +276,10 @@
                 <p>للحصول على أفضل تجربة، نرجو استخدام منشئ الجداول من خلال المتصفح.</p>
                 <a href="../index.html" class="app-btn primary">الانتقال للموقع</a>
             </div>
+            <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
             </div>
+
+
        
 
     </main>
@@ -315,6 +321,8 @@
 
     <script src="toolsjava.js"></script>
     <script src="script.js"></script>
+    <script src="../AdsEngine/ads-manager.js"></script>
+    <script src="libscript.js"></script>
 
     
 </body>

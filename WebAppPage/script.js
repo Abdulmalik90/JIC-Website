@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ============================================
-    // حل مشكلة زر التخصصات (الطريقة المضمونة) 🛠️
+    // زر التخصصات 
     // ============================================
 
     const modal = document.getElementById('majorsModal');
@@ -116,49 +116,120 @@ document.addEventListener("DOMContentLoaded", () => {
 // ============================================
 // دالة عرض الأخبار (News Renderer)
 // ============================================
-function renderNews() {
-    const newsContainer = document.getElementById('news');
+// ========================================================
+// ملف: WebAppPage/script.js
+// الوظيفة: تصميم الأخبار القديم + إعلانات صور كاملة + تبديل تلقائي (7 ثواني)
+// ========================================================
 
-    // تأكد ان الكونتينر موجود + البيانات موجودة
-    if (!newsContainer || typeof getAllNewsArticles === 'undefined') {
-        console.warn('News container or data not found');
-        return;
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("🚀 Script.js: جاري تشغيل نظام الأخبار...");
+
+    // دالة عرض الأخبار
+    function renderNews() {
+        const newsContainer = document.getElementById('news');
+
+        // حماية
+        if (!newsContainer) return;
+        if (typeof getAllNewsArticles === 'undefined') {
+            console.warn('News data not found');
+            return;
+        }
+
+        const articles = getAllNewsArticles(); 
+        newsContainer.innerHTML = ''; // تنظيف
+
+        articles.forEach((article, index) => {
+            // --------------------------------------------------------
+            // 1. كرت الخبر (تصميمك القديم بالحرف - لم نلمسه)
+            // --------------------------------------------------------
+            const dateObj = new Date(article.date);
+            const dateString = dateObj.toLocaleDateString('en-GB'); 
+
+            const card = document.createElement('a');
+            card.className = 'news-card';
+            card.href = './news.html'; 
+            
+            card.innerHTML = `
+                <div class="news-category">${article.category}</div>
+                <img src="${article.image}" alt="${article.title}" class="news-card-img" loading="lazy">
+                <div class="news-card-content">
+                    <h3 class="news-card-title">${article.title}</h3>
+                    <div class="news-card-date">
+                        📅 ${dateString} • ${article.author}
+                    </div>
+                </div>
+            `;
+
+            newsContainer.appendChild(card);
+
+            // --------------------------------------------------------
+            // 2. حقن الإعلان (صورة كاملة + قابلية للتغيير)
+            // --------------------------------------------------------
+            if ((index + 1) % 3 === 0) {
+                if (window.AdsManager) {
+                    const ad = window.AdsManager.getAd('news_feed');
+                    
+                    if (ad) {
+                        const adCard = document.createElement('a');
+                        
+                        // أضفنا كلاس 'dynamic-ad-unit' عشان نقدر نمسكه بعدين ونغيره
+                        adCard.className = 'news-card ad-unit dynamic-ad-unit'; 
+                        adCard.href = ad.link;
+                        adCard.target = "_blank";
+                        
+                        // ستايل الإعلان (صورة كاملة تغطي الكرت)
+                        adCard.style.cssText = "position: relative; overflow: hidden; display: block; border-radius:22px";
+
+                        adCard.innerHTML = `
+                            <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 4px; z-index: 2;">إعلان</span>
+                            
+                            <img class="dynamic-ad-img" src="${ad.image}" alt="${ad.client}"
+                                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.5s ease;" />
+                        `;
+                        
+                        newsContainer.appendChild(adCard);
+                    }
+                }
+            }
+        });
     }
 
-    // نجيب أحدث 5 أخبار بس عشان ما نثقل الصفحة
-    const articles = getAllNewsArticles().slice(0, 5);
+    // --------------------------------------------------------
+    // 3. نظام التحديث التلقائي (كل 7 ثواني) 🔄
+    // --------------------------------------------------------
+    function updateAds() {
+        // إذا المحرك مو موجود نوقف
+        if (!window.AdsManager) return;
 
-    newsContainer.innerHTML = ''; // تنظيف
+        // نجيب كل كروت الإعلانات اللي زرعناها فوق
+        const adUnits = document.querySelectorAll('.dynamic-ad-unit');
 
-    articles.forEach(article => {
-        // تنسيق التاريخ ليكون مقروء (مثال: 2025/12/22)
-        const dateObj = new Date(article.date);
-        const dateString = dateObj.toLocaleDateString('en-GB'); // يوم/شهر/سنة
+        adUnits.forEach(unit => {
+            // نطلب إعلان جديد
+            const newAd = window.AdsManager.getAd('news_feed');
+            
+            if (newAd) {
+                const img = unit.querySelector('.dynamic-ad-img');
+                
+                // حركة بسيطة: نخفي الصورة
+                img.style.opacity = '0';
 
-        // إنشاء الكرت
-        const card = document.createElement('a');
-        card.className = 'news-card';
-        // هنا الرابط يوديك لصفحة التفاصيل (عدلها حسب نظام موقعك)
-        // إذا تبيها تفتح تفاصيل الخبر، ممكن تحتاج صفحة news-details.html?id=...
-        card.href = './news.html'; 
-        
-        card.innerHTML = `
-            <div class="news-category">${article.category}</div>
-            <img src="${article.image}" alt="${article.title}" class="news-card-img" loading="lazy">
-            <div class="news-card-content">
-                <h3 class="news-card-title">${article.title}</h3>
-                <div class="news-card-date">
-                    📅 ${dateString} • ${article.author}
-                </div>
-            </div>
-        `;
+                // ننتظر نص ثانية (500ms) لين تختفي، ثم نغير الرابط والصورة ونظهرها
+                setTimeout(() => {
+                    unit.href = newAd.link;     // تغيير الرابط
+                    img.src = newAd.image;      // تغيير الصورة
+                    img.style.opacity = '1';    // إظهار
+                }, 500);
+            }
+        });
+    }
 
-        newsContainer.appendChild(card);
-    });
-}
+    // تشغيل الأخبار أول مرة
+    renderNews();
 
-// تشغيل الدالة
-renderNews();
+    // تشغيل المؤقت: ينادي دالة updateAds كل 7000 ملي ثانية (7 ثواني)
+    setInterval(updateAds, 7000);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     let deferredPrompt;

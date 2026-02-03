@@ -60,3 +60,72 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// دالة التبديل بين الأقسام
+function switchSection(sectionId, btnElement) {
+    // 1. إزالة كلاس active من جميع الأزرار
+    document.querySelectorAll('.switch-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // 2. إضافة كلاس active للزر المضغوط
+    btnElement.classList.add('active');
+
+    // 3. إخفاء جميع الأقسام
+    document.getElementById('newsGrid').style.display = 'none';
+    document.getElementById('offersGrid').style.display = 'none';
+
+    // 4. إظهار القسم المطلوب مع التأكد من إعادة تشغيل الأنميشن
+    const targetSection = document.getElementById(sectionId + 'Grid');
+    targetSection.style.display = 'grid'; // أو block حسب تنسيقك
+    
+    // إعادة تعيين الأنميشن
+    targetSection.classList.remove('fade-in');
+    void targetSection.offsetWidth; // حيلة لإجبار المتصفح على إعادة الرسم
+    targetSection.classList.add('fade-in');
+}
+
+
+
+function filterContent() {
+    // 1. مسك النص المكتوب
+    const input = document.getElementById('general-search');
+    const filter = input.value.trim().toUpperCase(); // trim عشان المسافات الزايدة
+
+    // 2. تحديد القسم النشط حالياً (أخبار ولا عروض؟)
+    const newsGrid = document.getElementById('newsGrid');
+    const offersGrid = document.getElementById('offersGrid');
+    
+    // نشوف مين اللي الـ display حقه مو none
+    let activeGrid;
+    if (newsGrid && newsGrid.style.display !== 'none') {
+        activeGrid = newsGrid;
+    } else {
+        activeGrid = offersGrid;
+    }
+
+    // 3. مسك جميع البطاقات داخل القسم النشط
+    // نستخدم children عشان نمسك كل العناصر المباشرة (البطاقات) بغض النظر عن الكلاس حقها
+    if (!activeGrid) return; // حماية لو القسم مو موجود
+    const cards = activeGrid.children;
+
+    // 4. الدوران على كل بطاقة والبحث
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+
+        // نتجاهل عنصر "جاري التحميل" عشان ما يختفي
+        if (card.classList.contains('loading-spinner') || card.id === 'offers-loader') {
+            continue;
+        }
+
+        // نمسك كل النصوص الموجودة داخل البطاقة
+        const cardText = card.textContent || card.innerText;
+
+        // المقارنة
+        if (cardText.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = ""; // إظهار
+        } else {
+            card.style.display = "none"; // إخفاء
+        }
+    }
+}

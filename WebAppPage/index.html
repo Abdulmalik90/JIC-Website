@@ -71,6 +71,7 @@
         </li>
     </ul>
     
+    
     <div style="margin-top: auto; font-size: 11px; color: #999; text-align: center;">
         منصة مدخل © 2026
     </div>
@@ -91,10 +92,34 @@
 
 
     <main class="main-content">
+
+        <div id="pwa-install-popup" class="pwa-popup">
+    <div class="pwa-content">
+        <div class="pwa-header">
+            <img src="logo.png" alt="مدخل" class="pwa-logo">
+            <div class="pwa-text">
+                <h3>تثبيت تطبيق مدخل</h3>
+                <p>بثواني يصير مدخل بتطبيق خفيف جداً في جهازك 🚀</p>
+            </div>
+            <button id="close-pwa-popup" class="pwa-close">✕</button>
+        </div>
+        
+        <div id="ios-instructions" class="install-instructions" style="display: none;">
+            <p>للتثبيت على الآيفون:</p>
+            <ol>
+                <li>اضغط على زر المشاركة <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" style="width:15px; vertical-align:middle;"> في الأسفل.</li>
+                <li>اختر <strong>"إضافة إلى الصفحة الرئيسية"</strong> <img src="https://img.icons8.com/ios/50/000000/plus-math.png" style="width:15px; vertical-align:middle;">.</li>
+            </ol>
+        </div>
+
+        <button id="pwa-install-btn" class="install-btn" style="display: none;">تثبيت التطبيق الآن</button>
+    </div>
+</div>
+
         
         <section class="welcome-section">
-            <h2 class="glow-text">حيــــاك الله في مدخل</h2>
-            <p class="sub-text">جـاهز للترم الثاني ؟👀</p>
+            <h2 class="glow-text">مبـادرة مدخـل الطلابيـة</h2>
+            <p class="sub-text"> شاركت تطبيق مدخل مع زملائـك ؟👀</p>
         </section>
 
         <section class="shortcuts-section">
@@ -227,28 +252,6 @@
 
 </div>
 
-<div id="pwa-install-popup" class="pwa-popup">
-    <div class="pwa-content">
-        <div class="pwa-header">
-            <img src="logo.png" alt="مدخل" class="pwa-logo">
-            <div class="pwa-text">
-                <h3>تثبيت تطبيق مدخل</h3>
-                <p>بثواني يصير مدخل بتطبيق خفيف جداً في جهازك 🚀</p>
-            </div>
-            <button id="close-pwa-popup" class="pwa-close">✕</button>
-        </div>
-        
-        <div id="ios-instructions" class="install-instructions" style="display: none;">
-            <p>للتثبيت على الآيفون:</p>
-            <ol>
-                <li>اضغط على زر المشاركة <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" style="width:15px; vertical-align:middle;"> في الأسفل.</li>
-                <li>اختر <strong>"إضافة إلى الصفحة الرئيسية"</strong> <img src="https://img.icons8.com/ios/50/000000/plus-math.png" style="width:15px; vertical-align:middle;">.</li>
-            </ol>
-        </div>
-
-        <button id="pwa-install-btn" class="install-btn" style="display: none;">تثبيت التطبيق الآن</button>
-    </div>
-</div>
 
 
 <a href="https://hits.sh/juportal.online/WebAppPage/index.html/"><img alt="Hits" src="https://hits.sh/juportal.online/WebAppPage/index.html.svg?color=007ec6&labelColor=007ec6"/></a>
@@ -257,6 +260,7 @@
     <script src="../newsPage/news-data.js?v=1.2"></script>
     <script src="script.js"></script>
     <script src="../eventsCounterPage/events.js?v=1.2"></script>
+    <script src="../AdsEngine/ads-manager.js"></script>
     
     <script>
     if ('serviceWorker' in navigator) {
@@ -270,6 +274,4 @@
 </script>
     
 </body>
-
 </html>
-

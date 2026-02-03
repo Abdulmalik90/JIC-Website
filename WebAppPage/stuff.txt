@@ -236,3 +236,86 @@ function closePopup() {
     // حفظ في الذاكرة أنه شافه خلاص
     sessionStorage.setItem(POPUP_KEY, 'true');
 }
+---------------------
+
+// الستارة JAVA only
+// الستارة للصيانة
+
+    // ==========================================
+    // ⚙️ إعدادات الصيانة الطارئة
+    // ==========================================
+    
+    // 1. تبي تقفل الصفحة؟ حط true .. تبي تفتحها؟ حط false
+    const IS_MAINTENANCE_MODE = false; 
+
+    // 2. رسالة التنبيه اللي بتظهر للطلاب
+    const MAINTENANCE_MSG = {
+        title: "الادوات تحت الصيانة ",
+        desc: "جالسين نضبط كم شغلة ونرجع لكم أفضل من أول!",
+        btnText: "الرجوع للرئيسية"
+    };
+
+    // ==========================================
+    // 🛑 لا تعدل شي تحت هذا الخط
+    // ==========================================
+    
+    (function() {
+        // حيلة سرية لك: لو كتبت في الرابط ?admin=1 بيفتح لك الصفحة عشان تشتغل عليها
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === '1') return;
+
+        if (IS_MAINTENANCE_MODE) {
+            // 1. تجميد الصفحة (عشان ما يقدر يسوي سكرول)
+            document.body.style.overflow = "hidden";
+            
+            // 2. إنشاء الستارة
+            const overlay = document.createElement('div');
+            overlay.id = "maintenance-curtain";
+            
+            // 3. ستايل الستارة (CSS داخل JS)
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: #ffffff;
+                z-index: 99; /* أعلى طبقة ممكنة */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-family: inherit;
+                color: #333;
+            `;
+
+            // 4. محتوى الصفحة
+            overlay.innerHTML = `
+                <div style="padding: 20px; max-width: 500px;">
+                    <div style="font-size: 60px; margin-bottom: 20px;">⚙️</div>
+                    <h2 style="margin-bottom: 10px; font-size: 24px;">${MAINTENANCE_MSG.title}</h2>
+                    <p style="color: #666; margin-bottom: 30px; line-height: 1.6;">${MAINTENANCE_MSG.desc}</p>
+                    
+                    <a href="index.html" style="
+                        background: linear-gradient(90deg, #103191, #106091);
+                        color: white; 
+                        text-decoration: none; 
+                        padding: 12px 25px; 
+                        border-radius: 13px; 
+                        font-weight: bold;
+                        display: inline-block;
+                        transition: 0.2s;
+                    ">${MAINTENANCE_MSG.btnText}</a>
+                </div>
+            `;
+
+            // 5. إضافة الستارة للصفحة
+            document.body.appendChild(overlay);
+        }
+    })();
+
+    ------------------
+
+    نظام الاعلانات
+
+    لاعلانات البنر
+  <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
+  لاتنسى تربط الصفحة في سكربت المكتبة

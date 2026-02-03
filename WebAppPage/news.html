@@ -56,26 +56,67 @@
 
     <div id="emoji-background"></div>
 
-    <header class="top-header">
+<header class="top-header">
         <div class="logo-container">
             <img src="logo.png" alt="مدخل" class="header-logo">
         </div>
-        <h1 class="page-title">الأخبار</h1>
-        <div class="menu-btn">
+        <h1 class="page-title">الاخبار والعروض</h1> <div class="menu-btn">
             <i class="fi fi-rr-menu-burger"></i>
         </div>
     </header>
 
+    <div class="section-switch-container" style="padding: 0 20px; margin-top: 20px;">
+        <div class="switch-wrapper">
+            <button class="switch-btn active" onclick="switchSection('news', this)">
+                <i class="fi fi-rr-document"></i> الأخبار
+            </button>
+            <button class="switch-btn" onclick="switchSection('offers', this)">
+                <i class="fi fi-rr-tags"></i> العروض
+            </button>
+        </div>
+    </div>
+
     <div class="news-filter-container">
         <div class="search-box">
             <i class="fi fi-rr-search"></i>
-            <input type="text" id="news-search" placeholder="ابحث في الأخبار...">
+            <input type="text" id="general-search" placeholder="ابحث..." onkeyup="filterContent()">
         </div>
     </div>
 
     <main class="news-feed-container">
-        <div id="newsGrid" class="news-grid">
+        <div id="newsGrid" class="news-grid fade-in">
             <div class="loading-spinner">جاري تحميل الأخبار...</div>
+        </div>
+
+        <div id="offersGrid" class="news-grid fade-in" style="display: none;">
+            <div class="offer-card">
+                <div class="offer-badge">خصم 20%</div>
+                <img src="https://i.postimg.cc/ZqBxTmfY/original-events.png" alt="عرض">
+                <div class="offer-content">
+                    <h3>مياو  X</h3>
+                    <p>استمتع بقهوتك مع خصم خاص عند إبراز البطاقة الجامعية.</p>
+                    <a href="#" class="offer-btn">التفاصيل</a>
+                </div>
+            </div>
+            <div class="offer-card">
+                <div class="offer-badge">خصم 50%</div>
+                <img src="https://i.postimg.cc/ZqBxTmfY/original-events.png" alt="عرض">
+                <div class="offer-content">
+                    <h3>خصم خاص لطلاب الكلية لدى مقهى </h3>
+                    <p>استمتع بقهوتك مع خصم خاص عند إبراز البطاقة الجامعية.</p>
+                    <a href="#" class="offer-btn">التفاصيل</a>
+                </div>
+            </div>
+            <div class="offer-card">
+                <div class="offer-badge">خصم 100%</div>
+                <img src="https://i.postimg.cc/ZqBxTmfY/original-events.png" alt="عرض">
+                <div class="offer-content">
+                    <h3>X</h3>
+                    <p>استمتع بقهوتك مع خصم خاص عند إبراز البطاقة الجامعية.</p>
+                    <a href="#" class="offer-btn">التفاصيل</a>
+                </div>
+            </div>
+            <div class="loading-spinner" id="offers-loader" style="display:none">جاري تحميل العروض...</div>
         </div>
     </main>
 
