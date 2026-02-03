@@ -4,7 +4,7 @@
 
 (function() {
     const ADS_DB = [
-        // --- أخبار ---
+        // ---- أخبار ----
         { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/yxTLnC1P/alaʿlanat-aʿlanat-alakhbar.png", link: "../WebAppPage/Tools.html", active: true },
         { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/RhTgGxSG/alaʿlanat-aʿlanat-alakhbar-copy.png", link: "../WebAppPage/news.html", active: true },
         { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
