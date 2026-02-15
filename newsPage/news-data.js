@@ -363,6 +363,31 @@ const newsData = [
     date: "2026-02-02T03:16:00",
     author: "نادي الهندسة الكهربائية",
     category: "أندية طلابية"
+},
+
+	{
+    id: 15,
+    title: "🌙 مواعيد المحاضرات خلال شهر رمضان المبارك!",
+    content: `
+        <p style="direction: rtl;">
+نرفق لكم مواعيد المحاضرات خلال شهر رمضان المبارك لطلاب وطالبات كليات ومعاهد الهيئة الملكية بالجبيل وينبع
+نسأل الله أن يبلغنا وإياكم رمضان ويعيننا فيه على الصيام والقيام ويتقبل منا ومنكم صالح الاعمال .
+        </p>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <p><strong>الصورة مو واضحة ؟</strong></p>
+            <a href="https://postimg.cc/qh1vHskq"
+               target="_blank"
+               style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
+               text-decoration:none;border-radius:15px;font-weight:bold;">
+               مواعيد المحاضرات برمضان 📱
+            </a>
+        </div>
+    `,
+    image: "https://i.postimg.cc/T16Lm0FV/mwaʿyd-almhadrat-bshhr-rmdan-lʿam-1447h.jpg",
+    date: "2026-02-15T03:12:00",
+    author: "رائد الزهراني",
+    category: "رسمي"
 }
 ];
 
