@@ -4,7 +4,7 @@
 
 (function() {
     const ADS_DB = [
-        // ---- أخبار ----
+        // --- أخبار ---
         { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/yxTLnC1P/alaʿlanat-aʿlanat-alakhbar.png", link: "../WebAppPage/Tools.html", active: true },
         { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/RhTgGxSG/alaʿlanat-aʿlanat-alakhbar-copy.png", link: "../WebAppPage/news.html", active: true },
         { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
@@ -15,8 +15,8 @@
         { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/JnZ6DBSf/alaʿlanat-aʿlanat-alahdath-copy.png", link: "../WebAppPage/library.html", active: true },
 
         // --- مكتبة ---
-        { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/7ZbyCm9B/alaʿlanat.png", link: "../WebAppPage/Tools.html", active: true },
-        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/WzFv8h8W/original-banner.png", link: "#", active: false }
+        { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/RCGyg1wQ/alaʿlanat-aʿlanat-albnr-1.png", link: "../WebAppPage/Tools.html", active: true },
+        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/zDp6xwTT/alaʿlanat-aʿlanat-albnr-1-copy.png", link: "#", active: true }
     ];
 
     window.AdsManager = {
