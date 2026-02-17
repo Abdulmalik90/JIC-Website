@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
 
 
     // 2. توليد خلفية الإيموجي
-    const emojis = ["📚", "✏️", "🎓", "💡", "📅", "⚙️", "📐", "🔬"];
+    const emojis = ["🌜", "📿", "🎓", "💡", "📅", "🌒", "🌙", "🌙"];
     const container = document.getElementById('emoji-background');
     if (container) { // تأكدنا ان العنصر موجود عشان ما يطلع خطأ
         const emojiCount = 15;
@@ -348,7 +348,7 @@ if (toggleSwitch) {
 
 document.addEventListener("DOMContentLoaded", () => {
     // نحدد اسم مفتاح الجلسة (عشان المتصفح يتذكر)
-    const POPUP_KEY = 'portal_popup_v1';
+    const POPUP_KEY = 'portal_popup_v2';
     
     // إذا ما قد شافه في هذي الجلسة
     if (!localStorage.getItem(POPUP_KEY)) {
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function closePopup() {
     const popup = document.getElementById('custom-popup1');
-    const POPUP_KEY = 'portal_popup_v1';
+    const POPUP_KEY = 'portal_popup_v2';
     
     // إخفاء النافذة
     popup.classList.remove('active');

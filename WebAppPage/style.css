@@ -3,12 +3,12 @@
    ========================================= */
 :root {
     /* --- الوضع النهاري (الافتراضي) --- */
-    --primary-color: linear-gradient(90deg, #103191, #106091);       /* أزرق مدخل الرسمي */
-    --bg-color: #f8f9fa;            /* خلفية الصفحة */
-    --primary-text: #1a60bb;          /* خلفية الخط الرسمي */
+    --primary-color: linear-gradient(90deg, #731091, #91107c);       /* أزرق مدخل الرسمي */
+    --bg-color: #f9f8fa;            /* خلفية الصفحة */
+    --primary-text: #830ea7;          /* خلفية الخط الرسمي */
     --surface-color: #ffffff;       /* لون الكروت والقوائم */
-    --text-dark: #1f2937;           /* النصوص الرئيسية */
-    --text-light: #6b7280;          /* النصوص الفرعية */
+    --text-dark: #321f37;           /* النصوص الرئيسية */
+    --text-light: #7a6b80;          /* النصوص الفرعية */
     --border-color: #e5e7eb;        /* لون الحدود والفواصل */
     --header-bg: rgba(255, 255, 255, 0.85); /* خلفية الهيدر الشفافة */
     --shadow-color: rgba(0, 0, 0, 0.05);    /* لون الظل */
@@ -20,12 +20,12 @@
 
 /* --- الوضع الليلي (Dark Mode) --- */
 [data-theme="dark"] {
-    --primary-color: linear-gradient(90deg, #103191, #106091);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
+    --primary-color: linear-gradient(90deg, #731091, #91107c);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
     --bg-color: #121212;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
-    --primary-text: #5eaae9;          /* خلفية الخط الرسمي */
+    --primary-text: #b52fcf;          /* خلفية الخط الرسمي */
     --surface-color: #1e1e1e;       /* رمادي غامق للكروت */
     --text-dark: #e4e6eb;           /* أبيض مريح للعين (أوف وايت) */
-    --text-light: #9ca3af;          /* رمادي فاتح */
+    --text-light: #ac9caf;          /* رمادي فاتح */
     --border-color: #2d2d2d;        /* حدود غامقة */
     --header-bg: rgba(30, 30, 30, 0.85); /* هيدر غامق شفاف */
     --shadow-color: rgba(0, 0, 0, 0.3);  /* ظل أثقل للوضع الليلي */
@@ -225,7 +225,7 @@ body {
 /* هذا عشان نضبط لون الهوفر في الدارك مود */
 [data-theme="dark"] .sidebar-menu a:hover,
 [data-theme="dark"] .sidebar-menu a.active {
-    background-color: rgba(96, 165, 250, 0.15); /* أزرق شفاف خفيف */
+    background-color: rgba(224, 96, 250, 0.15); /* أزرق شفاف خفيف */
 }
 
 .sidebar-menu i { font-size: 18px; }
@@ -244,13 +244,13 @@ body {
     color: var(--primary-text);
     margin-bottom: 8px;
     font-weight: 800;
-    text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
+    text-shadow: 0 0 15px rgba(170, 0, 204, 0.2); /* خففنا الظل شوي */
     animation: glowPulse 3s infinite alternate;
 }
 
 @keyframes glowPulse {
-    0% { text-shadow: 0 0 10px rgba(0, 82, 204, 0.1); }
-    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.4); }
+    0% { text-shadow: 0 0 10px rgba(156, 0, 204, 0.1); }
+    100% { text-shadow: 0 0 20px rgba(204, 0, 170, 0.4); }
 }
 
 .sub-text {
@@ -326,23 +326,23 @@ body {
 
 /* التدرجات تبقى كما هي لأنها جميلة في الوضعين */
 .purple-gradient {
-    background: linear-gradient(135deg, #836ee0 0%, #4d1b9e 100%);
+    background: linear-gradient(135deg, #c07cf8 0%, #9c15da 100%);
     box-shadow: 0 8px 15px rgba(161, 140, 209, 0.25);
 }
 
 .orange-gradient {
-    background: linear-gradient(135deg, #f8db7c 0%, #da8b15 100%);
-    box-shadow: 0 8px 15px rgba(250, 155, 129, 0.25);
+    background: linear-gradient(135deg, #836ee0 0%, #4d1b9e 100%);
+    box-shadow: 0 8px 15px rgba(240, 129, 250, 0.25);
 }
 
 .green-gradient {
-    background: linear-gradient(135deg, #51c7b3 0%, #0d7c52 100%);
-    box-shadow: 0 8px 15px rgba(132, 250, 176, 0.25);
+    background: linear-gradient(135deg, #8851c7 0%, #3d0d7c 100%);
+    box-shadow: 0 8px 15px rgba(207, 132, 250, 0.25);
 }
 
 .blue-gradient1 {
-    background: linear-gradient(135deg, #65b7da 0%, #1537b3 100%);
-    box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
+    background: linear-gradient(135deg, #d065da 0%, #9315b3 100%);
+    box-shadow: 0 8px 15px rgba(251, 0, 209, 0.25);
 }
 
 /* =========================================
@@ -520,17 +520,17 @@ body {
 
 /* الستايل الأساسي (أزرق) */
 .app-btn.primary {
-    background-color: rgba(0, 82, 204, 0.08);
+    background-color: rgba(139, 0, 204, 0.08);
     color: var(--primary-text);
 }
 
 .app-btn.primary:active {
-    background-color: rgba(0, 82, 204, 0.2);
+    background-color: rgba(180, 0, 204, 0.2);
 }
 
 /* تعديل للدارك مود: نخلي الخلفية أوضح شوي */
 [data-theme="dark"] .app-btn.primary {
-    background-color: rgba(96, 165, 250, 0.15);
+    background-color: rgba(224, 96, 250, 0.15);
 }
 
 /* الستايل الثانوي (رمادي) */
@@ -609,7 +609,7 @@ body {
 
 /* حاوية العداد التنازلي */
 #calender-events .event-timer {
-    background: #f0f7ff; /* أزرق ثلجي فاتح للوضع النهاري */
+    background: #fef0ff; /* أزرق ثلجي فاتح للوضع النهاري */
     border-radius: 16px;
     padding: 12px 10px;
     display: flex !important;
@@ -624,8 +624,8 @@ body {
 
 /* تعديل العداد للوضع الليلي */
 [data-theme="dark"] #calender-events .event-timer {
-    background: rgba(96, 165, 250, 0.1); /* أزرق غامق شفاف */
-    border-color: rgba(96, 165, 250, 0.2);
+    background: rgba(237, 96, 250, 0.1); /* أزرق غامق شفاف */
+    border-color: rgba(250, 96, 242, 0.2);
 }
 
 #calender-events .event-timer > div {
@@ -648,7 +648,7 @@ body {
 /* تنسيق الكلمات (يوم/ساعة) */
 #calender-events .event-timer span[style*="font-size: 11px"] {
     font-size: 10px !important;
-    color: #7b8ab5 !important;
+    color: #a57bb5 !important;
     font-weight: 600;
 }
 
@@ -659,7 +659,7 @@ body {
 
 /* الفواصل (:) */
 #calender-events .event-timer > span[style*="color: #ddd"] {
-    color: #cbd5e1 !important;
+    color: #dfcbe1 !important;
     font-size: 20px !important;
     margin-top: -12px !important;
     font-weight: 300;
@@ -749,7 +749,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(0, 82, 204, 0.9);
+    background: rgba(187, 5, 126, 0.9);
     backdrop-filter: blur(4px);
     color: white;
     padding: 4px 10px;
@@ -1118,7 +1118,7 @@ input:checked + .slider:before {
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    border-top-color: var(--primary-color); /* لون التحميل أزرق */
+    border-top-color: var(--primary-text); /* لون التحميل أزرق */
     border-radius: 50%;
     animation: spinRing 1s linear infinite;
     z-index: 1;
@@ -1191,8 +1191,8 @@ input:checked + .slider:before {
 .popup-icon1 {
     width: 60px;
     height: 60px;
-    background: #dee5fa; /* خلفية زرقاء فاتحة */
-    color: #1309cf; /* لون الأيقونة */
+    background: #f8defa; /* خلفية زرقاء فاتحة */
+    color: #cf09ae; /* لون الأيقونة */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1223,7 +1223,7 @@ input:checked + .slider:before {
 }
 
 .popup-buttons1 .btn-primary {
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
     border: none;
     padding: 10px 20px;

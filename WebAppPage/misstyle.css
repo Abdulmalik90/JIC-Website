@@ -58,7 +58,7 @@
 }
 
 .filter-btn.active {
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
 }
 
@@ -174,7 +174,7 @@
     left: 20px;
     width: 55px;
     height: 55px;
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
     border-radius: 50%;
     border: none;
@@ -412,7 +412,7 @@
 
 /* زر التليجرام */
 .popup-content2 .app-btn2 {
-    background: linear-gradient(90deg, #103191, #106091); /* أزرق */
+    background: linear-gradient(90deg, #731091, #91107c); /* أزرق */
     color: #fff !important; /* النص دايماً أبيض */
     border-radius: 12px;
     padding: 12px;
