@@ -123,7 +123,7 @@ label,
 
 [data-theme="dark"] .sidebar-menu a:hover, 
 [data-theme="dark"] .sidebar-menu a.active {
-    background-color: rgba(96, 165, 250, 0.15);
+    background-color: rgba(245, 96, 250, 0.15);
 }
 
 .sidebar-menu i { font-size: 18px; }
@@ -168,7 +168,7 @@ label,
 .tab-item.active {
     background: var(--primary-color);
     color: white; /* النص يبقى أبيض حتى في الدارك */
-    box-shadow: 0 4px 10px rgba(0, 82, 204, 0.2);
+    box-shadow: 0 4px 10px rgba(187, 0, 204, 0.2);
 }
 
 /* إدارة عرض المحتوى */
@@ -242,19 +242,19 @@ label,
 .tool-header-info {
     display: flex;
     gap: 10px;
-    background: #f0f7ff;
+    background: #fef0ff;
     padding: 12px;
     border-radius: 12px;
     margin-bottom: 20px;
-    color: #0052cc;
+    color: #bb00cc;
     font-size: 13px;
     line-height: 1.4;
 }
 
 /* لون الهيدر في الدارك مود */
 [data-theme="dark"] .tool-header-info {
-    background: rgba(96, 165, 250, 0.1);
-    color: #60a5fa;
+    background: rgba(245, 96, 250, 0.1);
+    color: #f560fa;
 }
 
 /* مجموعات الإدخال */
@@ -311,7 +311,7 @@ label,
     padding: 12px;
     border: none;
     border-radius: 15px;
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -344,7 +344,7 @@ label,
 /* تعديل ألوان النتائج لتناسب الدارك مود */
 .result-box.safe { 
     background: #e6f4ea; 
-    color: #1e7e34; 
+    color: #1e7e46; 
 }
 
 [data-theme="dark"] .result-box.safe {
@@ -355,12 +355,12 @@ label,
 
 .result-box.danger { 
     background: #fce8e8; 
-    color: #d93025; 
+    color: #d92525; 
 }
 
 [data-theme="dark"] .result-box.danger {
-    background: rgba(239, 68, 68, 0.15); /* أحمر شفاف */
-    color: #f87171; /* أحمر فاتح */
+    background: rgba(239, 68, 154, 0.15); /* أحمر شفاف */
+    color: #f871c0; /* أحمر فاتح */
     border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
@@ -551,14 +551,14 @@ label,
 
 .result-box.blue { 
     background: #eef4ff; 
-    color: #0052cc; 
-    border: 1px solid #d0e1ff; 
+    color: #cc00bb; 
+    border: 1px solid #fdd0ff; 
 }
 
 [data-theme="dark"] .result-box.blue {
-    background: rgba(0, 82, 204, 0.15);
-    color: #60a5fa;
-    border: 1px solid rgba(0, 82, 204, 0.3);
+    background: rgba(197, 0, 204, 0.15);
+    color: #f560fa;
+    border: 1px solid rgba(204, 0, 177, 0.3);
 }
 
 .result-box.gold { 
@@ -761,7 +761,7 @@ label,
     border-radius: 10px;
     border: 1px solid #ffcccc;
     background: #fff5f5;
-    color: #ff4d4d;
+    color: #e14dff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -793,7 +793,7 @@ label,
 /* زر الحساب (يأخذ ستايل calc-btn من ملفك) */
 .action-btn {
     flex: 2;
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
     padding: 12px;
     border-radius: 14px;
@@ -872,7 +872,7 @@ label,
 }
 
 /* تحسينات الدارك مود للنتيجة */
-[data-theme="dark"] .res-sub { color: #64b5f6; }
+[data-theme="dark"] .res-sub { color: #ea64f6; }
 
 .grade-val {
     font-size: 38px;
@@ -1107,7 +1107,7 @@ label,
 }
 
 .pop-btn3.confirm {
-    background: linear-gradient(90deg, #103191, #106091);
+    background: linear-gradient(90deg, #731091, #91107c);
     color: white;
 }
 
