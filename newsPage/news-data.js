@@ -388,6 +388,30 @@ const newsData = [
     date: "2026-02-15T03:12:00",
     author: "رائد الزهراني",
     category: "رسمي"
+},
+		{
+    id: 16,
+    title: "🌙تهنئة مدخل بشهر رمضان المبارك!",
+    content: `
+        <p style="direction: rtl;">
+نهنئكم بحلول الشهر الكريم
+نسأل الله أن يعيننا فيه على الصيام والقيام ويتقبل منا ومنكم صالح الاعمال .
+        </p>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <p><strong>الصورة مو واضحة ؟</strong></p>
+            <a href="https://postimg.cc/rR0jRJ1m"
+               target="_blank"
+               style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
+               text-decoration:none;border-radius:15px;font-weight:bold;">
+               تهنئة شهر رمضان 📱
+            </a>
+        </div>
+    `,
+    image: "https://i.postimg.cc/rsgPbZzS/IMG-0694.png",
+    date: "2026-02-17T11:34:00",
+    author: "رائد الزهراني",
+    category: "مدخل"
 }
 ];
 
