@@ -376,7 +376,7 @@ const newsData = [
 
         <div style="text-align: center; margin-top: 15px;">
             <p><strong>الصورة مو واضحة ؟</strong></p>
-            <a href="https://postimg.cc/qh1vHskq"
+            <a href="https://t.me/JuPortalsa/359"
                target="_blank"
                style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
                text-decoration:none;border-radius:15px;font-weight:bold;">
@@ -400,7 +400,7 @@ const newsData = [
 
         <div style="text-align: center; margin-top: 15px;">
             <p><strong>الصورة مو واضحة ؟</strong></p>
-            <a href="https://postimg.cc/rR0jRJ1m"
+            <a href="https://t.me/JuPortalsa/367"
                target="_blank"
                style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
                text-decoration:none;border-radius:15px;font-weight:bold;">
