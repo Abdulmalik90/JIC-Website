@@ -334,3 +334,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const homeEvents = new HomeEvents();
     homeEvents.renderHomeEvents();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // دالة فحص الجوالات (تستبعد اللابتوب والآيباد)
+    function isMobilePhoneOnly() {
+        const isMobileDevice = /Android|webOS|iPhone|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isIPad = /iPad/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        const isSmallScreen = window.innerWidth <= 768;
+
+        return isMobileDevice && !isIPad && isSmallScreen;
+    }
+
+    // إذا جوال، وما قفله قبل كذا..
+    if (isMobilePhoneOnly() && !sessionStorage.getItem('promo_dismissed_v2')) {
+        
+        setTimeout(() => {
+            const banner = document.getElementById('appPromoBanner');
+            if(banner) {
+                banner.classList.add('show');
+            }
+        }, 5000); // يطلع بعد 5 ثواني
+    }
+});
+
+// دالة الإغلاق
+function closeAppPromo() {
+    const banner = document.getElementById('appPromoBanner');
+    if(banner) {
+        banner.classList.remove('show');
+    }
+    // غيرت اسم المفتاح (v2) عشان حتى اللي قفله زمان بالنسخة المعيوبة يرجع يطلع له التصميم الجديد
+    sessionStorage.setItem('promo_dismissed_v2', 'true'); 
+}
