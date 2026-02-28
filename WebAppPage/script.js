@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
 
 
     // 2. توليد خلفية الإيموجي
-    const emojis = ["🌜", "📿", "🎓", "💡", "📅", "🌒", "🌙", "🌙"];
+    const emojis = ["📚", "✏️", "🎓", "💡", "📅", "⚙️", "📐", "🔬"];
     const container = document.getElementById('emoji-background');
     if (container) { // تأكدنا ان العنصر موجود عشان ما يطلع خطأ
         const emojiCount = 15;
@@ -348,7 +348,7 @@ if (toggleSwitch) {
 
 document.addEventListener("DOMContentLoaded", () => {
     // نحدد اسم مفتاح الجلسة (عشان المتصفح يتذكر)
-    const POPUP_KEY = 'portal_popup_v2';
+    const POPUP_KEY = 'portal_popup_v1';
     
     // إذا ما قد شافه في هذي الجلسة
     if (!localStorage.getItem(POPUP_KEY)) {
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function closePopup() {
     const popup = document.getElementById('custom-popup1');
-    const POPUP_KEY = 'portal_popup_v2';
+    const POPUP_KEY = 'portal_popup_v1';
     
     // إخفاء النافذة
     popup.classList.remove('active');
@@ -369,4 +369,96 @@ function closePopup() {
     localStorage.setItem(POPUP_KEY, 'true');
 }
 
+// =========================================
+// جلب أحدث 3 أخبار للواجهة الرئيسية (Home Feed)
+// =========================================
+
+document.addEventListener('DOMContentLoaded', async () => {
+    
+    const homeNewsContainer = document.getElementById('homeLatestNews');
+    if (!homeNewsContainer) return; // إذا مو موجود بالصفحة، وقف الكود
+
+    // 1. رابط قوقل حقك (نفس اللي حطيته بصفحة الأندية)
+    const API_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; 
+    const DB_KEY = "mdkhal_local_db";
+
+    // 2. دالة طباعة الـ 3 كروت المصغرة
+    function renderHomeNews(newsArray) {
+        homeNewsContainer.innerHTML = ''; // تفريغ التحميل
+        
+        // ناخذ أول 3 أخبار فقط
+        const top3News = newsArray.slice(0, 3);
+
+        if (top3News.length === 0) {
+            homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">لا توجد أخبار حالياً.</p>';
+            return;
+        }
+
+        top3News.forEach(news => {
+            // انتبه لمسار رابط الخبر (club-article.html) إذا كانت الرئيسية برا مجلد Pages
+            const articleLink = `Pages/club-article.html?id=${news.id}`; 
+
+            const cardHTML = `
+                <a href="${articleLink}" class="home-mini-card">
+                    <div class="mini-card-cover">
+                        <img src="${news.image}" alt="${news.title}" onerror="this.src='https://via.placeholder.com/400x200/103191/ffffff?text=خبر+جديد'">
+                        <span class="mini-badge" style="color: ${news.clubColor};">${news.clubName}</span>
+                    </div>
+                    <div class="mini-card-info">
+                        <h4 class="mini-card-title">${news.title}</h4>
+                        <span class="mini-card-date"><i class="fi fi-rr-calendar"></i> ${news.date}</span>
+                    </div>
+                </a>
+            `;
+            homeNewsContainer.insertAdjacentHTML('beforeend', cardHTML);
+        });
+    }
+
+    // 3. التحقق من الذاكرة المحلية أولاً
+    const localData = localStorage.getItem(DB_KEY);
+
+    if (localData) {
+        // إذا البيانات موجودة، اطبعها فوراً بلمح البصر
+        const parsedData = JSON.parse(localData);
+        renderHomeNews(parsedData);
+    } else {
+        // إذا الطالب جديد وما عنده بيانات، نجيبها من قوقل
+        try {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+
+            const clubsDictionary = {
+                "نادي الحاسب": { color: "var(--primary-text)" },
+                "النادي الثقافي": { color: "#ff4757" },
+                "نادي التطوع": { color: "#10b981" }
+            };
+
+            const freshNews = data.map((row, index) => {
+                const clubName = row["اسم النادي"] || "نادي غير معروف";
+                const clubInfo = clubsDictionary[clubName] || { color: "#64748b" };
+                const fullDate = row["طابع زمني"] || "";
+                
+                return {
+                    id: index,
+                    title: row["عنوان الخبر"] || "بدون عنوان",
+                    excerpt: row["تفاصيل الخبر"] || "",
+                    clubName: clubName,
+                    clubColor: clubInfo.color,
+                    image: row["رابط صورة الغلاف"] || "https://via.placeholder.com/800x400/103191/ffffff?text=خبر+جديد",
+                    date: fullDate.split(" ")[0]
+                };
+            });
+
+            // نحفظها له عشان يستفيد منها إذا دخل صفحة الأندية
+            localStorage.setItem(DB_KEY, JSON.stringify(freshNews));
+            
+            // نعرضها
+            renderHomeNews(freshNews);
+
+        } catch (error) {
+            console.error("فشل جلب أخبار الواجهة:", error);
+            homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">تعذر تحميل الأخبار، تحقق من الاتصال.</p>';
+        }
+    }
+});
 
