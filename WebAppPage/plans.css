@@ -30,9 +30,9 @@
 }
 
 .plan-tab.active {
-    background: var(--primary-color, #103291);
+    background: var(--primary-color, #7c1091);
     color: white;
-    box-shadow: 0 4px 10px rgba(16, 50, 145, 0.2);
+    box-shadow: 0 4px 10px rgba(119, 16, 145, 0.2);
 }
 
 /* الفلاتر الفرعية (Chips) */
@@ -61,9 +61,9 @@
 }
 
 .sub-filter-btn.active {
-    background: rgba(16, 50, 145, 0.1);
-    color: var(--primary-color, #103291);
-    border-color: var(--primary-color, #103291);
+    background: rgba(130, 16, 145, 0.1);
+    color: var(--primary-color, #821091);
+    border-color: var(--primary-color, #821091);
     font-weight: 700;
 }
 
@@ -96,8 +96,8 @@
 
 .major-card-btn i {
     font-size: 30px;
-    color: var(--primary-color, #103291);
-    background: rgba(16, 50, 145, 0.05);
+    color: var(--primary-color, #771091);
+    background: rgba(130, 16, 145, 0.05);
     padding: 12px;
     border-radius: 50%;
     margin-bottom: 5px;
@@ -116,7 +116,7 @@
 .back-to-majors-btn {
     background: transparent;
     border: none;
-    color: var(--primary-color, #103291);
+    color: var(--primary-color, #731091);
     font-family: 'Tajawal';
     font-weight: bold;
     margin-bottom: 20px;
@@ -140,7 +140,7 @@
 }
 
 .major-title-head {
-    color: var(--primary-color, #103291);
+    color: var(--primary-color, #8d1091);
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 800;
@@ -164,7 +164,7 @@
     background: rgba(16, 50, 145, 0.06);
     padding: 10px 15px;
     border-radius: 12px;
-    color: var(--primary-color, #103291);
+    color: var(--primary-color, #731091);
     font-weight: 700;
     font-size: 13px;
     display: inline-block;
@@ -181,7 +181,7 @@
 }
 
 .semester-header {
-    background: var(--primary-color, #103291);
+    background: var(--primary-color, #7c1091);
     color: white;
     padding: 12px 15px;
 }
@@ -210,7 +210,7 @@
 .course-table tr:last-child td { border-bottom: none; }
 
 .total-row td { background: var(--bg-body, #f4f6f8); font-weight: bold; }
-.total-title { color: var(--primary-color, #103291); }
+.total-title { color: var(--primary-color, #821091); }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

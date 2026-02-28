@@ -1,4 +1,393 @@
 /* =========================================
+   3. الهيدر العلوي (Header)
+   ========================================= */
+.hub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            background-color: var(--header-bg); /* شفافية حسب المتغيرات */
+            backdrop-filter: blur(10px); /* تأثير الزجاج */
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0 20px;
+            position: sticky; /* يثبت فوق لما تنزل */
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* تنسيق الجزء الأيمن */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hub-logo {
+            width: 35px; /* حجم الشعار */
+            height: auto;
+        }
+
+        .hub-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-text); /* لون النص الرسمي */
+            margin: 0;
+        }
+
+        /* تنسيق الجزء الأيسر */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* تنسيق الأزرار (الجرس والقائمة) */
+        .icon-btn {
+            background: var(--surface-color); /* لون خلفية الزر */
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px; /* حواف ناعمة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-dark); /* لون الأيقونة */
+            font-size: 18px;
+            position: relative; /* عشان النقطة الحمراء */
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:active {
+            transform: scale(0.95); /* تصغير خفيف عند الضغط */
+        }
+
+        /* النقطة الحمراء (تنبيه جديد) */
+        .notif-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: #ff4757; /* أحمر */
+            border-radius: 50%;
+            border: 2px solid var(--surface-color); /* حدود عشان تفصل عن الأيقونة */
+        }
+
+/* =========================================
+   تنسيقات القائمة الجانبية (من اليسار + Blur + مساحة أكبر)
+   ========================================= */
+
+/* 1. التظليل الضبابي (Blur Overlay) */
+#sidebarOverlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.4) !important; /* أسود شفاف */
+    backdrop-filter: blur(8px) !important; /* هذا اللي يسوي التغبيش الفخم */
+    -webkit-backdrop-filter: blur(8px) !important; /* لدعم أجهزة أبل */
+    z-index: 9998 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s ease-in-out !important;
+}
+
+/* لما تفتح القائمة يظهر التظليل */
+#sidebarOverlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 2. القائمة الجانبية نفسها */
+#sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important; /* مخفية باليسار بالكامل */
+    width: 340px !important; /* كبرنا المساحة (كانت 280) */
+    max-width: 85vw !important; /* حماية عشان ما تتجاوز شاشة الجوال الصغير */
+    height: 100vh !important;
+    background-color: var(--bg-color) !important;
+    z-index: 9999 !important; /* أعلى شيء بالصفحة */
+    box-shadow: 5px 0 30px rgba(0,0,0,0.15) !important; /* ظل ناعم */
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* حركة دخول سريعة وتفرمل بنعومة */
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+}
+
+/* لما تفتح القائمة تدخل من اليسار للشاشة */
+#sidebar.active {
+    left: 0 !important;
+}
+
+/* 3. تنسيق رأس القائمة (العنوان وزر الإغلاق) */
+.sidebar-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 25px 20px 15px 20px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    margin-bottom: 10px !important;
+}
+
+/* زر الإغلاق ✕ */
+.close-btn {
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-dark) !important;
+    font-size: 16px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px var(--shadow-color) !important;
+    transition: transform 0.2s !important;
+}
+
+.close-btn:active {
+    transform: scale(0.9) !important;
+}
+
+/* =========================================
+   4. تنسيقات الروابط وكرت الدارك مود (الستايل المودرن)
+   ========================================= */
+.modern-sidebar {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-label {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.modern-sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+.modern-sidebar li a i {
+    font-size: 20px;
+    color: var(--text-light);
+    transition: 0.2s;
+}
+
+.modern-sidebar li a:hover, 
+.modern-sidebar li a.active {
+    background-color: var(--surface-color);
+    color: var(--primary-text);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.modern-sidebar li a:hover i, 
+.modern-sidebar li a.active i {
+    color: var(--primary-text);
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 15px 0;
+}
+
+/* كرت زر الدارك مود */
+.theme-toggle-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 16px;
+    margin-top: auto;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.theme-switch-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* أزرار السلايدر للدارك مود */
+.theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: var(--primary-text); }
+input:checked + .slider:before { transform: translateX(22px); }
+.slider.round { border-radius: 26px; }
+.slider.round:before { border-radius: 50%; }
+
+/* =========================================
+   تنسيقات نافذة الإشعارات (Notifications)
+   ========================================= */
+
+/* الحاوية الرئيسية المخفية */
+.notif-panel {
+    position: fixed;
+    top: 75px; /* تطلع تحت الهيدر بشوي */
+    left: 20px; /* محاذية لليسار تحت الجرس */
+    width: 340px;
+    max-width: calc(100vw - 40px); /* عشان ما تطلع برا شاشة الجوال الصغير */
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 999;
+    
+    /* إعدادات الأنميشن والإخفاء */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px); /* مرفوعة لفوق شوي */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* حالة الظهور (لما نضغط الجرس) */
+.notif-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* رأس نافذة الإشعارات */
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color); /* لون أغمق شوي من الكرت */
+}
+
+.notif-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.mark-read-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-text);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.mark-read-btn:hover {
+    opacity: 0.7;
+}
+
+/* قائمة الإشعارات */
+.notif-list {
+    max-height: 400px; /* عشان إذا كثرت الإشعارات يصير فيها سكرول */
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    background-color: var(--surface-color);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background-color: var(--bg-color);
+}
+
+/* تمييز الإشعار الغير مقروء */
+.notif-item.unread {
+    background-color: rgba(0, 82, 204, 0.03); /* لون أزرق خفيف جداً كخلفية */
+}
+
+/* أيقونة الإشعار */
+.notif-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* نصوص الإشعار */
+.notif-content {
+    flex: 1;
+}
+
+.notif-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.notif-content p {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.notif-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: #b294b8;
+}
+
+/* النقطة الحمراء داخل الإشعار الغير مقروء */
+.item-unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+/* =========================================
    تصميم صفحة المفقودات - misstyle.css
    ========================================= */
 
@@ -58,7 +447,7 @@
 }
 
 .filter-btn.active {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
 }
 
@@ -174,7 +563,7 @@
     left: 20px;
     width: 55px;
     height: 55px;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
     border-radius: 50%;
     border: none;
@@ -412,7 +801,7 @@
 
 /* زر التليجرام */
 .popup-content2 .app-btn2 {
-    background: linear-gradient(90deg, #731091, #91107c); /* أزرق */
+    background: linear-gradient(90deg, #103191, #106091); /* أزرق */
     color: #fff !important; /* النص دايماً أبيض */
     border-radius: 12px;
     padding: 12px;
