@@ -20,6 +20,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6SPE7K6J1N"></script>
@@ -43,51 +44,66 @@
 
     <div id="emoji-background"></div>
 
-    <div id="sidebarOverlay"></div>
+<div id="sidebarOverlay"></div>
 
-<aside id="sidebar">
-    <div class="sidebar-header">
-        <h3>القائمة</h3>
-        <button class="close-btn">✕</button>
-    </div>
-
-    <ul class="sidebar-menu">
-        <li><a href="index.html"><i class="fi fi-rr-home"></i> الصفحـة الرئيسية</a></li>
-        <li><a href="Tools.html"><i class="fi fi-rr-apps"></i> مكتبة الأدوات</a></li>
-        <li><a href="plans.html"><i class="fi fi-rr-graduation-cap"></i> خطط التخصصات</a></li>
-        <li><a href="missing.html"><i class="fi fi-rr-megaphone"></i> مبادرة مفقود</a></li>
-        <li><a href="https://x.com/i/communities/1823043306739110132"><i class="fi fi-brands-twitter"></i> مجتمع طلاب كلية الجبيل</a></li>
-        <li><a href="https://t.me/newsjuc"><i class="fi fi-rr-paper-plane"></i> قناة اخبار JIC </a></li>
-        <li>
-    <div class="theme-switch-wrapper">
-        <span class="theme-label">
-            <i class="fi fi-rr-moon"></i> الوضع الليلي
-        </span>
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-    </div>
-        </li>
-    </ul>
-    
-    
-    <div style="margin-top: auto; font-size: 11px; color: #999; text-align: center;">
-        منصة مدخل © 2026
-    </div>
-</aside>
-
-    <header class="top-header">
-        <div class="logo-container">
-            <img src="logo.png" alt="مدخل" class="header-logo">
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h3 style="font-family: 'Tajawal'; font-weight:800; color:var(--primary-text);">القائمة</h3>
+            <button class="close-btn">✕</button>
         </div>
 
-        <h1 class="page-title">الرئيسية</h1>
+        <ul class="modern-sidebar">
+            <li class="menu-label">التصفح</li>
+            <li><a href="index.html" class="active"><i class="fi fi-rr-home"></i> الرئيسية</a></li>
+            <li><a href="Pages/center.html"><i class="fi fi-rr-dashboard"></i> الواجهة</a></li>
+            <li><a href="Tools.html"><i class="fi fi-rr-apps"></i> الأدوات</a></li>
+            <li><a href="plans.html"><i class="fi fi-rr-graduation-cap"></i> التخصصات</a></li>
 
-        <div class="menu-btn" onclick="toggleMenu()">
-            <i class="fi fi-rr-menu-burger" style="font-size: 24px;"></i> 
+            <li class="menu-label">المجتمع</li>
+            <li><a href="missing.html"><i class="fi fi-rr-box"></i> مبادرة مفقود</a></li>
+            <li><a href="https://x.com/i/communities/1823043306739110132" target="_blank"><i class="fi fi-brands-twitter"></i> مجتمع JIC (X)</a></li>
+            <li><a href="https://t.me/newsjuc" target="_blank"><i class="fi fi-rr-paper-plane"></i> قناة الأخبار</a></li>
+
+            <li class="menu-divider"></li>
+
+            <li class="theme-toggle-card">
+                <div class="theme-switch-wrapper">
+                    <span class="theme-label"><i class="fi fi-rr-moon"></i> الوضع الليلي</span>
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
+    </aside>
+
+    <header class="hub-header">
+        <div class="header-right">
+            <img src="logo.png" alt="شعار" class="hub-logo">
+            <h1 class="hub-title">الرئيسية</h1> 
+        </div>
+
+        <div class="header-left">
+            <button class="icon-btn" onclick="toggleNotif()">
+                <i class="fi fi-rr-bell"></i>
+                <span class="notif-dot"></span> 
+            </button>
+            <div class="menu-btn icon-btn">
+                <i class="fi fi-rr-menu-burger"></i>
+            </div>
         </div>
     </header>
+
+    <div class="notif-panel" id="notifPanel">
+        <div class="notif-header">
+            <h3>الإشعارات</h3>
+            <button class="mark-read-btn" onclick="markAllRead()">تحديد كـ مقروء</button>
+        </div>
+        <div class="notif-list">
+            </div>
+    </div>
 
 
 
@@ -118,12 +134,12 @@
 
         
         <section class="welcome-section">
-            <h2 class="glow-text">تطبيـق منصـة مدخـل</h2>
-            <p class="sub-text"> نبارك لكم قدوم الشهر الكريم 🌙</p>
+            <h2 class="glow-text">مبـادرة مدخـل الطلابيـة</h2>
+            <p class="sub-text">مابقى شيء على الاجازة هانت ياشيخ 🌙</p>
         </section>
 
         <section class="shortcuts-section">
-            <h3 class="section-title">اختصارات</h3>
+            <h3 class="section-title">الوصول السريع🫡</h3>
             
             <div class="shortcuts-grid">
     <a href="https://edugate.rcjy.edu.sa/" target="_blank" class="shortcut-card blue-gradient1">
@@ -140,12 +156,7 @@
     <span class="shortcut-text">خطط<br>التخصصات</span>
 </div>
 
-    <a href="https://mail.rcjy.gov.sa/" target="_blank" class="shortcut-card green-gradient">
-        <i class="fi fi-rr-envelope shortcut-icon"></i>
-        <span class="shortcut-text">الإيميل<br>الجامعي</span>
-    </a>
-
-    <a href="../PDF/WeekCalender2026.pdf" target="_blank" class="shortcut-card blue-gradient1">
+    <a href="../PDF/WeekCalender2026.pdf" target="_blank" class="shortcut-card green-gradient">
         <i class="fi fi-rr-document shortcut-icon"></i>
         <span class="shortcut-text">توزيـــع<br>الاسابيع</span>
     </a>
@@ -163,10 +174,23 @@
         <section class="news-section">
     <div style="display: flex; justify-content: space-between; align-items: end; padding: 0 5px;">
         <h3 class="section-title">آخر الأخبار 📰</h3>
-        <a href="news.html" style="font-size: 12px; color: var(--primary-color); text-decoration: none; font-weight: bold;">عرض الكل</a>
+        <a href="news.html" class="view-all">عرض الكل</a>
     </div>
 
     <div id="news" class="news-wrapper">
+            </div>
+        </section>
+
+        <section class="home-news-section">
+            <div class="section-header">
+                <h3 class="section-title">اخبـار الاندية الطلابية 📰</h3>
+                <a href="Pages/clubs.html" class="view-all-link">عرض الكل</a>
+            </div>
+            
+            <div class="home-news-container" id="homeLatestNews">
+                <div style="width: 100%; text-align: center; padding: 20px; color: var(--text-light);">
+                    <i class="fi fi-rr-spinner-alt" style="animation: spin 1s linear infinite;"></i>
+                </div>
             </div>
         </section>
 
@@ -184,13 +208,13 @@
 <div id="custom-popup1" class="popup-overlay1">
     <div class="popup-box1">
         <div class="popup-icon1">
-            <i class="fi fi-rr-star-and-crescent"></i> </div>
-        <h3 class="popup-title1">نبارك لكم الشهر الكريم</h3>
+            <i class="fi fi-rr-bell-ring"></i> </div>
+        <h3 class="popup-title1">اعلان هــام</h3>
         <p class="popup-text1">
-         الله يتقبل منا ومنكم صالح الاعمال يارب 📿
+          عادت الادوات للعمل من جديد
         </p>
         <div class="popup-buttons1">
-            <a href="index.html" class="btn-primary" onclick="closePopup()">متابعة</a>
+            <a href="Tools.html" class="btn-primary" onclick="closePopup()">زيارة</a>
             
             <button class="btn-secondary" onclick="closePopup()">الغاء</button>
         </div>
@@ -208,15 +232,15 @@
         <span>الأدوات</span>
     </a>
 
-    <a href="missing.html" class="nav-item"> <i class="fi fi-rr-box"></i>
-        <span>المفقودات</span>
+    <a href="Pages/center.html" class="nav-item"> <i class="fi fi-rr-dashboard"></i>
+         <span>الواجهة</span>
     </a>
 
     <a href="library.html" class="nav-item"> <i class="fi fi-rr-book-alt"></i>
-        <span>المكتبة</span>
+        <span>الموسوعة</span>
     </a>
 
-    <a href="news.html" class="nav-item"> <i class="fi fi-rr-document"></i>
+    <a href="news.html" class="nav-item"> <i class="fi fi-rr-newspaper"></i>
         <span>الأخبار</span>
     </a>
 </nav>
@@ -257,6 +281,7 @@
 <a href="https://hits.sh/juportal.online/WebAppPage/index.html/"><img alt="Hits" src="https://hits.sh/juportal.online/WebAppPage/index.html.svg?color=007ec6&labelColor=007ec6"/></a>
 
     <script src="misscript.js"></script>
+    <script src="notifications.js"></script>
     <script src="../newsPage/news-data.js?v=1.2"></script>
     <script src="script.js"></script>
     <script src="../eventsCounterPage/events.js?v=1.2"></script>
@@ -274,5 +299,4 @@
 </script>
     
 </body>
-
 </html>

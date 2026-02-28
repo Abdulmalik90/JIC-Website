@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="libstyle.css"> <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 <body>
 
@@ -20,50 +21,66 @@
 
     <div id="emoji-background"></div>
 
-    <div id="sidebarOverlay"></div>
+<div id="sidebarOverlay"></div>
 
-<aside id="sidebar">
-    <div class="sidebar-header">
-        <h3 style="font-family: 'Tajawal'; font-weight:800; color:#0052cc;">القائمة</h3>
-        <button class="close-btn">✕</button>
-    </div>
-
-    <ul class="sidebar-menu">
-        <li><a href="index.html"><i class="fi fi-rr-home"></i> الصفحـة الرئيسية</a></li>
-        <li><a href="Tools.html"><i class="fi fi-rr-apps"></i> مكتبة الأدوات</a></li>
-        <li><a href="plans.html"><i class="fi fi-rr-graduation-cap"></i> خطط التخصصات</a></li>
-        <li><a href="missing.html"><i class="fi fi-rr-megaphone"></i> مبادرة مفقود</a></li>
-        <li><a href="https://x.com/i/communities/1823043306739110132"><i class="fi fi-brands-twitter"></i> مجتمع طلاب كلية الجبيل</a></li>
-        <li><a href="https://t.me/newsjuc"><i class="fi fi-rr-paper-plane"></i> قناة اخبار JIC </a></li>
-        <li>
-    <div class="theme-switch-wrapper">
-        <span class="theme-label">
-            <i class="fi fi-rr-moon"></i> الوضع الليلي
-        </span>
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-    </div>
-        </li>
-    </ul>
-    
-    <div style="margin-top: auto; font-size: 11px; color: #999; text-align: center;">
-        منصة مدخل © 2026
-    </div>
-</aside>
-
-    <div id="emoji-background"></div>
-
-    <header class="top-header">
-        <div class="logo-container">
-            <img src="logo.png" alt="مدخل" class="header-logo">
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h3 style="font-family: 'Tajawal'; font-weight:800; color:var(--primary-text);">القائمة</h3>
+            <button class="close-btn">✕</button>
         </div>
-        <h1 class="page-title">المكتبة</h1>
-        <div class="menu-btn">
-            <i class="fi fi-rr-menu-burger"></i>
+
+        <ul class="modern-sidebar">
+            <li class="menu-label">التصفح</li>
+            <li><a href="index.html"><i class="fi fi-rr-home"></i> الرئيسية</a></li>
+            <li><a href="Pages/center.html"><i class="fi fi-rr-dashboard"></i> الواجهة</a></li>
+            <li><a href="Tools.html"><i class="fi fi-rr-apps"></i> الأدوات</a></li>
+            <li><a href="plans.html"><i class="fi fi-rr-graduation-cap"></i> التخصصات</a></li>
+
+            <li class="menu-label">المجتمع</li>
+            <li><a href="missing.html"><i class="fi fi-rr-box"></i> مبادرة مفقود</a></li>
+            <li><a href="https://x.com/i/communities/1823043306739110132" target="_blank"><i class="fi fi-brands-twitter"></i> مجتمع JIC (X)</a></li>
+            <li><a href="https://t.me/newsjuc" target="_blank"><i class="fi fi-rr-paper-plane"></i> قناة الأخبار</a></li>
+
+            <li class="menu-divider"></li>
+
+            <li class="theme-toggle-card">
+                <div class="theme-switch-wrapper">
+                    <span class="theme-label"><i class="fi fi-rr-moon"></i> الوضع الليلي</span>
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
+    </aside>
+
+    <header class="hub-header">
+        <div class="header-right">
+            <img src="logo.png" alt="شعار" class="hub-logo">
+            <h1 class="hub-title">الموسوعة</h1> 
+        </div>
+
+        <div class="header-left">
+            <button class="icon-btn" onclick="toggleNotif()">
+                <i class="fi fi-rr-bell"></i>
+                <span class="notif-dot"></span> 
+            </button>
+            <div class="menu-btn icon-btn">
+                <i class="fi fi-rr-menu-burger"></i>
+            </div>
         </div>
     </header>
+
+    <div class="notif-panel" id="notifPanel">
+        <div class="notif-header">
+            <h3>الإشعارات</h3>
+            <button class="mark-read-btn" onclick="markAllRead()">تحديد كـ مقروء</button>
+        </div>
+        <div class="notif-list">
+            </div>
+    </div>
 
     <div class="tabs-container">
         <div class="tab-item active" data-target="official">مستندات رسمية</div>
@@ -664,23 +681,23 @@
         <span>الأدوات</span>
     </a>
 
-    <a href="missing.html" class="nav-item"> <i class="fi fi-rr-box"></i>
-        <span>المفقودات</span>
-    </a>
+    <a href="Pages/center.html" class="nav-item"> <i class="fi fi-rr-dashboard"></i>
+            <span>الواجهة</span>
+        </a>
 
     <a href="library.html" class="nav-item active"> <i class="fi fi-rr-book-alt"></i>
-        <span>المكتبة</span>
+        <span>الموسوعة</span>
     </a>
 
-    <a href="news.html" class="nav-item"> <i class="fi fi-rr-document"></i>
+    <a href="news.html" class="nav-item"> <i class="fi fi-rr-newspaper"></i>
         <span>الأخبار</span>
     </a>
 </nav>
 
 
 
-    <script src="../AdsEngine/ads-manager.js"></script>
-    <script src="script.js"></script> <script src="libscript.js"></script> </body>
+    <script src="../AdsEngine/ads-manager.js"></script> <script src="WebAppPage/notifications.js"></script>
+    <script src="script.js"></script> <script src="libscript.js"></script> <script src="notifications.js"></script> </body>
 
 </html>
 
