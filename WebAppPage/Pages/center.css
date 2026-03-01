@@ -110,11 +110,19 @@
 }
 
 .carousel-slide img {
+display: block; /* هذا السطر هو السحر اللي بيخفي المساحة البيضاء */
     width: 100%;
-    height: 220px; 
-    object-fit: cover;
-    display: block;
-    border-radius: 0; 
+    height: 100%;
+    object-fit: cover; /* عشان الصورة تملى المكان بترتيب */
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-slide a {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    line-height: 0; /* هذي الضربة القاضية لأي مسافة نصية مخفية */
 }
 
 /* الطبقة المتدرجة للنص (عشان النص الأبيض يوضح فوق الصور الفاتحة) */
@@ -617,4 +625,5 @@ input:checked + .slider:before { transform: translateX(22px); }
     background-color: #ff4757;
     border-radius: 50%;
     margin-top: 5px;
+
 }
