@@ -1,6 +1,6 @@
 :root {
-    --main-title1: #830ea7;
-    --main-title2: #830ea7;
+    --main-title1: #1c3f7a;
+    --main-title2: #0074d9;
     --text-shadow: none;
     --text: black;
     --section-bg: #eef2f5;
@@ -8,7 +8,7 @@
     --post-bg: white;
     --post-shadow: rgba(0, 0, 0, 0.2);
     --post-shadow-hover: rgba(0, 0, 0, 0.3);
-    --post-titles: #830ea7;
+    --post-titles: #2c3e50;
     --event-card: #eef2f5;
     --event-card-border: black;
     --info-contact-post: white;
@@ -24,17 +24,17 @@
     --text-shadow: white;
     --text: white;
     --Raed: #C7c7c7;
-    --section-bg: #190a19;
-    --post-bg: #150b16;
+    --section-bg: #0a0e19;
+    --post-bg: #0b0e16;
     --post-shadow: rgba(255, 255, 255, 0.2);
     --post-shadow-hover: rgba(255, 255, 255, 0.3);
-    --post-titles: #b52fcf;
-    --event-card: #190a18;
+    --post-titles: #5e9ad6;
+    --event-card: #0A0E19;
     --event-card-border: white;
-    --info-contact-post: #1d0e1c;
+    --info-contact-post: #0e121d;
     --modal-major-container: rgba(210, 210, 210, 0.3);
-    --modal-major: rgb(41, 23, 40);
-    --time-section-bg: #1b0e1d;
+    --modal-major: rgb(23, 27, 41);
+    --time-section-bg: #0e121d;
 }
  /* الخلفية المغبشة */
 .modal {
@@ -63,7 +63,7 @@
 }
 
 .modal-content h2 {
-    color: #b52fcf;
+    color: #1850aa;
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
@@ -76,7 +76,7 @@
 }
 
 .modal-content strong {
-    color: #b52fcf;
+    color: #1f57b1;
 }
 
 .actions {
@@ -85,7 +85,7 @@
 }
 
 .modal-content button {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(-120deg, #103291, #146394);
     color: white;
     border: none;
     padding: 13px 130px;
@@ -97,7 +97,7 @@
 
 .modal-content button:hover {
     background: none; /* smoother transition */
-    background-color: #cab707;
+    background-color: #ff4b2b;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -132,7 +132,7 @@
     .modal-content button {
         width: 100%;
         padding: 12px;
-        font-size: 1.2rem;
+        font-size: 1.2rem ;
     }
 }
 
@@ -147,7 +147,7 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 85px;
-    background: var(--main-title2); /* الأزرق الغامق إلى الفاتح */
+    background: linear-gradient(to right, var(--main-title1), var(--main-title2)); /* الأزرق الغامق إلى الفاتح */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -184,7 +184,7 @@
 
 .greating-buttons {
     padding: 11px 50px;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(-120deg, #103291, #146394);
     color: white;
     border: none;
     width: 100%;
@@ -195,7 +195,7 @@
 
 .greating-buttons:hover {
     background: none; /* smoother transition */
-    background-color: #cfc20a;
+    background-color: #ff4b2b;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -260,7 +260,7 @@
 }
 
 #modal-major-header {
-    background-color: #b52fcf;
+    background-color: #07468a;
     margin: 0 0 20px 0px;
     padding: 10px;
     border-radius: 25px 25px 0 0;
@@ -306,13 +306,13 @@
 }
 
 #modal-jic button:hover {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, rgb(25, 82, 147), rgb(120, 160, 213));
     color: white;
     box-shadow: 1px 1px 10px;
 }
 
 #modal-jti button:hover {
-    background: linear-gradient(90deg, #731091, #91107c);;
+    background: linear-gradient(90deg, rgb(25, 82, 147), rgb(120, 160, 213));
     color: white;
     box-shadow: 1px 1px 10px;
 }
@@ -434,7 +434,7 @@
 }
 
 .news-post button {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
     border: none;
     padding: 14px 25px;
@@ -446,7 +446,7 @@
 }
 
 .news-post button:hover {
-    background: #b52fcf;
+    background: #0056b3;
 }
 
 /* تحسينات للعرض على الجوال */
@@ -505,12 +505,12 @@
 }
 
 .active-today {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     color: white;
 }
 
 .active-today .time-section {
-    background-color: #b52fcf;
+    background-color: #0071bc;
 }
 
 .event-title {
@@ -633,7 +633,7 @@
     font-family:"Tajawal";
     text-align: center;
     cursor: pointer;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     width: 80%;
     margin: 10px auto;
     padding: 14px;
@@ -643,7 +643,7 @@
 }
 
 .tool a:hover {
-    background: #b52fcf;
+    background: #106091;
     transform: translateY(-3px) scale(1.05);
 }
 
@@ -705,7 +705,7 @@
     font-family:"Tajawal";
     text-align: center;
     cursor: pointer;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103191, #106091);
     width: 80%;
     margin: 20px auto;
     padding: 14px;
@@ -715,7 +715,7 @@
 }
 
 .student-div a:hover {
-    background: #b52fcf;
+    background: #106091;
     transform: translateY(-3px) scale(1.05);
 }
 
@@ -801,7 +801,7 @@
 }
 
 .member-card a {
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #105f91, #103191);
     border-radius: 20px;
     width: 85%;
     margin: 5px auto;
@@ -816,7 +816,7 @@
 }
 
 .member-card a:hover {
-    background: #b52fcf;
+    background: #105f91;
     transform: translateY(-3px) scale(1.05);
 }
 
@@ -868,7 +868,7 @@
     text-align: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #0004287f, #004e9257);
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -931,7 +931,7 @@
     }
 
     .arrow-btn:hover {
-        background: #b5b804;
+        background: #ff4b2b;
         transform: translateY(-50%) scale(1.1);
     }
 
@@ -1384,7 +1384,7 @@
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    z-index: 9999999;
+    z-index: 99999;
     padding: 15px;
     border: 1px solid rgba(16, 96, 145, 0.1);
     transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* تأثير نطة خفيفة (Bouncing) */

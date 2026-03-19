@@ -22,8 +22,8 @@
 }
 
 [data-theme="dark"] {
-    --bg: #080110;
-    --header: #0c0110;
+    --bg: #010510;
+    --header: #010510;
     --header-text: white;
     --header-text-hover: #ff4b2b;
     --header-search: #3b3e47;
@@ -38,7 +38,7 @@
     --theme-button: rgb(52, 52, 52);
     --header-dark-icon-hover: black;
     --header-dark-button-hover: white;
-    --footer-bg: #0e0110;
+    --footer-bg: #010510;
     --footer-h3: white !important;
     --search-border: rgb(107, 107, 107);
     --header-image: url(./Images/iconic\ logo\ white\ full@4x.png);
@@ -196,7 +196,7 @@ a {
 }
 
 .dropdown_menu ul li a:hover {
-    color: #b52fcf;
+    color: #3589e2;
 }
 
 #logo-div {
@@ -611,7 +611,7 @@ footer h1 {
     font-size: 17px;
     font-weight: 500;
     width: 20%;
-    background: linear-gradient(90deg, #731091, #91107c);
+    background: linear-gradient(90deg, #103490, #3589e2);
     color: white;
     padding: 10px;
     border-radius: 15px;
@@ -621,7 +621,7 @@ footer h1 {
 }
 
 #subsecribe-div a:hover {
-    background: #b52fcf; /* smoother transition */
+    background: #107673; /* smoother transition */
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 20px var(--search-section-shadow);
     border: none;
