@@ -168,7 +168,7 @@ label,
 .tab-item.active {
     background: var(--primary-color);
     color: white; /* النص يبقى أبيض حتى في الدارك */
-    box-shadow: 0 4px 10px rgba(180, 0, 204, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 82, 204, 0.2);
 }
 
 /* إدارة عرض المحتوى */
@@ -242,19 +242,19 @@ label,
 .tool-header-info {
     display: flex;
     gap: 10px;
-    background: #fcf0ff;
+    background: #f0f7ff;
     padding: 12px;
     border-radius: 12px;
     margin-bottom: 20px;
-    color: #bb00cc;
+    color: #0052cc;
     font-size: 13px;
     line-height: 1.4;
 }
 
 /* لون الهيدر في الدارك مود */
 [data-theme="dark"] .tool-header-info {
-    background: rgba(237, 96, 250, 0.1);
-    color: #e060fa;
+    background: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
 }
 
 /* مجموعات الإدخال */
@@ -311,7 +311,7 @@ label,
     padding: 12px;
     border: none;
     border-radius: 15px;
-    background: linear-gradient(45deg, #470a4d 0%, #c400a3 100%);
+    background: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -551,14 +551,14 @@ label,
 
 .result-box.blue { 
     background: #eef4ff; 
-    color: #a300cc; 
-    border: 1px solid #fad0ff; 
+    color: #0052cc; 
+    border: 1px solid #d0e1ff; 
 }
 
 [data-theme="dark"] .result-box.blue {
     background: rgba(0, 82, 204, 0.15);
-    color: #db60fa;
-    border: 1px solid rgba(146, 0, 204, 0.3);
+    color: #60a5fa;
+    border: 1px solid rgba(0, 82, 204, 0.3);
 }
 
 .result-box.gold { 
@@ -793,7 +793,7 @@ label,
 /* زر الحساب (يأخذ ستايل calc-btn من ملفك) */
 .action-btn {
     flex: 2;
-    background: linear-gradient(45deg, #470a4d 0%, #c400a3 100%);
+    background: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);
     color: white;
     padding: 12px;
     border-radius: 14px;
@@ -872,7 +872,7 @@ label,
 }
 
 /* تحسينات الدارك مود للنتيجة */
-[data-theme="dark"] .res-sub { color: #de64f6; }
+[data-theme="dark"] .res-sub { color: #64b5f6; }
 
 .grade-val {
     font-size: 38px;
@@ -1107,7 +1107,7 @@ label,
 }
 
 .pop-btn3.confirm {
-    background: linear-gradient(45deg, #470a4d 0%, #c400a3 100%);
+    background: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);
     color: white;
 }
 

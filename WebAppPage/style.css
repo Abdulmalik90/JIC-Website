@@ -3,12 +3,12 @@
    ========================================= */
 :root {
     /* --- الوضع النهاري (الافتراضي) --- */
-    --primary-color: linear-gradient(45deg, #4d0a4a 0%, #9d00c4 100%);       /* أزرق مدخل الرسمي */
+    --primary-color: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);       /* أزرق مدخل الرسمي */
     --bg-color: #f8f9fa;            /* خلفية الصفحة */
-    --primary-text: #a81abb;          /* خلفية الخط الرسمي */
+    --primary-text: #1a60bb;          /* خلفية الخط الرسمي */
     --surface-color: #ffffff;       /* لون الكروت والقوائم */
-    --text-dark: #2f1f37;           /* النصوص الرئيسية */
-    --text-light: #7e6b80;          /* النصوص الفرعية */
+    --text-dark: #1f2937;           /* النصوص الرئيسية */
+    --text-light: #6b7280;          /* النصوص الفرعية */
     --border-color: #e5e7eb;        /* لون الحدود والفواصل */
     --header-bg: rgba(255, 255, 255, 0.85); /* خلفية الهيدر الشفافة */
     --shadow-color: rgba(0, 0, 0, 0.05);    /* لون الظل */
@@ -20,12 +20,12 @@
 
 /* --- الوضع الليلي (Dark Mode) --- */
 [data-theme="dark"] {
-    --primary-color: linear-gradient(45deg, #4d0a47 0%, #9d00c4 100%);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
-    --bg-color: #181818;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
-    --primary-text: #bc52d1;          /* خلفية الخط الرسمي */
+    --primary-color: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
+    --bg-color: #121212;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
+    --primary-text: #5eaae9;          /* خلفية الخط الرسمي */
     --surface-color: #1e1e1e;       /* رمادي غامق للكروت */
     --text-dark: #e4e6eb;           /* أبيض مريح للعين (أوف وايت) */
-    --text-light: #a99caf;          /* رمادي فاتح */
+    --text-light: #9ca3af;          /* رمادي فاتح */
     --border-color: #2d2d2d;        /* حدود غامقة */
     --header-bg: rgba(30, 30, 30, 0.85); /* هيدر غامق شفاف */
     --shadow-color: rgba(0, 0, 0, 0.3);  /* ظل أثقل للوضع الليلي */
@@ -450,14 +450,14 @@ input:checked + .slider:before { transform: translateX(22px); }
 .notif-time {
     font-size: 10px;
     font-weight: 700;
-    color: #ab94b8;
+    color: #94a3b8;
 }
 
 /* النقطة الحمراء داخل الإشعار الغير مقروء */
 .item-unread-dot {
     width: 8px;
     height: 8px;
-    background-color: #ff4775;
+    background-color: #ff4757;
     border-radius: 50%;
     margin-top: 5px;
 }
@@ -476,13 +476,13 @@ input:checked + .slider:before { transform: translateX(22px); }
     color: var(--primary-text);
     margin-bottom: 8px;
     font-weight: 800;
-    text-shadow: 0 0 15px rgba(204, 0, 194, 0.2); /* خففنا الظل شوي */
+    text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
     animation: glowPulse 3s infinite alternate;
 }
 
 @keyframes glowPulse {
-    0% { text-shadow: 0 0 10px rgba(180, 0, 204, 0.1); }
-    100% { text-shadow: 0 0 20px rgba(197, 0, 204, 0.4); }
+    0% { text-shadow: 0 0 10px rgba(0, 82, 204, 0.1); }
+    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.4); }
 }
 
 .sub-text {
@@ -558,23 +558,23 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* التدرجات تبقى كما هي لأنها جميلة في الوضعين */
 .purple-gradient {
-    background: linear-gradient(135deg, #c07cf8 0%, #9c15da 100%);
-    box-shadow: 0 8px 15px rgba(161, 140, 209, 0.25);
+    background: linear-gradient(135deg, #883edb 0%, #2e0c66 100%);
+    box-shadow: 0 8px 15px rgba(176, 140, 209, 0.25);
 }
 
 .orange-gradient {
-    background: linear-gradient(135deg, #836ee0 0%, #4d1b9e 100%);
-    box-shadow: 0 8px 15px rgba(240, 129, 250, 0.25);
+    background: linear-gradient(135deg, #30b8ac 0%, #108370 100%);
+    box-shadow: 0 8px 15px rgba(129, 250, 183, 0.25);
 }
 
 .green-gradient {
-    background: linear-gradient(135deg, #8851c7 0%, #3d0d7c 100%);
-    box-shadow: 0 8px 15px rgba(207, 132, 250, 0.25);
+    background: linear-gradient(135deg, #c751b7 0%, #7c0d69 100%);
+    box-shadow: 0 8px 15px rgba(236, 132, 250, 0.25);
 }
 
 .blue-gradient1 {
-    background: linear-gradient(135deg, #d065da 0%, #9315b3 100%);
-    box-shadow: 0 8px 15px rgba(251, 0, 209, 0.25);
+    background: linear-gradient(135deg, #48a1b1 0%, #2515b3 100%);
+    box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
 }
 
 /* =========================================
@@ -785,17 +785,17 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* الستايل الأساسي (أزرق) */
 .app-btn.primary {
-    background-color: rgba(187, 0, 204, 0.08);
+    background-color: rgba(0, 82, 204, 0.08);
     color: var(--primary-text);
 }
 
 .app-btn.primary:active {
-    background-color: rgba(187, 0, 204, 0.2);
+    background-color: rgba(0, 82, 204, 0.2);
 }
 
 /* تعديل للدارك مود: نخلي الخلفية أوضح شوي */
 [data-theme="dark"] .app-btn.primary {
-    background-color: rgba(237, 96, 250, 0.15);
+    background-color: rgba(96, 165, 250, 0.15);
 }
 
 /* الستايل الثانوي (رمادي) */
@@ -843,7 +843,7 @@ input:checked + .slider:before { transform: translateX(22px); }
     display: flex;
     flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid rgba(204, 0, 194, 0.05);
+    border: 1px solid rgba(0, 82, 204, 0.05);
 }
 
 /* حدود خفيفة في الدارك مود */
@@ -874,7 +874,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* حاوية العداد التنازلي */
 #calender-events .event-timer {
-    background: #fef0ff; /* أزرق ثلجي فاتح للوضع النهاري */
+    background: #f0f7ff; /* أزرق ثلجي فاتح للوضع النهاري */
     border-radius: 16px;
     padding: 12px 10px;
     display: flex !important;
@@ -889,8 +889,8 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* تعديل العداد للوضع الليلي */
 [data-theme="dark"] #calender-events .event-timer {
-    background: rgba(232, 96, 250, 0.1); /* أزرق غامق شفاف */
-    border-color: rgba(250, 96, 224, 0.2);
+    background: rgba(96, 165, 250, 0.1); /* أزرق غامق شفاف */
+    border-color: rgba(96, 165, 250, 0.2);
 }
 
 #calender-events .event-timer > div {
@@ -913,7 +913,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 /* تنسيق الكلمات (يوم/ساعة) */
 #calender-events .event-timer span[style*="font-size: 11px"] {
     font-size: 10px !important;
-    color: #ae7bb5 !important;
+    color: #7b8ab5 !important;
     font-weight: 600;
 }
 
@@ -924,7 +924,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* الفواصل (:) */
 #calender-events .event-timer > span[style*="color: #ddd"] {
-    color: #dfcbe1 !important;
+    color: #cbd5e1 !important;
     font-size: 20px !important;
     margin-top: -12px !important;
     font-weight: 300;
@@ -1013,7 +1013,7 @@ input:checked + .slider:before { transform: translateX(22px); }
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(170, 0, 204, 0.9);
+    background: rgba(0, 82, 204, 0.9);
     backdrop-filter: blur(4px);
     color: white;
     padding: 4px 10px;
@@ -1593,7 +1593,7 @@ input:checked + .slider:before {
     width: 60px;
     height: 60px;
     background: #dee5fa; /* خلفية زرقاء فاتحة */
-    color: #a709cf; /* لون الأيقونة */
+    color: #1309cf; /* لون الأيقونة */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1624,7 +1624,7 @@ input:checked + .slider:before {
 }
 
 .popup-buttons1 .btn-primary {
-    background: linear-gradient(45deg, #470a4d 0%, #c400a3 100%);
+    background: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -1648,7 +1648,6 @@ input:checked + .slider:before {
 }
 
 .popup-buttons1 .btn-secondary:hover {
-    background: #ebe5eb;
+    background: #e5e7eb;
 }
-
 

@@ -375,7 +375,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 .notif-time {
     font-size: 10px;
     font-weight: 700;
-    color: #b294b8;
+    color: #94a3b8;
 }
 
 /* النقطة الحمراء داخل الإشعار الغير مقروء */
