@@ -1,47 +1,6 @@
 // news-data.js
 const newsData = [
-    {
-        id: 1,
-        title: "كًتب مقررات اللغة الانجليزية لطلاب السنة التحضيرية",
-        content: `
-            <p>تم الإعلان عن كتب مقررات الإنجليزي في السنة التحضيرية للمستوى الأول والثاني كما هو موضح في الصورة</p>
-            <p>تشمل الكتب المقررة:</p>
-            <ul>
-                <li>UNLOCK 1 - Reading & Writing</li>
-                <li>UNLOCK 2 - Listening & Speaking</li>
-                <li>English for Academic Purposes</li>
-            </ul>
-        `,
-        image: "https://i.postimg.cc/rytXqVdM/English-Books471.jpg",
-        date: "2025-08-24T14:34:00",
-        author: "عبدالملك الخليفة",
-        category: "الكتب"
-    },
-    {
-        id: 2,
-        title: "مواصفات الزي الموحد المحدثة لكليات ومعاهد الجبيل الصناعية",
-        content: `
-            <p>- موقع الشعار على الزي الرسمي:</p>
-            <p>تتوسط الدائرة موضعها مع الحفاظ على مساحة آمنة تعادل حجم الشعار بداخل الدائرة ويكون إرتفاع الشعار داخل الدائرة يساوي 60% من قطر الدائرة مع الحفاظ على مسافة آمنة بين طرف الدائرة العلوي ونهاية انحناء الكتف كما يتموضع مسمى كلية الجبيل الصناعية ومعهد الجبيل التقني على بعد مسافة ارتفاعه أسفل الدائرة مع مراعاة مسافة آمنة جانبية لاستدارة الكم</p>
-            <p>يمكن للطالب طلب الزي من خلال اي مزود بشرط الالتزام بالمواصفات الخاصة بالخامات والتصميم المعتمد</p>
-        `,
-        image: "https://i.postimg.cc/xC3f59LP/uniform.jpg",
-        date: "2025-08-25T17:15:00",
-        author: "رائد الزهراني",
-        category: "الزي الموحد"
-    },
-    {
-        id: 3,
-        title: "خريطة كلية الجبيل الصناعية",
-        content: `
-            <p>نموذج لخريطة الكلية فيه كل أسماء واختصارات المباني الللي ممكن تحتاجها</p>
-            
-        `,
-        image: "https://i.postimg.cc/bYKPnDXs/jic-Map.png",
-        date: "2025-08-26T13:42:00",
-        author: "رائد الزهراني",
-        category: "خريطة"
-    },
+	
     {
         id: 4,
         title: "ثـلاث ايام تفصلنا عن الاعلان الرسمي لمنصة مدخل !",
@@ -122,70 +81,6 @@ const newsData = [
     author: "رائـد الزهـراني",
     category: "مدخـل"
     },
-    {
-    id: 7,
-    title: "الاختبارات: جدول اختبارات اللغة الانجليزية لطلاب التحضيري بكلية الجبيل الصناعية 📄",
-    content: `
-        <p style="direction: rtl;">
-            أعلنت كلية الجبيل الصناعية عن صدور الجداول النهائية للاختبارات للفصل الدراسي الحالي،
-            وذلك لإتاحة الفرصة للطلاب والطالبات في السنة التحضيرية لمعرفة تواريخ واوقات اختباراتهم بشكل افضل.
-        </p>
-
-        <p style="direction: rtl;">
-            نرفق لكم ادناه رابط تحميل الجدول، ويمكنكم الإطلاع عليها مباشرة من خلال الزر التالي:
-        </p>
-
-        <div style="direction: rtl; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 280px;">
-            <a href="https://t.me/JuPortalsa/187" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                جدول اختبارات طلاب السنة التحضيرية
-            </a>
-
-        </div>
-
-        <p style="direction: rtl; margin-top: 15px;">
-            نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
-        </p>
-    `,
-    image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
-    date: "2025-12-09T00:00:00",
-    author: "رائـد الزهـراني",
-    category: "كلية الجبيل الصناعية"
-    },
-    {
-        id: 8,
-        title: "الاختبارات: جداول الاختبارات النهائية لطلاب وطالبات كلية الجبيل الصناعية 📄",
-        content: `
-            <p style="direction: rtl;">
-                أعلنت كلية الجبيل الصناعية عن صدور الجداول المعتمدة للاختبارات للفصل الدراسي الحالي،
-                وذلك لإتاحة الفرصة للطلاب والطالبات للاطلاع المبكر والاستعداد بشكل أفضل للاختبارات النهائية.
-            </p>
-            
-            <p style="direction: rtl;">
-                نرفق لكم روابط تحميل الجداول حسب كل فرع، ويمكنكم الإطلاع عليها مباشرة من خلال الأزرار التالية:
-            </p>
-
-                <a href="https://t.me/JuPortalsa/195" target="_blank" style="padding: 10px; background-color: #0057b7; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                    جدول اختبارات الطلاب
-                </a>
-
-                <a href="https://t.me/JuPortalsa/196" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                    جدول اختبارات الطالبات – فرع سدير
-                </a>
-
-                <a href="https://t.me/JuPortalsa/197" target="_blank" style="padding: 10px; background-color: #C91A98; color: white; text-align: center; margin: 10px auto; border-radius: 8px; text-decoration: none;">
-                    جدول اختبارات الطالبات – فرع الفيحاء
-                </a>
-            
-
-            <p style="direction: rtl; margin-top: 15px;">
-                نتمنى لجميع الطلاب والطالبات التوفيق والنجاح في استعداداتهم للاختبارات 🌟
-            </p>
-        `,
-        image: "https://i.postimg.cc/MKr7xqWQ/Gemini-Generated-Image-mdbpzgmdbpzgmdbp.png",
-        date: "2025-12-09T12:00:00",
-        author: "رائـد الزهـراني",
-        category: "كلية الجبيل الصناعية"
-    }, 
     {
         id: 9,
         title: "اطـلاق النسخـة الرسميـة لمنصة مدخـل 🥳",
@@ -408,10 +303,65 @@ const newsData = [
             </a>
         </div>
     `,
-    image: "https://i.postimg.cc/rsgPbZzS/IMG-0694.png",
+    image: "https://i.postimg.cc/HLvPbPYy/thnyt-15.webp",
     date: "2026-02-17T11:34:00",
     author: "رائد الزهراني",
     category: "مدخل"
+},
+	{
+    id: 17,
+    title: "🤍 تهنئة مدخل بعيـد الفطر المبارك!",
+    content: `
+        <p style="direction: rtl;">
+نهنئكم بحلول عيد الفطر المبارك 
+نسأل الله أن يتقبل منا ومنكم صالح الاعمال
+ينعاد علينا وعليكم بكل خير وصحة.
+        </p>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <p><strong>الصورة مو واضحة ؟</strong></p>
+            <a href="https://t.me/newsjuc/1267"
+               target="_blank"
+               style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
+               text-decoration:none;border-radius:15px;font-weight:bold;">
+               تهنئة عيد الفطر 📱
+            </a>
+        </div>
+    `,
+    image: "https://i.postimg.cc/bvfvp3fh/2151.webp",
+    date: "2026-03-20T06:34:00",
+    author: "رائد الزهراني",
+    category: "مدخل"
+},
+	{
+    id: 18,
+    title: "📄 جداول الاختبارات النصفية ",
+    content: `
+        <p style="direction: rtl;">
+		تعلن كلية الجبيل الصناعية عن اعتماد ونشر جداول الاختبارات النصفية (Midterm Exams) للفصل الدراسي الحالي لجميع التخصصات والمستويات، والمرفقة أدناه بكافة تفاصيلها. ويُهاب بجميع الطلاب الاطلاع على المواعيد المحددة لكل مقرر دراسي بدقة، والبدء في الاستعداد الأكاديمي المبكر لضمان تحقيق أفضل النتائج، مع التأكيد على ضرورة الالتزام بالضوابط والأنظمة المتبعة خلال فترة الاختبارات.
+        </p>
+		<p style="direction: rtl;">
+كما نود التنويه بأن الجدول العام المرفق يوضح مواعيد الاختبارات فقط، بينما سيتم تحديد مقارّ الاختبارات (القاعات واللجان) لكل طالب بشكل مستقل عبر "جدول الاختبارات الشخصي". وسيكون هذا الجدول متاحاً قريباً لجميع الطلبة والطالبات من خلال نظام "أيدوقيت" (Edugate) عبر أيقونة "التقارير"، لذا يتوجب على الجميع المتابعة المستمرة للنظام لطباعة الجدول الشخصي فور صدوره والتقيد بالأماكن المخصصة لكل مادة.
+        </p>
+
+		<p style="direction: rtl;">
+تبدأ الاختبارات النصفية مباشـرة بعد نهاية اجازة العيد الحالية , مع تمنياتي بالتوفيق للجميع 🫡
+		</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <p><strong>للاطلاع على الجدول المعتمد ( الكلية - طلاب )</strong></p>
+            <a href="https://t.me/newsjuc/1268"
+               target="_blank"
+               style="display:inline-block;background:#0052cc;color:#fff;padding:12px 25px;
+               text-decoration:none;border-radius:15px;font-weight:bold;">
+               جدول الاختبارات النصفية 📄
+            </a>
+        </div>
+    `,
+    image: "https://i.postimg.cc/SQYCS1wX/image.png",
+    date: "2026-03-20T12:44:00",
+    author: "رائد الزهراني",
+    category: "كلية الجبيل الصناعية"
 }
 ];
 
