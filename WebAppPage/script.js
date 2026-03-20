@@ -309,10 +309,10 @@ function updateLogo(theme) {
     if (appLogo) {
         if (theme === 'dark') {
             // هنا حط اسم ملف شعار الدارك
-            appLogo.src = 'logo-dark.png'; 
+            appLogo.src = 'logo-dark.webp'; 
         } else {
             // هنا حط اسم ملف الشعار الأصلي
-            appLogo.src = 'logo.png'; 
+            appLogo.src = 'logo.webp'; 
         }
     }
 }
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         } catch (error) {
             console.error("فشل جلب أخبار الواجهة:", error);
-            homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">تعذر تحميل الأخبار، تحقق من الاتصال.</p>';
+            homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">لازم تشيك على صفحة اخبار الاندية اول</p>';
         }
     }
 });
