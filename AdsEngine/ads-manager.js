@@ -11,12 +11,12 @@
 
         // --- أحداث ---
         { id: 201, type: "event_feed", client: " مساحة اعلانية ", image: "https://i.postimg.cc/ZqBxTmfY/original-events.png", link: "../WebAppPage/index.html", active: false },
-        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/h409ZP5N/ADS-aʿlanat-alahdath-mʿaydt-2.png", link: "../WebAppPage/library.html", active: true },
-        { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/KjhgqCPF/Eidfiter-aʿlanat-alahdath-mʿaydt-2.png", link: "../WebAppPage/library.html", active: false },
+        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/h409ZP5N/ADS-aʿlanat-alahdath-mʿaydt-2.png", link: "../WebAppPage/library.html", active: false },
+        { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/xdfbKRd3/1212-aʿlanat-alahdath-mʿaydt-2.png", link: "../WebAppPage/Pages/center.html", active: true },
 
         // --- مكتبة ---
-        { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/wMYsfnXx/Eidfiter-albar-mʿaydt.png", link: "../WebAppPage/Tools.html", active: false },
-        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/9FFy6H3C/ADS-albar-mʿaydt.png", link: "#", active: true }
+        { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/yN1SFPNL/1212-albar-mʿaydt.png", link: "../WebAppPage/Pages/center.html", active: true },
+        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/8CprhHCt/1212-albar-mʿaydt-copy.png", link: "#", active: true }
     ];
 
     window.AdsManager = {
