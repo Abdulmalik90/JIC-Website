@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "نادي ادارة الاعمال": { id: "BUS", color: "#9110b9" },
         "المجلس الطلابي": { id: "JIC", color: "#105fb9" },
         "نادي الاستدامة": { id: "Sustain", color: "#10b981" },
+        "نادي The Bridge": { id: "Bridge", color: "#1059b9" },
         // تقدر تضيف أندية ثانية هنا مستقبلاً
     };
 
