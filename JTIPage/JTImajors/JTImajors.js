@@ -286,7 +286,7 @@ const industrialOp = new Majors("Process Operation Skills", "مهارات تشغ
             ["Applied Physics", 2, 1, 3, []],
             ["Industrial Safety", 2, 1, 3, []],
             ["Industrial Processes", 2, 1, 3 ,[]],
-            ["English Communication", 3, 3, 0, []],
+            ["English Communication", 2, 3, 0, []],
             ["Islamic Culture", 2, 2, 0, []]
         ]
     },
@@ -299,7 +299,7 @@ const industrialOp = new Majors("Process Operation Skills", "مهارات تشغ
             ["Process Diagrams", 2, 1, 3, []],
             ["Process Troubleshooting", 2, 1, 3, []],
             ["Process Quality Control", 2, 1, 3, []],
-            ["Technical Report Writing", 3, 3, 0, []],
+            ["Technical Report Writing", 2, 3, 0, []],
             ["Physical Education", 1, 0, 2, []]
         ]
     },
