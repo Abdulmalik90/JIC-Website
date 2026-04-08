@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. حط رابط الـ Web App اللي نسخته من قوقل هنا:
-    const API_URL = "https://script.google.com/macros/s/AKfycbx5PNPGJNX9-3_lrPA36IuyY7c9Q952Pm3zaUu2Rd2BGixjB_mMZDBd1cy96UqN08xy/exec"; 
+    const API_URL = "https://script.google.com/macros/s/AKfycbxHHBPR8REbUz_IctezSmrSGjEAmteOLG6dV8_2UVNUbqOI1318R8uZFAFdtASYNGq_/exec"; 
 
     // 2. قاموس الأندية (عشان نتعرف على النادي ونعطيه أيقونة ولون تلقائي)
     const clubsDictionary = {
