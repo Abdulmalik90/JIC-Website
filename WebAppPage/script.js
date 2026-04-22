@@ -348,7 +348,7 @@ if (toggleSwitch) {
 
 document.addEventListener("DOMContentLoaded", () => {
     // نحدد اسم مفتاح الجلسة (عشان المتصفح يتذكر)
-    const POPUP_KEY = 'portal_popup_v1';
+    const POPUP_KEY = 'portal_popup_v5';
     
     // إذا ما قد شافه في هذي الجلسة
     if (!localStorage.getItem(POPUP_KEY)) {
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function closePopup() {
     const popup = document.getElementById('custom-popup1');
-    const POPUP_KEY = 'portal_popup_v1';
+    const POPUP_KEY = 'portal_popup_v5';
     
     // إخفاء النافذة
     popup.classList.remove('active');
