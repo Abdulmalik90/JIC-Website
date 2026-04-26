@@ -5,18 +5,18 @@
 (function() {
     const ADS_DB = [
         // --- أخبار ---
-        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/yxTLnC1P/alaʿlanat-aʿlanat-alakhbar.png", link: "../WebAppPage/Tools.html", active: true },
-        { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/RhTgGxSG/alaʿlanat-aʿlanat-alakhbar-copy.png", link: "../WebAppPage/news.html", active: true },
+        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/Z55hjBws/alaʿlanat-aʿlanat-alakhbar-1-copy-3.webp", link: "../WebAppPage/Tools.html", active: true },
+        { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/YCCw8GdP/alaʿlanat-aʿlanat-alakhbar-1-copy-2.webp", link: "../WebAppPage/news.html", active: true },
         { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
 
         // --- أحداث ---
         { id: 201, type: "event_feed", client: " مساحة اعلانية ", image: "https://i.postimg.cc/ZqBxTmfY/original-events.png", link: "../WebAppPage/index.html", active: false },
-        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/h409ZP5N/ADS-aʿlanat-alahdath-mʿaydt-2.png", link: "../WebAppPage/library.html", active: false },
+        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/httqMz2m/alaʿlanat-aʿlanat-alahdath-mʿaydt-2-copy.webp", link: "../WebAppPage/library.html", active: true },
         { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/gJqkcwRg/1212-aʿlanat-alahdath-mʿaydt-2.webp", link: "../WebAppPage/Pages/center.html", active: true },
 
         // --- مكتبة ---
         { id: 301, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/76MYPC79/1212-albar-mʿaydt.webp", link: "../WebAppPage/Pages/center.html", active: true },
-        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/85BPkFWw/1212-albar-mʿaydt-copy.webp", link: "#", active: true }
+        { id: 302, type: "library_banner", client: "مساحة اعلانية", image: "https://i.postimg.cc/nhhtTj3K/alaʿlanat-albar-mʿaydt-copy-3.webp", link: "#", active: true }
     ];
 
     window.AdsManager = {
