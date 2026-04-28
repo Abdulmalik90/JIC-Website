@@ -16,9 +16,9 @@ const notifHTML = `
                     <i class="fi fi-rr-rocket"></i>
                 </div>
                 <div class="notif-content">
-                    <h4>إطلاق تحديث جديد لتطبيق مدخل!</h4>
-                    <p>استكشف صفحة " الواجهة " الجديدة ومحتوياتها المميزة </p>
-                    <span class="notif-time">اللحين</span>
+                    <h4>استبيان تطويري لتطبيق مدخل!</h4>
+                    <p>مشاركتك واقتراحاتك تهمنا كطلاب عشان نقدر نطور التطبيق </p>
+                    <span class="notif-time">طازه</span>
                 </div>
                 <div class="item-unread-dot"></div>
             </div>
@@ -28,9 +28,9 @@ const notifHTML = `
                     <i class="fi fi-rr-calendar"></i>
                 </div>
                 <div class="notif-content">
-                    <h4>اخبار الاندية الطلابية وصلت !</h4>
+                    <h4>شيك اخبار الاندية أول بأول !</h4>
                     <p>تعاون جديد يجمع مابين مبادرة مدخل و الاندية الطلابية لعرض اخبار الاندية بمكان واحد !</p>
-                    <span class="notif-time">اللحين</span>
+                    <span class="notif-time">قبل فترة</span>
                 </div>
                 <div class="item-unread-dot"></div>
             </div>
