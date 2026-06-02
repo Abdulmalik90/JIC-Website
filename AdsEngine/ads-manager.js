@@ -5,13 +5,13 @@
 (function() {
     const ADS_DB = [
         // --- أخبار ---
-        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/Z55hjBws/alaʿlanat-aʿlanat-alakhbar-1-copy-3.webp", link: "../WebAppPage/Tools.html", active: true },
+        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/Z55hjBws/alaʿlanat-aʿlanat-alakhbar-1-copy-3.webp", link: "../WebAppPage/Tools.html", active: false },
         { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/YCCw8GdP/alaʿlanat-aʿlanat-alakhbar-1-copy-2.webp", link: "../WebAppPage/news.html", active: true },
         { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
 
         // --- أحداث ---
         { id: 201, type: "event_feed", client: " مساحة اعلانية ", image: "https://i.postimg.cc/ZqBxTmfY/original-events.png", link: "../WebAppPage/index.html", active: false },
-        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/httqMz2m/alaʿlanat-aʿlanat-alahdath-mʿaydt-2-copy.webp", link: "../WebAppPage/library.html", active: true },
+        { id: 202, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/httqMz2m/alaʿlanat-aʿlanat-alahdath-mʿaydt-2-copy.webp", link: "../WebAppPage/library.html", active: false },
         { id: 203, type: "event_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/gJqkcwRg/1212-aʿlanat-alahdath-mʿaydt-2.webp", link: "../WebAppPage/Pages/center.html", active: true },
 
         // --- مكتبة ---
