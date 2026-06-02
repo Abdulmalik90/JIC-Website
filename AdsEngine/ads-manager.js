@@ -5,8 +5,8 @@
 (function() {
     const ADS_DB = [
         // --- أخبار ---
-        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/Z55hjBws/alaʿlanat-aʿlanat-alakhbar-1-copy-3.webp", link: "../WebAppPage/Tools.html", active: false },
-        { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/YCCw8GdP/alaʿlanat-aʿlanat-alakhbar-1-copy-2.webp", link: "../WebAppPage/news.html", active: true },
+        { id: 101, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/Z55hjBws/alaʿlanat-aʿlanat-alakhbar-1-copy-3.webp", link: "../WebAppPage/Tools.html", active: true },
+        { id: 102, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/YCCw8GdP/alaʿlanat-aʿlanat-alakhbar-1-copy-2.webp", link: "../WebAppPage/news.html", active: false },
         { id: 103, type: "news_feed", client: "مساحة اعلانية", image: "https://i.postimg.cc/TPzq1ssZ/original-news.png", link: "../WebAppPage/index.html", active: false },
 
         // --- أحداث ---
