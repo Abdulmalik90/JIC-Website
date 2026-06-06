@@ -1,547 +1,689 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>404 - الصفحة غير موجودة | مدخل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — الصفحة غير موجودة | مَدخل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* ── VARIABLES ─────────────────────────────────────── */
     :root {
-      --primary: #3b82f6; /* أزرق مضيء للدارك مود */
-      --primary-dark: #1748a3; /* لون الهوية */
-      --bg-dark: #0f172a; /* كحلي غامق جداً */
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --glass: rgba(30, 41, 59, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.1);
+      --bg:          #0b0d11;
+      --surface:     #12151c;
+      --surface-2:   #181c26;
+      --border:      rgba(255,255,255,0.07);
+      --accent:      #2267e8;
+      --accent-dim:  rgba(34, 120, 232, 0.12);
+      --accent-glow: rgba(34, 103, 232, 0.35);
+      --text:        #e8eaf0;
+      --muted:       #7a8099;
+      --faint:       #424866;
+      --grid-line:   rgba(255,255,255,0.025);
+      --shadow:      rgba(0,0,0,0.45);
+      --header-bg:   rgba(11,13,17,0.88);
+      --nav-hover:   rgba(255,255,255,0.06);
+      --mob-hover:   rgba(255,255,255,0.04);
+
+      --font-h: 'Cairo',   sans-serif;
+      --font-b: 'Tajawal', sans-serif;
+      --r-md:   14px;
+      --r-lg:   22px;
+      --r-xl:   32px;
+      --r-full: 999px;
+      --ease:        cubic-bezier(0.4,0,0.2,1);
+      --spring:      cubic-bezier(0.34,1.56,0.64,1);
+      --dur:         0.28s;
+      --theme-dur:   0.4s;
     }
 
-    * { box-sizing: border-box; }
+    [data-theme="light"] {
+      --bg:          #f4f6fb;
+      --surface:     #ffffff;
+      --surface-2:   #eef0f7;
+      --border:      rgba(0,0,0,0.08);
+      --accent:      #0a54c4;
+      --accent-dim:  rgba(10, 60, 196, 0.1);
+      --accent-glow: rgba(10, 53, 196, 0.28);
+      --text:        #0f1117;
+      --muted:       #4a5068;
+      --faint:       #9aa0bc;
+      --grid-line:   rgba(0,0,0,0.04);
+      --shadow:      rgba(0,0,0,0.10);
+      --header-bg:   rgba(244,246,251,0.92);
+      --nav-hover:   rgba(0,0,0,0.05);
+      --mob-hover:   rgba(0,0,0,0.03);
+    }
 
+    /* ── THEME TRANSITIONS ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body, .header, .card, .pill, .mobile-nav, .theme-toggle {
+      transition:
+        background var(--theme-dur) var(--ease),
+        border-color var(--theme-dur) var(--ease),
+        color var(--theme-dur) var(--ease);
+    }
+
+    /* ── BASE ──────────────────────────────────────────── */
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      margin: 0;
-      height: 100vh;
-      font-family: "Tajawal", "Segoe UI", sans-serif;
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100svh;
+      overflow-x: hidden;
+      direction: rtl;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      overflow: hidden;
-      /* خلفية شبكية أنيقة */
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      touch-action: none;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── HEADER ────────────────────────────────────────── */
+    .header {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition:
+        background var(--theme-dur) var(--ease),
+        border-color var(--dur) var(--ease),
+        backdrop-filter var(--dur) var(--ease);
+    }
+    .header.is-scrolled {
+      background: var(--header-bg);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+    .header__inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 clamp(1rem,4vw,2rem);
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+    }
+    /* ضبط مقاس الشعار */
+.header__logo img {
+  height: 45px; 
+  width: auto;
+}
+
+/* الوضع الفاتح (الافتراضي): إخفاء شعار الدارك وإظهار شعار اللايت */
+.logo-dark {
+  display: none;
+}
+.logo-light {
+  display: block;
+}
+
+/* الوضع الليلي: إخفاء شعار اللايت وإظهار شعار الدارك */
+/* ضفت لك أشهر الكلاسات اللي تستخدمها سكربتات التبديل عشان يضبط معك مباشرة */
+body.dark .logo-light,
+body.dark-mode .logo-light,
+[data-theme="dark"] .logo-light {
+  display: none !important;
+}
+
+body.dark .logo-dark,
+body.dark-mode .logo-dark,
+[data-theme="dark"] .logo-dark {
+  display: block !important;
+}
+
+    .header__nav { display: flex; align-items: center; gap: .25rem; }
+    .nav-link {
+      padding: .42rem .85rem; border-radius: var(--r-full);
+      font-family: var(--font-h); font-size: .88rem; font-weight: 500;
+      color: var(--muted); background: none; border: none; cursor: pointer;
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .nav-link:hover { color: var(--text); background: var(--nav-hover); }
+    .nav-cta {
+      padding: .42rem 1.1rem;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(34, 97, 232, 0.3); border-radius: var(--r-full);
+      font-family: var(--font-h); font-size: .88rem; font-weight: 600;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .nav-cta:hover { background: var(--accent); color: #fff; box-shadow: 0 4px 18px var(--accent-glow); }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; margin-right: .2rem;
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+                  transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease);
+    }
+    .theme-toggle:hover { transform: scale(1.1) rotate(15deg); border-color: var(--accent); box-shadow: 0 0 14px var(--accent-glow); }
+    .theme-toggle__icon { display: block; line-height: 1; transition: transform .4s var(--spring), opacity .3s var(--ease); }
+
+    /* Burger */
+    .header__burger {
+      display: none; flex-direction: column; gap: 5px;
+      width: 32px; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .header__burger span {
+      display: block; height: 2px; background: var(--text); border-radius: 2px;
+      transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease), background var(--theme-dur) var(--ease);
+    }
+    .header__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .header__burger.is-open span:nth-child(2) { opacity: 0; }
+    .header__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none; flex-direction: column;
+      background: var(--surface); border-top: 1px solid var(--border);
+      overflow: hidden; max-height: 0; transition: max-height .4s var(--ease);
+    }
+    .mobile-nav.is-open { max-height: 320px; }
+    .mobile-nav__link {
+      display: block; padding: .85rem 1.5rem;
+      font-family: var(--font-h); font-size: .95rem; font-weight: 500;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .mobile-nav__link:hover { color: var(--text); background: var(--mob-hover); }
+    .mobile-nav__cta { color: var(--accent); font-weight: 700; }
+    .mobile-nav__theme {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .85rem 1.5rem; font-family: var(--font-h); font-size: .9rem;
+      color: var(--muted); cursor: pointer; background: none; border: none;
+      width: 100%; text-align: right;
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .mobile-nav__theme:hover { color: var(--accent); background: var(--mob-hover); }
+
+    /* ── MAIN 404 AREA ─────────────────────────────────── */
+    main {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: calc(68px + 3rem) clamp(1rem,4vw,2rem) 4rem;
+      position: relative; overflow: hidden; text-align: center;
     }
 
-    /* تأثير إضاءة خلفية */
-    body::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: -1;
+    /* Background decorations */
+    .bg { position: absolute; inset: 0; pointer-events: none; }
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(90px);
+    }
+    .blob--1 {
+      width: 500px; height: 500px; top: -120px; right: -80px;
+      background: radial-gradient(circle, rgba(34, 97, 232, 0.13) 0%, transparent 70%);
+    }
+    .blob--2 {
+      width: 380px; height: 380px; bottom: -80px; left: -60px;
+      background: radial-gradient(circle, rgba(90,110,210,.10) 0%, transparent 70%);
+    }
+    [data-theme="light"] .blob--1 { background: radial-gradient(circle, rgba(10, 60, 196, 0.11) 0%, transparent 70%); }
+    [data-theme="light"] .blob--2 { background: radial-gradient(circle, rgba(70,90,200,.07) 0%, transparent 70%); }
+    .grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 100%);
     }
 
-    /* === المحتوى الرئيسي === */
-    .main-content {
-      transition: all 0.5s ease;
-      padding: 20px;
-      z-index: 10;
+    /* ── 404 CONTENT ───────────────────────────────────── */
+    .content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      max-width: 680px; width: 100%;
     }
 
-    h1 {
-      font-size: 10rem;
-      margin: 0;
-      font-weight: 800;
+    /* Glitchy big number */
+    .error-num {
+      font-family: var(--font-h);
+      font-size: clamp(7rem, 22vw, 14rem);
+      font-weight: 900;
       line-height: 1;
-      background: linear-gradient(135deg, #fff 20%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-      letter-spacing: -5px;
-    }
-
-    .subtitle {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      color: var(--text-main);
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-
-    /* === الأزرار === */
-    .actions {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-family: "Tajawal";
-      font-weight: bold;
-      border: 1px solid transparent;
+      color: var(--accent);
+      text-shadow: 0 0 80px var(--accent-glow);
+      letter-spacing: -.04em;
       position: relative;
+      user-select: none;
+      animation: glitch-idle 6s ease-in-out infinite;
+    }
+    .error-num::before,
+    .error-num::after {
+      content: attr(data-text);
+      position: absolute; top: 0; right: 0; left: 0;
       overflow: hidden;
+      font-family: inherit; font-size: inherit; font-weight: inherit;
+      line-height: inherit; letter-spacing: inherit;
+    }
+    .error-num::before {
+      color: #60a5fa;
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      animation: glitch-top 4s steps(1) infinite;
+      opacity: .7;
+    }
+    .error-num::after {
+      color: #f87171;
+      clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+      animation: glitch-bot 4s steps(1) infinite .5s;
+      opacity: .6;
+    }
+    @keyframes glitch-idle {
+      0%,94%,100% { transform: translate(0); }
+      95%          { transform: translate(-2px, 1px); }
+      97%          { transform: translate(2px, -1px); }
+    }
+    @keyframes glitch-top {
+      0%,89%,100% { transform: translate(0); opacity: 0; }
+      90%          { transform: translate(-4px, 0); opacity: .7; }
+      92%          { transform: translate(4px, 0); opacity: .7; }
+      94%          { transform: translate(0); opacity: 0; }
+    }
+    @keyframes glitch-bot {
+      0%,89%,100% { transform: translate(0); opacity: 0; }
+      90%          { transform: translate(4px, 0); opacity: .6; }
+      92%          { transform: translate(-4px, 0); opacity: .6; }
+      94%          { transform: translate(0); opacity: 0; }
     }
 
-    /* زر العودة (Primary) */
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    /* Orbit ring around number */
+    .orbit-wrap {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: .5rem;
     }
-    .btn-primary:hover {
-      background: #2563eb;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-    }
-
-    /* زر اللعبة (Glass Style) */
-    .btn-game {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-game:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-    }
-    .btn-game::before {
-      content: '👾';
-      margin-left: 8px;
-    }
-
-    /* === واجهة اللعبة (Overlay) === */
-    #game-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(15px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* رأس اللعبة */
-    .game-header {
-      display: flex;
-      justify-content: space-between;
-      width: 360px;
-      max-width: 90%;
-      margin-bottom: 15px;
-      align-items: center;
-      color: var(--text-main);
-      font-size: 1rem;
-    }
-
-    .stat-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      gap: 10px;
-    }
-    .stat-box b { color: var(--primary); }
-
-    .close-game {
-      background: rgba(255,255,255,0.1);
-      border: none;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .close-game:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
-
-    /* الكانفس */
-    canvas {
-      background: #f1f5f9; /* فاتح عشان التباين مع الشعار */
-      border-radius: 16px;
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
-      border: 4px solid #1e293b;
-      image-rendering: pixelated;
-    }
-
-    /* أزرار التحكم بالموبايل */
-    .mobile-controls {
-      display: none;
-      gap: 20px;
-      margin-top: 25px;
-      width: 360px;
-      max-width: 90%;
-      direction: ltr;
-    }
-
-    .control-btn {
-      flex: 1;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: 0.1s;
-    }
-    .control-btn:active { background: var(--primary); transform: scale(0.95); }
-
-    /* === شاشة الخسارة (Modal) === */
-    #gameOverModal {
-      display: none;
+    .orbit {
       position: absolute;
-      top: 50%; left: 50%;
+      width: clamp(200px, 42vw, 380px);
+      height: clamp(200px, 42vw, 380px);
+      border-radius: 50%;
+      border: 1px dashed rgba(34, 103, 232, 0.2);
+      animation: orbit-spin 20s linear infinite;
+    }
+    .orbit--2 {
+      width: clamp(240px, 50vw, 440px);
+      height: clamp(240px, 50vw, 440px);
+      border-color: rgba(100,140,240,.12);
+      animation-duration: 32s;
+      animation-direction: reverse;
+    }
+    .orbit__dot {
+      position: absolute; top: 0; left: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
       transform: translate(-50%, -50%);
-      background: #1e293b;
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      width: 320px;
-      max-width: 90%;
-      border: 1px solid rgba(255,255,255,0.1);
-      z-index: 200;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .orbit--2 .orbit__dot { background: #60a5fa; box-shadow: 0 0 10px rgba(96,165,250,.5); }
+    @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* Badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .35rem .95rem;
+      background: var(--accent-dim); border: 1px solid rgba(34, 54, 232, 0.25);
+      border-radius: var(--r-full); font-family: var(--font-h); font-size: .78rem; font-weight: 600; color: var(--accent);
+      animation: fade-in .6s var(--ease) .2s both;
+    }
+    .badge__dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+      50%      { box-shadow: 0 0 0 6px transparent; }
     }
 
-    #gameOverModal h2 { color: #f87171; margin: 0 0 10px 0; font-size: 2rem; }
-    #gameOverModal .final-score { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 10px; }
-    #gameOverModal .high-score-alert { 
-      color: #fbbf24; font-weight: bold; margin-bottom: 25px; 
-      padding: 5px 10px; background: rgba(251, 191, 36, 0.1); 
-      border-radius: 8px; display: inline-block;
+    /* Headings */
+    .title {
+      font-family: var(--font-h); font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 800; color: var(--text); line-height: 1.2;
+      animation: fade-up .7s var(--ease) .3s both;
     }
-    
-    .modal-btns { display: flex; flex-direction: column; gap: 12px; }
-    .modal-btns button { width: 100%; border:none; padding: 15px; border-radius: 12px; font-weight:bold; cursor: pointer; font-family:"Tajawal"; }
-    .btn-retry { background: var(--text-main); color: var(--bg-dark); }
-    .btn-home { background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.2) !important; }
-
-    /* تحسينات للجوال */
-    @media (max-width: 768px) {
-      h1 { font-size: 6rem; }
-      .subtitle { font-size: 1.5rem; }
-      .mobile-controls { display: flex; }
-      #gameOverModal { padding: 25px; }
+    .subtitle {
+      font-family: var(--font-h); font-size: clamp(.92rem, 2vw, 1.08rem);
+      font-weight: 500; color: var(--muted); line-height: 1.7; max-width: 500px;
+      animation: fade-up .7s var(--ease) .4s both;
     }
 
+    @keyframes fade-up  { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fade-in  { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Search bar */
+    .search-wrap {
+      display: flex; align-items: center; gap: .5rem;
+      width: 100%; max-width: 420px;
+      animation: fade-up .7s var(--ease) .5s both;
+    }
+    .search-input {
+      flex: 1; padding: .82rem 1.1rem;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r-full); font-family: var(--font-h); font-size: .92rem;
+      color: var(--text); outline: none; direction: rtl;
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+                  background var(--theme-dur) var(--ease), color var(--theme-dur) var(--ease);
+    }
+    .search-input::placeholder { color: var(--faint); }
+    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+    .search-btn {
+      padding: .82rem 1.4rem; background: var(--accent); color: #fff;
+      border: none; border-radius: var(--r-full);
+      font-family: var(--font-h); font-size: .9rem; font-weight: 700; cursor: pointer;
+      white-space: nowrap;
+      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease);
+    }
+    .search-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px var(--accent-glow); }
+
+    /* Action buttons */
+    .actions {
+      display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center;
+      animation: fade-up .7s var(--ease) .55s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .75rem 1.6rem; border-radius: var(--r-full);
+      font-family: var(--font-h); font-size: .92rem; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease),
+                  background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 28px var(--accent-glow); }
+    .btn--ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .btn__icon { font-size: 1rem; }
+
+    /* Quick links */
+    .quick-links {
+      display: flex; flex-direction: column; align-items: center; gap: .75rem;
+      width: 100%; animation: fade-up .7s var(--ease) .65s both;
+    }
+    .quick-links__label {
+      font-family: var(--font-h); font-size: .75rem; font-weight: 700;
+      color: var(--faint); text-transform: uppercase; letter-spacing: .1em;
+    }
+    .quick-links__row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+    .pill {
+      padding: .38rem .95rem; border-radius: var(--r-full);
+      background: var(--surface); border: 1px solid var(--border);
+      font-family: var(--font-h); font-size: .8rem; font-weight: 600; color: var(--muted);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+                  color var(--dur) var(--ease), transform var(--dur) var(--spring);
+    }
+    .pill:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* Countdown / fun fact strip */
+    .fun-strip {
+      width: 100%; max-width: 480px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 1rem 1.4rem; display: flex; align-items: center; gap: .85rem;
+      animation: fade-up .7s var(--ease) .7s both;
+      transition: background var(--theme-dur) var(--ease), border-color var(--theme-dur) var(--ease);
+    }
+    .fun-strip__icon { font-size: 1.6rem; flex-shrink: 0; }
+    .fun-strip__text { font-family: var(--font-h); font-size: .84rem; font-weight: 500; color: var(--muted); line-height: 1.5; }
+    .fun-strip__text strong { color: var(--accent); }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.4rem 0;
+      transition: background var(--theme-dur) var(--ease), border-color var(--theme-dur) var(--ease);
+    }
+    .footer__inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 clamp(1rem,4vw,2rem);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .75rem;
+    }
+    .footer__brand { display: flex; align-items: center; gap: .5rem; }
+    .footer__copy { font-size: .8rem; color: var(--faint); font-family: var(--font-h); transition: color var(--theme-dur) var(--ease); }
+    .footer__link {
+      font-family: var(--font-h); font-size: .8rem; color: var(--muted);
+      border-bottom: 1px solid var(--faint); padding-bottom: 1px;
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .footer__link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .header__nav { display: none; }
+      .header__burger { display: flex; }
+      .mobile-nav { display: flex; }
+      .actions { flex-direction: column; align-items: center; }
+      .footer__inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .search-wrap { flex-direction: column; }
+      .search-btn { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="main-content" id="mainContent">
-    <h1 style="margin-bottom: 20px;">404</h1>
-    <div class="subtitle">الظاهر الصفحة محذوفة او انتقلت لرابط ثاني !</div>
-    <p>تقدر ترجع للصفحة الرئيسية او تجرب لعبتنا المخفيه 🤭</p>
-    
-    <div class="actions">
-      <a href="https://juportal.online" class="btn btn-primary">العودة للرئيسية</a>
-      <button onclick="initGame()" class="btn btn-game">العب لعبة مدخل</button>
-    </div>
-  </div>
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+<!-- Logo -->
+<a href="https://juportal.online" class="header__logo" aria-label="مَدخل - الرئيسية">
+  <!-- شعار اللايت مود -->
+  <img src="logo.png" class="logo-light" alt="شعار مدخل">
+  
+  <!-- شعار الدارك مود -->
+  <img src="iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
+</a>
 
-  <div id="game-overlay">
-    <div class="game-header">
-      <div class="stat-box">
-          <span>🎯 <b id="scoreVal">0</b></span>
-          <span style="border-right:1px solid rgba(255,255,255,0.2); padding-right:10px"></span>
-          <span>⚡ <b id="levelVal">1</b></span>
-      </div>
-      <div class="stat-box" style="border-color: rgba(251, 191, 36, 0.3)">
-          <span>🏆 <b id="highScoreVal" style="color:#fbbf24">0</b></span>
-      </div>
-      <button onclick="quitGame()" class="close-game">✕</button>
-    </div>
-    
-    <canvas id="gameCanvas"></canvas>
-    
-    <div id="gameOverModal">
-      <h2 style="font-size: 20px;">👾افا الفيروس طرحك !</h2>
-      <p class="final-score">جمّعت <span id="finalScore" style="color:white; font-weight:bold">0</span> زائر</p>
-      <div class="high-score-alert" id="newRecordMsg" style="display:none">🎉 رقم قياسي جديد!</div>
-      
-      <div class="modal-btns">
-        <button onclick="restartGame()" class="btn-retry">🔄 حاول مرة ثانية</button>
-        <button onclick="window.location.href='https://juportal.online'" class="btn-home">🏠 العودة للمنصة</button>
-      </div>
+      <nav class="header__nav" aria-label="القائمة">
+        <a href="https://juportal.online" class="nav-link">الرئيسية</a>
+        <a href="https://juportal.online/gpaPage/gpa.html" class="nav-link">المعدل</a>
+        <a href="https://juportal.online/absCalcPage/abs.html" class="nav-link">الغيابات</a>
+        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="nav-link">المكتبة</a>
+        <a href="https://juportal.online" class="nav-cta">ارجع للرئيسية</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
+          <span class="theme-toggle__icon" id="themeIcon">☀️</span>
+        </button>
+      </nav>
+
+      <button class="header__burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <div class="mobile-controls">
-      <button class="control-btn" id="leftBtn">◀</button>
-      <button class="control-btn" id="rightBtn">▶</button>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="https://juportal.online" class="mobile-nav__link">🏠 الرئيسية</a>
+      <a href="https://juportal.online/gpaPage/gpa.html" class="mobile-nav__link">📊 حساب المعدل</a>
+      <a href="https://juportal.online/absCalcPage/abs.html" class="mobile-nav__link">📅 حساب الغيابات</a>
+      <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="mobile-nav__link">📋 المكتبة</a>
+      <a href="https://juportal.online" class="mobile-nav__link mobile-nav__cta">ارجع للرئيسية ←</a>
+      <button class="mobile-nav__theme" id="themeToggleMobile">
+        <span id="themeIconMobile">☀️</span>
+        <span id="themeLabel">التبديل للوضع النهاري</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- Background -->
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="grid-overlay"></div>
     </div>
-    <p style="font-size: 0.9rem; margin-top:20px; color:#64748b">سـاعد مدخل في تجميع الزوار والاخبار 👨🏻‍💻 وانتبه من الفيروسات ☠️</p>
-  </div>
+
+    <div class="content">
+
+      <!-- Orbit + glitch number -->
+      <div class="orbit-wrap" aria-hidden="true">
+        <div class="orbit"><div class="orbit__dot"></div></div>
+        <div class="orbit orbit--2"><div class="orbit__dot"></div></div>
+        <span class="error-num" data-text="404">404</span>
+      </div>
+
+      <!-- Badge -->
+      <div class="badge">
+        <span class="badge__dot"></span>
+        صفحة غير موجودة
+      </div>
+
+      <!-- Text -->
+      <h1 class="title">الظاهر انك ضيعت 😅</h1>
+      <p class="subtitle">
+        الصفحة اللي تبيها ما حصلناها — ممكن تكون الرابط غلط أو الصفحة انتقلت لمكان ثاني.
+        دور على اللي تبيه من هنا أو ارجع للرئيسية.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="actions">
+        <a href="https://juportal.online" class="btn btn--primary">
+          <span class="btn__icon">🏠</span> الصفحة الرئيسية
+        </a>
+        <a href="https://juportal.online/gpaPage/gpa.html" class="btn btn--ghost">
+          <span class="btn__icon">📊</span> تطبيق الويب
+        </a> 
+        <button class="btn btn--ghost" onclick="history.back()">
+          <span class="btn__icon">←</span> الصفحة السابقة
+        </button>
+      </div>
+
+      <!-- Quick links -->
+      <div class="quick-links">
+        <p class="quick-links__label">أو انتقل مباشرةً إلى</p>
+        <div class="quick-links__row">
+          <a href="https://juportal.online/academicRegulationsPage/regulations.html"  class="pill">📋 الموسوعة</a>
+          <a href="https://juportal.online/JICPage/jic.html"                          class="pill">🏛️ حساب الموزونة</a>
+          <a href="https://juportal.online/newsPage/news.html"                        class="pill">📰 الاخبار</a>
+          <a href="https://juportal.online/webMapPage/webMap.html"                    class="pill">🗺️ خريطة الموقع</a>
+        </div>
+      </div>
+
+      <!-- Fun strip -->
+      <div class="fun-strip" aria-live="polite">
+        <span class="fun-strip__icon" id="funIcon">💡</span>
+        <p class="fun-strip__text" id="funText">جاري التحميل...</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="logo-mark" aria-hidden="true">
+          <img src="logo.png" class="logo-light" alt="شعار مدخل" style="height:28px;width:auto;">
+          <img src="iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل" style="height:28px;width:auto;">
+        </div>
+      </div>
+      <p class="footer__copy">© 2026 مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
+      <a href="https://juportal.online" class="footer__link">juportal.online</a>
+    </div>
+  </footer>
 
   <script>
-    /* === إعدادات الكانفس === */
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-    const overlay = document.getElementById("game-overlay");
-    const mainContent = document.getElementById("mainContent");
-    const gameOverModal = document.getElementById("gameOverModal");
-    const newRecordMsg = document.getElementById("newRecordMsg");
-    
-    const scoreEl = document.getElementById("scoreVal");
-    const levelEl = document.getElementById("levelVal");
-    const highScoreEl = document.getElementById("highScoreVal");
-    const finalScoreEl = document.getElementById("finalScore");
+    /* ── THEME ─────────────────────────────────────────── */
+    const html          = document.documentElement;
+    const themeToggle   = document.getElementById('themeToggle');
+    const themeToggleMb = document.getElementById('themeToggleMobile');
+    const themeIcon     = document.getElementById('themeIcon');
+    const themeIconMb   = document.getElementById('themeIconMobile');
+    const themeLabel    = document.getElementById('themeLabel');
 
-    let highScore = localStorage.getItem('madkhal_highscore') || 0;
-    highScoreEl.innerText = highScore;
+    const ICONS  = { dark: '☀️', light: '🌙' };
+    const LABELS = { dark: 'التبديل للوضع النهاري', light: 'التبديل للوضع الليلي' };
 
-    const playerImg = new Image();
-    playerImg.src = '/favicon-96x96.png'; 
+    let currentTheme = localStorage.getItem('madkhal-theme') || 'dark';
+    applyTheme(currentTheme, false);
 
-    let width, height;
-    let gameLoop;
-    let isRunning = false;
-    let score = 0;
-    let level = 1;
-    let frame = 0;
-    
-    const goodItems = ['📰', '🤓', '👧🏻', '👩🏻', '👷🏻‍♂️', '🙍🏻‍♂️', '👩🏻‍💻'];
-    const badItems = ['👾', '☠️'];
+    function applyTheme(theme, animate = true) {
+      currentTheme = theme;
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('madkhal-theme', theme);
+      const icon = ICONS[theme], label = LABELS[theme];
 
-    let player = {
-      x: 0, y: 0, size: 50, speed: 8, dx: 0
-    };
-
-    let items = [];
-
-    /* === تهيئة اللعبة === */
-    function resizeCanvas() {
-        if (window.innerWidth < 450) {
-            width = window.innerWidth - 30;
-            height = window.innerHeight * 0.60; // ارتفاع مناسب للجوال
-        } else {
-            width = 380;
-            height = 550;
-        }
-        canvas.width = width;
-        canvas.height = height;
-        
-        player.y = height - player.size - 10;
-        if(player.x === 0 || player.x > width) player.x = width / 2 - player.size / 2;
-    }
-
-    function initGame() {
-        resizeCanvas();
-        mainContent.style.opacity = "0";
-        mainContent.style.transform = "scale(0.9)";
-        setTimeout(() => {
-            mainContent.style.display = "none";
-            overlay.style.display = "flex";
-            gameOverModal.style.display = "none";
-            resetState();
-            isRunning = true;
-            loop();
-        }, 300);
-    }
-
-    function quitGame() {
-        isRunning = false;
-        overlay.style.display = "none";
-        mainContent.style.display = "block";
-        setTimeout(() => {
-          mainContent.style.opacity = "1";
-          mainContent.style.transform = "scale(1)";
-        }, 50);
-    }
-
-    function restartGame() {
-        gameOverModal.style.display = "none";
-        resetState();
-        isRunning = true;
-        loop();
-    }
-
-    function resetState() {
-        score = 0;
-        level = 1;
-        scoreEl.innerText = 0;
-        levelEl.innerText = 1;
-        items = [];
-        player.x = width / 2 - player.size / 2;
-        frame = 0;
-        newRecordMsg.style.display = "none";
-    }
-
-    /* === منطق اللعب === */
-    function spawnItem() {
-        const isGood = Math.random() > 0.3; 
-        const emojiList = isGood ? goodItems : badItems;
-        const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
-        const size = 32;
-        const x = Math.random() * (width - size);
-        const baseSpeed = 3 + (level * 0.6); 
-        
-        items.push({
-            x: x, y: -40,
-            emoji: emoji,
-            type: isGood ? 'good' : 'bad',
-            speed: baseSpeed,
-            size: size
+      if (animate) {
+        [themeIcon, themeIconMb].forEach(el => {
+          el.style.transform = 'rotate(360deg) scale(0)';
+          el.style.opacity   = '0';
         });
+        setTimeout(() => {
+          [themeIcon, themeIconMb].forEach(el => {
+            el.textContent  = icon;
+            el.style.cssText = 'transform:rotate(0)scale(1);opacity:1;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s ease';
+          });
+        }, 200);
+      } else {
+        themeIcon.textContent   = icon;
+        themeIconMb.textContent = icon;
+      }
+      if (themeLabel) themeLabel.textContent = label;
     }
 
-    function update() {
-        if (rightPressed && player.x + player.size < width) player.x += player.speed;
-        if (leftPressed && player.x > 0) player.x -= player.speed;
+    const toggleTheme = () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    themeToggle?.addEventListener('click', toggleTheme);
+    themeToggleMb?.addEventListener('click', toggleTheme);
+    document.addEventListener('keydown', e => { if (e.shiftKey && e.key === 'D') toggleTheme(); });
 
-        let spawnRate = Math.max(20, 60 - (level * 3));
-        if (frame % spawnRate === 0) spawnItem();
+    /* ── HEADER SCROLL ─────────────────────────────────── */
+    const headerEl = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      headerEl?.classList.toggle('is-scrolled', window.scrollY > 20);
+    }, { passive: true });
 
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-            item.y += item.speed;
-
-            // كشف التصادم
-            if (
-                item.x < player.x + player.size &&
-                item.x + item.size > player.x &&
-                item.y < player.y + player.size &&
-                item.y + item.size > player.y
-            ) {
-                if (item.type === 'good') {
-                    score++;
-                    scoreEl.innerText = score;
-                    if (score > 0 && score % 50 === 0) {
-                        level++;
-                        levelEl.innerText = level;
-                    }
-                    items.splice(i, 1);
-                    i--;
-                    continue;
-                } else {
-                    gameOver();
-                    return;
-                }
-            }
-
-            if (item.y > height) {
-                items.splice(i, 1);
-                i--;
-            }
-        }
-        frame++;
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, width, height);
-
-        if (playerImg.complete && playerImg.naturalHeight !== 0) {
-            ctx.drawImage(playerImg, player.x, player.y, player.size, player.size);
-        } else {
-            ctx.fillStyle = "#1748a3";
-            ctx.fillRect(player.x, player.y, player.size, player.size);
-        }
-
-        ctx.font = "30px Arial";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "top";
-        
-        for (let item of items) {
-            ctx.fillText(item.emoji, item.x, item.y);
-        }
-    }
-
-    function loop() {
-        if (!isRunning) return;
-        update();
-        draw();
-        gameLoop = requestAnimationFrame(loop);
-    }
-
-    function gameOver() {
-        isRunning = false;
-        finalScoreEl.innerText = score;
-        
-        if (score > highScore) {
-            highScore = score;
-            localStorage.setItem('madkhal_highscore', highScore);
-            highScoreEl.innerText = highScore;
-            newRecordMsg.style.display = "inline-block";
-        } else {
-            newRecordMsg.style.display = "none";
-        }
-
-        gameOverModal.style.display = "block";
-    }
-
-    /* === التحكم === */
-    let leftPressed = false;
-    let rightPressed = false;
-
-    function handleInput(btn, dir) {
-        const start = (e) => { 
-            if(e.cancelable) e.preventDefault(); 
-            if(dir === 'l') leftPressed = true; else rightPressed = true; 
-        };
-        const end = (e) => { 
-            if(e.cancelable) e.preventDefault(); 
-            if(dir === 'l') leftPressed = false; else rightPressed = false; 
-        };
-
-        btn.addEventListener("touchstart", start, {passive: false});
-        btn.addEventListener("touchend", end);
-        btn.addEventListener("mousedown", start);
-        btn.addEventListener("mouseup", end);
-        btn.addEventListener("mouseleave", end);
-    }
-
-    const lBtn = document.getElementById("leftBtn");
-    const rBtn = document.getElementById("rightBtn");
-
-    handleInput(lBtn, 'l');
-    handleInput(rBtn, 'r');
-
-    document.addEventListener("keydown", (e) => {
-        if(e.key === "ArrowLeft") leftPressed = true;
-        if(e.key === "ArrowRight") rightPressed = true;
+    /* ── BURGER ────────────────────────────────────────── */
+    const burger    = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger?.addEventListener('click', () => {
+      const open = burger.classList.toggle('is-open');
+      mobileNav?.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    mobileNav?.querySelectorAll('.mobile-nav__link').forEach(l => {
+      l.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+      });
     });
 
-    document.addEventListener("keyup", (e) => {
-        if(e.key === "ArrowLeft") leftPressed = false;
-        if(e.key === "ArrowRight") rightPressed = false;
+    document.getElementById('searchBtn')?.addEventListener('click', doSearch);
+    document.getElementById('siteSearch')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
     });
 
-    window.addEventListener('resize', () => {
-        if(isRunning) resizeCanvas();
-    });
+    /* ── FUN TIPS ──────────────────────────────────────── */
+    const TIPS = [
+      { icon: '💡', text: 'وانت تحسب معدلك — ادخل <strong>صفحة حساب المعدل</strong> وحط درجاتك مباشرة!' },
+      { icon: '📅', text: 'تبي تعرف كم غياب باقيلك؟ جرّب <strong>أداة حساب الغيابات</strong> — بتحسبها لك ثانية.' },
+      { icon: '🔗', text: 'الرابط اللي تعطيه لزميلك لازم يبدأ بـ <strong>juportal.online</strong> عشان يوصل صح.' },
+      { icon: '🌙', text: 'تقدر تبدّل بين الوضع الليلي والنهاري من زر <strong>☀️</strong> في الشريط العلوي.' },
+      { icon: '🗺️', text: 'مو لاقي الصفحة اللي تبيها؟ جرّب <strong>خريطة الموقع</strong> — فيها كل شيء.' },
+      { icon: '✈️', text: 'انضم لـ <strong>قناة تليجرام مَدخل</strong> عشان ما تفوتك أي أخبار للكلية.' },
+      { icon: '⌨️', text: 'اضغط <strong>Shift + D</strong> للتبديل السريع بين المظهر الليلي والنهاري.' },
+      { icon: '📱', text: 'مَدخل موجود كـ <strong>تطبيق PWA</strong> — ثبّته من متصفحك وافتحه زي أي تطبيق.' },
+    ];
 
+    let tipIndex = Math.floor(Math.random() * TIPS.length);
+
+    function showTip(idx) {
+      const el   = document.getElementById('funText');
+      const icon = document.getElementById('funIcon');
+      const tip  = TIPS[idx % TIPS.length];
+      if (!el) return;
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(6px)';
+      setTimeout(() => {
+        icon.textContent = tip.icon;
+        el.innerHTML     = tip.text;
+        el.style.transition = 'opacity .4s ease, transform .4s ease';
+        el.style.opacity    = '1';
+        el.style.transform  = 'translateY(0)';
+      }, 300);
+    }
+
+    showTip(tipIndex);
+    // Cycle tips every 5s, also on click
+    setInterval(() => { tipIndex++; showTip(tipIndex); }, 5000);
+    document.querySelector('.fun-strip')?.addEventListener('click', () => { tipIndex++; showTip(tipIndex); });
   </script>
-</body>
 
+</body>
 </html>
