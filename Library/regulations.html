@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مكتبة الطالب — اللوائح والمستندات | مَدخل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="regulations.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="header__inner">
+<a href="../index.html" class="header__logo" aria-label="مَدخل - الرئيسية">
+  <!-- شعار اللايت مود -->
+  <img src="../Images/logo.png" class="logo-light" alt="شعار مدخل">
+  
+  <!-- شعار الدارك مود -->
+  <img src="../Images/iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
+</a>
+    <nav class="header__nav">
+      <a href="../index.html" class="nav-link">الرئيسية</a>
+      <a href="#doc-container"           class="nav-link">المستندات الرسمية</a>
+      <a href="#gen-doc-container"       class="nav-link">المستندات المفيدة</a>
+      <a href="#questions-general-container" class="nav-link">الأسئلة الشائعة</a>
+      <a href="../Tools/tools.html" class="nav-cta">الأدوات</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
+        <span class="theme-toggle__icon" id="themeIcon">☀️</span>
+      </button>
+    </nav>
+    <button class="header__burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="../index.html"                    class="mobile-nav__link">🏠 الرئيسية</a>
+    <a href="#doc-container"                              class="mobile-nav__link">📋 المستندات الرسمية</a>
+    <a href="#gen-doc-container"                          class="mobile-nav__link">📁 المستندات المفيدة</a>
+    <a href="#questions-general-container"                class="mobile-nav__link">❓ الأسئلة الشائعة</a>
+    <a href="../Tools/tools.html" class="mobile-nav__link mobile-nav__cta">📊 الأدوات ←</a>
+    <button class="mobile-nav__theme" id="themeToggleMobile">
+      <span id="themeIconMobile">☀️</span>
+      <span id="themeLabel">التبديل للوضع النهاري</span>
+    </button>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="grid-bg"></div>
+  </div>
+  <div class="page-hero__inner">
+    <div class="hero-badge"><span class="badge-dot"></span> مكتبة الطالب</div>
+    <h1 class="page-hero__title">مرجعك <span>الأكاديمي</span> الشامل</h1>
+    <p class="page-hero__sub">جميع اللوائح والمستندات الرسمية، والملفات المفيدة، وإجابات الأسئلة الشائعة — في مكان واحد.</p>
+
+    <!-- Quick nav pills -->
+    <div class="hero-pills">
+      <a href="#doc-container"               class="pill">📋 المستندات الرسمية</a>
+      <a href="#gen-doc-container"           class="pill">📁 المستندات المفيدة</a>
+      <a href="#questions-general-container" class="pill">❓ الأسئلة الشائعة</a>
+      <a href="../Documents/DistributionOfWeeks.pdf" class="pill" target="_blank" rel="noopener">📅 توزيع الأسابيع 2026</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFICIAL DOCUMENTS ===== -->
+<section class="lib-section" id="doc-container">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__eyebrow">المستندات الرسمية</p>
+      <h2 class="section-header__title">اللوائح والمستندات الرسمية 📃</h2>
+      <p class="section-header__sub">جميع اللوائح والمستندات الرسمية التي تحتاجها في مكان واحد</p>
+    </div>
+
+    <div class="docs-grid reveal" id="officialDocsGrid">
+      <!-- Populated by JS via regulations-data.js OR static below -->
+      <a href="https://drive.google.com/file/d/17vQcwLfJDwGHXLGs8s_2MGK3PVpCnFtf/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🛡️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">كتيب إجراءات الأمن والسلامة وتصاريح المركبات</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1gvpYdoW35CGwR1GsOSc_EmXTKwrHADeT/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📅</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">التقويم الأكاديمي</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1pSME9O_fXB4U7Xn4Dw-UFCraSkOmVkrK/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">👔</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">الزي الموحد لكليات ومعاهد الجبيل</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/17YY2TOWDoLeUDEeD01QUOcAZnhfkrFUw/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🎓</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">تخصصات كليات ومعاهد الجبيل</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1E5-JSJCJXxjmO1XpixxI_ArveNpCf9Xd/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🗺️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">خريطة الكلية</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1svSajGgQT938g0-ubXgaKzuUqFUyyVHW/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">💻</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">دليل استخدام الإيدوقيت</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1RtnUMI5MsdRIVwz2lEgaTow1gR-rbEGA/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📧</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">دليل استخدام الإيميل الجامعي</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/102U_rdbJCT_TE8pLcb0w6nF_7DHBCFZ4/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📖</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">دليل الطالب في كليات ومعاهد الهيئة الملكية 2025</h3>
+          <p class="doc-card__meta">PDF · رسمي · 2025</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1rum5cNP5VYTQNfVWld1kBONOeCa-jDpk/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🎟️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">دليل المستخدم في القبول الموحد</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/12hLeu0RHzdtbwvpPrXlwQF9ryqkhCABY/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📞</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">معلومات التواصل مع قسم القبول والتسجيل</h3>
+          <p class="doc-card__meta">PDF · رسمي</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GENERAL DOCUMENTS ===== -->
+<section class="lib-section lib-section--alt" id="gen-doc-container">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__eyebrow">المستندات المفيدة</p>
+      <h2 class="section-header__title">مستندات إرشادية مفيدة 📁</h2>
+      <p class="section-header__sub">مجموعة ملفات وإرشادات غير رسمية يعدّها ويجمعها فريق مَدخل لخدمة الطلاب</p>
+    </div>
+
+    <div class="docs-grid reveal">
+      <a href="https://drive.google.com/file/d/1dfhJJy-1FuUPvCvF0Kbb4AOflqvmDqlr/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📅</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">توزيع الأسابيع الدراسية 2026</h3>
+          <p class="doc-card__meta">PDF · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/147oMcXpNHmZdRbuZ_lQva1Yvc0Amjzhg/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🍽️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">أوقات عمل مطعم كلية الجبيل للطلاب</h3>
+          <p class="doc-card__meta">PDF · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1h9xJ8977GkbIkUmrWefp-SQbCK4wNFw_/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📚</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">كتب معهد اللغة للسنة التحضيرية الجديدة</h3>
+          <p class="doc-card__meta">PDF · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1m6e8jezKU80XO-Z6cUSrAhIxoo90Cv63/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📲</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">إضافة الأحداث الأكاديمية لتقويم جوالك</h3>
+          <p class="doc-card__meta">دليل · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/18KWiMyCuMmKN4io_XsAZWiEOMfMhohUP/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🍽️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">أوقات عمل مطعم معهد الجبيل التقني للطلاب</h3>
+          <p class="doc-card__meta">PDF · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1gwj1MZOMpmbQMQRxW00QQCYMhbfmMOLT/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🍽️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">أوقات عمل مطعم كلية الجبيل للطالبات</h3>
+          <p class="doc-card__meta">PDF · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/drive/folders/1JGi0CTXMHosp_qrkZo1t2aA70iRXvRAy?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🖼️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">شعارات الكلية والمعهد والهيئة الملكية</h3>
+          <p class="doc-card__meta">مجلد · شعارات رسمية</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1vsKgp5-AjNKtGt0YHQf5KN09Wozf23A-/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">🗓️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">طريقة قراءة الجدول الدراسي</h3>
+          <p class="doc-card__meta">دليل · مفيد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1njLHYO45CNlngx-AaCd_eDSxB0DI-SK1/view?usp=sharing" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📊</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">أقل نسب القبول لسنة 1446هـ</h3>
+          <p class="doc-card__meta">PDF · إحصاء</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1hO1zv3MLpfo0lZrcTYeowz179mlhs20p/view?usp=drive_link" class="doc-card" target="_blank" rel="noopener">
+        <div class="doc-card__icon">📊</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">أقل نسب القبول لسنة 1447هـ</h3>
+          <p class="doc-card__meta">PDF · إحصاء · جديد</p>
+        </div>
+        <span class="doc-card__dl">⬇</span>
+      </a>
+      <a href="https://t.me/newsjuc" class="doc-card doc-card--accent" target="_blank" rel="noopener">
+        <div class="doc-card__icon">✈️</div>
+        <div class="doc-card__body">
+          <h3 class="doc-card__title">قناة أخبار الكلية والمعهد بالتليجرام</h3>
+          <p class="doc-card__meta">انضم وابقَ على اطلاع</p>
+        </div>
+        <span class="doc-card__dl">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section" id="questions-general-container">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-header__eyebrow">الأسئلة الشائعة</p>
+      <h2 class="section-header__title">إجابات للأسئلة الأكثر تكراراً ⁉️</h2>
+      <p class="section-header__sub">اضغط على السؤال لقراءة الإجابة</p>
+    </div>
+
+    <!-- FAQ Search -->
+    <div class="faq-search-wrap reveal">
+      <span class="faq-search__icon">🔍</span>
+      <input type="search" id="faqSearch" class="faq-search__input"
+        placeholder="ابحث في الأسئلة…" autocomplete="off"/>
+    </div>
+
+    <div class="faq-list reveal" id="faqList">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كم نسبة الغياب التي تسبب الحرمان؟ (DN)</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          إذا وصل غيابك <strong>20%</strong> من ساعات المقرر يُرصد لك DN وتُحرم من دخول الاختبار النهائي. في حال الغياب بسبب أنشطة طلابية رسمية ومعك موافقة، يُسمح لك حتى <strong>30%</strong> إذا قُبِل عذرك.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أعتذر عن مقرر في السنة التحضيرية؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>لا</strong>، لا يُسمح بالاعتذار عن أي مقرر في السنة التحضيرية أو سنة المهارات الأساسية.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كم مرة أقدر أأجّل الدراسة؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>برنامج الدبلوم:</strong> مرة واحدة فقط.<br/>
+          <strong>برنامج البكالوريوس:</strong> مرتين.<br/>
+          لا يُسمح لطلاب السنة التحضيرية بالتأجيل في الفصل الأول.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كم الحد الأدنى والأعلى لتسجيل المواد كل فصل؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>الحد الأدنى:</strong> 12 ساعة.<br/>
+          <strong>الحد الأعلى:</strong> 21 ساعة.<br/>
+          إذا كنت تحت الإنذار الأكاديمي: من 9 إلى 12 ساعة فقط.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أعيد مقرر لتحسين معدلي؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          نعم، لكن <strong>مرة واحدة فقط</strong> للمقرر الذي أخذت فيه أقل من (C).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>إذا رسبت في مقرر 4 مرات وش يصير؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          يحق لك استبداله بـ <strong>مقرر حر بديل</strong> بشرط أن يكون بنفس عدد الساعات أو أكثر.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>ما هي تخصصات كليات ومعاهد الجبيل؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          التخصصات متاحة في الصفحات التالية:<br/>
+          <a href="../Majors/bMajors.html" class="faq-link" target="_blank">🎓 بكالوريوس JIC</a>
+          <a href="../Majors/depMajors.html" class="faq-link" target="_blank">📋 دبلوم JIC</a>
+          <a href="../Majors/JTImajors.html" class="faq-link" target="_blank">🔧 دبلوم JTI</a>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>ما شروط مرتبة الشرف عند التخرج؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>الشرف الأولى:</strong> معدل 3.75 فأعلى.<br/>
+          <strong>الشرف الثانية:</strong> من 3.50 إلى أقل من 3.75.<br/>
+          مطلوب أن تكون درست على الأقل <strong>60%</strong> من ساعاتك داخل الكلية وألا تكون راسبًا في أي مقرر.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كيف أحصل على اختبار بديل لو فاتني النهائي؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          قدّم عذرك خلال <strong>أسبوع</strong> من تاريخ الاختبار. إذا قُبِل، يُعطى لك اختبار بديل خلال الفصل التالي ويظهر لك تقدير <strong>IP</strong> (مستمر) لحين أداء الاختبار.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>هل السنة التحضيرية تدخل في المعدل أو المدة النظامية؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>لا</strong>، لا تُحسب ضمن المعدل التراكمي ولا ضمن المدة النظامية للبرنامج.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أتحوّل لتخصص ثانٍ في نفس الكلية؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          التحويل بين التخصصات ممكن لكنه يخضع <strong>لشروط مجلس القسم</strong> والمقاعد المتاحة.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>هل للطالب الزائر مكافأة؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>لا</strong>، الطالب الزائر لا تُصرف له مكافأة.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كم إجازة الوضع للطالبة وهل تُحسب من الغياب؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          للطالبة إجازة وضع مدتها <strong>15 يومًا</strong> ولا تُحسب من نسبة الغياب إطلاقًا.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أدخل الاختبار إذا جئت متأخرًا؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          لا يُسمح بالدخول بعد مرور <strong>نصف ساعة</strong> من بداية الاختبار، إلا بقرار من رئيس لجنة الاختبارات.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>رسوم نسيان مفتاح الغرفة أو بطاقة السكن؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          نسيان البطاقة بداخل الغرفة يكلف <strong>50 ريال</strong> بعد إنذارين، وفقدان بطاقة دخول الغرفة يكلف <strong>100 ريال</strong> مباشرة.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أحتاج إفادة تدريب تعاوني — من وين آخذها؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          من <strong>قسم العلاقات الصناعية وخدمة المجتمع</strong> بعد اعتماد الجهة التدريبية.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كيف أحسب معدلي التراكمي بنفسي؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          مجموع النقاط لكل المقررات ÷ مجموع الساعات = المعدل التراكمي.<br/>
+          <a href="../Tools/tools.html" class="faq-link">📊 جرّب حاسبة المعدل في مَدخل ←</a>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>لو فُصلت أكاديميًا، هل أقدر أرجع أكمل؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          تقدر تتقدم بطلب <strong>إعادة قيد</strong> إذا حققت شروط العودة بعد الفصل. راجع الصفحة 36 من دليل الطالب.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أسجل كطالب زائر في كلية ثانية؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          نعم، تقدّم طلب "طالب زائر" حسب شروط الجامعة التي ستزورها مع موافقة مسبقة من كليتك.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>ما شروط الاعتذار عن مادة بعلامة W؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          تقدر تحذف المادة بعلامة W قبل الاختبارات النهائية بأسبوعين، ولديك رصيد <strong>4 مقررات</strong> تحذفها طوال فترة دراستك.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>كم رسوم السكن الطلابي وهل تُرد عند الإلغاء؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>الفصل الرئيسي:</strong> 1000 ريال (مزدوجة) — 2000 ريال (مفردة).<br/>
+          <strong>الفصل الصيفي:</strong> 500 ريال (مزدوجة) — 1000 ريال (مفردة).<br/>
+          الانسحاب خلال الأسبوع الأول: يُردّ المبلغ مخصومًا منه <strong>10%</strong>. بعد الأسبوع الأول: <strong>لا يُردّ</strong>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>أقدر أعترض على درجتي في الاختبار النهائي؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          نعم، يحق لك الاعتراض. قدّم طلبك للقسم الأكاديمي خلال <strong>خمسة أيام عمل</strong> من تاريخ ظهور النتيجة.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>بخصوص التدريب التعاوني — هل الكلية توفر شركة؟</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          قسم العلاقات الصناعية يساعد حسب الإمكان، لكن هذا لا يعفيك من البحث بنفسك. الكلية تعطيك <strong>خطاب رسمي</strong> يساعدك في البحث.
+        </div>
+      </div>
+
+    </div><!-- /faq-list -->
+  </div>
+</section>
+
+<!-- ===== SURVEY BANNER ===== -->
+<div class="survey-wrap container">
+  <div class="survey-banner reveal">
+    <div>
+      <p class="survey-banner__title">📬 ساعدنا في تطوير مَدخل</p>
+      <p class="survey-banner__sub">مشاركتك في الاستبيان ما تاخذ أكثر من دقيقة!</p>
+    </div>
+    <a href="https://forms.office.com/r/CsBDhj3mQ9" class="btn-primary" target="_blank" rel="noopener">شارك في الاستبيان ←</a>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer__inner container">
+<div class="footer__brand">
+        <span class="logo-mark__text">مَدخل</span>
+      </div>
+      <p class="footer__copy">© 2026 مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
+    <a href="../index.html" class="footer__link">juportal.online</a>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
+
+<script src="regulations.js"></script>
+</body>
+</html>
