@@ -1,566 +1,351 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="منصة مدخل الطلابية — دليلك الشامل لكليات ومعاهد الهيئة الملكية بالجبيل" />
-  <title>منصة مَدخل | الرئيسية</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
-  <link rel="stylesheet" href="style.css" /> 
+    <link rel="stylesheet" href="./headerStyle.css?v=2.0">
+    <link rel="stylesheet" href="./responsiveHeaderCss.css?v=2.0">
+    <link rel="stylesheet" href="./mainStyle.css?v=2.0">
     
-  <meta name="google-site-verification" content="rywqqtc05o9Tz-IlLdMIwTBcyXxOCAfW0yN9UvgSBCI"/>
-  <meta name="msvalidate.01" content="AF34EB602F9C9CDE0C667BB3316E0C79" />
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Portal" />
+    <meta name="google-site-verification" content="rywqqtc05o9Tz-IlLdMIwTBcyXxOCAfW0yN9UvgSBCI"/>
+    <meta name="msvalidate.01" content="AF34EB602F9C9CDE0C667BB3316E0C79" />
+    <title>منصة مدخل | الرئيسية</title>
+    <meta name="description" content="منصة مدخل الالكترونية هي احدى مشاريع مبادرة مدخل الطلابية تحت اشراف طلابي بالكامل بهدف تسهيل وصول المعلومات والادوات المهمة لطلاب كليات ومعاهد الهيئة الملكية">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Portal" />
     
     
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="theme-color" content="#0050d5">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="theme-color" content="#0050d5">
 
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="./manifest.json">
+    
 </head>
 <body>
-
-  <!-- ===== COOKIE NOTICE ===== -->
-  <div class="cookie-notice" id="cookieNotice" aria-live="polite">
-    <p class="cookie-notice__text">
-      🤍 نورت منصة مَدخل — نحن <strong>مجموعة طلاب</strong> طورنا هذه المبادرة بشكل مستقل وليس لنا أي علاقة رسمية بالإدارة.
-      استخدامك يعني موافقتك على
-      <a href="https://drive.google.com/file/d/16Lm6bth7auNGN9dPaVBuo1SX1KzANbyz/view?usp=sharing" target="_blank" rel="noopener">سياسة الاستخدام</a>.
-    </p>
-    <button class="cookie-notice__btn" id="cookieAccept">موافقة ومتابعة</button>
-  </div>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-
-<!-- Logo -->
-<a href="https://juportal.online" class="header__logo" aria-label="مَدخل - الرئيسية">
-  <!-- شعار اللايت مود -->
-  <img src="./Images/logo.png" class="logo-light" alt="شعار مدخل">
-  
-  <!-- شعار الدارك مود -->
-  <img src="./Images/iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
-</a>
-
-      <!-- Desktop Nav -->
-      <nav class="header__nav" aria-label="القائمة الرئيسية">
-
-        <!-- Mega dropdown: الأدوات -->
-        <div class="nav-dropdown">
-          <button class="nav-link nav-link--dropdown" aria-haspopup="true" aria-expanded="false">
-            مكتبة الأدوات <span class="dropdown-arrow">▾</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="https://juportal.online/absCalcPage/abs.html" class="dropdown-item">
-              <span class="dropdown-item__icon">📅</span>
-              <span>
-                <strong>حساب الغيابات</strong>
-                <small>احسب رصيدك وحدودك</small>
-              </span>
-            </a>
-            <a href="https://juportal.online/gpaPage/gpa.html" class="dropdown-item">
-              <span class="dropdown-item__icon">📊</span>
-              <span>
-                <strong>حساب المعدل</strong>
-                <small>التراكمي والفصلي</small>
-              </span>
-            </a>
-            <a href="https://juportal.online/createSchedulePage/schedule.html" class="dropdown-item">
-              <span class="dropdown-item__icon">🗓️</span>
-              <span>
-                <strong>صمّم جدولك</strong>
-                <small>رتّب مواعيد فترات الدراسة</small>
-              </span>
-            </a>
-          </div>
+    <header>
+        <div id="logo-div">
+            <a href="./index.html" id="logo_image" alt="portal logo"></a>
+            
+        </div>
+        
+        <div id="header-pages">
+            <div class="dropdown-wrapper">
+                <p id="#pages-a">الصفحات <span class="material-symbols-outlined">arrow_drop_down</span></p>
+                <div class="dropdown_menu">
+                    <ul>
+                        <li>مكتبة الأدوات</li>
+                        <li><a href="./absCalcPage/abs.html">حساب الغيابات</a></li>
+                        <li><a href="./gpaPage/gpa.html">حساب المعدل</a></li>
+                        <li><a href="./createSchedulePage/schedule.html">صمـم جدولك</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>مكتبة الطالب</li>
+                        <li><a href="./academicRegulationsPage/regulations.html#">المستندات الرسمية</a></li>
+                        <li><a href="./academicRegulationsPage/regulations.html#">المستندات المفيدة</a></li>
+                        <li><a href="./academicRegulationsPage/regulations.html#">الأسئلة الشائعة</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li>قنوات الاخبار</li>
+                        <li><a href="https://t.me/newsjuc">اخبار الكلية والمعهد بالتليجرام</a></li>
+                        <li><a href="https://x.com/juportall">اخبار منصة مدخل بتويتر</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+            <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
         </div>
 
-        <!-- Mega dropdown: المكتبة -->
-        <div class="nav-dropdown">
-          <button class="nav-link nav-link--dropdown" aria-haspopup="true" aria-expanded="false">
-            مكتبة الطالب <span class="dropdown-arrow">▾</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="https://juportal.online/academicRegulationsPage/regulations.html#doc-container" class="dropdown-item">
-              <span class="dropdown-item__icon">📋</span>
-              <span>
-                <strong>المستندات الرسمية</strong>
-                <small>لوائح وأنظمة الهيئة الملكية</small>
-              </span>
-            </a>
-            <a href="https://juportal.online/academicRegulationsPage/regulations.html#gen-doc-container" class="dropdown-item">
-              <span class="dropdown-item__icon">📁</span>
-              <span>
-                <strong>المستندات المفيدة</strong>
-                <small>ملفات وشروحات طلابية</small>
-              </span>
-            </a>
-            <a href="https://juportal.online/academicRegulationsPage/regulations.html#questions-general-container" class="dropdown-item">
-              <span class="dropdown-item__icon">❓</span>
-              <span>
-                <strong>الأسئلة الشائعة</strong>
-                <small>إجابات على أكثر الأسئلة تكراراً</small>
-              </span>
-            </a>
-          </div>
+
+
+        <button style="margin-left: 30px;" id="menu-button"><span class="material-symbols-outlined">menu</span></button>
+        <div id="search-div">
+            
+            <button id="search-button"><span id="search-icon" class="material-symbols-outlined search-icon">search</span></button>
+            <div>
+                
+                <input type="search" name="" id="search-input" placeholder="ابحث في مدخل">
+                <div class="result-search-box">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <a href="https://juportal.online/newsPage/news.html" class="nav-link">مدونة الأخبار</a>
-        <a href="https://juportal.online/webMapPage/webMap.html" class="nav-link">خريطة الموقع</a>
+        <div id="dark-div">
+            <button  id="dark-button"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+        </div>
+    </header>
 
-        <!-- Theme + PWA -->
-        <a href="https://juportal.online/WebAppPage/index.html" class="nav-cta" target="_blank" rel="noopener">📱 تطبيق الجوال</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
-          <span class="theme-toggle__icon" id="themeIcon">☀️</span>
-        </button>
-      </nav>
+    <nav class="mobile-nav" id="mobileNav">
+        <div id="nav-header">
+            <button id="dark-button-menu"><span id="span-dark" class="material-symbols-outlined">dark_mode</span></button>
+            <button id="close-menu"><span class="material-symbols-outlined">close</span></button>
+        </div>
 
-      <button class="header__burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+        <div id="mobile-search">
+            <input type="search" placeholder="ابحث في مدخل" id="mobile-search-input">
+            <button id="mobile-search-button"><span class="material-symbols-outlined search-icon">search</span></button>
+            <div class="result-search-box" id="mobile-result-box">
+                <ul></ul>
+            </div>
+        </div>
+        <a href="./WebAppPage/index.html"><p>تطبيـق الويب للجوالات</p></a>
+        <a href="./newsPage/news.html"><p>مدونة الأخبار</p></a>
+        <a href="./createSchedulePage/schedule.html"><p>صمم جدولك</p></a>
+        <a href="./absCalcPage/abs.html"><p>حساب الغيابات</p></a>
+        <a href="./gpaPage/gpa.html"><p>حساب المعدل</p></a>
+        <a href="./academicRegulationsPage/regulations.html"><p>مكتبة الطالب</p></a>
+        <a href="./webMapPage/webMap.html"><p>خريطة الموقع</p></a>
+        <a href="https://t.me/newsjuc"><p>اخبار الكلية والمعهد بالتليجرام</p></a>
+        <a href="https://x.com/i/communities/1823043306739110132"><p>مجتمع طـلاب الكلية عبر تويتر</p></a>
+    </nav>
+
+    <div id="noticeModal" class="modal">
+        <div class="modal-content">
+            <h2> 🤍نــورت منصة مدخل</h2>
+            <p>
+           حنا <strong>مجموعة طـلاب</strong> سخرنا قدراتنا في تطوير وتصميم 
+           هالمبادرة ومالنا اي علاقة رسمية بالادارة نهائياً
+            </p>
+           <a href="https://drive.google.com/file/d/16Lm6bth7auNGN9dPaVBuo1SX1KzANbyz/view?usp=sharing"><p style="color: rgb(37, 67, 163); font-style: italic; text-decoration: underline;">
+          استخدامك لخدمات المبادرة يعني موافقتك على سياسة الاستخدام.
+            </p></a>
+            <div class="actions">
+            <button id="continueBtn">موافقة و متابعة</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Mobile Drawer -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="القائمة المتنقلة">
-      <div class="mobile-nav__section">
-        <p class="mobile-nav__section-title">مكتبة الأدوات</p>
-        <a href="https://juportal.online/absCalcPage/abs.html"       class="mobile-nav__link">📅 حساب الغيابات</a>
-        <a href="https://juportal.online/gpaPage/gpa.html"           class="mobile-nav__link">📊 حساب المعدل</a>
-        <a href="https://juportal.online/createSchedulePage/schedule.html" class="mobile-nav__link">🗓️ صمّم جدولك</a>
-      </div>
-      <div class="mobile-nav__section">
-        <p class="mobile-nav__section-title">مكتبة الطالب</p>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="mobile-nav__link">📋 المستندات الرسمية</a>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="mobile-nav__link">📁 المستندات المفيدة</a>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="mobile-nav__link">❓ الأسئلة الشائعة</a>
-      </div>
-      <a href="https://juportal.online/newsPage/news.html"   class="mobile-nav__link">مدونة الأخبار</a>
-      <a href="https://juportal.online/webMapPage/webMap.html" class="mobile-nav__link">خريطة الموقع</a>
-      <a href="https://juportal.online/WebAppPage/index.html" class="mobile-nav__link mobile-nav__cta" target="_blank" rel="noopener">📱 تطبيق الجوال ←</a>
-      <button class="mobile-nav__theme" id="themeToggleMobile">
-        <span id="themeIconMobile">☀️</span>
-        <span id="themeLabel">التبديل للوضع النهاري</span>
-      </button>
-    </nav>
-  </header>
+  <div id="appPromoBanner" class="app-promo-banner">
+        <button class="promo-close-btn" onclick="closeAppPromo()">✕</button>
+        
+        <div class="promo-content">
+            <div class="promo-icon">
+                <img src="logo.png" alt="مدخل"> 
+            </div>
+            
+            <div class="promo-text">
+                <h4>تطبيق مدخل الجديد!</h4>
+                <p>! تصفح المنصة بتجربة أسرع تشبه تطبيقات الجوال وتقدر تثبته بجوالك</p>
+            </div>
+            
+            <a href="WebAppPage/index.html" class="promo-action-btn">تجربة</a>
+        </div>
+    </div>
+    <div id="greating">
+        <h1 id="portal-greating">منصـة مَـدخـل</h1>
+        <p>😉ما يحتاج تطول بحث وسؤال في القروبات مادام مَدخل بين يديك</p>
+        <div id="choosing-school">
+            <div id="buttons-top">
+                <a href="https://edugate.rcjy.edu.sa/jyup/init"><button class="greating-buttons" id="edu-button">الايدوقيت</button></a>
+                
+                <a href="https://jic.blackboard.com/"><button class="greating-buttons" id="blackboard-button">البلاك بورد</button></a>
+            </div>
+            <div id="major-button-div"><button class="greating-buttons" id="major-button">التخصصات والخطط الدراسية </button></div>
+        </div>
+    </div>
+</div>
 
-  <main>
+    <div id="modal-container-major" class="modal-container-major">
+        <div id="modal-major">
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__blob hero__blob--1"></div>
-        <div class="hero__blob hero__blob--2"></div>
-        <div class="hero__blob hero__blob--3"></div>
-        <div class="hero__grid"></div>
-      </div>
+            <div id="modal-major-header">
+                <span id="close-btn" class="material-symbols-outlined">close</span>
+            </div>
 
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <div class="hero__badge reveal">
-            <span class="badge__dot"></span>
-            مبادرة طلابية مستقلة · الجبيل الصناعية
-          </div>
+            <div id="modal-major-body">
+                <div id="modal-body-grid">
+                    <div id="modal-jic">
+                        <h2 style="color: var(--text); font-family: 'tajawal'; font-weight: 600;">تخصصات كلية الجبيل الصناعية</h2>
+                        <button id="prep-year-btn-jic">السنة التحضيرية</button>
+                        <a href="./JICPage/bacholarMajors/bMajors.html"><button>البكالوريوس</button></a>
+                        <a href="./JICPage/deplomeMajors/depMajors.html"><button>الدبلوم</button></a>
+                        
+                    </div>
 
-          <h1 class="hero__title reveal">
-            <span class="title__line">منصـة</span>
-            <span class="title__line title__line--accent">مَـدخـل</span>
-          </h1>
+                    <div id="modal-jti">
+                        <h2 style="color: var(--text); font-family: 'tajawal'; font-weight: 600;">تخصصات معهد الجبيل التقني</h2>
+                        <button id="prep-year-btn-jti">السنة التحضيرية</button>
+                        <a href="./JTIPage/JTImajors/JTImajors.html"><button>الدبلوم</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-          <p class="hero__lead reveal">
-            ما يحتاج تكثّر بحث وسؤال في القروبات — ترا مَدخل بين يديك 😉
-          </p>
-          <p class="hero__body reveal">
-            دليلك الشامل كطالب في كليات ومعاهد الهيئة الملكية بالجبيل. من حسابات الغياب والمعدل إلى التخصصات والمستندات والأخبار — كل ما تحتاجه في مكان واحد، مطوّر باجتهاد طلابي خالص.
-          </p>
 
-          <div class="hero__actions reveal">
-            <a href="#tools" class="btn btn--primary">
-              استكشف الأدوات <span class="btn__arrow" aria-hidden="true">↓</span>
-            </a>
-            <a href="https://edugate.rcjy.edu.sa/jyup/init" class="btn btn--ghost" target="_blank" rel="noopener">الايدوقيت</a>
-            <a href="https://jic.blackboard.com/" class="btn btn--ghost" target="_blank" rel="noopener">البلاك بورد</a>
-          </div>
+   <div id="browser-only">
+    <div id="last-news">
+        <div id="last-news-title-container">
+            <h1>آخـــر الاخبـــار</h1>
+            <p>📱خلك قريب وعلى علم بـ آخر الاحداث المهمة اللي تصير في الكلية والمعهد أول بأول</p>
+        </div>
+        
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#news">‹</button>
+            <div id="news"></div>
+            <button class="arrow-btn right" data-target="#news">›</button>
         </div>
 
-        <!-- Stats -->
-        <div class="hero__stats reveal">
-          <div class="stats-card">
-            <div class="stats-card__item">
-              <div class="stats-card__num-wrap">
-                <span class="stats-card__number" data-target="3">0</span>
-                <span class="stats-card__suffix">+</span>
-              </div>
-              <p class="stats-card__label">أدوات أكاديمية</p>
-            </div>
-            <div class="stats-card__divider"></div>
-            <div class="stats-card__item">
-              <div class="stats-card__num-wrap">
-                <span class="stats-card__number" data-target="100">0</span>
-                <span class="stats-card__suffix">+</span>
-              </div>
-              <p class="stats-card__label">مستند ولائحة</p>
-            </div>
-            <div class="stats-card__divider"></div>
-            <div class="stats-card__item">
-              <div class="stats-card__num-wrap">
-                <span class="stats-card__number" data-target="2026">0</span>
-              </div>
-              <p class="stats-card__label">مُحدَّث لعام</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
 
-      <!-- Quick links pill bar -->
-      <div class="hero__pills reveal container">
-        <a href="https://juportal.online/JICPage/jic.html" class="pill">🏛️ JIC</a>
-        <a href="https://t.me/newsjuc"                     class="pill" target="_blank" rel="noopener">📢 أخبار الكلية</a>
-        <a href="https://juportal.online/webMapPage/webMap.html" class="pill">🗺️ خريطة الموقع</a>
-        <a href="https://x.com/juportall"                  class="pill" target="_blank" rel="noopener">𝕏 تويتر</a>
-        <a href="https://t.me/JuPortalsa"                  class="pill" target="_blank" rel="noopener">✈️ تليجرام</a>
-      </div>
+    </div>
 
-      <div class="scroll-indicator" aria-hidden="true">
-        <div class="scroll-indicator__line"></div>
-      </div>
-    </section>
 
-    <!-- ===== PROGRAMS STRIP ===== -->
-    <section class="programs-strip" aria-label="روابط سريعة">
-      <div class="programs-strip__track">
-        <div class="programs-strip__inner">
-          <span>📊 حساب المعدل</span>
-          <span>📅 حساب الغيابات</span>
-          <span>🗓️ صمّم جدولك</span>
-          <span>📋 المستندات الرسمية</span>
-          <span>❓ الأسئلة الشائعة</span>
-          <span>📰 مدونة الأخبار</span>
-          <span>🏛️ كلية الجبيل الصناعية</span>
-          <span>📊 حساب المعدل</span>
-          <span>📅 حساب الغيابات</span>
-          <span>🗓️ صمّم جدولك</span>
-          <span>📋 المستندات العامة</span>
-          <span>❓ الأسئلة الشائعة</span>
-          <span>📰 مدونة الأخبار</span>
-          <span>🏛️ معهد الجبيل التقني</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== NEWS SECTION ===== -->
-    <section class="news-section" id="news-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">آخر الأخبار</p>
-          <h2 class="section-header__title">على علم بكل جديد 📱</h2>
-          <p class="section-header__sub">خلك قريب وعلى علم بآخر الاحداث المهمة اللي تصير في الكلية والمعهد أول بأول.</p>
-        </div>
-
-        <!-- Dynamic news feed — populated by script.js from NEWS_DATA -->
-<div class="slider-wrapper reveal">
-          <button class="arrow-btn right" data-target="#news-track" aria-label="السابق">❯</button>
-          <div class="slider-track" id="news-track">
-            </div>
-          <button class="arrow-btn left" data-target="#news-track" aria-label="التالي">❮</button>
-        </div>
-    </section>
-
-    <!-- ===== TOOLS SECTION ===== -->
-    <section class="tools-section" id="tools">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">مكتبة الأدوات</p>
-          <h2 class="section-header__title">أدواتك الأكاديمية 😁</h2>
-          <p class="section-header__sub">مجموعة أدوات هدفها تسهيل حياتك الأكاديمية وتوفير وقتك.</p>
-        </div>
-
-        <div class="tools-grid reveal">
-
-          <div class="tool-card">
-            <div class="tool-card__glow"></div>
-            <div class="tool-card__emoji">📅</div>
-            <h3 class="tool-card__title">أداة حساب الغيابات</h3>
-            <p class="tool-card__body">احسب رصيد غياباتك المتبقي قبل الحرمان لكل مادة.</p>
-            <div class="tool-card__features">
-              <span class="feature-tag">✓ حاسبة الرصيد المتبقي بالتطبيق</span>
-              <span class="feature-tag">✓ رصيد غياباتك</span>
-            </div>
-            <a href="https://juportal.online/absCalcPage/abs.html" class="btn btn--ghost btn--sm">استخدام الأداة</a>
-          </div>
-
-          <div class="tool-card">
-            <div class="tool-card__glow"></div>
-            <div class="tool-card__emoji">📊</div>
-            <h3 class="tool-card__title">أداة حساب المعدل</h3>
-            <p class="tool-card__body">احسب معدلك الأكاديمي المتوقع بناءً على درجاتك ومعدلك السابق.</p>
-            <div class="tool-card__features">
-              <span class="feature-tag">✓ حساب المعدل</span>
-              <span class="feature-tag">✓ معدلك من 4</span>
-            </div>
-            <a href="https://juportal.online/absCalcPage/abs.html" class="btn btn--ghost btn--sm">استخدام الأداة</a>
-          </div>
-
-          <div class="tool-card">
-            <div class="tool-card__glow"></div>
-            <div class="tool-card__emoji">🗓️</div>
-            <h3 class="tool-card__title">صمّم جدولك</h3>
-            <p class="tool-card__body">رتّب جدولك الدراسي حسب الفترات وصدّره بصيغ متعددة.</p>
-            <div class="tool-card__features">
-              <span class="feature-tag">✓ تصدير PDF</span>
-              <span class="feature-tag">✓ صورة</span>
-            </div>
-            <a href="https://juportal.online/createSchedulePage/schedule.html" class="btn btn--ghost btn--sm">استخدام الأداة</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CALENDAR SECTION ===== -->
-<section class="calendar-section" id="calendar">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">التقويم</p>
-          <h2 class="section-header__title">التقويم التفاعلي 📅</h2>
-          <p class="section-header__sub">أبرز الأحداث القادمة لكليات ومعاهد الهيئة الملكية.</p>
+    <div id="calender-container">
+        <div id="calender-title-container">
+            <h1 class="subtitle">التقويــم التفـاعلي</h1>
+            <p class="p-text">ابرز الأحداث القادمة لكليات ومعاهد الهيئة الملكية📅</p>
         </div>
 
         <div class="slider-wrapper">
-          <button class="arrow-btn right" data-target="#events-track" aria-label="السابق">❯</button>
-          <div class="slider-track" id="events-track">
+            <button class="arrow-btn left" data-target="#calender-events">›</button>
+            <div id="calender-events"></div>
+            <button class="arrow-btn right" data-target="#calender-events">‹</button>
+        </div>
+    </div>
+    
+
+    <div id="tools-cont">
+        <div id="tools-header">
+            <h1 class="subtitle">مكتبـة الأدوات</h1>
+            <p class="p-text">مجموعة أدوات هدفها تسهيل حياتك الأكاديمية😁</p>
+        </div>
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#tools-cards">‹</button>
+            <div id="tools-cards">
+                <div class="tool" id="calculate-gpa-card">
+                    <img src="./Images/المعدل@4x.png" alt="">
+                    <h2>أداة حساب الغيابات</h2>
+                    <p>أداة بسيطة تساعدك في حساب عدد رصيد غياباتك والغيابات المؤدية للحرمان</p>
+                    <a href="./absCalcPage/abs.html">استخـدام</a>
+                </div>
+
+                <div class="tool" id="calculate-abs-card">
+                    <img src="./Images/حساب الغياب@4x.png" alt="">
+                    <h2>أداة حساب المعدل</h2>
+                    <p>أداة تساعدك تحسب معدلك الاكاديمي التراكمي والحالي بسهولة</p>
+                    <a href="./gpaPage/gpa.html">استخـدام</a>
+                </div>
+
+                <div class="tool" id="create-schedule-card">
+                    <img src="./Images/الجدول@4x.png" alt="">
+                    <h2>اصنع جدولك الدراسي</h2>
+                    <p>أداة تتيح لك ترتيب جدولك حسب الفترات وتحولها لاوقات وتحفظهم بصيغ متعددة</p>
+                    <a href="./createSchedulePage/schedule.html">استخـدام</a>
+                </div>
             </div>
-          <button class="arrow-btn left" data-target="#events-track" aria-label="التالي">❮</button>
+            <button class="arrow-btn right" data-target="#tools-cards">›</button>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== LIBRARY SECTION ===== -->
-    <section class="library-section" id="library">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">مكتبة الطالب</p>
-          <h2 class="section-header__title">كل ما تحتاجه في مكان واحد 📂</h2>
-          <p class="section-header__sub">اللوائح والمستندات المفيدة صارت كلها في متناول يدك.</p>
-        </div>
-
-        <div class="library-grid reveal">
-          <a href="https://juportal.online/academicRegulationsPage/regulations.html#doc-container" class="lib-card">
-            <div class="lib-card__icon">📋</div>
-            <h3 class="lib-card__title">المستندات الرسمية</h3>
-            <p class="lib-card__body">جميع المستندات الرسمية لكليات ومعاهد الهيئة الملكية — لوائح وأنظمة وقرارات.</p>
-            <span class="lib-card__cta">شيك عليها ←</span>
-          </a>
-          <a href="https://juportal.online/academicRegulationsPage/regulations.html#gen-doc-container" class="lib-card">
-            <div class="lib-card__icon">📁</div>
-            <h3 class="lib-card__title">المستندات المفيدة</h3>
-            <p class="lib-card__body">مكتبة تشمل جميع الملفات الغير رسمية التي تفيد طلاب الكلية والمعهد.</p>
-            <span class="lib-card__cta">شيك عليها ←</span>
-          </a>
-          <a href="https://juportal.online/academicRegulationsPage/regulations.html#questions-general-container" class="lib-card">
-            <div class="lib-card__icon">❓</div>
-            <h3 class="lib-card__title">الأسئلة الشائعة</h3>
-            <p class="lib-card__body">إجابات موثوقة على أكثر الأسئلة تكراراً عن حياة الطالب في الكلية والمعهد.</p>
-            <span class="lib-card__cta">شيك عليها ←</span>
-          </a>
-          <a href="https://juportal.online/JICPage/jic.html" class="lib-card lib-card--accent">
-            <div class="lib-card__icon">🏛️</div>
-            <h3 class="lib-card__title">دليل لكلية الجبيل الصناعية</h3>
-            <p class="lib-card__body">دليل شامل عن كلية الجبيل الصناعية مع حاسبة الموزونة للمتقدمين.</p>
-            <span class="lib-card__cta">استكشف ←</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MAJORS SECTION ===== -->
-    <section class="majors-section" id="majors">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">التخصصات</p>
-          <h2 class="section-header__title">التخصصات والخطط الدراسية</h2>
-          <p class="section-header__sub">تعرّف على جميع تخصصات كلية الجبيل الصناعية ومعهد الجبيل التقني.</p>
-        </div>
-
-        <div class="majors-grid reveal">
-          <!-- JIC -->
-          <div class="majors-card">
-            <div class="majors-card__header">
-              <span class="majors-card__icon">🏛️</span>
-              <div>
-                <h3 class="majors-card__title">كلية الجبيل الصناعية</h3>
-                <p class="majors-card__sub">JIC</p>
-              </div>
-            </div>
-            <div class="majors-card__tabs" id="jicTabs">
-              <button class="tab-btn tab-btn--active" data-target="jicPrep">السنة التحضيرية</button>
-              <button class="tab-btn" data-target="jicBach">البكالوريوس</button>
-              <button class="tab-btn" data-target="jicDip">الدبلوم</button>
-            </div>
-            <div class="majors-card__body">
-              <div class="tab-panel tab-panel--active" id="jicPrep">
-                <p class="tab-panel__text">السنة التحضيرية مشتركة لجميع الطلاب الجدد، تشمل مادةالرياضيات واللغة الإنجليزية ومادتين اونلاين.</p>
-              </div>
-              <div class="tab-panel" id="jicBach">
-                <p class="tab-panel__text">برامج البكالوريوس في الهندسة وتقنية المعلومات والادارة.</p>
-                <a href="https://juportal.online/JICPage/bacholarMajors/bMajors.html" class="btn btn--primary btn--sm" style="margin-top:.8rem">تصفح التخصصات ←</a>
-              </div>
-              <div class="tab-panel" id="jicDip">
-                <p class="tab-panel__text">برامج الدبلوم التقني في تخصصات متعددة كالميكانيكا والكهرباء وتقنية المعلومات.</p>
-                <a href="https://juportal.online/JICPage/deplomeMajors/depMajors.html" class="btn btn--primary btn--sm" style="margin-top:.8rem">تصفح التخصصات ←</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- JTI -->
-          <div class="majors-card">
-            <div class="majors-card__header">
-              <span class="majors-card__icon">🔧</span>
-              <div>
-                <h3 class="majors-card__title">معهد الجبيل التقني</h3>
-                <p class="majors-card__sub">JTI</p>
-              </div>
-            </div>
-            <div class="majors-card__tabs" id="jtiTabs">
-              <button class="tab-btn tab-btn--active" data-target="jtiPrep">السنة التحضيرية</button>
-              <button class="tab-btn" data-target="jtiDip">الدبلوم</button>
-            </div>
-            <div class="majors-card__body">
-              <div class="tab-panel tab-panel--active" id="jtiPrep">
-                <p class="tab-panel__text">السنة التحضيرية لطلاب معهد الجبيل التقني، تمهيداً للتخصصات التقنية.</p>
-              </div>
-              <div class="tab-panel" id="jtiDip">
-                <p class="tab-panel__text">برامج الدبلوم التقني المتخصصة في مجالات صناعية وتقنية متعددة.</p>
-                <a href="https://juportal.online/JTIPage/JTImajors/JTImajors.html" class="btn btn--primary btn--sm" style="margin-top:.8rem">تصفح التخصصات ←</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT SECTION ===== -->
-    <section class="about-section" id="about">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-header__eyebrow">نبذة عن المنصة</p>
-          <h2 class="section-header__title">من نحن؟</h2>
-          <p class="section-header__sub">طورنا هذه المنصة ضمن مبادرة مدخل الطلابية بجهد طلابي مستقل وغير رسمي بهدف الاستفادة من مهاراتنا في خدمة زملائنا الطلاب.</p>
-        </div>
-
-        <div class="team-grid reveal">
-
-          <div class="team-card">
-            <div class="team-card__avatar">ع</div>
-            <h3 class="team-card__name">عبدالملك الخليفة</h3>
-            <p class="team-card__role">المبرمج</p>
-            <p class="team-card__major">بكالوريوس — علوم حاسب</p>
-            <p class="team-card__bio">المسؤول عن بناء المنصة وتشغيلها تقنيًا وحل مشاكلها.</p>
-            <a href="https://t.me/Abdulmalik_portal" class="team-card__contact" target="_blank" rel="noopener">✈️ تليجرام</a>
-          </div>
-
-          <div class="team-card team-card--featured">
-            <div class="team-card__crown" aria-hidden="true">✦</div>
-            <div class="team-card__avatar team-card__avatar--accent">ر</div>
-            <h3 class="team-card__name">رائد الزهراني</h3>
-            <p class="team-card__role">مسؤول المبادرة</p>
-            <p class="team-card__major">تقنية هندسة صيانة ميكانيكية</p>
-            <p class="team-card__bio">مسؤول عن ادارة و تطوير المبادرة, تصميم المنشورات والـ UI/UX، كتابة المحتوى, الإعلان، والدعم الفني.</p>
-            <a href="https://wa.me/9665503502885" class="team-card__contact" target="_blank" rel="noopener">💬 واتساب</a>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card__avatar">ع</div>
-            <h3 class="team-card__name">عبدالله النفيعي</h3>
-            <p class="team-card__role">محرر البيانات</p>
-            <p class="team-card__major">بكالوريوس — علوم حاسب</p>
-            <p class="team-card__bio">مسؤول إدخال وتحديث بيانات التخصصات وما يخصها.</p>
-            <a href="https://t.me/ab_4O4" class="team-card__contact" target="_blank" rel="noopener">✈️ تليجرام</a>
-          </div>
-
-        </div>
-
-        <!-- Survey CTA -->
-        <div class="survey-banner reveal">
-          <div class="survey-banner__text">
-            <p class="survey-banner__title">📬 انضم لقناة الاخبار</p>
-            <p class="survey-banner__sub">قناة مخصصة لاخبار الكلية والمعهد عبر التليجرام</p>
-          </div>
-          <a href="https://t.me/newsjuc" class="btn btn--primary" target="_blank" rel="noopener">انضم إلى القناة ←</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container footer__top">
-      <div class="footer__brand">
-        <div class="logo-mark" aria-hidden="true">
-          <img src="./Images/logo.png" class="logo-light" alt="شعار مدخل" style="height:28px;width:auto;">
-          <img src="./Images/iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل" style="height:28px;width:auto;">
-        </div>
-      </div>
-      <p class="footer__tagline">دليلك الشامل كطالب في كليات ومعاهد الهيئة الملكية بالجبيل.</p>
-      <div class="footer__social">
-        <a href="https://x.com/juportall"       class="social-btn" target="_blank" rel="noopener" aria-label="مجتمع اكس">𝕏</a>
-        <a href="https://t.me/JuPortalsa"        class="social-btn" target="_blank" rel="noopener" aria-label="تليجرام">✈️</a>
-        <a href="https://t.me/newsjuc"           class="social-btn" target="_blank" rel="noopener" aria-label="قناة الأخبار">📢</a>
-      </div>
     </div>
 
-    <div class="container footer__links">
-      <div class="footer__col">
-        <p class="footer__col-title">الأدوات</p>
-        <a href="https://juportal.online/gpaPage/gpa.html"           class="footer__link">حساب المعدل</a>
-        <a href="https://juportal.online/absCalcPage/abs.html"       class="footer__link">حساب الغيابات</a>
-        <a href="https://juportal.online/createSchedulePage/schedule.html" class="footer__link">صمّم جدولك</a>
-      </div>
-      <div class="footer__col">
-        <p class="footer__col-title">المكتبة</p>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="footer__link">المستندات الرسمية</a>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="footer__link">المستندات المفيدة</a>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="footer__link">الأسئلة الشائعة</a>
-      </div>
-      <div class="footer__col">
-        <p class="footer__col-title">المنصة</p>
-        <a href="https://juportal.online/newsPage/news.html"   class="footer__link">مدونة الأخبار</a>
-        <a href="https://juportal.online/webMapPage/webMap.html" class="footer__link">خريطة الموقع</a>
-        <a href="https://juportal.online/WebAppPage/index.html" class="footer__link">تطبيق الجوال</a>
-        <a href="https://drive.google.com/file/d/16Lm6bth7auNGN9dPaVBuo1SX1KzANbyz/view?usp=sharing" class="footer__link" target="_blank" rel="noopener">سياسة الاستخدام</a>
-      </div>
-      <div class="footer__col">
-        <p class="footer__col-title">تواصل</p>
-        <a href="https://t.me/razhran"  class="footer__link" target="_blank" rel="noopener">تواصل معنا</a>
-        <a href="https://t.me/JuPortalsa" class="footer__link" target="_blank" rel="noopener">قناة تليجرام</a>
-        <a href="https://forms.office.com/r/CsBDhj3mQ9" class="footer__link" target="_blank" rel="noopener">استبيان التطوير</a>
-      </div>
+    <div id="student-cont">
+        <div id="student-header">
+            <h1 class="subtitle">مكتبـة الطـالـب</h1>
+            <p class="p-text">اللوائح والمستندات المفيدة صارت كلها في مكان واحد📂</p>
+        </div>
+        <div class="slider-wrapper">
+            <button class="arrow-btn left" data-target="#student-cards">›</button>
+            <div id="student-cards">
+                <div class="student-div" id="oficial-documents">
+                    <img src="./Images/Official_doc.png" alt="">
+                    <h2>المستنـدات الرسميـة</h2>
+                    <p>جميع المستندات الرسمية لكليات ومعاهد الهيئة الملكية بالجبيل من لوائح وأنظمة</p>
+                    <a href="./academicRegulationsPage/regulations.html#doc-container">شيك عليهـا</a>
+                </div>
+
+                <div class="student-div" id="benefit-docutments">
+                    <img src="./Images/benifit_doc.png" alt="">
+                    <h2>المستنـدات المفيـدة</h2>
+                    <p>مكتبة تشمل جميع المستندات الغير رسمية التي تفيد طلاب كلية ومعهد الجبيل الصناعية</p>
+                    <a href="./academicRegulationsPage/regulations.html#gen-doc-container">شيك عليهـا</a>
+                </div>
+
+                <div class="student-div" id="comman-questions">
+                    <img src="./Images/comman_questions.png" alt="">
+                    <h2>الاسئلـة الشائعـة</h2>
+                    <p>قسم يحوي العديد من الاجابات على الاسئلة الشائعة عن كليات ومعاهد الجبيل الصناعية</p>
+                    <a href="./academicRegulationsPage/regulations.html#questions-general-container">شيك عليهـا</a>
+                </div>
+            </div>
+            <button class="arrow-btn right" data-target="#student-cards">‹</button>
+        </div>
     </div>
 
-    <div class="container footer__bottom">
-      <p class="footer__copy">© 2026 منصة مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
-      <a href="index.html" class="footer__home">juportal.online</a>
+    <div id="contact-us">
+
+        <div id="contict-title-container">
+            <h1 class="subtitle">نبـذة عـن الـمنصـة</h1>
+            <p class="p-text"> طورنا هذه المنصة ضمن مبادرة واجتهاد طلابي وغير رسمي بهدف تسهيل وصول طلاب كلية ومعهد الجبيل الصناعية للادوات والمستندات التي تهمهم وتساعدهم طوال فترة دراستهم</p>
+            <h3>تم تطويـر المنصة بواسطـة</h3>
+        </div>
+
+        <div id="out-information">
+            <div class="member-card">
+                <img src="./Images/person.png" alt="">
+                <h4>عبــدالملـك الخليفـة</h4>
+                <p>بكالوريوس - علوم حاسب</p>
+                <p>المبرمج المسؤول عن تطوير وبناء المنصة وتشغيلها تقنيًا وحل مشاكلها</p>
+                <a target="_blank" href="https://t.me/Abdulmalik_portal">تواصل</a>
+            </div>
+
+            <div class="member-card">
+                <img src="./Images/person.png" alt="">
+                <h4>رائــد الـزهــراني</h4>
+                <p>تقنية هندسة صيانة ميكانيكية</p>
+                <p>مصمم ومدير المنصة، مسؤول عن الواجهة، تنظيم الصفحات، المحتوى، الإعلان، والدعم الفني</p>
+                <a target="_blank" href="https://wa.me/9665503502885">تواصل</a>
+            </div>
+
+            <div class="member-card">
+                <img src="./Images/person.png" alt="">
+                <h4>عبــدالله النفيـعي</h4>
+                <p>بكالوريوس - علوم حاسب</p>
+                <p>مسؤول إدخال وتحديث بيانات التخصصات وما يخصها.</p>
+                <a  target="_blank" href="https://t.me/ab_4O4">تواصل</a>
+            </div>
+        </div>
     </div>
-  </footer>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
 
+    <footer>
+        <h3 style="font-size: 26px;" class="subtitle">📬ساعدنا في تطوير مدخل من خلال ملاحظاتك</h3>
+        <div id="subsecribe-div">
+            <h3>مشـاركتـك مهمة عشان نقدر نطور مدخل !<span class="material-symbols-outlined">description</span></h3>
+            <a href="https://forms.office.com/r/CsBDhj3mQ9">شارك في الاستبيان !</a>
+        </div>
+
+        <div id="links-div">
+            <a href="/index.html"><p class="p-links">الصفحة الرئيسية</p></a>
+            <a href="/newsPage/news.html"><p class="p-links">مدونة الأخبار</p></a>
+            <a href="/webMapPage/webMap.html"><p class="p-links">خريطة الموقع</p></a>
+            <a href="/createSchedulePage/schedule.html"><p class="p-links">صمم جدولك</p></a>
+            <a target="_blank" href="https://t.me/razhran"><p class="p-links">تواصل معنا</p></a>
+            <a href="/absCalcPage/abs.html"><p class="p-links">حساب الغيابات</p></a>
+            <a href="https://t.me/JuPortalsa"><p class="p-links">قناة التليجرام</p></a>
+            <a href="https://drive.google.com/file/d/16Lm6bth7auNGN9dPaVBuo1SX1KzANbyz/view?usp=sharing"><p class="p-links">سياسة الاستخدام</p></a>
+        </div>
+        <h2 style="text-align:center; font-weight: 400; font-family: 'tajawal'; font-size: 18px ; margin-top: 80px; padding-bottom:30px; color:rgb(132, 132, 132);">جميع الحقوق محفوظة لمنصة مَدخل - 2026</h2>
+        <a href="https://hits.sh/juportal.online/"><img alt="Hits" src="https://hits.sh/juportal.online.svg?style=flat-square&label=Visitor&color=007ec6&labelColor=ffffff"/></a>
+    </footer>
+    
+</body>
     <script src="./newsPage/news-data.js?v=1.2"></script>
     <script src="./eventsCounterPage/events.js?v=1.2"></script>
-    <script src="./script1.js"></script>
+    <script src="./script.js?v=1.2"></script>
     <script src="./search.js?v=1.2"></script>
     
 
@@ -602,5 +387,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 </script>
-</body>
+
+
 </html>
