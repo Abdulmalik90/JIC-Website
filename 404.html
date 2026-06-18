@@ -463,20 +463,20 @@ body.dark-mode .logo-dark,
   <header class="header" id="header">
     <div class="header__inner">
 <!-- Logo -->
-<a href="https://juportal.online" class="header__logo" aria-label="مَدخل - الرئيسية">
+<a href="./index.html" class="header__logo" aria-label="مَدخل - الرئيسية">
   <!-- شعار اللايت مود -->
-  <img src="logo.png" class="logo-light" alt="شعار مدخل">
+  <img src="./Images/logo.png" class="logo-light" alt="شعار مدخل">
   
   <!-- شعار الدارك مود -->
-  <img src="iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
+  <img src="./Images/iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
 </a>
 
       <nav class="header__nav" aria-label="القائمة">
-        <a href="https://juportal.online" class="nav-link">الرئيسية</a>
-        <a href="https://juportal.online/gpaPage/gpa.html" class="nav-link">المعدل</a>
-        <a href="https://juportal.online/absCalcPage/abs.html" class="nav-link">الغيابات</a>
-        <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="nav-link">المكتبة</a>
-        <a href="https://juportal.online" class="nav-cta">ارجع للرئيسية</a>
+        <a href="./index.html" class="nav-link">الرئيسية</a>
+        <a href="./Library/regulations.html" class="nav-link">الموسوعة</a>
+        <a href="./Tools/tools.html" class="nav-link">الغيابات</a>
+        <a href="./Updates/news.html" class="nav-link">الأخبار</a>
+        <a href="./WebAppPage/index.html" class="nav-cta">تطبيق الويب</a>
         <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
           <span class="theme-toggle__icon" id="themeIcon">☀️</span>
         </button>
@@ -488,11 +488,11 @@ body.dark-mode .logo-dark,
     </div>
 
     <nav class="mobile-nav" id="mobileNav">
-      <a href="https://juportal.online" class="mobile-nav__link">🏠 الرئيسية</a>
-      <a href="https://juportal.online/gpaPage/gpa.html" class="mobile-nav__link">📊 حساب المعدل</a>
-      <a href="https://juportal.online/absCalcPage/abs.html" class="mobile-nav__link">📅 حساب الغيابات</a>
-      <a href="https://juportal.online/academicRegulationsPage/regulations.html" class="mobile-nav__link">📋 المكتبة</a>
-      <a href="https://juportal.online" class="mobile-nav__link mobile-nav__cta">ارجع للرئيسية ←</a>
+      <a href="./index.html" class="mobile-nav__link">🏠 الرئيسية</a>
+      <a href="./Tools/tools.html" class="mobile-nav__link">📊 حساب المعدل</a>
+      <a href="./Updates/news.html" class="mobile-nav__link">📰 الأخبار</a>
+      <a href="./Library/regulations.html" class="mobile-nav__link">📋 المكتبة</a>
+      <a href="./WebAppPage/index.html" class="mobile-nav__link mobile-nav__cta">تطبيق الويب ←</a>
       <button class="mobile-nav__theme" id="themeToggleMobile">
         <span id="themeIconMobile">☀️</span>
         <span id="themeLabel">التبديل للوضع النهاري</span>
@@ -534,10 +534,10 @@ body.dark-mode .logo-dark,
 
       <!-- CTA buttons -->
       <div class="actions">
-        <a href="https://juportal.online" class="btn btn--primary">
+        <a href="./index.html" class="btn btn--primary">
           <span class="btn__icon">🏠</span> الصفحة الرئيسية
         </a>
-        <a href="https://juportal.online/gpaPage/gpa.html" class="btn btn--ghost">
+        <a href="./WebAppPage/index.html" class="btn btn--ghost">
           <span class="btn__icon">📊</span> تطبيق الويب
         </a> 
         <button class="btn btn--ghost" onclick="history.back()">
@@ -549,10 +549,10 @@ body.dark-mode .logo-dark,
       <div class="quick-links">
         <p class="quick-links__label">أو انتقل مباشرةً إلى</p>
         <div class="quick-links__row">
-          <a href="https://juportal.online/academicRegulationsPage/regulations.html"  class="pill">📋 الموسوعة</a>
-          <a href="https://juportal.online/JICPage/jic.html"                          class="pill">🏛️ حساب الموزونة</a>
-          <a href="https://juportal.online/newsPage/news.html"                        class="pill">📰 الاخبار</a>
-          <a href="https://juportal.online/webMapPage/webMap.html"                    class="pill">🗺️ خريطة الموقع</a>
+          <a href="./Library/regulations.html"  class="pill">📋 الموسوعة</a>
+          <a href="./College/jic.html"                          class="pill">🏛️ حساب الموزونة</a>
+          <a href="./Updates/news.html"                        class="pill">📰 الاخبار</a>
+          <a href="./Library/webMap.html"                    class="pill">🗺️ خريطة الموقع</a>
         </div>
       </div>
 
@@ -568,14 +568,11 @@ body.dark-mode .logo-dark,
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer__inner">
-      <div class="footer__brand">
-        <div class="logo-mark" aria-hidden="true">
-          <img src="logo.png" class="logo-light" alt="شعار مدخل" style="height:28px;width:auto;">
-          <img src="iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل" style="height:28px;width:auto;">
-        </div>
+ <div class="footer__brand">
+        <span class="logo-mark__text">مَدخل</span>
       </div>
       <p class="footer__copy">© 2026 مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
-      <a href="https://juportal.online" class="footer__link">juportal.online</a>
+      <a href="./index.html" class="footer__link">juportal.online</a>
     </div>
   </footer>
 
