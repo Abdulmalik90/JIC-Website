@@ -1,0 +1,1653 @@
+/* =========================================
+   1. المتغيرات ونظام الألوان (Light & Dark)
+   ========================================= */
+:root {
+    /* --- الوضع النهاري (الافتراضي) --- */
+    --primary-color: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);       /* أزرق مدخل الرسمي */
+    --bg-color: #f8f9fa;            /* خلفية الصفحة */
+    --primary-text: #1a60bb;          /* خلفية الخط الرسمي */
+    --surface-color: #ffffff;       /* لون الكروت والقوائم */
+    --text-dark: #1f2937;           /* النصوص الرئيسية */
+    --text-light: #6b7280;          /* النصوص الفرعية */
+    --border-color: #e5e7eb;        /* لون الحدود والفواصل */
+    --header-bg: rgba(255, 255, 255, 0.85); /* خلفية الهيدر الشفافة */
+    --shadow-color: rgba(0, 0, 0, 0.05);    /* لون الظل */
+    
+    /* --- أبعاد ثابتة --- */
+    --nav-height: 70px;
+    --header-height: 60px;
+}
+
+/* --- الوضع الليلي (Dark Mode) --- */
+[data-theme="dark"] {
+    --primary-color: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);  /* أزرق سماوي فاتح (عشان يوضح في الظلام) */
+    --bg-color: #121212;            /* لون فحمي غامق (أفخم من الأسود الكامل) */
+    --primary-text: #5eaae9;          /* خلفية الخط الرسمي */
+    --surface-color: #1e1e1e;       /* رمادي غامق للكروت */
+    --text-dark: #e4e6eb;           /* أبيض مريح للعين (أوف وايت) */
+    --text-light: #9ca3af;          /* رمادي فاتح */
+    --border-color: #2d2d2d;        /* حدود غامقة */
+    --header-bg: rgba(30, 30, 30, 0.85); /* هيدر غامق شفاف */
+    --shadow-color: rgba(0, 0, 0, 0.3);  /* ظل أثقل للوضع الليلي */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding-bottom: calc(var(--nav-height) + 20px);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; /* تنعيم التحويل بين الوضعين */
+}
+
+/* =========================================
+   2. خلفية الإيموجي العائمة
+   ========================================= */
+#emoji-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.emoji-bg-item {
+    position: absolute;
+    opacity: 0.08;
+    font-size: 24px;
+    filter: grayscale(0.6);
+}
+
+/* في الدارك مود نخفف الإيموجي زيادة عشان ما تشوش */
+[data-theme="dark"] .emoji-bg-item {
+    opacity: 0.05;
+}
+
+/* =========================================
+   3. الهيدر العلوي (Header)
+   ========================================= */
+.hub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            background-color: var(--header-bg); /* شفافية حسب المتغيرات */
+            backdrop-filter: blur(10px); /* تأثير الزجاج */
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0 20px;
+            position: sticky; /* يثبت فوق لما تنزل */
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* تنسيق الجزء الأيمن */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hub-logo {
+            width: 35px; /* حجم الشعار */
+            height: auto;
+        }
+
+        .hub-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-text); /* لون النص الرسمي */
+            margin: 0;
+        }
+
+        /* تنسيق الجزء الأيسر */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* تنسيق الأزرار (الجرس والقائمة) */
+        .icon-btn {
+            background: var(--surface-color); /* لون خلفية الزر */
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px; /* حواف ناعمة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-dark); /* لون الأيقونة */
+            font-size: 18px;
+            position: relative; /* عشان النقطة الحمراء */
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:active {
+            transform: scale(0.95); /* تصغير خفيف عند الضغط */
+        }
+
+        /* النقطة الحمراء (تنبيه جديد) */
+        .notif-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: #ff4757; /* أحمر */
+            border-radius: 50%;
+            border: 2px solid var(--surface-color); /* حدود عشان تفصل عن الأيقونة */
+        }
+
+/* =========================================
+   تنسيقات القائمة الجانبية (من اليسار + Blur + مساحة أكبر)
+   ========================================= */
+
+/* 1. التظليل الضبابي (Blur Overlay) */
+#sidebarOverlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.4) !important; /* أسود شفاف */
+    backdrop-filter: blur(8px) !important; /* هذا اللي يسوي التغبيش الفخم */
+    -webkit-backdrop-filter: blur(8px) !important; /* لدعم أجهزة أبل */
+    z-index: 9998 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s ease-in-out !important;
+}
+
+/* لما تفتح القائمة يظهر التظليل */
+#sidebarOverlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 2. القائمة الجانبية نفسها */
+#sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important; /* مخفية باليسار بالكامل */
+    width: 340px !important; /* كبرنا المساحة (كانت 280) */
+    max-width: 85vw !important; /* حماية عشان ما تتجاوز شاشة الجوال الصغير */
+    height: 100vh !important;
+    background-color: var(--bg-color) !important;
+    z-index: 9999 !important; /* أعلى شيء بالصفحة */
+    box-shadow: 5px 0 30px rgba(0,0,0,0.15) !important; /* ظل ناعم */
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* حركة دخول سريعة وتفرمل بنعومة */
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+}
+
+/* لما تفتح القائمة تدخل من اليسار للشاشة */
+#sidebar.active {
+    left: 0 !important;
+}
+
+/* 3. تنسيق رأس القائمة (العنوان وزر الإغلاق) */
+.sidebar-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 25px 20px 15px 20px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    margin-bottom: 10px !important;
+}
+
+/* زر الإغلاق ✕ */
+.close-btn {
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-dark) !important;
+    font-size: 16px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px var(--shadow-color) !important;
+    transition: transform 0.2s !important;
+}
+
+.close-btn:active {
+    transform: scale(0.9) !important;
+}
+
+/* =========================================
+   4. تنسيقات الروابط وكرت الدارك مود (الستايل المودرن)
+   ========================================= */
+.modern-sidebar {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-label {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.modern-sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+.modern-sidebar li a i {
+    font-size: 20px;
+    color: var(--text-light);
+    transition: 0.2s;
+}
+
+.modern-sidebar li a:hover, 
+.modern-sidebar li a.active {
+    background-color: var(--surface-color);
+    color: var(--primary-text);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.modern-sidebar li a:hover i, 
+.modern-sidebar li a.active i {
+    color: var(--primary-text);
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 15px 0;
+}
+
+/* كرت زر الدارك مود */
+.theme-toggle-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 16px;
+    margin-top: auto;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.theme-switch-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* أزرار السلايدر للدارك مود */
+.theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: var(--primary-text); }
+input:checked + .slider:before { transform: translateX(22px); }
+.slider.round { border-radius: 26px; }
+.slider.round:before { border-radius: 50%; }
+
+/* =========================================
+   تنسيقات نافذة الإشعارات (Notifications)
+   ========================================= */
+
+/* الحاوية الرئيسية المخفية */
+.notif-panel {
+    position: fixed;
+    top: 75px; /* تطلع تحت الهيدر بشوي */
+    left: 20px; /* محاذية لليسار تحت الجرس */
+    width: 340px;
+    max-width: calc(100vw - 40px); /* عشان ما تطلع برا شاشة الجوال الصغير */
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 999;
+    
+    /* إعدادات الأنميشن والإخفاء */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px); /* مرفوعة لفوق شوي */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* حالة الظهور (لما نضغط الجرس) */
+.notif-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* رأس نافذة الإشعارات */
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color); /* لون أغمق شوي من الكرت */
+}
+
+.notif-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.mark-read-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-text);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.mark-read-btn:hover {
+    opacity: 0.7;
+}
+
+/* قائمة الإشعارات */
+.notif-list {
+    max-height: 400px; /* عشان إذا كثرت الإشعارات يصير فيها سكرول */
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    background-color: var(--surface-color);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background-color: var(--bg-color);
+}
+
+/* تمييز الإشعار الغير مقروء */
+.notif-item.unread {
+    background-color: rgba(0, 82, 204, 0.03); /* لون أزرق خفيف جداً كخلفية */
+}
+
+/* أيقونة الإشعار */
+.notif-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* نصوص الإشعار */
+.notif-content {
+    flex: 1;
+}
+
+.notif-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.notif-content p {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.notif-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+/* النقطة الحمراء داخل الإشعار الغير مقروء */
+.item-unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+/* =========================================
+   5. قسم الترحيب (Welcome Section)
+   ========================================= */
+.welcome-section {
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 10px;
+}
+
+.glow-text {
+    font-size: 22px;
+    color: var(--primary-text);
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
+    animation: glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 10px rgba(0, 82, 204, 0.1); }
+    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.4); }
+}
+
+.sub-text {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* =========================================
+   6. قسم الاختصارات (Shortcuts)
+   ========================================= */
+.shortcuts-section {
+    padding: 10px 20px;
+}
+
+.section-title {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-light); /* تغيير للون المتغير */
+    padding-right: 5px;
+}
+
+.shortcuts-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 5px 5px 20px 5px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+.shortcuts-grid::-webkit-scrollbar {
+    display: none; 
+}
+
+.shortcut-card {
+    position: relative;
+    min-width: 110px;
+    height: 110px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.2s;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.shortcut-card:active {
+    transform: scale(0.96);
+}
+
+.shortcut-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 22px;
+    opacity: 0.9;
+}
+
+.shortcut-text {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* التدرجات تبقى كما هي لأنها جميلة في الوضعين */
+.purple-gradient {
+    background: linear-gradient(135deg, #883edb 0%, #2e0c66 100%);
+    box-shadow: 0 8px 15px rgba(176, 140, 209, 0.25);
+}
+
+.orange-gradient {
+    background: linear-gradient(135deg, #30b8ac 0%, #108370 100%);
+    box-shadow: 0 8px 15px rgba(129, 250, 183, 0.25);
+}
+
+.green-gradient {
+    background: linear-gradient(135deg, #c751b7 0%, #7c0d69 100%);
+    box-shadow: 0 8px 15px rgba(236, 132, 250, 0.25);
+}
+
+.blue-gradient1 {
+    background: linear-gradient(135deg, #48a1b1 0%, #2515b3 100%);
+    box-shadow: 0 8px 15px rgba(0, 198, 251, 0.25);
+}
+
+/* =========================================
+   7. البار السفلي (Bottom Navigation) - خماسي العناصر
+   ========================================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 15px; /* نزلناه شوي عشان ما يطفو بزيادة */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px); /* أعرض بشعرة */
+    max-width: 500px; 
+    
+    /* التأثير الزجاجي */
+    background-color: var(--header-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px; /* السر هنا: قللنا الارتفاع */
+    border-radius: 20px; /* حواف متناسقة مع الحجم الجديد */
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+/* تنسيق الأزرار */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* قربنا النص من الأيقونة */
+    text-decoration: none;
+    color: var(--text-light);
+    padding: 6px 5px; /* صغرنا مساحة الزر الداخلية */
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    flex: 1; 
+}
+
+/* الأيقونة */
+.nav-item i {
+    font-size: 19px; /* صغرنا الأيقونة (كانت 22) */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+}
+
+/* النص */
+.nav-item span {
+    font-size: 10px; /* صغرنا الخط (كان 11) */
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+/* حالة الزر النشط */
+.nav-item.active {
+    color: var(--primary-text);
+}
+
+.nav-item.active i {
+    color: var(--primary-text);
+    transform: translateY(-3px); /* النطة صارت أخف */
+}
+
+/* النقطة الجمالية */
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px; /* صغرنا النقطة */
+    height: 4px;
+    background-color: var(--primary-text);
+    border-radius: 50%;
+    animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover:not(.active) {
+    background-color: var(--shadow-color);
+    color: var(--text-dark);
+}
+
+.nav-item:hover:not(.active) i {
+    transform: scale(1.08);
+}
+
+@keyframes popIn {
+    0% { transform: translateX(-50%) scale(0); opacity: 0; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* =========================================
+   8. المودال (Pop-up Styling)
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--surface-color); /* المودال صار يدعم الدارك مود */
+    width: 100%;
+    max-width: 500px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--primary-text);
+}
+
+.modal-close-btn {
+    background: var(--bg-color); /* زر الإغلاق */
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+[data-theme="dark"] .modal-close-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* =========================================
+   8. تكملة المودال والأزرار
+   ========================================= */
+
+/* أقسام التخصصات */
+.major-title {
+    font-size: 14px;
+    color: var(--text-light); /* تم التعديل */
+    margin-bottom: 10px;
+}
+
+.buttons-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color); /* تم التعديل */
+    margin: 20px 0;
+}
+
+/* الأزرار داخل المودال */
+.app-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* الستايل الأساسي (أزرق) */
+.app-btn.primary {
+    background-color: rgba(0, 82, 204, 0.08);
+    color: var(--primary-text);
+}
+
+.app-btn.primary:active {
+    background-color: rgba(0, 82, 204, 0.2);
+}
+
+/* تعديل للدارك مود: نخلي الخلفية أوضح شوي */
+[data-theme="dark"] .app-btn.primary {
+    background-color: rgba(96, 165, 250, 0.15);
+}
+
+/* الستايل الثانوي (رمادي) */
+.app-btn.secondary {
+    background-color: var(--bg-color); /* تم التعديل */
+    color: var(--text-dark); /* تم التعديل */
+    border: 1px solid var(--border-color); /* تم التعديل */
+}
+
+.app-btn.secondary:active {
+    filter: brightness(0.95); /* تأثير ضغط عام */
+}
+
+/* =========================================
+   9. قسم الأحداث القادمة (Events Widget)
+   ========================================= */
+
+.events-section {
+    padding: 0 20px 20px 20px;
+    margin-top: 15px;
+}
+
+.events-wrapper {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 5px 5px 25px 5px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.events-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- تصميم الكرت --- */
+#calender-events > div {
+    min-width: 240px;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
+    border-radius: 24px;
+    padding: 20px 18px;
+    box-shadow: 0 8px 20px var(--shadow-color); /* تم التعديل */
+    position: relative;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(0, 82, 204, 0.05);
+}
+
+/* حدود خفيفة في الدارك مود */
+[data-theme="dark"] #calender-events > div {
+    border: 1px solid var(--border-color);
+}
+
+#calender-events > div:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- تنسيق النصوص الداخلية --- */
+
+#calender-events h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: var(--text-dark); /* تم التعديل */
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.4;
+    height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* حاوية العداد التنازلي */
+#calender-events .event-timer {
+    background: #f0f7ff; /* أزرق ثلجي فاتح للوضع النهاري */
+    border-radius: 16px;
+    padding: 12px 10px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    direction: ltr;
+    margin: 0 auto !important;
+    width: 100%;
+    border: 1px solid #e1effe;
+}
+
+/* تعديل العداد للوضع الليلي */
+[data-theme="dark"] #calender-events .event-timer {
+    background: rgba(96, 165, 250, 0.1); /* أزرق غامق شفاف */
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
+#calender-events .event-timer > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+}
+
+/* تنسيق الأرقام */
+#calender-events .event-timer span[style*="font-size: 20px"] {
+    font-size: 22px !important;
+    color: var(--primary-text) !important; /* تم التعديل */
+    font-weight: 800 !important;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+/* تنسيق الكلمات (يوم/ساعة) */
+#calender-events .event-timer span[style*="font-size: 11px"] {
+    font-size: 10px !important;
+    color: #7b8ab5 !important;
+    font-weight: 600;
+}
+
+/* تعديل الكلمات للدارك مود */
+[data-theme="dark"] #calender-events .event-timer span[style*="font-size: 11px"] {
+    color: var(--text-light) !important;
+}
+
+/* الفواصل (:) */
+#calender-events .event-timer > span[style*="color: #ddd"] {
+    color: #cbd5e1 !important;
+    font-size: 20px !important;
+    margin-top: -12px !important;
+    font-weight: 300;
+}
+
+[data-theme="dark"] #calender-events .event-timer > span[style*="color: #ddd"] {
+    color: #4b5563 !important;
+}
+
+/* التاريخ واليوم أسفل الكرت */
+#calender-events > div > div[style*="font-size: 12px"] {
+    margin-top: auto;
+    padding-top: 15px;
+    font-size: 11px !important;
+    color: var(--text-light) !important; /* تم التعديل */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    direction: rtl;
+}
+
+/* =========================================
+   10. قسم الأخبار (News Widget)
+   ========================================= */
+
+.news-section {
+    padding: 0 20px 20px 20px;
+    margin-bottom: 20px;
+}
+
+.news-wrapper {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 5px 30px 5px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.news-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.news-card {
+    min-width: 280px;
+    height: 240px;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px var(--shadow-color); /* تم التعديل */
+    overflow: hidden;
+    scroll-snap-align: start;
+    position: relative;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+[data-theme="dark"] .news-card {
+    border: 1px solid var(--border-color);
+}
+
+.news-card:active {
+    transform: scale(0.97);
+}
+
+.news-card-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background-color: var(--border-color); /* عشان ما تطلع بيضاء ساطعة لو ما حملت */
+}
+
+.news-card-content {
+    padding: 12px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-category {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 82, 204, 0.9);
+    backdrop-filter: blur(4px);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.news-card-title {
+    font-size: 14px;
+    color: var(--text-dark); /* تم التعديل */
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-date {
+    font-size: 11px;
+    color: var(--text-light); /* تم التعديل */
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================================
+ Missing Part
+   ========================================= */
+
+/* تنسيق موحد لكل عناوين الأقسام */
+.section-header {
+    display: flex;
+    justify-content: space-between; /* يوزع المسافة: العنوان يمين والزر يسار */
+    align-items: center;
+    padding: 0 5px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.section-header h2 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-light);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الايقونة والنص */
+}
+
+.view-all {
+    font-size: 13px;
+    color: var(--primary-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-bottom: 8px;
+}
+
+.view-all:hover {
+    color: var(--primary-text);
+}
+
+/* قسم الاندية
+/* =========================================
+   تنسيقات قسم آخر الأخبار في الرئيسية (Home Feed)
+   ========================================= */
+
+.home-news-section {
+    margin: 25px 20px;
+    margin-bottom: 35px;
+    margin-top: -15px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: -15px;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.section-title i {
+    color: var(--primary-text);
+}
+
+.view-all-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-text);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.view-all-link:active {
+    opacity: 0.7;
+}
+
+/* حاوية الكروت (التمرير الأفقي) */
+.home-news-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 15px; /* مساحة للظل */
+    scroll-snap-type: x mandatory; /* يخلي الكرت يوقف بالنص لما تسحب */
+    
+    /* إخفاء شريط التمرير */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.home-news-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* كرت الخبر المصغر */
+.home-mini-card {
+    min-width: 280px;
+    height: 220px;
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    scroll-snap-align: start; /* محاذاة التمرير */
+    transition: transform 0.2s ease;
+}
+
+.home-mini-card:active {
+    transform: scale(0.97);
+}
+
+.mini-card-cover {
+    width: 100%;
+    height: 120px;
+    position: relative;
+}
+
+.mini-card-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mini-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mini-card-info {
+    padding: 12px;
+}
+
+.mini-card-title {
+    margin: 0 0 5px 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.4;
+    /* سطرين كحد أقصى للعنوان */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mini-card-date {
+    font-size: 11px;
+    color: var(--text-light); /* تم التعديل */
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+/* =========================================
+   تنسيق الشاشات الكبيرة (iPad & PC Fix)
+   ========================================= */
+
+@media (min-width: 500px) {
+    
+    html {
+        background-color: var(--bg-color); /* تم التعديل */
+        overflow-x: hidden;
+    }
+
+    body {
+        width: 480px;
+        min-height: 100vh;
+        margin: 0 auto;
+        background-color: var(--surface-color); /* تم التعديل: الجوال يصير لونه زي الثيم */
+        position: relative;
+        box-shadow: 0 0 40px rgba(0,0,0,0.15);
+        border-right: 1px solid var(--border-color); /* تم التعديل */
+        border-left: 1px solid var(--border-color); /* تم التعديل */
+    }
+
+    .top-header, 
+    .bottom-nav, 
+    .news-filter-container, 
+    .tabs-container, 
+    .article-header {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 480px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+        background-color: var(--surface-color); /* ضمان الخلفية */
+    }
+
+    /* إصلاح خاص للهيدر الشفاف في الـ PC */
+    .top-header {
+        background-color: var(--header-bg) !important;
+    }
+
+    .top-header { top: 0; z-index: 1000; }
+    .bottom-nav { bottom: 0; z-index: 1000; }
+    
+    #sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 280px !important;
+        height: 100% !important;
+        z-index: 9999 !important;
+        left: 50% !important;
+        margin-left: -240px !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        right: auto !important;
+        border-radius: 0 !important;
+        overflow-y: auto !important;
+        background-color: var(--surface-color) !important; /* تم التعديل */
+    }
+
+    #sidebar.active {
+        transform: translateX(0) !important;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.15) !important;
+    }
+
+    #sidebarOverlay {
+        position: fixed !important;
+        top: 0;
+        bottom: 0;
+        width: 480px !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        z-index: 9998 !important;
+    }
+}
+
+/* =========================================
+   تصميم نافذة التثبيت (PWA Install Popup)
+   ========================================= */
+.pwa-popup {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px 20px 0 0;
+    z-index: 99999;
+    padding: 20px;
+    transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid var(--border-color); /* إضافة حد علوي خفيف */
+}
+
+.pwa-popup.show {
+    bottom: 0;
+}
+
+.pwa-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pwa-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.pwa-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.pwa-text h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    color: var(--text-dark); /* تم التعديل */
+}
+
+.pwa-text p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text-light); /* تم التعديل */
+}
+
+.pwa-close {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-light); /* تم التعديل */
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* تعليمات الآيفون */
+.install-instructions {
+    background: var(--bg-color); /* تم التعديل */
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text-dark); /* تم التعديل */
+}
+
+.install-instructions ol {
+    padding-right: 20px;
+    margin: 10px 0 0;
+}
+
+.install-instructions li {
+    margin-bottom: 5px;
+}
+
+/* زر التثبيت (أندرويد) */
+.install-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+/* =========================================
+   تنسيق زر الوضع الليلي (Toggle Switch)
+   ========================================= */
+
+/* الحاوية العامة للسطر */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* يوزع المسافة بينهم */
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+/* النص والأيقونة */
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* شكل السويتش (الإطار) */
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 44px;
+}
+
+.theme-switch input {
+    display: none; /* إخفاء مربع الاختيار العادي */
+}
+
+/* شكل الدائرة والخلفية */
+.slider {
+    background-color: #a0a0a0;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* الدائرة البيضاء المتحركة */
+.slider:before {
+    background-color: #fff;
+    bottom: 3px;
+    content: "";
+    height: 18px;
+    left: 3px; /* مكانها وهي طافية */
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* حالة التشغيل (أزرق) */
+input:checked + .slider {
+    background-color: var(--primary-text);
+}
+
+/* حركة الدائرة لليسار عند التشغيل */
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* تحسين الهوفر في الدارك مود */
+[data-theme="dark"] .slider {
+    background-color: #333; /* لون السويتش وهو طافي في الليلي */
+}
+
+/* =========================================
+   شاشة التحميل (Preloader) - أنيقة وتدعم الدارك مود
+   ========================================= */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--surface-color); /* 👈 ياخذ لون الخلفية حسب المود */
+    z-index: 999999; /* فوق كل شي حرفياً */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s; /* حركة اختفاء ناعمة */
+}
+
+/* الحاوية اللي فيها الشعار والسبينر */
+.loader-content {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* الشعار داخل الشاشة */
+.loader-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    animation: pulseLogo 2s infinite ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+/* إذا كنت مفعل كود قلب ألوان الشعار للدارك مود، طبقه هنا بعد */
+[data-theme="dark"] .loader-logo {
+    filter: brightness(0) invert(1) opacity(0.9);
+}
+
+/* حلقة التحميل الدائرة */
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-color); /* لون التحميل أزرق */
+    border-radius: 50%;
+    animation: spinRing 1s linear infinite;
+    z-index: 1;
+}
+
+/* كلاس الاختفاء (يضاف بالجافاسكربت) */
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- الحركات (Animations) --- */
+
+/* حركة النبض للشعار */
+@keyframes pulseLogo {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* حركة دوران الحلقة */
+@keyframes spinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* خلفية الشاشة (الظلام) */
+.popup-overlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* لون أسود شفاف */
+    backdrop-filter: blur(4px); /* تغبيش الخلفية يعطي فخامة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* ظهور النافذة */
+.popup-overlay1.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* صندوق التنبيه نفسه */
+.popup-box1 {
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* أنميشن مطاطي حلو */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.popup-overlay1.active .popup-box1 {
+    transform: scale(1);
+}
+
+/* الأيقونة */
+.popup-icon1 {
+    width: 60px;
+    height: 60px;
+    background: #dee5fa; /* خلفية زرقاء فاتحة */
+    color: #1309cf; /* لون الأيقونة */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 15px;
+}
+
+/* النصوص */
+.popup-title1 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.popup-text1 {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* الأزرار */
+.popup-buttons1 {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.popup-buttons1 .btn-primary {
+    background: linear-gradient(45deg, #0a0b4d 0%, #007bc4 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-weight: bold;
+    flex: 1;
+    cursor: pointer;
+}
+
+.popup-buttons1 .btn-secondary {
+    background: #f3f4f6;
+    color: #4b5563;
+    font-family: 'tajawal';
+    border: none;
+    padding: 10px 20px;
+    border-radius: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+}
+
+.popup-buttons1 .btn-secondary:hover {
+    background: #e5e7eb;
+}
+
