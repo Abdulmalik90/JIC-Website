@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>صمّم جدولك | مَدخل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="schedule.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="../index.html" class="header__logo" aria-label="مَدخل - الرئيسية">
+  <!-- شعار اللايت مود -->
+  <img src="../Images/logo.png" class="logo-light" alt="شعار مدخل">
+  
+  <!-- شعار الدارك مود -->
+  <img src="../Images/iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
+</a>
+    <nav class="header__nav">
+      <a href="https://juportal.online"                                           class="nav-link">الرئيسية</a>
+      <a href="https://juportal.online/toolsPage/tools.html"                     class="nav-link">الأدوات</a>
+      <a href="https://juportal.online/academicRegulationsPage/regulations.html"  class="nav-link">المكتبة</a>
+      <a href="https://juportal.online/toolsPage/tools.html"                     class="nav-cta">حاسبة المعدل</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
+        <span class="theme-toggle__icon" id="themeIcon">☀️</span>
+      </button>
+    </nav>
+    <button class="header__burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="https://juportal.online"                                            class="mobile-nav__link">🏠 الرئيسية</a>
+    <a href="https://juportal.online/toolsPage/tools.html"                      class="mobile-nav__link">📊 الأدوات</a>
+    <a href="https://juportal.online/academicRegulationsPage/regulations.html"   class="mobile-nav__link">📋 المكتبة</a>
+    <button class="mobile-nav__theme" id="themeToggleMobile">
+      <span id="themeIconMobile">☀️</span>
+      <span id="themeLabel">التبديل للوضع النهاري</span>
+    </button>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="grid-bg"></div>
+  </div>
+  <div class="page-hero__inner">
+    <div class="hero-badge"><span class="badge-dot"></span> أداة الجدول الدراسي</div>
+    <h1 class="page-hero__title">صمّـم <span>جدولك</span></h1>
+    <p class="page-hero__sub">أضف موادك يدوياً أو الصق نص جدولك من الإيدوقيت — وشاهد جدولك الأسبوعي بالوقت الحقيقي</p>
+  </div>
+</section>
+
+<main class="schedule-main">
+  <div class="container">
+
+    <!-- ===== STEP TABS ===== -->
+    <div class="step-tabs" id="stepTabs">
+      <button class="step-tab active" data-step="input">
+        <span class="step-tab__num">1</span>
+        <span class="step-tab__label">إدخال المواد</span>
+      </button>
+      <div class="step-tab__connector"></div>
+      <button class="step-tab" data-step="view" id="viewTab">
+        <span class="step-tab__num">2</span>
+        <span class="step-tab__label">الجدول الأسبوعي</span>
+      </button>
+    </div>
+
+    <!-- ===== STEP 1: INPUT ===== -->
+    <div class="step-panel active" id="step-input">
+
+      <!-- Period reference card -->
+      <div class="period-ref-card reveal">
+        <div class="period-ref-card__header">
+          <span>🕐</span>
+          <h3>جدول الفترات الرسمي</h3>
+          <span class="period-ref-card__badge">مرجع سريع</span>
+        </div>
+        <div class="period-ref-grid" id="periodRefGrid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Paste import -->
+      <div class="import-card reveal">
+        <div class="import-card__header">
+          <span class="import-card__icon">📋</span>
+          <div>
+            <h3 class="import-card__title">استيراد من نص الجدول</h3>
+            <p class="import-card__sub">الصق النص المنسوخ من صفحة جدولك في الإيدوقيت وسنحاول قراءته تلقائياً</p>
+          </div>
+        </div>
+        <textarea id="pasteInput" class="paste-input"
+          placeholder="الصق هنا النص المنسوخ من الإيدوقيت أو جدول PDF...
+مثال:
+MME 238  Hydraulics and Pneumatics  2  1  Theoretical  Mon: 2
+MME 238  Hydraulics and Pneumatics  Practical  Wed: 3,2
+CIT 124  Soft Skills  3  3  Theoretical  Thu: 5,4"></textarea>
+        <div class="import-actions">
+          <button class="btn btn--primary" id="parseBtn">🔍 استخراج المواد تلقائياً</button>
+          <button class="btn btn--ghost" id="clearPasteBtn">مسح</button>
+        </div>
+        <p class="import-note">⚠️ الاستخراج التلقائي تجريبي — راجع النتيجة وعدّلها إذا لزم</p>
+      </div>
+
+      <!-- Manual courses -->
+      <div class="courses-builder reveal">
+        <div class="courses-builder__header">
+          <h3 class="courses-builder__title">📚 المواد المضافة</h3>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="btn btn--ghost btn--sm" id="addCourseBtn">＋ إضافة مادة</button>
+            <button class="btn btn--danger btn--sm" id="clearAllBtn">🗑 مسح الكل</button>
+          </div>
+        </div>
+
+        <div class="courses-list" id="coursesList">
+          <!-- course rows injected here -->
+        </div>
+
+        <div class="empty-courses" id="emptyCourses">
+          <span>📭</span>
+          <p>لم تُضف أي مادة بعد — اضغط "إضافة مادة" أو الصق جدولك من الإيدوقيت</p>
+        </div>
+      </div>
+
+      <div class="step-actions reveal">
+        <button class="btn btn--primary btn--lg" id="buildScheduleBtn">
+          عرض الجدول الأسبوعي ←
+        </button>
+        <p class="step-actions__hint" id="courseCount">0 مادة مضافة</p>
+      </div>
+    </div>
+
+    <!-- ===== STEP 2: WEEKLY VIEW ===== -->
+    <div class="step-panel" id="step-view">
+
+      <!-- Print-only header (hidden on screen, shown on print) -->
+      <div class="print-header" id="printHeader">
+
+          <!-- LOGO: replace the src below with your actual logo path -->
+          <!-- Option A: use an <img> tag pointing to your logo file -->
+          <img src="../Images/iconic logo white full@4x.png" alt="مَدخل" class="print-header_logo-img"/>
+          <!-- Option B: text logo (used by default until you add an image) -->
+
+        <div class="print-header__info">
+          <p class="print-header__title" id="printTitle">الجدول الدراسي الأسبوعي</p>
+          <p class="print-header__meta" id="printMeta"></p>
+        </div>
+        <div class="print-header__stamp">
+          <div class="print-header__stamp-inner">
+            <span id="printCoursesCount">—</span>
+            <small>مادة</small>
+          </div>
+          <div class="print-header__stamp-inner">
+            <span id="printCrCount">—</span>
+            <small>ساعة</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule toolbar -->
+      <div class="sched-toolbar reveal">
+        <div class="sched-toolbar__info">
+          <span id="schedCoursesCount" class="sched-stat">0 مادة</span>
+          <span id="schedTotalHrs" class="sched-stat">0 ساعة</span>
+          <span id="schedTotalSlots" class="sched-stat">0 حصة أسبوعياً</span>
+        </div>
+        <div class="sched-toolbar__actions">
+          <button class="btn btn--primary btn--sm" id="printBtn">🖨️ طباعة / تخصيص</button>
+          <button class="btn btn--ghost btn--sm" id="backToInputBtn">← تعديل المواد</button>
+        </div>
+      </div>
+
+      <!-- Print Customization Panel -->
+      <div class="print-panel" id="printPanel" hidden>
+        <div class="print-panel__header">
+          <span class="print-panel__icon">🖨️</span>
+          <h3 class="print-panel__title">تخصيص النسخة المطبوعة</h3>
+          <button class="print-panel__close" id="printPanelClose" aria-label="إغلاق">✕</button>
+        </div>
+
+        <div class="print-panel__body">
+
+          <!-- Theme -->
+          <div class="print-opt-group">
+            <p class="print-opt-label">🎨 ثيم الطباعة</p>
+            <div class="print-theme-btns">
+              <button class="print-theme-btn active" data-print-theme="light">
+                <span class="print-theme-btn__preview print-theme-btn__preview--light"></span>
+                <span>أزرق ملكي</span>
+                <span class="print-theme-btn__check">✓</span>
+              </button>
+              <button class="print-theme-btn" data-print-theme="dark">
+                <span class="print-theme-btn__preview print-theme-btn__preview--dark"></span>
+                <span>ليلي أنيق</span>
+                <span class="print-theme-btn__check">✓</span>
+              </button>
+              <button class="print-theme-btn" data-print-theme="purple">
+                <span class="print-theme-btn__preview print-theme-btn__preview--purple"></span>
+                <span>بنفسجي بناتي</span>
+                <span class="print-theme-btn__check">✓</span>
+              </button>
+              <button class="print-theme-btn" data-print-theme="minimal">
+                <span class="print-theme-btn__preview print-theme-btn__preview--minimal"></span>
+                <span>زمردي هادئ</span>
+                <span class="print-theme-btn__check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Font size -->
+          <div class="print-opt-group">
+            <p class="print-opt-label">🔤 حجم الخط</p>
+            <div class="print-size-btns">
+              <button class="print-size-btn" data-font-size="small">صغير</button>
+              <button class="print-size-btn active" data-font-size="medium">متوسط</button>
+              <button class="print-size-btn" data-font-size="large">كبير</button>
+            </div>
+          </div>
+
+          <!-- Show/hide elements -->
+          <div class="print-opt-group">
+            <p class="print-opt-label">👁️ عناصر الطباعة</p>
+            <div class="print-toggles">
+              <label class="print-toggle">
+                <input type="checkbox" id="ptShowCode"    checked/>
+                <span class="print-toggle__track"></span>
+                <span class="print-toggle__label">كود المادة</span>
+              </label>
+              <label class="print-toggle">
+                <input type="checkbox" id="ptShowRoom"    checked/>
+                <span class="print-toggle__track"></span>
+                <span class="print-toggle__label">رقم القاعة</span>
+              </label>
+              <label class="print-toggle">
+                <input type="checkbox" id="ptShowLegend"  checked/>
+                <span class="print-toggle__track"></span>
+                <span class="print-toggle__label">جدول المواد (legend)</span>
+              </label>
+              <label class="print-toggle">
+                <input type="checkbox" id="ptShowTime"    checked/>
+                <span class="print-toggle__track"></span>
+                <span class="print-toggle__label">أوقات الفترات</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Custom title -->
+          <div class="print-opt-group">
+            <p class="print-opt-label">✏️ عنوان مخصص (اختياري)</p>
+            <input type="text" class="print-custom-title" id="ptCustomTitle"
+              placeholder="مثال: جدول الفصل الثاني 1447هـ — رائد الزهراني"/>
+          </div>
+
+        </div>
+
+        <div class="print-panel__footer">
+          <div class="print-preview-badge" id="printPreviewBadge">
+            <span class="print-preview-badge__dot"></span>
+            معاينة: <strong id="printThemeLabel">داكن</strong> · <strong id="printSizeLabel">متوسط</strong>
+          </div>
+          <div style="display:flex;gap:.6rem">
+            <button class="btn btn--ghost btn--sm" id="printPanelClose2">إلغاء</button>
+            <button class="btn btn--primary" id="doPrintBtn">🖨️ طباعة الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- The weekly grid -->
+      <div class="sched-wrap reveal">
+        <div class="sched-grid" id="schedGrid">
+          <!-- built by JS -->
+        </div>
+      </div>
+
+      <!-- Day cards (mobile view) -->
+      <div class="day-cards" id="dayCards">
+        <!-- built by JS -->
+      </div>
+
+      <!-- Course legend -->
+      <div class="sched-legend reveal" id="schedLegend">
+        <!-- built by JS -->
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- ===== COURSE ROW TEMPLATE (hidden) ===== -->
+<template id="courseRowTemplate">
+  <div class="course-row" data-id="">
+    <div class="course-row__color-dot" style="background:var(--c)"></div>
+
+    <div class="course-row__fields">
+      <!-- Row 1: code + name + credit hours -->
+      <div class="course-row__line">
+        <input type="text" class="ci ci--code" placeholder="كود المادة (مثال: MME 238)" data-field="code"/>
+        <input type="text" class="ci ci--name" placeholder="اسم المادة" data-field="name"/>
+        <div class="ci-group">
+          <label>CR</label>
+          <input type="number" class="ci ci--num" placeholder="3" min="1" max="9" data-field="cr"/>
+        </div>
+      </div>
+
+      <!-- Sessions: multiple sessions per course -->
+      <div class="course-sessions" data-sessions-wrap>
+        <!-- session rows injected here -->
+      </div>
+      <button class="btn btn--ghost btn--xs add-session-btn" type="button">＋ إضافة حصة</button>
+    </div>
+
+    <button class="course-del-btn" aria-label="حذف المادة">✕</button>
+  </div>
+</template>
+
+<template id="sessionRowTemplate">
+  <div class="session-row" data-session-id="">
+    <select class="ci ci--type" data-field="type">
+      <option value="Theoretical">نظري</option>
+      <option value="Practical">عملي</option>
+    </select>
+    <select class="ci ci--day" data-field="day">
+      <option value="">اليوم</option>
+      <option value="Sun">الأحد</option>
+      <option value="Mon">الاثنين</option>
+      <option value="Tue">الثلاثاء</option>
+      <option value="Wed">الأربعاء</option>
+      <option value="Thu">الخميس</option>
+    </select>
+    <div class="ci-group">
+      <label>من</label>
+      <input type="number" class="ci ci--period" placeholder="1" min="1" max="15" data-field="periodStart"/>
+    </div>
+    <div class="ci-group">
+      <label>إلى</label>
+      <input type="number" class="ci ci--period" placeholder="2" min="1" max="15" data-field="periodEnd"/>
+    </div>
+    <input type="text" class="ci ci--room" placeholder="القاعة (اختياري)" data-field="room"/>
+    <button class="session-del-btn" type="button" aria-label="حذف الحصة">✕</button>
+  </div>
+</template>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer__inner container">
+    <div class="footer__brand">
+      <span class="logo-mark__text" style="font-size:1rem">مَدخل</span>
+    </div>
+    <p class="footer__copy">© 2026 مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
+    <a href="https://juportal.online" class="footer__link">juportal.online</a>
+  </div>
+</footer>
+
+<script src="schedule.js"></script>
+</body>
+</html>
