@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مـدخل كلية الجبيل الصناعيـة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="jicStyle.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+<!-- Logo -->
+<a href="../index.html" class="header__logo" aria-label="مَدخل - الرئيسية">
+  <!-- شعار اللايت مود -->
+  <img src="logo.png" class="logo-light" alt="شعار مدخل">
+  
+  <!-- شعار الدارك مود -->
+  <img src="iconic logo white full@4x.png" class="logo-dark" alt="شعار مدخل">
+</a>
+
+      <!-- Desktop Nav -->
+      <nav class="header__nav" aria-label="القائمة الرئيسية">
+        <a href="#hero"          class="nav-link active">الرئيسية</a>
+        <a href="#calculator"    class="nav-link">موزونتك</a>
+        <a href="#about-madkhal" class="nav-link">عن المبادرة</a>
+        <a href="../index.html" class="nav-cta" target="_blank" rel="noopener">زيـارة المنصة</a>
+        <!-- Theme Toggle (desktop) -->
+        <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر">
+          <span class="theme-toggle__icon" id="themeIcon">☀️</span>
+        </button>
+      </nav>
+
+      <!-- Hamburger -->
+      <button class="header__burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="القائمة المتنقلة">
+      <a href="#hero"          class="mobile-nav__link">الرئيسية</a>
+      <a href="#calculator"    class="mobile-nav__link">موزونتك</a>
+      <a href="#about-madkhal" class="mobile-nav__link">عن المبادرة</a>
+      <a href="../index.html" class="mobile-nav__link mobile-nav__cta" target="_blank" rel="noopener">زيـارة المنصة ←</a>
+      <!-- Theme Toggle (mobile) -->
+      <button class="mobile-nav__theme" id="themeToggleMobile" aria-label="تبديل المظهر">
+        <span id="themeIconMobile">☀️</span>
+        <span id="themeLabel">التبديل للوضع النهاري</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO (CENTERED) ===== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="container hero__inner">
+
+        <!-- Content block -->
+        <div class="hero__content">
+          <div class="hero__badge reveal">
+            <span class="badge__dot"></span>
+            مدينـة الجبيـل الصناعيـة
+          </div>
+
+          <h1 class="hero__title reveal">
+            <span class="title__line">كلية</span>
+            <span class="title__line title__line--accent">الجبيل</span>
+            <span class="title__line">الصناعية</span>
+          </h1>
+
+          <p class="hero__lead reveal">
+            بيئة أكاديمية هندسية متكاملة في قلب الجبيل الصناعية — تُعدّ الخريجين لسوق العمل التقني في المملكة العربية السعودية.
+          </p>
+
+          <p class="hero__body reveal">
+            كلية الجبيل الصناعية (JIC) مؤسسة تعليمية حكومية تتبع المؤسسة العامة للتدريب التقني والمهني، تأسست لخدمة الحاجة المتنامية لكوادر تقنية وهندسية مؤهلة في المنطقة الشرقية. تتميز الكلية ببرامجها التطبيقية في تخصصات هندسة الميكانيكا والكهرباء وتقنية المعلومات وغيرها، إلى جانب بنية تحتية حديثة وورش تدريبية مجهزة على أعلى مستوى.
+          </p>
+
+          <div class="hero__actions reveal">
+            <a href="#calculator" class="btn btn--primary">
+              احسب موزونتك <span class="btn__arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="https://t.me/newsjuc" class="btn btn--ghost">قنـاة اخبـار JIC</a>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="hero__stats reveal">
+          <div class="stats-card">
+            <div class="stats-card__item">
+              <div class="stats-card__num-wrap">
+                <span class="stats-card__number" data-target="20">0</span>
+                <span class="stats-card__suffix">+</span>
+              </div>
+              <p class="stats-card__label">تخصصًا هندسيًا وتقنيًا</p>
+            </div>
+            <div class="stats-card__divider"></div>
+            <div class="stats-card__item">
+              <div class="stats-card__num-wrap">
+                <span class="stats-card__number" data-target="30">0</span>
+                <span class="stats-card__suffix">+</span>
+              </div>
+              <p class="stats-card__label">عامًا من التميز الأكاديمي</p>
+            </div>
+            <div class="stats-card__divider"></div>
+            <div class="stats-card__item">
+              <div class="stats-card__num-wrap">
+                <span class="stats-card__number" data-target="20">0</span>
+                <span class="stats-card__suffix">+</span>
+              </div>
+              <p class="stats-card__label">اعتماد اكاديمي محلي و دولي</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator__line"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAMS STRIP ===== -->
+    <section class="programs-strip" aria-label="أبرز التخصصات">
+      <div class="programs-strip__track">
+        <div class="programs-strip__inner">
+          <span>⚙️ هندسة الميكانيكا</span>
+          <span>⚡ هندسة الكهرباء</span>
+          <span>💻 تقنية المعلومات</span>
+          <span>🔧 صيانة ميكانيكية</span>
+          <span>🏗️ هندسة المدني</span>
+          <span>🧪 الكيمياء الصناعية</span>
+          <span>⚙️ هندسة الميكانيكا</span>
+          <span>⚡ هندسة الكهرباء</span>
+          <span>💻 علوم الحاسب</span>
+          <span>🔧 الالآت الدقيقة والتحكم</span>
+          <span>🏗️ هندسة التصنيع</span>
+          <span>🧪 هندسة الكيمياء</span>
+          <span>📚 ادارة الاعمال</span>
+        </div>
+      </div>
+    </section>
+
+<!-- ===== CALCULATOR ===== -->
+    <section class="calculator-section" id="calculator">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__eyebrow">احدى أدوات مبادرتنا</p>
+          <h2 class="section-header__title">احسب موزونتك لـ JIC</h2>
+          <p class="section-header__sub">
+            أدخل درجاتك لمعرفة درجتك الموزونة وتقييم فرصتك في القبول بكلية الجبيل الصناعية بناء على الاحصائيات الطلابية اخر سنتين.
+            <br><br>
+            <a href="https://drive.google.com/file/d/1hO1zv3MLpfo0lZrcTYeowz179mlhs20p/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: underline; font-weight: bold;">
+              📄 للاطلاع على ملف إحصائيات نسب القبول للعام الماضي 1447 (اضغط هنا)
+            </a>
+          </p>
+        </div>
+
+        <div class="calc-card reveal">
+          <div class="calc-formula">
+            <div class="formula-chip">
+              <span class="formula-chip__label">الثانوية</span>
+              <span class="formula-chip__weight">20%</span>
+            </div>
+            <span class="formula-op">+</span>
+            <div class="formula-chip">
+              <span class="formula-chip__label">القدرات</span>
+              <span class="formula-chip__weight">30%</span>
+            </div>
+            <span class="formula-op">+</span>
+            <div class="formula-chip">
+              <span class="formula-chip__label">التحصيلي</span>
+              <span class="formula-chip__weight">50%</span>
+            </div>
+          </div>
+
+          <div class="calc-form" id="calcForm">
+            <div class="field-group">
+              <label class="field-label" for="gpa">
+                <span class="field-label__icon">📘</span>
+                المعدل في الثانوية (من 100)
+              </label>
+              <div class="field-input-wrap">
+                <input type="number" id="gpa" class="field-input" placeholder="مثال: 92.5"
+                  min="0" max="100" step="0.01" inputmode="decimal" aria-describedby="gpa-hint" />
+                <span class="field-suffix">%</span>
+              </div>
+              <span class="field-hint" id="gpa-hint">أدخل المعدل كنسبة مئوية</span>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="qudrat">
+                <span class="field-label__icon">🧠</span>
+                اختبار القدرات (من 100)
+              </label>
+              <div class="field-input-wrap">
+                <input type="number" id="qudrat" class="field-input" placeholder="مثال: 78"
+                  min="0" max="100" step="0.01" inputmode="decimal" aria-describedby="qudrat-hint" />
+                <span class="field-suffix">%</span>
+              </div>
+              <span class="field-hint" id="qudrat-hint">نتيجة اختبار القدرات العامة</span>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="tahsili">
+                <span class="field-label__icon">📝</span>
+                الاختبار التحصيلي (من 100)
+              </label>
+              <div class="field-input-wrap">
+                <input type="number" id="tahsili" class="field-input" placeholder="مثال: 85"
+                  min="0" max="100" step="0.01" inputmode="decimal" aria-describedby="tahsili-hint" />
+                <span class="field-suffix">%</span>
+              </div>
+              <span class="field-hint" id="tahsili-hint">نتيجة الاختبار التحصيلي</span>
+            </div>
+            <button type="button" class="btn btn--calc" id="calcBtn">احسب الآن</button>
+          </div>
+
+          <div class="calc-result" id="calcResult" aria-live="polite" hidden>
+            <div class="result-ring" id="resultRing">
+              <svg class="result-ring__svg" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="result-ring__track" cx="60" cy="60" r="50"/>
+                <circle class="result-ring__fill"  cx="60" cy="60" r="50" id="resultArc"/>
+              </svg>
+              <div class="result-ring__inner">
+                <span class="result-ring__score" id="resultScore">—</span>
+                <span class="result-ring__pct">%</span>
+              </div>
+            </div>
+            <div class="result-meta">
+              <p class="result-meta__label">درجتك الموزونة</p>
+              <div class="result-meta__badge" id="resultBadge"></div>
+              <p class="result-meta__note"   id="resultNote"></p>
+              <button type="button" class="btn btn--ghost btn--sm" id="resetBtn">إعادة الحساب</button>
+            </div>
+          </div>
+
+          <p class="calc-error" id="calcError" role="alert" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT MADKHAL ===== -->
+    <section class="about-madkhal" id="about-madkhal">
+      <div class="container">
+        <div class="madkhal-card reveal">
+          <div class="madkhal-card__deco" aria-hidden="true">
+            <div class="deco-circle deco-circle--1"></div>
+            <div class="deco-circle deco-circle--2"></div>
+          </div>
+          <div class="madkhal-card__content">
+            <p class="madkhal-card__eyebrow">عن المبادرة</p>
+            <h2 class="madkhal-card__title">مَدخلك إلى الحياة الجامعية</h2>
+            <p class="madkhal-card__body">
+              <strong>مَدخل</strong> مبادرة طلابية مستقلة أسسها طلاب من كليات الجبيل ويُنبع الصناعية، بهدف تقديم منصة رقمية متكاملة تُيسّر على الطالب رحلته الأكاديمية من أول يوم حتى التخرج. من الادوات االحسابية والملفات المهمة وخطط التخصصات، إلى مجتمع طلابي داعم — كل ما يحتاجه الطالب في مكان واحد.
+            </p>
+            <a href="../index.html" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+              اكتشف المنصة الآن <span class="btn__arrow" aria-hidden="true">←</span>
+            </a>
+          </div>
+          <div class="madkhal-card__visual" aria-hidden="true">
+            <div class="visual-grid">
+              <div class="visual-grid__cell visual-grid__cell--a">📊</div>
+              <div class="visual-grid__cell visual-grid__cell--b">🎓</div>
+              <div class="visual-grid__cell visual-grid__cell--c">🛠️</div>
+              <div class="visual-grid__cell visual-grid__cell--d">💬</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo-mark__text">مَدخل</span>
+      </div>
+      <p class="footer__copy">© 2026 مَدخل — مبادرة طلابية مستقلة. جميع الحقوق محفوظة.</p>
+      <a href="../index.html" class="footer__link" target="_blank" rel="noopener">juportal.online</a>
+    </div>
+  </footer>
+
+  <script src="jic.js"></script>
+</body>
+</html>
