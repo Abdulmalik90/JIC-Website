@@ -53,7 +53,7 @@ function renderNews() {
     // حدث الضغط: يحفظ الآي دي ويحولك للخبر
     el.onclick = () => {
         localStorage.setItem('currentArticleId', article.id);
-        window.location.href = './newsPage/news.html';
+        window.location.href = './Updates/news.html';
     };
     
     const dateObj = new Date(article.date);
