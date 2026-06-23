@@ -323,7 +323,7 @@ document.getElementById('gpaResetBtn').addEventListener('click', () => {
 document.getElementById('calcAbsBtn').addEventListener('click', () => {
   clearErr('absError');
   const lec   = parseInt(document.getElementById('absLec').value);
-  const weeks = parseInt(document.getElementById('absWeeks').value) || 15;
+  const weeks = parseInt(document.getElementById('absWeeks').value) || 7;
   const curr  = parseInt(document.getElementById('absCurrent').value);
 
   if (isNaN(lec) || lec < 1) { showErr('absError', 'أدخل عدد المحاضرات أسبوعياً'); return; }
