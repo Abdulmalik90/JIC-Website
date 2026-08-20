@@ -74,22 +74,25 @@
         <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
     </aside>
 
-    <header class="hub-header">
+<header class="floating-header">
+    <div class="header-content">
         <div class="header-right">
             <img src="./Images/logo.webp" alt="شعار" class="hub-logo">
-            <h1 class="hub-title">الرئيسية</h1> 
+            <h1 class="hub-title">الصفحة الرئيسية</h1> 
         </div>
 
-        <div class="header-left">
-            <button class="icon-btn" onclick="toggleNotif()">
+        <div class="header-actions">
+            <button class="action-btn theme-btn" id="theme-toggle-btn">
+                <i class="fi fi-rr-moon" id="theme-icon"></i>
+            </button>
+            <div class="header-divider"></div>
+            <button class="action-btn notif-btn" onclick="toggleNotif()">
                 <i class="fi fi-rr-bell"></i>
                 <span class="notif-dot"></span> 
             </button>
-            <div class="menu-btn icon-btn">
-                <i class="fi fi-rr-menu-burger"></i>
-            </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="notif-panel" id="notifPanel">
         <div class="notif-header">
@@ -102,86 +105,95 @@
 
 
 
-    <main class="main-content">
+   <main class="main-content">
 
-        <div id="pwa-install-popup" class="pwa-popup">
-    <div class="pwa-content">
-        <div class="pwa-header">
-            <img src="./Images/logo.webp" alt="مدخل" class="pwa-logo">
-            <div class="pwa-text">
-                <h3>تثبيت تطبيق مدخل</h3>
-                <p>بثواني يصير مدخل بتطبيق خفيف جداً في جهازك 🚀</p>
-            </div>
-            <button id="close-pwa-popup" class="pwa-close">✕</button>
-        </div>
-        
-        <div id="ios-instructions" class="install-instructions" style="display: none;">
-            <p>للتثبيت على الآيفون:</p>
-            <ol>
-                <li>اضغط على زر المشاركة <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" style="width:15px; vertical-align:middle;"> في الأسفل.</li>
-                <li>اختر <strong>"إضافة إلى الصفحة الرئيسية"</strong> <img src="https://img.icons8.com/ios/50/000000/plus-math.png" style="width:15px; vertical-align:middle;">.</li>
-            </ol>
-        </div>
-
-        <button id="pwa-install-btn" class="install-btn" style="display: none;">تثبيت التطبيق الآن</button>
-    </div>
-</div>
-
-        
-        <section class="welcome-section">
-            <h2 class="glow-text">مبـادرة مدخـل الطلابيـة</h2>
-            <p class="sub-text">شيكت على تحديث التطبيق الاخير 👀</p>
-        </section>
-
-        <section class="shortcuts-section">
-            <h3 class="section-title">الوصول السريع🫡</h3>
-            
-            <div class="shortcuts-grid">
-    <a href="https://edugate.rcjy.edu.sa/" target="_blank" class="shortcut-card blue-gradient1">
-        <i class="fi fi-rr-globe shortcut-icon"></i>
-        <span class="shortcut-text">بوابة<br>الايدوقيـت</span>
-    </a>
-
-    <a href="https://jic.blackboard.com/" target="_blank" class="shortcut-card purple-gradient">
-        <i class="fi fi-rr-e-learning shortcut-icon"></i> <span class="shortcut-text">منصة<br>البلاك بورد</span>
-    </a>
-
-    <div id="btn-majors" class="shortcut-card orange-gradient" style="cursor: pointer;">
-    <i class="fi fi-rr-graduation-cap shortcut-icon"></i>
-    <span class="shortcut-text">خطط<br>التخصصات</span>
-</div>
-
-    <a href="../Documents/WeekCalender2026.pdf" target="_blank" class="shortcut-card green-gradient">
-        <i class="fi fi-rr-document shortcut-icon"></i>
-        <span class="shortcut-text">توزيـــع<br>الاسابيع</span>
-    </a>
-            </div>
-        </section>
-
-        <section class="events-section">
-    <h3 class="section-title">الأحداث القادمة 📅</h3>
-    
-    <div id="calender-events" class="events-wrapper">
-        </div>
-
-        </section>
-
-        <section class="news-section">
-    <div style="display: flex; justify-content: space-between; align-items: end; padding: 0 5px;">
-        <h3 class="section-title">آخر الأخبار 📰</h3>
-        <a href="./Pages/news.html" class="view-all">عرض الكل</a>
-    </div>
-
-    <div id="news" class="news-wrapper">
-            </div>
-        </section>
-
-        <section class="home-news-section">
-            <div class="section-header">
-                <h3 class="section-title">اخبـار الاندية الطلابية 📰</h3>
-                <a href="./Pages/clubs.html" class="view-all-link">عرض الكل</a>
+<!-- Smart App Banner (تصميم جديد لتثبيت التطبيق) -->
+        <div id="pwa-install-banner" class="smart-app-banner">
+            <div class="banner-content">
+                <button id="close-pwa-banner" class="banner-close"><i class="fi fi-rr-cross-small"></i></button>
+                <img src="./Images/logo.webp" alt="مدخل" class="banner-logo">
+                <div class="banner-text">
+                    <h4>تطبيق مدخل</h4>
+                    <p>تجربة أسرع وأفضل على جهازك</p>
+                </div>
             </div>
             
+            <button id="pwa-install-btn" class="banner-install-btn" style="display: none;">تثبيت</button>
+            
+            <div id="ios-instructions" class="banner-ios-instruction" style="display: none;">
+                <p>اضغط <img src="https://img.icons8.com/ios/50/000000/upload--v1.png"> ثم <strong>إضافة للشاشة</strong> <img src="https://img.icons8.com/ios/50/000000/plus-math.png"></p>
+            </div>
+        </div>
+        
+        <!-- قسم الترحيب الجديد (تصميم جانبي نظيف بدل التوسيط) -->
+        <section class="new-welcome-section">
+            <div class="welcome-text">
+                <p class="welcome-subtitle">العام الدراسي الجديد 🚀</p>
+                <h2 class="welcome-title">منصة <span>مدخـل</span></h2>
+            </div>
+        </section>
+
+        <!-- قسم الوصول السريع (نظام Bento Grid الجديد) -->
+        <section class="new-shortcuts-section">
+            <div class="bento-grid">
+                <!-- كرت الايدوقيت (كبير) -->
+                <a href="https://edugate.rcjy.edu.sa/" target="_blank" class="bento-card edugate-card">
+                    <div class="bento-icon"><i class="fi fi-rr-globe"></i></div>
+                    <div class="bento-info">
+                        <h3>بوابة الايدوقيـت</h3>
+                        <p>الجدول والغيابات</p>
+                    </div>
+                </a>
+
+                <!-- كرت البلاك بورد (كبير) -->
+                <a href="https://jic.blackboard.com/" target="_blank" class="bento-card blackboard-card">
+                    <div class="bento-icon"><i class="fi fi-rr-e-learning"></i></div>
+                    <div class="bento-info">
+                        <h3>البلاك بورد</h3>
+                        <p>المقررات والواجبات</p>
+                    </div>
+                </a>
+
+                <!-- كرت التخصصات (صغير) -->
+                <div id="btn-majors" class="bento-card small-card majors-card" style="cursor: pointer;">
+                    <div class="bento-icon"><i class="fi fi-rr-graduation-cap"></i></div>
+                    <h3>التخصصات</h3>
+                </div>
+
+                <!-- كرت التقويم (صغير) -->
+                <a href="../Document/WeekCalender2026.pdf" target="_blank" class="bento-card small-card calendar-card">
+                    <div class="bento-icon"><i class="fi fi-rr-document"></i></div>
+                    <h3>التقويم</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- قسم الأحداث (بتصميم عناوين أنظف) -->
+        <section class="new-feed-section">
+            <div class="feed-header">
+                <h3>الأحداث القادمة 📅</h3>
+            </div>
+            <!-- الحاوية القديمة عشان يشتغل الـ JS -->
+            <div id="calender-events" class="events-wrapper"></div>
+        </section>
+
+        <!-- قسم أخبار الكلية -->
+        <section class="new-feed-section">
+            <div class="feed-header">
+                <h3>آخر الأخبار 📰</h3>
+                <a href="./Pages/news.html" class="view-all-btn">الكل</a>
+            </div>
+            <!-- الحاوية القديمة عشان يشتغل الـ JS -->
+            <div id="news" class="news-wrapper"></div>
+        </section>
+
+        <!-- قسم أخبار الأندية -->
+        <section class="new-feed-section" style="margin-bottom: 40px;">
+            <div class="feed-header">
+                <h3>أخبار الأندية الطلابية 🎯</h3>
+                <a href="./Pages/clubs.html" class="view-all-btn">الكل</a>
+            </div>
+            <!-- الحاوية القديمة عشان يشتغل الـ JS -->
             <div class="home-news-container" id="homeLatestNews">
                 <div style="width: 100%; text-align: center; padding: 20px; color: var(--text-light);">
                     <i class="fi fi-rr-spinner-alt" style="animation: spin 1s linear infinite;"></i>
@@ -189,32 +201,8 @@
             </div>
         </section>
 
-        <section class="missing-section"> <div class="section-header">
-        <h2> آخر المفقودات 🔍</h2>
-        <a href="./Pages/missing.html" class="view-all">عرض الكل</a>
-    </div>
-    
-    <div id="home-missing-container" class="horizontal-scroll-container">
-        <div class="loading-spinner">جاري التحميل...</div>
-    </div>
-
-        </section>
-
-<div id="custom-popup1" class="popup-overlay1">
-    <div class="popup-box1">
-        <div class="popup-icon1">
-            <i class="fi fi-rr-bell-ring"></i> </div>
-        <h3 class="popup-title1">استبيان قصير</h3>
-        <p class="popup-text1">
-        سـاعدنا في تحسين تطبيق مدخل عبر الاجابة على هالاستبيان القصير🫡
-        </p>
-        <div class="popup-buttons1">
-            <a href="https://forms.gle/wbj18vi5CJEDa1cs5" class="btn-primary" onclick="closePopup()">متابعـة</a>
-            
-            <button class="btn-secondary" onclick="closePopup()">الغاء</button>
-        </div>
-    </div>
-</div>
+        <!-- بوب أب الاستبيان (نفسه) -->
+        <div id="custom-popup1" class="popup-overlay1">...</div>
 
     </main>
 

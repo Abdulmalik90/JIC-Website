@@ -1,25 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    /* =========================================
-   إخفاء شاشة التحميل عند اكتمال الصفحة
-   ========================================= */
 
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    
-    if (preloader) {
-        // تأخير بسيط جداً (نص ثانية) عشان يمدي المستخدم يشوف اللوقو والحركة الحلوة
-        setTimeout(() => {
-            preloader.classList.add('fade-out');
-            
-            // نحذفه من الصفحة نهائياً بعد ما تختفي الحركة عشان ما يثقل الجهاز
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500); // نفس مدة الـ transition في الـ CSS
-        }, 500); 
-    }
-});
-    
     // ============================================
     // أكواد تعمل أول ما الصفحة تشتغل (مثل الإيموجي والقائمة)
     // ============================================
@@ -233,9 +214,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     let deferredPrompt;
-    const pwaPopup = document.getElementById('pwa-install-popup');
+const pwaPopup = document.getElementById('pwa-install-banner'); // تغير الـ ID هنا
     const installBtn = document.getElementById('pwa-install-btn');
-    const closeBtn = document.getElementById('close-pwa-popup');
+    const closeBtn = document.getElementById('close-pwa-banner'); // تغير الـ ID هنا
     const iosInstructions = document.getElementById('ios-instructions');
 
     // التأكد من أن المستخدم لم يقم بإغلاق النافذة سابقاً
@@ -297,77 +278,49 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================
-   نظام الوضع الليلي + تغيير الشعار
+   نظام الوضع الليلي + تغيير الشعار والأيقونة
    ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = document.getElementById('theme-icon');
+    const appLogo = document.querySelector('.hub-logo'); 
+    const currentTheme = localStorage.getItem('theme');
 
-const toggleSwitch = document.querySelector('#checkbox');
-const currentTheme = localStorage.getItem('theme');
-const appLogo = document.querySelector('.logo-container img'); // مسكنا الشعار
-
-// دالة تحديث الشعار
-function updateLogo(theme) {
-    if (appLogo) {
+    function updateThemeUI(theme) {
         if (theme === 'dark') {
-            // هنا حط اسم ملف شعار الدارك
-            appLogo.src = 'logo-dark.webp'; 
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if(themeIcon) {
+                themeIcon.classList.remove('fi-rr-moon');
+                themeIcon.classList.add('fi-rr-sun');
+            }
+            // تعديل المسار هنا
+            if (appLogo) appLogo.src = './Images/logo-dark.webp'; 
         } else {
-            // هنا حط اسم ملف الشعار الأصلي
-            appLogo.src = 'logo.webp'; 
+            document.documentElement.setAttribute('data-theme', 'light');
+            if(themeIcon) {
+                themeIcon.classList.remove('fi-rr-sun');
+                themeIcon.classList.add('fi-rr-moon');
+            }
+            // وتعديل المسار هنا
+            if (appLogo) appLogo.src = './Images/logo.webp'; 
         }
     }
-}
 
-// 1. عند فتح التطبيق
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateLogo(currentTheme); // نحدث الشعار مباشرة
-
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
+    // فحص الثيم عند فتح التطبيق
+    if (currentTheme) {
+        updateThemeUI(currentTheme);
     }
-}
 
-// 2. عند ضغط الزر
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        updateLogo('dark'); // اقلب الشعار لدارك
-        console.log("Dark Mode ON 🌙");
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        updateLogo('light'); // رجع الشعار الأصلي
-        console.log("Dark Mode OFF ☀️");
-    }
-}
-
-if (toggleSwitch) {
-    toggleSwitch.addEventListener('change', switchTheme, false);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    // نحدد اسم مفتاح الجلسة (عشان المتصفح يتذكر)
-    const POPUP_KEY = 'portal_popup_v5';
-    
-    // إذا ما قد شافه في هذي الجلسة
-    if (!localStorage.getItem(POPUP_KEY)) {
-        setTimeout(() => {
-            document.getElementById('custom-popup1').classList.add('active');
-        }, 1000); // يطلع بعد ثانية وحدة من دخول الموقع
+    // تغيير الثيم عند الضغط على الزر
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        });
     }
 });
-
-function closePopup() {
-    const popup = document.getElementById('custom-popup1');
-    const POPUP_KEY = 'portal_popup_v5';
-    
-    // إخفاء النافذة
-    popup.classList.remove('active');
-    
-    // حفظ في الذاكرة أنه شافه خلاص
-    localStorage.setItem(POPUP_KEY, 'true');
-}
 
 // =========================================
 // جلب أحدث 3 أخبار للواجهة الرئيسية (Home Feed)

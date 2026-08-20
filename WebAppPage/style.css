@@ -74,82 +74,128 @@ body {
 }
 
 /* =========================================
-   3. الهيدر العلوي (Header)
+   تجديد الهيدر (Floating Glass Header)
    ========================================= */
-.hub-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: var(--header-height);
-            background-color: var(--header-bg); /* شفافية حسب المتغيرات */
-            backdrop-filter: blur(10px); /* تأثير الزجاج */
-            -webkit-backdrop-filter: blur(10px);
-            padding: 0 20px;
-            position: sticky; /* يثبت فوق لما تنزل */
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
 
-        /* تنسيق الجزء الأيمن */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.floating-header {
+    position: sticky;
+    top: 15px; /* نزلناه شوي عشان يصير عائم */
+    z-index: 1000;
+    padding: 0 15px; /* مسافة يمين ويسار من الشاشة */
+    margin-bottom: 25px; /* مسافة بينه وبين المحتوى اللي تحته */
+    transition: transform 0.3s ease;
+}
 
-        .hub-logo {
-            width: 35px; /* حجم الشعار */
-            height: auto;
-        }
+/* عشان إذا سويت سكرول في المستقبل تقدر تخفيه أو تصغره بسهولة */
+.floating-header.hidden {
+    transform: translateY(-100%);
+}
 
-        .hub-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary-text); /* لون النص الرسمي */
-            margin: 0;
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 16px;
+    background-color: var(--header-bg);
+    border-radius: 20px; /* شكل الكبسولة */
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
 
-        /* تنسيق الجزء الأيسر */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* الجزء الأيمن (الشعار والاسم) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        /* تنسيق الأزرار (الجرس والقائمة) */
-        .icon-btn {
-            background: var(--surface-color); /* لون خلفية الزر */
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px; /* حواف ناعمة */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: var(--text-dark); /* لون الأيقونة */
-            font-size: 18px;
-            position: relative; /* عشان النقطة الحمراء */
-            transition: transform 0.2s ease;
-        }
+.hub-logo {
+    width: 32px;
+    height: auto;
+    border-radius: 8px; /* نعومة للشعار */
+}
 
-        .icon-btn:active {
-            transform: scale(0.95); /* تصغير خفيف عند الضغط */
-        }
+.hub-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-dark); /* غيرناه للون الأسود/الأبيض عشان يصير رسمي أكثر */
+    margin: 0;
+    letter-spacing: -0.5px;
+}
 
-        /* النقطة الحمراء (تنبيه جديد) */
-        .notif-dot {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 8px;
-            height: 8px;
-            background-color: #ff4757; /* أحمر */
-            border-radius: 50%;
-            border: 2px solid var(--surface-color); /* حدود عشان تفصل عن الأيقونة */
-        }
+/* الجزء الأيسر (الأزرار) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    background: var(--bg-color); /* خلفية مدمجة للأزرار مع بعض */
+    border-radius: 14px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+}
 
+/* فاصل بين الأزرار */
+.header-divider {
+    width: 1px;
+    height: 18px;
+    background-color: var(--border-color);
+    margin: 0 6px;
+}
+
+/* تنسيق الأزرار (أيقونات نظيفة بدون بوردر خارجي) */
+.action-btn {
+    background: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-size: 18px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* تأثير عند المرور أو الضغط */
+.action-btn:hover {
+    background: var(--surface-color);
+}
+.action-btn:active {
+    transform: scale(0.92);
+}
+
+/* تمييز أيقونة الإشعارات */
+.notif-btn {
+    color: var(--text-dark);
+}
+
+/* النقطة الحمراء للإشعارات */
+.notif-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    border: 2px solid var(--bg-color); /* تتناسق مع خلفية الأزرار المدمجة */
+}
+
+/* تعديلات للدارك مود في الهيدر */
+[data-theme="dark"] .header-actions {
+    background: rgba(255, 255, 255, 0.05);
+}
+[data-theme="dark"] .action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .notif-dot {
+    border-color: #1e1e1e;
+}
 /* =========================================
    تنسيقات القائمة الجانبية (من اليسار + Blur + مساحة أكبر)
    ========================================= */
@@ -463,31 +509,144 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 /* =========================================
-   5. قسم الترحيب (Welcome Section)
+   إعادة بناء الرئيسية - Bento Grid & Modern UI
    ========================================= */
-.welcome-section {
-    text-align: center;
-    padding: 25px 20px;
-    margin-top: 10px;
+
+/* قسم الترحيب */
+.new-welcome-section {
+    padding: 20px 20px 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.glow-text {
-    font-size: 22px;
-    color: var(--primary-text);
-    margin-bottom: 8px;
-    font-weight: 800;
-    text-shadow: 0 0 15px rgba(0, 82, 204, 0.2); /* خففنا الظل شوي */
-    animation: glowPulse 3s infinite alternate;
-}
-
-@keyframes glowPulse {
-    0% { text-shadow: 0 0 10px rgba(0, 82, 204, 0.1); }
-    100% { text-shadow: 0 0 20px rgba(0, 82, 204, 0.4); }
-}
-
-.sub-text {
+.welcome-subtitle {
+    font-size: 13px;
     color: var(--text-light);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.welcome-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.welcome-title span {
+    color: var(--primary-text);
+}
+
+/* نظام Bento Grid للوصول السريع */
+.new-shortcuts-section {
+    padding: 10px 20px 25px 20px;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+}
+
+.bento-card {
+    border-radius: 24px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bento-card:active {
+    transform: scale(0.96);
+}
+
+.bento-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.bento-info h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+}
+
+.bento-info p {
+    font-size: 11px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* الكروت الصغيرة */
+.small-card {
+    padding: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.small-card .bento-icon {
+    margin: 0;
+    font-size: 22px;
+}
+
+.small-card h3 {
+    margin: 0;
     font-size: 14px;
+    font-weight: 700;
+}
+
+/* ألوان كروت Bento */
+.edugate-card { background: linear-gradient(135deg, #0a0b4d 0%, #007bc4 100%); }
+.blackboard-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); } /* أسود فخم */
+.majors-card { background: var(--surface-color); color: var(--text-dark); border: 1px solid var(--border-color); }
+.majors-card .bento-icon { color: #f59e0b; }
+.calendar-card { background: var(--surface-color); color: var(--text-dark); border: 1px solid var(--border-color); }
+.calendar-card .bento-icon { color: #10b981; }
+
+[data-theme="dark"] .majors-card, [data-theme="dark"] .calendar-card {
+    background: rgba(255,255,255,0.03);
+}
+
+/* عناوين أقسام الأحداث والأخبار (مودرن) */
+.new-feed-section {
+    padding: 0 0 15px 0;
+}
+
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+.feed-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.view-all-btn {
+    background: var(--surface-color);
+    color: var(--primary-text);
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 /* =========================================
@@ -1296,101 +1455,110 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 /* =========================================
-   تصميم نافذة التثبيت (PWA Install Popup)
+   تجديد نافذة التثبيت (Smart App Banner)
    ========================================= */
-.pwa-popup {
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    background: var(--surface-color); /* تم التعديل: يدعم الدارك */
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-    border-radius: 20px 20px 0 0;
-    z-index: 99999;
-    padding: 20px;
-    transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-top: 1px solid var(--border-color); /* إضافة حد علوي خفيف */
-}
 
-.pwa-popup.show {
-    bottom: 0;
-}
-
-.pwa-content {
+.smart-app-banner {
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 15px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    
+    /* إعدادات الظهور */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pwa-header {
+.smart-app-banner.show {
+    max-height: 100px;
+    opacity: 1;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.banner-content {
     display: flex;
     align-items: center;
-    gap: 15px;
-    position: relative;
+    gap: 12px;
 }
 
-.pwa-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-}
-
-.pwa-text h3 {
-    margin: 0 0 5px;
-    font-size: 16px;
-    color: var(--text-dark); /* تم التعديل */
-}
-
-.pwa-text p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--text-light); /* تم التعديل */
-}
-
-.pwa-close {
-    position: absolute;
-    left: 0;
-    top: 0;
+.banner-close {
     background: none;
     border: none;
+    color: var(--text-light);
     font-size: 20px;
-    color: var(--text-light); /* تم التعديل */
     cursor: pointer;
-    padding: 5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-/* تعليمات الآيفون */
-.install-instructions {
-    background: var(--bg-color); /* تم التعديل */
-    padding: 15px;
-    border-radius: 12px;
-    font-size: 13px;
-    color: var(--text-dark); /* تم التعديل */
+.banner-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
 }
 
-.install-instructions ol {
-    padding-right: 20px;
-    margin: 10px 0 0;
+.banner-text h4 {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 800;
 }
 
-.install-instructions li {
-    margin-bottom: 5px;
+.banner-text p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-light);
 }
 
-/* زر التثبيت (أندرويد) */
-.install-btn {
+/* زر التثبيت للأندرويد */
+.banner-install-btn {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    width: 100%;
+}
+
+/* تعليمات الآيفون المختصرة */
+.banner-ios-instruction {
+    background: var(--bg-color);
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.banner-ios-instruction p {
+    margin: 0;
+    font-size: 10px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.banner-ios-instruction img {
+    width: 14px;
+    height: 14px;
+    filter: invert(0);
+}
+
+[data-theme="dark"] .banner-ios-instruction img {
+    filter: invert(1);
 }
 /* =========================================
    تنسيق زر الوضع الليلي (Toggle Switch)

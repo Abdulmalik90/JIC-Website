@@ -17,7 +17,7 @@ const notifHTML = `
                 </div>
                 <div class="notif-content">
                     <h4>إطلاق تحديث جديد لتطبيق مدخل!</h4>
-                    <p>استكشف صفحة " الواجهة " الجديدة ومحتوياتها المميزة </p>
+                    <p>جـاهزين للسنة الجديدة بكل شغف وحماس</p>
                     <span class="notif-time">اللحين</span>
                 </div>
                 <div class="item-unread-dot"></div>
@@ -30,7 +30,7 @@ const notifHTML = `
                 <div class="notif-content">
                     <h4>اخبار الاندية الطلابية وصلت !</h4>
                     <p>تعاون جديد يجمع مابين مبادرة مدخل و الاندية الطلابية لعرض اخبار الاندية بمكان واحد !</p>
-                    <span class="notif-time">اللحين</span>
+                    <span class="notif-time">قبل شهور</span>
                 </div>
                 <div class="item-unread-dot"></div>
             </div>
