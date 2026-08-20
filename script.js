@@ -29,6 +29,36 @@ function renderNews() {
   });
 }
 
+/* الستــــارة PWA */
+
+document.addEventListener("DOMContentLoaded", () => {
+    // نحدد إذا الشاشة مقاسها جوال (أقل من 768 بكسل)
+    const isMobile = window.innerWidth < 768;
+    
+    // نشيك إذا اختار "البقاء في الموقع" من قبل
+    const hasChosenDesktop = sessionStorage.getItem('stay_on_desktop');
+    
+    const mobileModal = document.getElementById('mobile-redirect-modal');
+    const stayBtn = document.getElementById('continue-desktop');
+
+    if (isMobile && !hasChosenDesktop && mobileModal) {
+        // نأخر الظهور ثانية وحدة عشان ما تصقع بوجهه أول ما يفتح الرابط
+        setTimeout(() => {
+            mobileModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // نمنع السكرول عشان يركز عالنافذة
+        }, 1000);
+    }
+
+    if (stayBtn) {
+        stayBtn.addEventListener('click', () => {
+            mobileModal.classList.remove('active');
+            document.body.style.overflow = '';
+            // نحفظ الخيار عشان ما نطلعه له مرة ثانية
+            localStorage.setItem('stay_on_desktop', 'true');
+        });
+    }
+}); 
+
 /* ══════════════════════════════════════════════════════════
    RENDER: NEWS (Clickable Cards)
    ══════════════════════════════════════════════════════════ */
