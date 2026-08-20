@@ -52,20 +52,22 @@
         </div>
     </aside>
 
-    <header class="hub-header">
-        <div class="header-right">
-            <img src="../Images/logo.webp" alt="شعار" class="hub-logo">
-            <h1 class="hub-title">اخبار الاندية</h1>
-        </div>
+   <header class="floating-header">
+        <div class="header-content">
+            <div class="header-right">
+                <img src="../Images/logo.webp" alt="شعار" class="hub-logo">
+                <h1 class="hub-title">الأخبار</h1> 
+            </div>
 
-        <div class="header-left">
-            <button class="icon-btn" onclick="toggleNotif()">
-                <i class="fi fi-rr-bell"></i>
-                <span class="notif-dot"></span> 
-            </button>
-            
-            <div class="menu-btn icon-btn">
-                <i class="fi fi-rr-menu-burger"></i>
+            <div class="header-actions">
+                <button class="action-btn theme-btn" id="theme-toggle-btn">
+                    <i class="fi fi-rr-moon" id="theme-icon"></i>
+                </button>
+                <div class="header-divider"></div>
+                <button class="action-btn notif-btn" onclick="toggleNotif()">
+                    <i class="fi fi-rr-bell"></i>
+                    <span class="notif-dot"></span> 
+                </button>
             </div>
         </div>
     </header>
