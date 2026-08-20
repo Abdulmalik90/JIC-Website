@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
 // ========================================================
 // نظام بنر المكتبة الإعلاني (Library Banner System)
 // ========================================================
@@ -148,3 +150,4 @@ document.addEventListener("DOMContentLoaded", () => {
     initLibraryBanners(); // أول مرة
     setInterval(rotateLibraryBanners, 7000); // المؤقت
 });
+

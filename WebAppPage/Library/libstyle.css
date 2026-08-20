@@ -7,81 +7,100 @@
    ========================================= */
 
 /* =========================================
-   3. الهيدر العلوي (Header)
+   تجديد الهيدر (Floating Glass Header)
    ========================================= */
-.hub-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: var(--header-height);
-            background-color: var(--header-bg); /* شفافية حسب المتغيرات */
-            backdrop-filter: blur(10px); /* تأثير الزجاج */
-            -webkit-backdrop-filter: blur(10px);
-            padding: 0 20px;
-            position: sticky; /* يثبت فوق لما تنزل */
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
+.floating-header {
+    position: sticky;
+    top: 15px; 
+    z-index: 1000;
+    padding: 0 15px; 
+    margin-bottom: 25px; 
+    transition: transform 0.3s ease;
+}
 
-        /* تنسيق الجزء الأيمن */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 16px;
+    background-color: var(--header-bg);
+    border-radius: 20px; 
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
 
-        .hub-logo {
-            width: 35px; /* حجم الشعار */
-            height: auto;
-        }
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .hub-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary-text); /* لون النص الرسمي */
-            margin: 0;
-        }
+.hub-logo {
+    width: 32px;
+    height: auto;
+    border-radius: 8px; 
+}
 
-        /* تنسيق الجزء الأيسر */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.hub-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-dark); 
+    margin: 0;
+    letter-spacing: -0.5px;
+}
 
-        /* تنسيق الأزرار (الجرس والقائمة) */
-        .icon-btn {
-            background: var(--surface-color); /* لون خلفية الزر */
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px; /* حواف ناعمة */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: var(--text-dark); /* لون الأيقونة */
-            font-size: 18px;
-            position: relative; /* عشان النقطة الحمراء */
-            transition: transform 0.2s ease;
-        }
+.header-actions {
+    display: flex;
+    align-items: center;
+    background: var(--bg-color); 
+    border-radius: 14px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+}
 
-        .icon-btn:active {
-            transform: scale(0.95); /* تصغير خفيف عند الضغط */
-        }
+.header-divider {
+    width: 1px;
+    height: 18px;
+    background-color: var(--border-color);
+    margin: 0 6px;
+}
 
-        /* النقطة الحمراء (تنبيه جديد) */
-        .notif-dot {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 8px;
-            height: 8px;
-            background-color: #ff4757; /* أحمر */
-            border-radius: 50%;
-            border: 2px solid var(--surface-color); /* حدود عشان تفصل عن الأيقونة */
-        }
+.action-btn {
+    background: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover { background: var(--surface-color); }
+.action-btn:active { transform: scale(0.92); }
+
+.notif-btn { color: var(--text-dark); }
+.notif-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    border: 2px solid var(--bg-color); 
+}
+
+[data-theme="dark"] .header-actions { background: rgba(255, 255, 255, 0.05); }
+[data-theme="dark"] .action-btn:hover { background: rgba(255, 255, 255, 0.1); }
+[data-theme="dark"] .notif-dot { border-color: #1e1e1e; }
 
 /* =========================================
    تنسيقات القائمة الجانبية (من اليسار + Blur + مساحة أكبر)
