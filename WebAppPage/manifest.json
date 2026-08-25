@@ -1,22 +1,25 @@
 {
   "name": "منصة مدخل",
   "short_name": "مدخل",
-  "start_url": "/WebAppPage/",
-  "scope": "/WebAppPage/",
+  "description": "تطبيق منصة مدخل للخدمات الطلابية والأكاديمية",
+  "start_url": "/WebAppPage/index.html",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0050d5",
   "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#0284c7",
   "icons": [
     {
-      "src": "./web-app-manifest-192x192.png",
+      "src": "/Images/web-app-manifest-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "./web-app-manifest-512x512.png",
+      "src": "/Images/web-app-manifest-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
