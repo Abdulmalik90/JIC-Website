@@ -274,7 +274,7 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             // نرجع ورا خطوة عشان نلقى ملف السيرفس وركر
-            navigator.serviceWorker.register('../sw.js')
+            navigator.serviceWorker.register('./sw.js')
                 .then(reg => console.log('SW Registered!', reg))
                 .catch(err => console.log('SW Failed', err));
         });
