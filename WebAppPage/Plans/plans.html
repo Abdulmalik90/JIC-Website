@@ -49,23 +49,7 @@
         <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
     </aside>
 
-    <header class="hub-header">
-        <div class="header-right">
-            <img src="../Images/logo.webp" alt="شعار" class="hub-logo">
-            <h1 class="hub-title">التخصصات</h1> 
-        </div>
-
-        <div class="header-left">
-            <button class="icon-btn" onclick="toggleNotif()">
-                <i class="fi fi-rr-bell"></i>
-                <span class="notif-dot"></span> 
-            </button>
-            <div class="menu-btn icon-btn">
-                <i class="fi fi-rr-menu-burger"></i>
-            </div>
-        </div>
-    </header>
-
+    <app-header title="التخصصات" base-path="../"></app-header>
     <div class="notif-panel" id="notifPanel">
         <div class="notif-header">
             <h3>الإشعارات</h3>
@@ -144,37 +128,22 @@
     <script src="../script.js"></script>
     <script src="../notifications.js"></script>
 
-    <script>
+<script>
+        // المصفوفات اللي يعتمد عليها plans.js
         window.JIC_Bachelor_List = [];
         window.JIC_Diploma_List = [];
         window.JTI_Diploma_List = [];
         let currentLoadingTarget = null;
 
-        // الكلاس العام الذي سيستقبل البيانات
-        class Majors {
-            constructor(enName, arName, oldIcon, degree, years, imagePath, gender, courses) {
-                this.id = enName.replace(/\s+/g, '_');
-                this.name = arName;
-                this.arabicName = arName;
-                this.degree = degree;
-                this.years = years;
-                this.genders = gender;
-                this.courses = courses;
-                
-                this.icon = "fi-rr-document"; 
-                const lowerName = enName.toLowerCase();
-                if(lowerName.includes("instrumentation")) this.icon = "fi-rr-dashboard";
-                else if(lowerName.includes("chemical")) this.icon = "fi-rr-test-tube";
-                else if(lowerName.includes("electrical")) this.icon = "fi-rr-bulb";
-                else if(lowerName.includes("mechanical") || lowerName.includes("manufacturing")) this.icon = "fi-rr-settings";
-                else if(lowerName.includes("computer") || lowerName.includes("information") || lowerName.includes("software")) this.icon = "fi-rr-laptop";
-                else if(lowerName.includes("business") || lowerName.includes("marketing") || lowerName.includes("accounting")) this.icon = "fi-rr-chart-histogram";
-                else if(lowerName.includes("ndt")) this.icon = "fi-rr-search-alt";
-                else if(lowerName.includes("polymer")) this.icon = "fi-rr-flask";
-
-                if (currentLoadingTarget === 'JIC_BACH') window.JIC_Bachelor_List.push(this);
-                else if (currentLoadingTarget === 'JIC_DIP') window.JIC_Diploma_List.push(this);
-                else if (currentLoadingTarget === 'JTI') window.JTI_Diploma_List.push(this);
+        // هذي الدالة اللي تستدعيها ملفات الداتا الجديدة
+        function initMajors(config, majorsList) {
+            // إضافة البيانات إلى القائمة المناسبة بناءً على المتغير الحالي
+            if (currentLoadingTarget === 'JIC_BACH') {
+                window.JIC_Bachelor_List = majorsList;
+            } else if (currentLoadingTarget === 'JIC_DIP') {
+                window.JIC_Diploma_List = majorsList;
+            } else if (currentLoadingTarget === 'JTI') {
+                window.JTI_Diploma_List = majorsList;
             }
         }
 
@@ -186,12 +155,7 @@
                 
                 let code = await response.text();
 
-                // ✅ الحل الجذري: توليد اسم عشوائي للكلاس لكل ملف عشان ما يتصادمون
-                const uniqueClassName = "Ignored_Majors_" + Math.random().toString(36).substr(2, 9);
-                
-                // استبدال تعريف الكلاس بالاسم العشوائي الجديد
-                code = code.replace(/class\s+Majors/g, `class ${uniqueClassName}`);
-
+                // ننفذ الكود (واللي بدوره بيستدعي initMajors)
                 const scriptEl = document.createElement('script');
                 scriptEl.textContent = code;
                 document.body.appendChild(scriptEl);
@@ -199,17 +163,18 @@
                 console.log(`✅ تم تحميل ${url} بنجاح`);
             } catch (error) {
                 console.error(`❌ فشل تحميل ${url}:`, error);
-                // محاولة إظهار رسالة خطأ للمستخدم داخل الشبكة
-                const grid = document.getElementById('majors-grid');
-                if(grid) grid.innerHTML += `<p style="color:red; font-size:12px;">فشل تحميل: ${url.split('/').pop()}</p>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('majors-grid');
+                    if(grid) grid.innerHTML += `<p style="color:red; font-size:12px; text-align:center; grid-column:1/-1;">فشل تحميل: ${url}</p>`;
+                }, 500); 
             }
         }
 
         async function initAllMajors() {
-            // تأكد من صحة المسارات هنا بناءً على بنية ملفاتك
-            await loadScriptSmart('.../Majors/bacholar.js', 'JIC_BACH');
-            await loadScriptSmart('.../Majors/deplomes.js', 'JIC_DIP');
-            await loadScriptSmart('.../Majors/JTImajors.js', 'JTI');
+            // رجعنا خطوتين ورا (../../) عشان نوصل للمجلد الرئيسي
+            await loadScriptSmart('../../Majors/bMajors-data.js', 'JIC_BACH');
+            await loadScriptSmart('../../Majors/diplomas-data.js', 'JIC_DIP');
+            await loadScriptSmart('../../Majors/JTI-data.js', 'JTI');
 
             const engineScript = document.createElement('script');
             engineScript.src = "plans.js";
