@@ -415,3 +415,72 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// =========================================
+// الهيدر الموحد (Web Component) - مع دعم شعار الدارك واللايت
+// =========================================
+
+// 1. الدالة العامة للتبديل (مربوطة مباشرة بالزر وتاخذ المسار)
+window.toggleAppTheme = function(basePath) {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    
+    const icon = document.getElementById('theme-icon');
+    const logo = document.getElementById('main-hub-logo');
+    
+    // تغيير الأيقونة والشعار بناءً على الثيم
+    if (newTheme === 'dark') {
+        if (icon) { icon.classList.remove('fi-rr-moon'); icon.classList.add('fi-rr-sun'); }
+        if (logo) logo.src = basePath + 'Images/logo-dark.webp'; 
+    } else {
+        if (icon) { icon.classList.remove('fi-rr-sun'); icon.classList.add('fi-rr-moon'); }
+        if (logo) logo.src = basePath + 'Images/logo.webp';
+    }
+};
+
+// 2. بناء الهيدر
+class AppHeader extends HTMLElement {
+    connectedCallback() {
+        const pageTitle = this.getAttribute('title') || 'الرئيسية';
+        const basePath = this.getAttribute('base-path') || '../';
+        
+        // نقرأ الثيم الحالي عشان نحط الشعار الصح من البداية
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        const initialLogo = currentTheme === 'dark' ? 'logo-dark.webp' : 'logo.webp';
+        const initialIcon = currentTheme === 'dark' ? 'sun' : 'moon';
+
+        this.innerHTML = `
+            <header class="floating-header">
+                <div class="header-content">
+                    <div class="header-right">
+                        <img src="${basePath}Images/${initialLogo}" alt="شعار" class="hub-logo" id="main-hub-logo">
+                        <h1 class="hub-title">${pageTitle}</h1>
+                    </div>
+                    <div class="header-actions">
+                        <button class="action-btn theme-btn" onclick="toggleAppTheme('${basePath}')">
+                            <i class="fi fi-rr-${initialIcon}" id="theme-icon"></i>
+                        </button>
+                        <div class="header-divider"></div>
+                        <button class="action-btn notif-btn" onclick="toggleNotif()">
+                            <i class="fi fi-rr-bell"></i>
+                            <span class="notif-dot"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+        `;
+
+        // تطبيق الثيم المحفوظ
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    }
+}
+
+if (!customElements.get('app-header')) {
+    customElements.define('app-header', AppHeader);
+}
