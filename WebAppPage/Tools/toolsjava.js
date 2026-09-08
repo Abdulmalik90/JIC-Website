@@ -40,7 +40,7 @@ if (resultBtn) {
         }
 
         // --- الحسابات الأساسية ---
-        let totalClassesSemester = classPerWeek * 15; 
+        let totalClassesSemester = classPerWeek * 16; 
         let exactDNThreshold = Number((totalClassesSemester * 0.20).toFixed(1)); 
         
         let safeAllowedAbs = Math.floor(exactDNThreshold);
