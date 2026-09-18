@@ -11,10 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const clubsDictionary = {
         "نادي الحاسب": { id: "CS", color: "var(--primary-text)" },
         "نادي الهندسة الكهربائية": { id: "EEC", color: "#ff475f" },
-        "نادي ادارة الاعمال": { id: "BUS", color: "#9110b9" },
+        "النادي الرياضي للطالبات": { id: "FS", color: "#9110b9" },
         "المجلس الطلابي": { id: "JIC", color: "#105fb9" },
         "نادي الاستدامة": { id: "Sustain", color: "#10b981" },
-        "نادي The Bridge": { id: "Bridge", color: "#1059b9" },
+        "نادي The Bridge": { id: "Bridge", color: "#45484d" },
+        "نادي الهندسة المدنية": { id: "CE", color: "#b97510" },
+        "نادي الهندسة الكيميائية": { id: "CHEM", color: "#b93710" },
+        "نادي همه التطوعي": { id: "HMH", color: "#1091b9" },
         // تقدر تضيف أندية ثانية هنا مستقبلاً
     };
 
