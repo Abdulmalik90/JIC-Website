@@ -9,46 +9,12 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
 <body>
 
 
     <div id="emoji-background"></div>
-
-<div id="sidebarOverlay"></div>
-
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <h3 style="font-family: 'Tajawal'; font-weight:800; color:var(--primary-text);">القائمة</h3>
-            <button class="close-btn">✕</button>
-        </div>
-
-        <ul class="modern-sidebar">
-            <li class="menu-label">التصفح</li>
-            <li><a href="../index.html"><i class="fi fi-rr-home"></i> الرئيسية</a></li>
-            <li><a href="../Pages/center.html"><i class="fi fi-rr-dashboard"></i> الواجهة</a></li>
-            <li><a href="../Tools/Tools.html"><i class="fi fi-rr-apps"></i> الأدوات</a></li>
-            <li><a href="../Plans/plans.html"><i class="fi fi-rr-graduation-cap"></i> التخصصات</a></li>
-
-            <li class="menu-label">المجتمع</li>
-            <li><a href="../Pages/missing.html"><i class="fi fi-rr-box"></i> مبادرة مفقود</a></li>
-            <li><a href="https://x.com/i/communities/1823043306739110132" target="_blank"><i class="fi fi-brands-twitter"></i> مجتمع JIC (X)</a></li>
-            <li><a href="https://t.me/newsjuc" target="_blank"><i class="fi fi-rr-paper-plane"></i> قناة الأخبار</a></li>
-
-            <li class="menu-divider"></li>
-
-            <li class="theme-toggle-card">
-                <div class="theme-switch-wrapper">
-                    <span class="theme-label"><i class="fi fi-rr-moon"></i> الوضع الليلي</span>
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-            </li>
-        </ul>
-        <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
-    </aside>
 
     <app-header title="الموسوعة" base-path="../"></app-header>
 
@@ -61,16 +27,75 @@
             </div>
     </div>
 
-    <div class="tabs-container">
-        <div class="tab-item active" data-target="official">مستندات رسمية</div>
-        <div class="tab-item" data-target="useful">مستندات مفيدة</div>
-        <div class="tab-item" data-target="faq">الأسئلة الشائعة</div>
-        <div class="tab-item" data-target="extra">موارد إضافية</div>
-    </div>
+<!-- ========================================== -->
+    <!-- القائمة الرئيسية للمكتبة (Bento Grid) -->
+    <!-- ========================================== -->
+    <main class="lib-main-menu" id="libMainMenu">
+        <h2 class="lib-section-title"><i class="fi fi-sr-book-alt"></i> أقسام الموسوعة</h2>
+        <div class="bento-grid">
+            
+            <!-- كرت عريض (يأخذ عرض الشاشة) -->
+            <div class="lib-menu-card bento-wide" data-target="official">
+                <div class="lib-icon-box" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">
+                    <i class="fi fi-rr-shield-check"></i>
+                </div>
+                <div class="bento-text">
+                    <h3>مستندات رسمية</h3>
+                    <p>اللوائح والأنظمة الرسمية للكلية</p>
+                </div>
+            </div>
 
-    <main class="library-content">
+            <!-- كرت مربع (نصف الشاشة) -->
+            <div class="lib-menu-card bento-square" data-target="useful">
+                <div class="lib-icon-box" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);">
+                    <i class="fi fi-rr-bulb"></i>
+                </div>
+                <h3>مستندات مفيدة</h3>
+                <p>أدلة وملفات مساعدة</p>
+            </div>
+
+            <!-- كرت مربع (نصف الشاشة) -->
+            <div class="lib-menu-card bento-square" data-target="faq">
+                <div class="lib-icon-box" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);">
+                    <i class="fi fi-rr-interrogation"></i>
+                </div>
+                <h3>الأسئلة الشائعة</h3>
+                <p>إجابات لأهم الاستفسارات</p>
+            </div>
+
+            <!-- كرت عريض (يأخذ عرض الشاشة) -->
+            <div class="lib-menu-card bento-wide" data-target="extra">
+                <div class="lib-icon-box" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);">
+                    <i class="fi fi-rr-users"></i>
+                </div>
+                <div class="bento-text">
+                    <h3>عن مدخل</h3>
+                    <p>فريق العمل وروابط هامة</p>
+                </div>
+            </div>
+
+        </div>
         
-        <div id="official-lib" class="lib-view active">
+        <!-- بنر الإعلانات في القائمة الرئيسية -->
+        <ad-banner></ad-banner>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- حاوية عرض القسم المحدد (مخفية في البداية) -->
+    <!-- ========================================== -->
+    <main class="lib-active-container" id="libActiveContainer" style="display: none;">
+        
+        <!-- هيدر الرجوع -->
+        <div class="lib-nav-bar">
+            <button class="back-to-lib-btn" id="backToLibBtn">
+                <i class="fi fi-rr-angle-right"></i> رجوع
+            </button>
+            <h2 id="activeLibTitle" class="active-lib-title">القسم</h2>
+        </div>
+
+        <!-- [هنا تضع جميع أقسام الموسوعة السابقة كما هي: #official-lib, #useful-lib, #faq-lib, #extra-lib] -->
+        <!-- انسخ الأقسام القديمة وضعها هنا (بدون تغيير في محتواها الداخلي) -->
+<div id="official-lib" class="lib-view active">
 
             <div style="margin-bottom: 20px; text-align: center;">
         <h3 style="font-size: 16px; margin-bottom: 5px; color: var(--primary-color);">المستندات الرسمية</h3>
@@ -155,7 +180,9 @@
             <p>أرقام وايميلات قسم القبول والتسجيل</p>
         </div>
     </a>
-<div class="library-ad-placeholder" style="margin: 20px auto; width: 100%; max-width: 100%;"></div>
+        <!-- وسم بنر الإعلانات التلقائي -->
+<ad-banner></ad-banner>
+
 </div>
 
         <div id="useful-lib" class="lib-view">
@@ -165,7 +192,7 @@
         <p style="font-size: 12px; color: #888;">مجموعة إرشادية غير رسمية تسهل حياتك الجامعية 💡</p>
     </div>
 
-    <a href="https://drive.google.com/file/d/1y7DaFO1Gaqi30XOK5srZug5DsNLtq13p/view?usp=sharing" target="_blank" class="doc-card">
+    <a href="https://drive.google.com/file/d/1PMyKdR6ywQ6QtHLCppbAkDifHgvdlxvY/view?usp=drive_link" target="_blank" class="doc-card">
         <div class="doc-icon"><i class="fi fi-rr-calendar-clock"></i></div>
         <div class="doc-info">
             <h4>توزيع الأسابيع الدراسية 1448</h4>
@@ -291,7 +318,7 @@
         </div>
     </a>
     
-<div class="library-ad-placeholder" style="margin: 20px auto; width: 100%; max-width: 100%;"></div>
+<ad-banner></ad-banner>
 </div>
 
         <div id="faq-lib" class="lib-view">
@@ -557,10 +584,10 @@
             <p>المسؤولية الأساسية عليك للبحث عن فرصة. الكلية تساعدك بتوفير الفرص المتاحة وتعطيك خطابات رسمية لتسهيل بحثك، لكن القبول يعتمد على جهدك.</p>
         </div>
     </div>
-<div class="library-ad-placeholder" style="margin: 20px auto; width: 100%; max-width: 100%;"></div>
+<ad-banner></ad-banner>
 </div>
 
-        <div id="extra-lib" class="lib-view">
+<div id="extra-lib" class="lib-view">
 
     <div class="about-platform-box">
         <div class="about-icon">
@@ -576,45 +603,122 @@
 
     <div class="horizontal-scroll-wrapper">
         
-        <div class="team-card">
-            <div class="team-img-container">
+        <!-- العضو الأول: رائد الزهراني -->
+        <div class="team-profile-card" onclick="openProfileModal({
+            name: 'رائــد الـزهــراني',
+            role: 'مصمم ومدير المنصة',
+            major: 'تقنية هندسة الصيانة الميكانيكية',
+            bio: 'مسؤول UI/UX، تنظيم المحتوى، الإعلان، والدعم الفني، والمسؤول الأساسي عن إطلاق وتطوير واجهات تطبيق مدخل.',
+            header: '../Images/header-bg1.jpg', 
+            avatar: '../Images/raed.webp',
+            linkedin: 'https://linkedin.com',
+            twitter: 'https://x.com',
+            whatsapp: 'https://wa.me/9665503502885',
+            email: 'raed@juportal.online'
+        })">
+            <div class="team-card-header" style="background-image: url('../Images/header-bg1.jpg');"></div>
+            <div class="team-card-avatar">
                 <img src="../Images/raed.webp" alt="رائد الزهراني">
             </div>
-            <div class="team-info">
+            <div class="team-card-body">
                 <h4>رائــد الـزهــراني</h4>
-                <span class="major-badge">تقنية هندسة الصيانة الميكانيكية</span>
-                <p>مصمم ومدير المنصة، مسؤول UI/UX، تنظيم المحتوى، الإعلان، والدعم الفني ، والمسؤول عن تطبيق مدخل</p>
-                <a href="https://wa.me/9665503502885" target="_blank" class="contact-btn">تواصل</a>
+                <span class="team-role-badge">مصمم ومدير المنصة</span>
+                <span class="team-major-text">تقنية هندسة الصيانة الميكانيكية</span>
+                <p class="team-bio">مسؤول UI/UX، تنظيم المحتوى، الإعلان، والدعم الفني، والمسؤول الأساسي عن إطلاق وتطوير واجهات تطبيق مدخل.</p>
+                <button class="contact-btn">عرض البروفايل</button>
             </div>
         </div>
 
-        <div class="team-card">
-            <div class="team-img-container">
+        <!-- العضو الثاني: عبدالملك الخليفة -->
+        <div class="team-profile-card" onclick="openProfileModal({
+            name: 'عبــدالملـك الخليفـة',
+            role: 'المبرمج المسؤول (Lead Dev)',
+            major: 'علـوم حاسـب',
+            bio: 'المسؤول عن هندسة البرمجيات، بناء المنصة وتشغيلها تقنياً، أداء النظام وحل المشاكل البرمجية المعقدة.',
+            header: '../Images/header-bg2.jpg',
+            avatar: '../Images/person.jpg',
+            linkedin: 'https://linkedin.com',
+            twitter: 'https://x.com',
+            whatsapp: 'https://wa.me/966500000000',
+            email: 'abdulmalik@juportal.online'
+        })">
+            <div class="team-card-header" style="background-image: url('../Images/header-bg2.jpg');"></div>
+            <div class="team-card-avatar">
                 <img src="../Images/person.jpg" alt="عبدالملك الخليفة">
             </div>
-            <div class="team-info">
+            <div class="team-card-body">
                 <h4>عبــدالملـك الخليفـة</h4>
-                <span class="major-badge">علـوم حاسـب</span>
-                <p>المبرمج المسؤول (Lead Dev) عن بناء المنصة وتشغيلها تقنياً وحل المشاكل.</p>
-                <a href="https://t.me/Abdulmalik_portal" target="_blank" class="contact-btn">تواصل</a>
+                <span class="team-role-badge">المبرمج المسؤول (Lead Dev)</span>
+                <span class="team-major-text">علـوم حاسـب</span>
+                <p class="team-bio">المسؤول عن هندسة البرمجيات، بناء المنصة وتشغيلها تقنياً، أداء النظام وحل المشاكل البرمجية المعقدة.</p>
+                <button class="contact-btn">عرض البروفايل</button>
             </div>
         </div>
 
-        <div class="team-card">
-            <div class="team-img-container">
+        <!-- العضو الثالث: عبدالله النفيعي -->
+        <div class="team-profile-card" onclick="openProfileModal({
+            name: 'عبــدالله النفيـعي',
+            role: 'مسؤول البيانات والمحتوى',
+            major: 'علـوم حاسـب',
+            bio: 'إدارة وتحديث محتوى التخصصات الأكاديمية، وتنظيم البيانات لضمان دقتها وسرعة وصولها للطلاب.',
+            header: '../Images/header-bg3.jpg',
+            avatar: '../Images/person.jpg',
+            linkedin: 'https://linkedin.com',
+            twitter: 'https://x.com',
+            whatsapp: 'https://wa.me/966500000000',
+            email: 'abdullah@juportal.online'
+        })">
+            <div class="team-card-header" style="background-image: url('../Images/header-bg3.jpg');"></div>
+            <div class="team-card-avatar">
                 <img src="../Images/person.jpg" alt="عبدالله النفيعي">
             </div>
-            <div class="team-info">
+            <div class="team-card-body">
                 <h4>عبــدالله النفيـعي</h4>
-                <span class="major-badge">علـوم حاسـب</span>
-                <p>مسؤول البيانات، إدارة وتحديث محتوى التخصصات والمعلومات الأكاديمية.</p>
-                <a href="https://t.me/ab_4O4" target="_blank" class="contact-btn">تواصل</a>
+                <span class="team-role-badge">مسؤول البيانات والمحتوى</span>
+                <span class="team-major-text">علـوم حاسـب</span>
+                <p class="team-bio">إدارة وتحديث محتوى التخصصات الأكاديمية، وتنظيم البيانات لضمان دقتها وسرعة وصولها للطلاب.</p>
+                <button class="contact-btn">عرض البروفايل</button>
             </div>
         </div>
 
     </div>
 
-    <div class="section-header-small" style="margin-top: 30px;">
+    <!-- نافذة البروفايل المنبثقة (Modal) -->
+    <div id="profileModal" class="profile-modal-overlay">
+        <div class="profile-modal-card">
+            <button class="profile-close-btn" onclick="closeProfileModal()"><i class="fi fi-rr-cross-small"></i></button>
+            
+            <!-- الهيدر والصورة الشخصية -->
+            <div class="modal-header-bg" id="modalHeaderBg">
+                <div class="modal-avatar-container">
+                    <img id="modalAvatar" src="" alt="صورة العضو">
+                </div>
+            </div>
+
+            <!-- معلومات العضو -->
+            <div class="modal-body-content">
+                <h3 id="modalName">اسم العضو</h3>
+                <span id="modalRole" class="modal-role-badge">الدور بالمنصة</span>
+                <p id="modalMajor" class="modal-major-text">التخصص</p>
+                
+                <div class="modal-bio-section">
+                    <h4>نبذة وخبرات</h4>
+                    <p id="modalBio">تفاصيل الخبرات والنبذة التعريفية هنا...</p>
+                </div>
+
+                <!-- أزرار التواصل -->
+                <div class="modal-social-buttons">
+                    <a id="modalLinkedin" href="#" target="_blank" class="social-btn linkedin"><i class="fi fi-brands-linkedin"></i> لينكد إن</a>
+                    <a id="modalTwitter" href="#" target="_blank" class="social-btn twitter"><i class="fi fi-brands-twitter"></i> إكس</a>
+                    <a id="modalWhatsapp" href="#" target="_blank" class="social-btn whatsapp"><i class="fi fi-brands-whatsapp"></i> واتساب</a>
+                    <a id="modalEmail" href="#" target="_blank" class="social-btn email"><i class="fi fi-rr-envelope"></i> البريد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- باقي الروابط السريعة -->
+<div class="section-header-small" style="margin-top: 30px;">
         <h3>🔗 روابط سريعة مهمة</h3>
     </div>
 
@@ -648,6 +752,7 @@
     </div>
 
 </div>
+</div>
 
     </main>
 
@@ -664,7 +769,7 @@
             <span>الواجهة</span>
         </a>
 
-    <a href="library.html" class="nav-item active"> <i class="fi fi-rr-book-alt"></i>
+    <a href="library.html" class="nav-item active"> <i class="fi fi-sr-book-alt"></i>
         <span>الموسوعة</span>
     </a>
 
@@ -674,8 +779,7 @@
 </nav>
 
 
-
-    <script src=".../AdsEngine/ads-manager.js"></script> 
+    <script src="../AdsEngine/ads-manager.js"></script>
     <script src="../script.js"></script> <script src="libscript.js"></script> <script src="../notifications.js"></script> </body>
 
 </html>
