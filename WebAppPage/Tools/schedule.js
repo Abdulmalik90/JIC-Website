@@ -130,6 +130,63 @@ function updateConflictUI() {
   }
 }
 
+/* Persistent warning: sessions with periods but no assigned weekday. */
+function updateScheduleDayWarning() {
+  const list = document.getElementById('coursesList');
+  if (!list) return;
+  let box = document.getElementById('scheduleMissingDaysWarning');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'scheduleMissingDaysWarning';
+    box.setAttribute('role', 'alert');
+    list.parentNode.insertBefore(box, list);
+  }
+  const missing = courses.flatMap(c => (c.sessions || [])
+    .filter(s => s.periodStart && !s.day)
+    .map(s => ({ code:c.code || 'مادة بدون كود', courseId:c.id, sessionId:s.id })));
+  if (!missing.length) { box.hidden = true; box.replaceChildren(); return; }
+  box.hidden = false;
+  Object.assign(box.style, {
+    padding:'14px', marginBottom:'15px', borderRadius:'14px',
+    border:'1px solid #e5b451', background:'var(--surface-color, #fff)',
+    color:'var(--text-dark, #202b40)', lineHeight:'1.8', fontSize:'13px'
+  });
+  box.replaceChildren();
+  const title=document.createElement('strong');
+  title.textContent = `⚠️ تنبيه: ${missing.length} حصة لم يتم تحديد يومها`;
+  title.style.display='block';
+  box.appendChild(title);
+  const note=document.createElement('p');
+  note.textContent='حدد اليوم لكل حصة قبل الاعتماد على عرض الجدول أو صاحب. لا يمكن معرفة اليوم من النص المنسوخ إذا اختفت خلايا الجدول الفارغة.';
+  note.style.margin='5px 0 10px';
+  box.appendChild(note);
+  const codes=document.createElement('div');
+  codes.textContent=[...new Set(missing.map(x=>x.code))].join('، ');
+  codes.style.fontWeight='700';
+  codes.style.marginBottom='10px';
+  box.appendChild(codes);
+  const btn=document.createElement('button');
+  btn.type='button';
+  btn.textContent='تحديد الأيام الناقصة';
+  Object.assign(btn.style, {
+    background:'linear-gradient(110deg,#0a0b4d,#007bc4)',color:'#fff',
+    border:'0',borderRadius:'10px',padding:'10px 14px',fontWeight:'800',cursor:'pointer'
+  });
+  btn.addEventListener('click',()=>{
+    switchStep('input');
+    const first=missing[0];
+    const row=list.querySelector(`.grade-row[data-id="${first.courseId}"]`);
+    if (!row) return;
+    const sel=[...row.querySelectorAll('.session-row')].find(r => {
+      const input=r.querySelector('[data-field="day"]');
+      return input && !input.value && r.querySelector('[data-field="periodStart"]')?.value;
+    });
+    (sel || row).scrollIntoView({behavior:'smooth',block:'center'});
+    sel?.querySelector('[data-field="day"]')?.focus({preventScroll:true});
+  });
+  box.appendChild(btn);
+}
+
 /* --- COURSE UI --- */
 function renderCourseList() {
   const list = document.getElementById('coursesList');
@@ -168,6 +225,7 @@ function renderCourseList() {
           const newS = newSession(); c.sessions.push(newS);
           sessWrap.appendChild(buildSessionRow(newS, course.id, tplSession));
           saveToStorage();
+          updateScheduleDayWarning();
       }
     });
 
@@ -180,6 +238,7 @@ function renderCourseList() {
   });
   
   updateConflictUI(); // فحص عند التحميل
+  updateScheduleDayWarning();
 }
 
 function buildSessionRow(sess, courseId, tpl) {
@@ -200,14 +259,14 @@ setVal('building', sess.building);
 
   row.querySelector('.session-del-btn')?.addEventListener('click', () => {
     const c = courses.find(x => x.id === courseId);
-    if(c) { c.sessions = c.sessions.filter(s => s.id !== sess.id); saveToStorage(); row.remove(); }
+    if(c) { c.sessions = c.sessions.filter(s => s.id !== sess.id); saveToStorage(); row.remove(); updateScheduleDayWarning(); }
   });
   return row;
 }
 
 function updateSess(cId, sId, f, v) {
   const c = courses.find(x => x.id === cId);
-  if(c) { const s = c.sessions.find(x => x.id === sId); if(s) { s[f] = v; saveToStorage(); } }
+  if(c) { const s = c.sessions.find(x => x.id === sId); if(s) { s[f] = v; saveToStorage(); if (f === "day" || f === "periodStart") updateScheduleDayWarning(); } }
 }
 
 /* --- BUILD MOBILE CARDS --- */
@@ -343,251 +402,236 @@ function buildPrintTable(totalCR) {
    MADKHAL — SMART EDUGATE PARSER
    ========================================= */
 
-document.getElementById('parseBtn')?.addEventListener('click', () => {
-    const input = document.getElementById('pasteInput');
-    const text = input?.value.trim();
 
-    if (!text) {
-        alert('الصق الجدول أولاً');
+/* =============================
+   MADKHAL EDUGATE PARSER V2
+   Supports pasted HTML table + plain copied text.
+   No department/building hardcoded allowlist.
+   ============================= */
+let edugatePastedTable = null;
+
+function edugateClean(value) {
+    return String(value || '')
+        .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+        .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+        .replace(/[\u200e\u200f\u00a0]/g, ' ')
+        .replace(/\s+/g, ' ').trim();
+}
+
+const EDUGATE_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
+const EDUGATE_DAY_LABELS = { sun:'Sun', mon:'Mon', tue:'Tue', wed:'Wed', thu:'Thu',
+    'الأحد':'Sun','الاثنين':'Mon','الثلاثاء':'Tue','الأربعاء':'Wed','الخميس':'Thu' };
+
+function edugatePeriods(raw) {
+    const nums = String(raw || '').replace(/\s+/g, '').split(',')
+        .map(Number).filter(n => Number.isInteger(n) && n >= 1 && n <= 15);
+    if (!nums.length) return null;
+    return { periodStart: String(Math.min(...nums)), periodEnd: String(Math.max(...nums)) };
+}
+
+function edugateCode(value) {
+    const found = edugateClean(value).match(/^([A-Z]{2,6})\s*(\d{3,4}[A-Z]?)\b/i);
+    return found ? `${found[1].toUpperCase()} ${found[2].toUpperCase()}` : '';
+}
+
+function edugateGroup(entries) {
+    const map = new Map();
+    for (const item of entries) {
+        if (!item.code) continue;
+        if (!map.has(item.code)) map.set(item.code, {
+            code:item.code, name:item.name || '', cr:item.cr || '', sessions:[]
+        });
+        const dest = map.get(item.code);
+        if (!dest.name && item.name) dest.name = item.name;
+        if (!dest.cr && item.cr) dest.cr = item.cr;
+        for (const session of item.sessions || []) {
+            if (!dest.sessions.some(old =>
+                old.day === session.day &&
+                old.periodStart === session.periodStart &&
+                old.periodEnd === session.periodEnd &&
+                old.type === session.type &&
+                old.room === session.room
+            )) dest.sessions.push(session);
+        }
+    }
+    return [...map.values()];
+}
+
+/* Clipboard HTML preserves empty day cells, unlike copied plain text. */
+function edugateFromHTML(html) {
+    if (!html || !/<table[\s>]/i.test(html)) return [];
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const candidates = [];
+    for (const table of doc.querySelectorAll('table')) {
+        const rows = [...table.querySelectorAll('tr')];
+        let headerIndex = -1, index = {};
+        for (let i = 0; i < rows.length; i++) {
+            const labels = [...rows[i].children].filter(x => /^(TD|TH)$/i.test(x.tagName))
+                .map(x => edugateClean(x.textContent).toLowerCase());
+            const lookup = {
+                code: labels.findIndex(x => /course\s*code/.test(x)),
+                name: labels.findIndex(x => /course\s*name/.test(x)),
+                activity: labels.findIndex(x => /^activity$/.test(x)),
+                sun: labels.findIndex(x => /^sun$/.test(x)),
+                mon: labels.findIndex(x => /^mon$/.test(x)),
+                tue: labels.findIndex(x => /^tue$/.test(x)),
+                wed: labels.findIndex(x => /^wed$/.test(x)),
+                thu: labels.findIndex(x => /^thu$/.test(x)),
+                room: labels.findIndex(x => /^room$/.test(x)),
+                building: labels.findIndex(x => /^building$/.test(x)),
+                cr: labels.findIndex(x => /^cr$/.test(x))
+            };
+            if (lookup.code >= 0 && lookup.activity >= 0) {
+                headerIndex = i; index = lookup; break;
+            }
+            // Edugate commonly uses 2-row headers, and the second header omits Code/Name.
+            if (labels.includes('activity') && labels.includes('sun') && labels.includes('room')) {
+                index = { code:0,name:1,cr:2,activity:6,sun:7,mon:8,tue:9,wed:10,thu:11,building:12,room:13 };
+                headerIndex = i; break;
+            }
+        }
+        if (headerIndex < 0) continue;
+        for (const tr of rows.slice(headerIndex + 1)) {
+            const cols = [...tr.children].filter(x => /^(TD|TH)$/i.test(x.tagName))
+                .map(x => edugateClean(x.textContent));
+            const value = k => index[k] >= 0 ? (cols[index[k]] || '') : '';
+            const code = edugateCode(value('code'));
+            if (!code) continue;
+            const type = /practical|lab/i.test(value('activity')) ? 'Practical' : 'Theoretical';
+            const sessions = [];
+            for (const day of EDUGATE_DAYS) {
+                const slot = edugatePeriods(value(day.toLowerCase()));
+                if (slot) sessions.push({ ...slot, day, type, room:value('room'),building:value('building') });
+            }
+            candidates.push({
+                code, name:value('name'),
+                cr: /^[1-6]$/.test(value('cr')) ? value('cr') : '',
+                sessions
+            });
+        }
+    }
+    return edugateGroup(candidates);
+}
+
+const EDUGATE_ROW =
+    /\b([A-Z]{2,6})\s+(\d{3,4}[A-Z]?)\s+([A-Za-z][A-Za-z0-9 ()&.,/'-]{1,110}?)\s+(Theoretical|Practical|Laboratory|Lab)\b/gi;
+
+function edugateFromText(raw) {
+    const normalized = edugateClean(raw);
+    const found = [...normalized.matchAll(EDUGATE_ROW)];
+    const entries = [], warnings = [];
+    for (let i = 0; i < found.length; i++) {
+        const m = found[i], code = `${m[1].toUpperCase()} ${m[2].toUpperCase()}`;
+        const details = normalized.slice(m.index + m[0].length,
+            i + 1 < found.length ? found[i+1].index : normalized.length);
+        const type = /practical|lab/i.test(m[4]) ? 'Practical' : 'Theoretical';
+        // Only the leading part after Activity can contain the period groups.
+        // Everything after the first building phrase belongs to location/staff metadata.
+        const buildingAt = details.search(/\b(?:Wing\s*\d+|EE\s*Building|[A-Z]{2,5}\s+Building|Blackboard|FIELD[\s-]*GYM|MIT\s+First|Building\s+(?:Ground|First|Second)|Ground\s*Floor|First\s*Floor)\b/i);
+        const beforeLocation = (buildingAt >= 0 ? details.slice(0,buildingAt) : details).trim();
+        // When column breaks collapse into spaces, Sec+Seq can occur before Building.
+        // Do not mistake CR/CT numbers after Sec+Seq for additional lecture periods.
+        const secSeq = /(?:^|\s)\d{1,2}\s+\d{2,4}(?=\s|$)/.exec(beforeLocation);
+        const periodArea = (secSeq ? beforeLocation.slice(0,secSeq.index) : beforeLocation).trim();
+        const location = buildingAt >= 0 ? details.slice(buildingAt) : '';
+        const sessions = [];
+        const labeled = [...periodArea.matchAll(/\b(Sun|Mon|Tue|Wed|Thu|الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس)\s*:?\s*(\d{1,2}(?:\s*,\s*\d{1,2})*)/gi)];
+        if (labeled.length) {
+            for (const label of labeled) {
+                const period = edugatePeriods(label[2]);
+                if (period) sessions.push({ ...period, day:EDUGATE_DAY_LABELS[label[1].toLowerCase()] || '', type });
+            }
+        } else {
+            // Plain text has already lost the blank Sun/Mon/Tue cells: no reliable day can be deduced.
+            for (const token of periodArea.split(/\s+/)) {
+                if (!/^\d{1,2}(?:,\d{1,2})*$/.test(token)) continue;
+                const period = edugatePeriods(token);
+                if (period) sessions.push({ ...period, day:'', type });
+            }
+        }
+        let building = '', room = '', cr = '';
+        if (location) {
+            const buildingMatch = location.match(/^(Wing\s*\d+\s*-\s*(?:Ground|First|Second)\s*Floor|EE\s*Building\s*(?:Ground|First|Second)?\s*(?:Floor)?|[A-Z]{2,5}\s+Building\s*(?:Ground|First|Second)?\s*(?:Floor)?|Blackboard\s*-\s*Blackboard|FIELD[\s-]*GYM|MIT\s+First\s+Floor|Building\s+(?:Ground|First|Second)\s*Floor)/i);
+            building = buildingMatch ? edugateClean(buildingMatch[1]) : '';
+            // Room may occur after Floor or be pushed after the lecturer's name.
+            const roomAfterFloor = location.match(/\bFloor\s+([A-Z]{1,3}\d{2,5}|\d{3,5}|Blackboard)\b/i);
+            const alphanumericRoom = location.match(/\b([A-Z]{1,3}\d{2,5})\b/i);
+            const numericRoom = location.match(/^(?:[\s\S]*?\bFloor)\s+(\d{3,5})\b/i);
+            room = roomAfterFloor?.[1] || alphanumericRoom?.[1] || numericRoom?.[1] || '';
+            // Text copy often reorders CR/CT and Sec/Seq near building/room.
+            // Extract only if the 2-column CR/CT pair is unambiguous.
+            const cleanLoc = location.replace(/\b(?:[A-Z]{1,3}\d{2,5})\b/g,' ')
+                .replace(/\bFloor\b/ig,' ');
+            const numbers = cleanLoc.match(/\b\d{1,4}\b/g) || [];
+            const sectionSeq = numbers.findIndex((n,j) => j+2 < numbers.length &&
+                Number(n) >= 1 && Number(n) <= 30 &&
+                Number(numbers[j+1]) >= 40 && Number(numbers[j+1]) <= 2000 &&
+                Number(numbers[j+2]) >= 1 && Number(numbers[j+2]) <= 6);
+            if (sectionSeq >= 0 && sectionSeq + 3 < numbers.length &&
+                Number(numbers[sectionSeq+3]) >= 1 && Number(numbers[sectionSeq+3]) <= 6) {
+                cr = numbers[sectionSeq+2];
+            }
+        }
+        if (!sessions.length) warnings.push(`${code}: لم تُعرف فترات المحاضرة`);
+        else if (sessions.some(s => !s.day)) warnings.push(`${code}: يلزم تحديد يوم المحاضرة`);
+        entries.push({code,name:edugateClean(m[3]),cr,sessions:sessions.map(s=>({...s,room,building}))});
+    }
+    return { courses:edugateGroup(entries), warnings };
+}
+
+function edugateImport(entries, warnings = []) {
+    if (!entries.length) {
+        alert('لم يتم التعرف على المواد. تأكد أنك نسخت جدول الإيدوقيت كاملًا.');
         return;
     }
+    const existing = new Set(courses.map(c => c.code));
+    const additions = entries.filter(c => !existing.has(c.code));
+    for (const item of additions) {
+        const course = newCourse({ code:item.code,name:item.name,cr:item.cr });
+        for (const s of item.sessions) course.sessions.push(newSession(s));
+        if (!course.sessions.length) course.sessions.push(newSession());
+        courses.push(course);
+    }
+    saveToStorage();
+    renderCourseList();
+    const missingDays = additions.reduce((count, c) => count + c.sessions.filter(s=>!s.day).length, 0);
+    const missingCR = additions.filter(c=>!c.cr).length;
+    const message = [
+        `تم التعرف على ${entries.length} مادة، وإضافة ${additions.length} مادة جديدة.`,
+        missingDays ? `${missingDays} حصة تحتاج تحديد اليوم من القائمة.` : 'تم استخراج أيام المحاضرات.',
+        missingCR ? `${missingCR} مادة تحتاج مراجعة الساعات المعتمدة.` : '',
+        warnings.length ? 'راجع القاعات والمباني قبل الاعتماد النهائي.' : ''
+    ].filter(Boolean).join('\n');
+    if (typeof showAlert === 'function') showAlert('نتيجة استيراد الجدول',message,'✅');
+    else alert(message);
+}
 
+document.getElementById('pasteInput')?.addEventListener('paste', event => {
+    const html = event.clipboardData?.getData('text/html') || '';
+    edugatePastedTable = html.includes('<table') ? html : null;
+});
+
+document.getElementById('pasteInput')?.addEventListener('input', event => {
+    if (!event.inputType?.startsWith('insertFromPaste')) edugatePastedTable = null;
+});
+
+document.getElementById('parseBtn')?.addEventListener('click', () => {
+    const input = document.getElementById('pasteInput');
+    const raw = input?.value || '';
+    if (!raw.trim()) { alert('الصق الجدول أولًا'); return; }
     try {
-        // توحيد شكل النص والأرقام
-        const normalized = text
-            .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
-            .replace(/\u00A0/g, ' ')
-            .replace(/\r/g, '');
-
-        // العثور على بداية كل مادة / شعبة
-        const rowPattern =
-            /^\s*([A-Z]{2,4})\s+(\d{3,4})\s+(.+?)\s+(Theoretical|Practical|Lab)\b/gmi;
-
-        const matches = [...normalized.matchAll(rowPattern)];
-        const imported = new Map();
-
-        const dayMap = {
-            sun: 'Sun',
-            mon: 'Mon',
-            tue: 'Tue',
-            wed: 'Wed',
-            thu: 'Thu',
-            'الأحد': 'Sun',
-            'الاثنين': 'Mon',
-            'الثلاثاء': 'Tue',
-            'الأربعاء': 'Wed',
-            'الخميس': 'Thu'
-        };
-
-        matches.forEach((match, index) => {
-            const code = `${match[1].toUpperCase()} ${match[2]}`;
-            const name = match[3].trim();
-            const type = /practical|lab/i.test(match[4])
-                ? 'Practical'
-                : 'Theoretical';
-
-            const start = match.index + match[0].length;
-            const end = index + 1 < matches.length
-                ? matches[index + 1].index
-                : normalized.length;
-
-            // محتوى السطر مع الأسطر المكملة له
-            const rawDetails = normalized.slice(start, end);
-
-            // تحديد بداية بيانات المبنى
-            const buildingPattern =
-                /\b(?:Wing\s*\d+|FIELD-GYM|Blackboard|MIT\s+First\s+Floor)\b/i;
-
-            const buildingMatch = buildingPattern.exec(rawDetails);
-
-            const beforeBuilding = buildingMatch
-                ? rawDetails.slice(0, buildingMatch.index)
-                : rawDetails.split('\n')[0];
-
-            const locationDetails = buildingMatch
-                ? rawDetails.slice(buildingMatch.index)
-                : '';
-
-            // استخراج الفترات فقط قبل المبنى
-            const periodsText = beforeBuilding
-                .replace(/[ \t]+/g, ' ')
-                .trim();
-
-            const sessions = [];
-
-            // يدعم اليوم الصريح عند وجوده بالنص
-            const labeledPattern =
-                /(Sun|Mon|Tue|Wed|Thu|الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس)\s*:?\s*(\d{1,2}(?:,\d{1,2})*)/gi;
-
-            const labeled = [...periodsText.matchAll(labeledPattern)];
-
-            if (labeled.length) {
-                labeled.forEach(item => {
-                    const nums = item[2]
-                        .split(',')
-                        .map(Number)
-                        .filter(n => n >= 1 && n <= 15)
-                        .sort((a, b) => a - b);
-
-                    if (!nums.length) return;
-
-                    sessions.push({
-                        type,
-                        day: dayMap[item[1].toLowerCase()] || '',
-                        periodStart: String(nums[0]),
-                        periodEnd: String(nums[nums.length - 1])
-                    });
-                });
-            } else {
-                // فترات بلا يوم محدد: لا نخمن اليوم
-                const groups = periodsText
-                    .split(/\s+/)
-                    .filter(token => /^\d{1,2}(?:,\d{1,2})*$/.test(token));
-
-                groups.forEach(group => {
-                    const nums = group
-                        .split(',')
-                        .map(Number)
-                        .filter(n => n >= 1 && n <= 15)
-                        .sort((a, b) => a - b);
-
-                    if (!nums.length) return;
-
-                    sessions.push({
-                        type,
-                        day: '',
-                        periodStart: String(nums[0]),
-                        periodEnd: String(nums[nums.length - 1])
-                    });
-                });
-            }
-
-            // استخراج المبنى والقاعة
-            let building = '';
-            let room = '';
-            let cr = '';
-
-            if (locationDetails) {
-                const location = locationDetails
-                    .replace(/\s*\n\s*/g, ' ')
-                    .replace(/\s+/g, ' ')
-                    .trim();
-
-                let remaining = location;
-
-                const patterns = [
-                    /^(Wing\s*\d+\s*-\s*Ground\s*Floor)\b/i,
-                    /^(Blackboard\s*-\s*Blackboard)\b/i,
-                    /^(MIT\s+First\s+Floor)\b/i,
-                    /^(FIELD-GYM)\b/i
-                ];
-
-                for (const pattern of patterns) {
-                    const found = remaining.match(pattern);
-
-                    if (found) {
-                        building = found[1].trim();
-                        remaining = remaining.slice(found[0].length).trim();
-                        break;
-                    }
-                }
-
-                // Room ثم Sec ثم Seq ثم CR ثم CT
-                const locationMatch = remaining.match(
-                    /^([A-Z]?\d{1,5})\s+(\d+)\s+(\d+)(?:\s+(\d+))?(?:\s+(\d+))?(?=\s|$)/i
-                );
-
-                if (locationMatch) {
-                    room = locationMatch[1];
-
-                    const firstTrailing = locationMatch[4];
-                    const secondTrailing = locationMatch[5];
-
-                    // وجود CR و CT معاً
-                    // إذا ظهر رقم واحد فقط بعد Sec/Seq
-                    // فلا نفترض أنه CR لأنه قد يكون CT
-                    if (firstTrailing && secondTrailing) {
-                        const possibleCR = Number(firstTrailing);
-
-                        if (possibleCR >= 1 && possibleCR <= 6) {
-                            cr = String(possibleCR);
-                        }
-                    }
-                }
-            }
-
-            if (!imported.has(code)) {
-                imported.set(code, {
-                    code,
-                    name,
-                    cr: '',
-                    sessions: []
-                });
-            }
-
-            const course = imported.get(code);
-
-            if (cr && !course.cr) {
-                course.cr = cr;
-            }
-
-            sessions.forEach(session => {
-                course.sessions.push({
-                    ...session,
-                    room,
-                    building
-                });
-            });
-        });
-
-        if (!imported.size) {
-            alert('لم يتم التعرف على المواد. تأكد من نسخ الجدول بشكل صحيح.');
-            return;
+        let entries = edugatePastedTable ? edugateFromHTML(edugatePastedTable) : [];
+        const warnings = [];
+        if (!entries.length) {
+            const plain = edugateFromText(raw);
+            entries = plain.courses;
+            warnings.push(...plain.warnings);
         }
-
-        imported.forEach(entry => {
-            const course = newCourse({
-                code: entry.code,
-                name: entry.name,
-                cr: entry.cr
-            });
-
-            entry.sessions.forEach(session => {
-                course.sessions.push(newSession(session));
-            });
-
-            if (!course.sessions.length) {
-                course.sessions.push(newSession());
-            }
-
-            courses.push(course);
-        });
-
-        saveToStorage();
-        renderCourseList();
-
-        input.value = '';
-
-        const missingCR = [...imported.values()]
-            .filter(course => !course.cr).length;
-
-        const message = [
-            `تم استخراج ${imported.size} مادة بنجاح.`,
-            missingCR
-                ? `${missingCR} مادة تحتاج مراجعة الساعات المعتمدة.`
-                : 'تم استخراج الساعات المعتمدة.',
-            'راجع أيام المحاضرات وحددها قبل بناء الجدول.'
-        ].join('\n');
-
-        if (typeof showAlert === 'function') {
-            showAlert('تم استخراج الجدول', message, '✅');
-        } else {
-            alert(message);
-        }
-
+        edugateImport(entries,warnings);
+        if (entries.length) { input.value=''; edugatePastedTable=null; }
     } catch (error) {
-        console.error('Schedule Parser Error:', error);
-        alert('حدث خطأ أثناء تحليل الجدول.');
+        console.error('EDUGATE v2 parse failed',error);
+        alert('تعذر استخراج الجدول. تحقق من صيغة النسخ أو أرسل النص للدعم.');
     }
 });
 
