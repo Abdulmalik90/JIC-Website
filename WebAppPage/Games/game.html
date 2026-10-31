@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تحدي مدخل</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="mg-shell">
+        <header class="mg-game-header">
+            <a href="../Pages/center.html" class="mg-back-link">رجوع &rarr;</a>
+            <div class="mg-platform-logo">مَدخل</div>
+        </header>
+
+        <main class="mg-game-content">
+            <section class="mg-view mg-welcome" data-view="welcome">
+                <span class="mg-kicker">تحدّي طلاب الكلية</span>
+                <div class="mg-hero-mark" aria-hidden="true">؟<span>مدخل</span></div>
+                <h1>قد إيش تعرف <em>الكلية؟</em></h1>
+                <p>اختبر نفسك في ألغاز الكلية الأسبوعية. كل أسبوع فيه ثلاثة ألغاز جديدة، ومع نهاية التحدي تقدر تحفظ بطاقة تهنئة باسمك ورتبتك.</p>
+                <div class="mg-pills">
+                    <span>3 ألغاز / أسبوع</span>
+                    <span>3 محاولات / لغز</span>
+                    <span>من الأسبوع 11 إلى 15</span>
+                </div>
+                <label for="mgPlayerName">اسمك في التحدي</label>
+                <input type="text" id="mgPlayerName" autocomplete="nickname" maxlength="24" placeholder="اكتب اسمك أو لقبك">
+                <p id="mgNameError" class="mg-validation" aria-live="polite"></p>
+                <button class="mg-main-btn" id="mgBegin" type="button">ادخل التحدي <span>←</span></button>
+                <div class="mg-disclaimer">تُحفظ هويتك ونتائجك في هذا المتصفح فقط.</div>
+            </section>
+
+            <section class="mg-view" data-view="hub" hidden>
+                <div class="mg-hub-top">
+                    <div>
+                        <span class="mg-kicker">ملف اللاعب</span>
+                        <h1>هلا، <span id="mgDisplayName"></span> <span class="mg-wave">✳</span></h1>
+                    </div>
+                    <button class="mg-text-btn" id="mgChangeName" type="button">تغيير الاسم</button>
+                </div>
+
+                <div class="mg-profile-strip">
+                    <div class="mg-profile-score">
+                        <span class="mg-score-symbol" aria-hidden="true">✦</span>
+                        <strong id="mgTotalScore">0</strong>
+                        <small>نقطة</small>
+                    </div>
+                    <span class="mg-profile-divider" aria-hidden="true"></span>
+                    <div class="mg-profile-meta">
+                        <span>🧩 <strong id="mgSolved">0</strong> <small id="mgAvailableCount">من 0</small> ألغاز محلولة</span>
+                        <span>🎓 <strong id="mgRank">تحضيري</strong></span>
+                    </div>
+                </div>
+                <div class="mg-percentage" id="mgPercentage">0٪ من 1500 نقطة</div>
+
+                <div class="mg-hub-title">
+                    <div>
+                        <h2>الأسابيع</h2>
+                        <p>الأسابيع السابقة تبقى مفتوحة لك، أما الألغاز الجديدة فتُفتح حسب التقويم.</p>
+                    </div>
+                    <span id="mgWeekNow" class="mg-week-now"></span>
+                </div>
+
+                <div id="mgWeeks" class="mg-weeks"></div>
+                <p id="mgNextUnlock" class="mg-next"></p>
+
+                <div class="mg-final-share">
+                    <div>
+                        <strong>بطاقة التهنئة</strong>
+                        <p>بعد نهاية الأسبوع الخامس عشر تقدر تحفظ صورة تهنئة باسمك ورتبتك ونقاطك.</p>
+                    </div>
+                    <button class="mg-final-share-btn" id="mgExportCard" type="button" disabled aria-disabled="true">🔒 متاح بعد نهاية الأسبوع 15</button>
+                    <small id="mgExportNote"></small>
+                </div>
+            </section>
+
+            <section class="mg-view mg-play" data-view="play" hidden>
+                <button id="mgBack" class="mg-text-btn mg-back" type="button">→ كل الأسابيع</button>
+                <div class="mg-question-head"><span id="mgQuestionWeek"></span><span id="mgQuestionPoints"></span></div>
+                <div class="mg-question-card">
+                    <span id="mgQuestionTag" class="mg-question-tag">لغز الكلية</span>
+                    <h2 id="mgQuestionText"></h2>
+                    <p id="mgQuestionHint"></p>
+                </div>
+                <div class="mg-answer-label"><span>اكتب الجواب</span><span id="mgAttempts" aria-live="polite">المحاولات المتبقية: 3 من 3</span></div>
+                <input id="mgAnswerInput" class="mg-answer-input" type="text" lang="ar" dir="auto" inputmode="text" enterkeyhint="done" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="وش تتوقع الإجابة؟" aria-label="إجابتك على اللغز" maxlength="120">
+                <div id="mgFeedback" class="mg-feedback" role="status" aria-live="polite"></div>
+                <button class="mg-main-btn mg-submit" id="mgSubmit" type="button">تحقق من الإجابة <span>←</span></button>
+                <button class="mg-secondary-btn" id="mgSkip" type="button">ارجع للأسئلة</button>
+            </section>
+
+            <section class="mg-view mg-reveal" data-view="reveal" hidden>
+                <span class="mg-kicker" id="mgRevealKicker"></span>
+                <div class="mg-reveal-symbol" id="mgRevealSymbol">✳</div>
+                <h1 id="mgRevealTitle"></h1>
+                <p id="mgRevealDetail"></p>
+                <div class="mg-reveal-points" id="mgRevealPoints"></div>
+                <button class="mg-main-btn" id="mgNext" type="button">كمّل التحدي <span>←</span></button>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    </script>
+    <script src="./PortalGame.js"></script>
+</body>
+</html>
