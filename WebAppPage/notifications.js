@@ -6,7 +6,7 @@
 const notifHTML = `
     <div class="notif-panel" id="notifPanel">
         <div class="notif-header">
-            <h3>الإشعارات</h3>
+            <h3>الإعلامات</h3>
             <button class="mark-read-btn" onclick="markAllRead()">تحديد كـ مقروء</button>
         </div>
 
@@ -16,8 +16,8 @@ const notifHTML = `
                     <i class="fi fi-rr-rocket"></i>
                 </div>
                 <div class="notif-content">
-                    <h4>إطلاق تحديث جديد لتطبيق مدخل!</h4>
-                    <p>جـاهزين للسنة الجديدة بكل شغف وحماس</p>
+                    <h4>صار للاندية الطلابية بروفايلات!</h4>
+                    <p>تحديث جديد يشمل بروفايلات للاندية الطلابية!</p>
                     <span class="notif-time">اللحين</span>
                 </div>
                 <div class="item-unread-dot"></div>
@@ -25,16 +25,35 @@ const notifHTML = `
 
             <div class="notif-item unread">
                 <div class="notif-icon" style="background: rgba(0, 82, 204, 0.1); color: #005fcc;">
-                    <i class="fi fi-rr-calendar"></i>
+                    <i class="fi fi-rr-baby"></i>
                 </div>
                 <div class="notif-content">
-                    <h4>اخبار الاندية الطلابية وصلت !</h4>
-                    <p>تعاون جديد يجمع مابين مبادرة مدخل و الاندية الطلابية لعرض اخبار الاندية بمكان واحد !</p>
-                    <span class="notif-time">قبل شهور</span>
+                    <h4>عمر مدخل صار سنة 🥳</h4>
+                    <p>مدخل يكمل سنة كاملة منذ الاطلاق التجريبي</p>
+                    <span class="notif-time">1 نوفمبر</span>
                 </div>
                 <div class="item-unread-dot"></div>
             </div>
         </div>
+
+        <!-- شريط الإبلاغ والاقتراحات (ثابت بالأسفل) -->
+        <a href="https://forms.gle/2RZeq72DEdFRUAoz5" target="_blank" style="
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            padding: 15px; 
+            background: var(--bg-color); 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: 700; 
+            border-top: 1px solid var(--border-color);
+            transition: background 0.2s ease;
+        " onmouseover="this.style.background='var(--surface-color)'" onmouseout="this.style.background='var(--bg-color)'">
+            <i class="fi fi-rr-headset" style="color: var(--primary-text); font-size: 18px;"></i>
+            عندك اقتراح أو واجهتك مشكلة؟
+        </a>
     </div>
 `;
 

@@ -43,172 +43,155 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }); // <--- 🛑 انتبه: القوس هذا يقفل كود الـ DOMContentLoaded هنا
 
+
+// ============================================
+// دالة عرض الأخبار (News Renderer) - متصلة بالفورم
+// ============================================
+
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- (أكوادك السابقة حقت القائمة والايموجي خلها زي ما هي فوق) ---
+    console.log("🚀 Script.js: جاري تشغيل نظام الأخبار من الفورم...");
 
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuoxkfsi2A0UA8P5C95MDgzfhsKWhGPscPmGmNsj7JGZESTOCSSik8yN8CfoUdnCT8exkcIAp7uZJt/pub?gid=695451602&single=true&output=csv';
 
-    // ============================================
-    // زر التخصصات 
-    // ============================================
-
-    const modal = document.getElementById('majorsModal');
-    const openBtn = document.getElementById('btn-majors'); // الزر اللي عطيناه آيدي تو
-    const closeBtn = document.querySelector('.modal-close-btn');
-    const overlay = document.querySelector('.modal-overlay');
-
-    // 1. وظيفة الفتح
-    if (openBtn) {
-        openBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // عشان لو كان رابط ما يغير الصفحة
-            console.log('تم ضغط زر التخصصات!'); // فحص
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // نمنع السكرول الخلفي
-        });
-    } else {
-        console.error('زر التخصصات غير موجود! تأكد من الـ ID في HTML');
-    }
-
-    // 2. وظيفة الإغلاق (زر الإكس)
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            closeModal();
-        });
-    }
-
-    // 3. وظيفة الإغلاق (الضغط في الخلفية)
-    if (overlay) {
-        overlay.addEventListener('click', (e) => {
-            // نتأكد انه ضغط عالفراغ مو داخل الصندوق
-            if (e.target === overlay) {
-                closeModal();
+    // 1. دالة تحليل الـ CSV (نفس المستخدمة في صفحة الأخبار)
+    function parseCSV(text) {
+        const rows = [];
+        const re = /("(?:[^"]|"")*"|[^,\r\n]*)(,|\r?\n|$)/g;
+        let row = [];
+        let match;
+        while ((match = re.exec(text)) !== null) {
+            let val = match[1];
+            if (val.startsWith('"') && val.endsWith('"')) {
+                val = val.slice(1, -1).replace(/""/g, '"');
             }
+            row.push(val.trim());
+            if (match[2] !== ',') {
+                rows.push(row);
+                row = [];
+                if (match[2] === '') break;
+            }
+        }
+        if (!rows.length) return [];
+        const headers = rows[0].map(h => h.toLowerCase().trim());
+        return rows.slice(1).filter(r => r.some(c => c.trim())).map(r => {
+            const obj = {};
+            headers.forEach((h, i) => { obj[h] = (r[i] || '').trim(); });
+            return obj;
         });
     }
 
-    // دالة الإغلاق الموحدة
-    function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-});
-
-// ============================================
-// دالة عرض الأخبار (News Renderer)
-// ============================================
-// ========================================================
-// ملف: WebAppPage/script.js
-// الوظيفة: تصميم الأخبار القديم + إعلانات صور كاملة + تبديل تلقائي (7 ثواني)
-// ========================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("🚀 Script.js: جاري تشغيل نظام الأخبار...");
-
-    // دالة عرض الأخبار
-    function renderNews() {
+    // 2. دالة جلب وعرض الأخبار
+    async function renderNews() {
         const newsContainer = document.getElementById('news');
-
-        // حماية
         if (!newsContainer) return;
-        if (typeof getAllNewsArticles === 'undefined') {
-            console.warn('News data not found');
-            return;
-        }
 
-        const articles = getAllNewsArticles(); 
-        newsContainer.innerHTML = ''; // تنظيف
+        // إظهار أنميشن التحميل
+        newsContainer.innerHTML = '<div style="width: 100%; text-align: center; padding: 20px; color: var(--text-light);"><i class="fi fi-rr-spinner-alt" style="animation: spin 1s linear infinite; font-size: 24px;"></i></div>';
 
-        articles.forEach((article, index) => {
-            // --------------------------------------------------------
-            // 1. كرت الخبر (تصميمك القديم بالحرف - لم نلمسه)
-            // --------------------------------------------------------
-            const dateObj = new Date(article.date);
-            const dateString = dateObj.toLocaleDateString('en-GB'); 
+        try {
+            // جلب البيانات من قوقل شيت
+            const res = await fetch(CSV_URL, { cache: 'no-cache' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const text = await res.text();
+            const rows = parseCSV(text);
 
-            const card = document.createElement('a');
-            card.className = 'news-card';
-            card.href = './news.html'; 
-            
-            card.innerHTML = `
-                <div class="news-category">${article.category}</div>
-                <img src="${article.image}" alt="${article.title}" class="news-card-img" loading="lazy">
-                <div class="news-card-content">
-                    <h3 class="news-card-title">${article.title}</h3>
-                    <div class="news-card-date">
-                        📅 ${dateString} • ${article.author}
+            // تصفية وتجهيز البيانات
+            const articles = rows
+                .filter(r => r.title || r['العنوان'])
+                .map((r, i) => ({
+                    id: r.id || r['id'] || String(i),
+                    title: r.title || r['العنوان'] || 'بدون عنوان',
+                    author: r.author || r['الكاتب'] || 'مَدخل',
+                    date: r.date || r['التاريخ'] || '',
+                    category: r.tag || r['التاق'] || r['الوسم'] || 'خبر',
+                    image: r.cover || r['الصورة'] || 'https://via.placeholder.com/400x200/1a60bb/ffffff?text=خبر+جديد'
+                })).reverse(); // الأحدث يظهر أولاً
+
+            newsContainer.innerHTML = ''; // تنظيف الحاوية بعد التحميل
+
+            articles.forEach((article, index) => {
+                // --------------------------------------------------------
+                // كرت الخبر (نفس التصميم القديم بالضبط)
+                // --------------------------------------------------------
+                let dateString = article.date;
+                const dateObj = new Date(article.date);
+                if (!isNaN(dateObj)) {
+                    dateString = dateObj.toLocaleDateString('en-GB'); 
+                }
+
+                const card = document.createElement('a');
+                card.className = 'news-card';
+                // توجيه الطالب لقراءة الخبر كامل، عدل المسار إذا اختلف
+                card.href = `./Pages/article.html?id=${encodeURIComponent(article.id)}`; 
+                
+                card.innerHTML = `
+                    <div class="news-category">${article.category}</div>
+                    <img src="${article.image}" alt="${article.title}" class="news-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200/1a60bb/ffffff?text=خبر+جديد'">
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">${article.title}</h3>
+                        <div class="news-card-date">
+                            📅 ${dateString} • ${article.author}
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
 
-            newsContainer.appendChild(card);
+                newsContainer.appendChild(card);
 
-            // --------------------------------------------------------
-            // 2. حقن الإعلان (صورة كاملة + قابلية للتغيير)
-            // --------------------------------------------------------
-            if ((index + 1) % 3 === 0) {
-                if (window.AdsManager) {
-                    const ad = window.AdsManager.getAd('news_feed');
-                    
-                    if (ad) {
-                        const adCard = document.createElement('a');
+                // --------------------------------------------------------
+                // حقن الإعلانات (نفس نظامك القديم بدون أي تغيير)
+                // --------------------------------------------------------
+                if ((index + 1) % 2 === 0) {
+                    if (window.AdsManager) {
+                        const ad = window.AdsManager.getAd('news_feed');
                         
-                        // أضفنا كلاس 'dynamic-ad-unit' عشان نقدر نمسكه بعدين ونغيره
-                        adCard.className = 'news-card ad-unit dynamic-ad-unit'; 
-                        adCard.href = ad.link;
-                        adCard.target = "_blank";
-                        
-                        // ستايل الإعلان (صورة كاملة تغطي الكرت)
-                        adCard.style.cssText = "position: relative; overflow: hidden; display: block; border-radius:22px";
+                        if (ad) {
+                            const adCard = document.createElement('a');
+                            adCard.className = 'news-card ad-unit dynamic-ad-unit'; 
+                            adCard.href = ad.link;
+                            adCard.target = "_blank";
+                            adCard.style.cssText = "position: relative; overflow: hidden; display: block; border-radius:22px";
 
-                        adCard.innerHTML = `
-                            <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 4px; z-index: 2;">إعلان</span>
+                            adCard.innerHTML = `
+                                <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 4px; z-index: 2;">إعلان</span>
+                                <img class="dynamic-ad-img" src="${ad.image}" alt="${ad.client}"
+                                     style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.5s ease;" />
+                            `;
                             
-                            <img class="dynamic-ad-img" src="${ad.image}" alt="${ad.client}"
-                                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.5s ease;" />
-                        `;
-                        
-                        newsContainer.appendChild(adCard);
+                            newsContainer.appendChild(adCard);
+                        }
                     }
                 }
-            }
-        });
+            });
+
+        } catch (err) {
+            console.error("News fetch error:", err);
+            newsContainer.innerHTML = '<p style="text-align:center; width:100%; color:#ef4444; font-size: 12px;">تعذر تحميل الأخبار من الخادم.</p>';
+        }
     }
 
     // --------------------------------------------------------
-    // 3. نظام التحديث التلقائي (كل 7 ثواني) 🔄
+    // نظام التحديث التلقائي للإعلانات (كل 7 ثواني)
     // --------------------------------------------------------
     function updateAds() {
-        // إذا المحرك مو موجود نوقف
         if (!window.AdsManager) return;
-
-        // نجيب كل كروت الإعلانات اللي زرعناها فوق
         const adUnits = document.querySelectorAll('.dynamic-ad-unit');
 
         adUnits.forEach(unit => {
-            // نطلب إعلان جديد
             const newAd = window.AdsManager.getAd('news_feed');
-            
             if (newAd) {
                 const img = unit.querySelector('.dynamic-ad-img');
-                
-                // حركة بسيطة: نخفي الصورة
                 img.style.opacity = '0';
-
-                // ننتظر نص ثانية (500ms) لين تختفي، ثم نغير الرابط والصورة ونظهرها
                 setTimeout(() => {
-                    unit.href = newAd.link;     // تغيير الرابط
-                    img.src = newAd.image;      // تغيير الصورة
-                    img.style.opacity = '1';    // إظهار
+                    unit.href = newAd.link;
+                    img.src = newAd.image;
+                    img.style.opacity = '1';
                 }, 500);
             }
         });
     }
 
-    // تشغيل الأخبار أول مرة
+    // تشغيل الأخبار
     renderNews();
-
-    // تشغيل المؤقت: ينادي دالة updateAds كل 7000 ملي ثانية (7 ثواني)
     setInterval(updateAds, 7000);
 });
 
@@ -323,21 +306,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================
-// جلب أحدث 3 أخبار للواجهة الرئيسية (Home Feed)
+// جلب أحدث 3 أخبار للواجهة الرئيسية (Home Feed) - مدمجة مع قوقل
 // =========================================
 
 document.addEventListener('DOMContentLoaded', async () => {
     
     const homeNewsContainer = document.getElementById('homeLatestNews');
-    if (!homeNewsContainer) return; // إذا مو موجود بالصفحة، وقف الكود
+    if (!homeNewsContainer) return;
 
-    // 1. رابط قوقل حقك (نفس اللي حطيته بصفحة الأندية)
-    const API_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; 
+    // رابط الـ Web App الخاص بك في Google Apps Script
+    const API_URL = "https://script.google.com/macros/s/AKfycbxHHBPR8REbUz_IctezSmrSGjEAmteOLG6dV8_2UVNUbqOI1318R8uZFAFdtASYNGq_/exec"; 
     const DB_KEY = "mdkhal_local_db";
 
-    // 2. دالة طباعة الـ 3 كروت المصغرة
+    const clubsDictionary = {
+        "نادي الحاسب": { color: "var(--primary-text)" },
+        "نادي الاستدامة": { color: "#10b981" },
+        "نادي الهندسة الكهربائية": { color: "#ff475f" },
+        "المجلس الطلابي": { color: "#105fb9" },
+        "نادي The Bridge": { color: "#45484d" },
+        "النادي الرياضي للطالبات": { color: "#9110b9" },
+        "نادي الهندسة المدنية": { color: "#b97510" },
+        "نادي الهندسة الميكانيكية": { color: "#1075b9" },
+        "نادي الهندسة الكيميائية": { color: "#b93710" },
+        "نادي همه التطوعي": { color: "#1091b9" },
+        "النادي الثقافي الاجتماعي للطالبات": { color: "#b96210" },
+        "نادي الحاسب للطالبات": { color: "#b910ab" },
+        "نادي ادارة الاعمال للطالبات": { color: "#b910ab" }
+    };
+
+    // دالة طباعة الـ 3 كروت المصغرة
     function renderHomeNews(newsArray) {
-        homeNewsContainer.innerHTML = ''; // تفريغ التحميل
+        homeNewsContainer.innerHTML = '';
         
         // ناخذ أول 3 أخبار فقط
         const top3News = newsArray.slice(0, 3);
@@ -348,8 +347,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         top3News.forEach(news => {
-            // انتبه لمسار رابط الخبر (club-article.html) إذا كانت الرئيسية برا مجلد Pages
-            const articleLink = `Pages/club-article.html?id=${news.id}`; 
+            const articleLink = `./Pages/club-article.html?id=${news.id}`; 
 
             const cardHTML = `
                 <a href="${articleLink}" class="home-mini-card">
@@ -367,28 +365,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // 3. التحقق من الذاكرة المحلية أولاً
-    const localData = localStorage.getItem(DB_KEY);
+    // دالة المزامنة وجلب البيانات
+    async function syncHomeNews() {
+        const localData = localStorage.getItem(DB_KEY);
 
-    if (localData) {
-        // إذا البيانات موجودة، اطبعها فوراً بلمح البصر
-        const parsedData = JSON.parse(localData);
-        renderHomeNews(parsedData);
-    } else {
-        // إذا الطالب جديد وما عنده بيانات، نجيبها من قوقل
+        // 1. عرض البيانات المحفوظة محلياً فوراً (إن وجدت) لسرعة الأداء
+        if (localData) {
+            renderHomeNews(JSON.parse(localData));
+        }
+
+        // 2. التحقق من وجود أخبار جديدة في الخلفية
         try {
             const response = await fetch(API_URL);
             const data = await response.json();
 
-            const clubsDictionary = {
-                "نادي الحاسب": { color: "var(--primary-text)" },
-                "النادي الثقافي": { color: "#ff4757" },
-                "نادي التطوع": { color: "#10b981" }
-            };
-
             const freshNews = data.map((row, index) => {
-                const clubName = row["اسم النادي"] || "نادي غير معروف";
-                const clubInfo = clubsDictionary[clubName] || { color: "#64748b" };
+                const clubName = (row["اسم النادي"] || "نادي غير معروف").trim();
+                
+                let clubInfo = { color: "#64748b" };
+                for (const [key, value] of Object.entries(clubsDictionary)) {
+                    if (clubName.includes(key) || key.includes(clubName)) {
+                        clubInfo = value;
+                        break;
+                    }
+                }
+
                 const fullDate = row["طابع زمني"] || "";
                 
                 return {
@@ -402,77 +403,74 @@ document.addEventListener('DOMContentLoaded', async () => {
                 };
             });
 
-            // نحفظها له عشان يستفيد منها إذا دخل صفحة الأندية
+            // 3. تحديث التخزين المحلي والواجهة
             localStorage.setItem(DB_KEY, JSON.stringify(freshNews));
-            
-            // نعرضها
             renderHomeNews(freshNews);
 
         } catch (error) {
             console.error("فشل جلب أخبار الواجهة:", error);
-            homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">لازم تشيك على صفحة اخبار الاندية اول</p>';
+            if (!localData) {
+                 homeNewsContainer.innerHTML = '<p style="color: var(--text-light); font-size: 12px; padding: 10px;">لا يمكن الاتصال بالخادم حالياً.</p>';
+            }
         }
     }
+
+    syncHomeNews();
 });
 
 // =========================================
-// الهيدر الموحد (Web Component) - مع دعم شعار الدارك واللايت
+// الهيدر العصري المطور (Center Logo + Modern Icons)
 // =========================================
 
-// 1. الدالة العامة للتبديل (مربوطة مباشرة بالزر وتاخذ المسار)
 window.toggleAppTheme = function(basePath) {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const newTheme = isDark ? 'light' : 'dark';
     localStorage.setItem('theme', newTheme);
-    
     document.documentElement.setAttribute('data-theme', newTheme);
     
     const icon = document.getElementById('theme-icon');
     const logo = document.getElementById('main-hub-logo');
-    
-    // تغيير الأيقونة والشعار بناءً على الثيم
+
     if (newTheme === 'dark') {
-        if (icon) { icon.classList.remove('fi-rr-moon'); icon.classList.add('fi-rr-sun'); }
-        if (logo) logo.src = basePath + 'Images/logo-dark.webp'; 
+        if (icon) { icon.className = 'fi fi-rr-sun'; }
+        if (logo) logo.src = basePath + 'Images/Logo22-dark.png';
     } else {
-        if (icon) { icon.classList.remove('fi-rr-sun'); icon.classList.add('fi-rr-moon'); }
-        if (logo) logo.src = basePath + 'Images/logo.webp';
+        if (icon) { icon.className = 'fi fi-rr-moon-stars'; }
+        if (logo) logo.src = basePath + 'Images/Logo22.png';
     }
 };
 
-// 2. بناء الهيدر
 class AppHeader extends HTMLElement {
     connectedCallback() {
-        const pageTitle = this.getAttribute('title') || 'الرئيسية';
         const basePath = this.getAttribute('base-path') || '../';
-        
-        // نقرأ الثيم الحالي عشان نحط الشعار الصح من البداية
         const currentTheme = localStorage.getItem('theme') || 'light';
-        const initialLogo = currentTheme === 'dark' ? 'logo-dark.webp' : 'logo.webp';
-        const initialIcon = currentTheme === 'dark' ? 'sun' : 'moon';
+        const initialIcon = currentTheme === 'dark' ? 'fi-rr-sun' : 'fi-rr-moon-stars';
+        const initialLogo = currentTheme === 'dark' ? 'Logo22-dark.png' : 'Logo22.png';
 
         this.innerHTML = `
-            <header class="floating-header">
-                <div class="header-content">
-                    <div class="header-right">
-                        <img src="${basePath}Images/${initialLogo}" alt="شعار" class="hub-logo" id="main-hub-logo">
-                        <h1 class="hub-title">${pageTitle}</h1>
+            <header class="elegant-header">
+                <div class="elegant-header-inner">
+                    <!-- زر الإشعارات المطور -->
+                    <button class="header-action-btn" onclick="toggleNotif()" aria-label="الإشعارات">
+                        <i class="fi fi-rr-bell-ring"></i>
+                        <span class="notif-dot-elegant"></span>
+                    </button>
+
+                    <!-- الشعار في المنتصف بالضبط -->
+                    <div class="header-logo-center">
+                        <a href="${basePath}index.html">
+                            <img src="${basePath}Images/${initialLogo}" alt="مدخل" id="main-hub-logo" class="app-wordmark-logo">
+                        </a>
                     </div>
-                    <div class="header-actions">
-                        <button class="action-btn theme-btn" onclick="toggleAppTheme('${basePath}')">
-                            <i class="fi fi-rr-${initialIcon}" id="theme-icon"></i>
-                        </button>
-                        <div class="header-divider"></div>
-                        <button class="action-btn notif-btn" onclick="toggleNotif()">
-                            <i class="fi fi-rr-bell"></i>
-                            <span class="notif-dot"></span>
-                        </button>
-                    </div>
+                    
+                    <!-- زر تغيير الثيم المطور -->
+                    <button class="header-action-btn" onclick="toggleAppTheme('${basePath}')" aria-label="تغيير المظهر">
+                        <i class="fi ${initialIcon}" id="theme-icon"></i>
+                    </button>
                 </div>
             </header>
         `;
 
-        // تطبيق الثيم المحفوظ
         if (currentTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         } else {
@@ -484,3 +482,22 @@ class AppHeader extends HTMLElement {
 if (!customElements.get('app-header')) {
     customElements.define('app-header', AppHeader);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const bannerContainer = document.querySelector('.library-ad-placeholder');
+    
+    if (bannerContainer && window.AdsManager) {
+        // جلب إعلان بنر المكتبة من المحرك
+        const bannerAd = window.AdsManager.getAd('library_banner');
+        
+        if (bannerAd) {
+            bannerContainer.innerHTML = `
+                <a href="${bannerAd.link}" target="_blank" class="promo-banner-link" style="display: block; width: 100%; border-radius: 20px; overflow: hidden; position: relative; box-shadow: 0 4px 15px var(--shadow-color);">
+                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 8px; z-index: 2; font-family: 'Tajawal';">رعاية</span>
+                    <img src="${bannerAd.image}" alt="${bannerAd.client}" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 160px; border-radius: 20px;">
+                </a>
+            `;
+        }
+    }
+});
+
