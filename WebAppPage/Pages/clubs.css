@@ -467,3 +467,577 @@
     transform: scale(0.95);
     background-color: #6b0c6e;
 }
+
+/* ================== شريط التبويبات ================== */
+.clubs-tabs-wrapper { margin-bottom: 25px; }
+.modern-tabs { display: flex; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 20px; padding: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.club-tab-btn { flex: 1; padding: 12px; border: none; background: transparent; border-radius: 16px; font-family: 'Tajawal', sans-serif; font-weight: 700; font-size: 14px; color: var(--text-light); cursor: pointer; transition: all 0.3s ease; }
+.club-tab-btn.active { background-color: var(--primary-text); color: #ffffff; box-shadow: 0 4px 12px rgba(130, 16, 145, 0.2); }
+.tab-content { display: none; animation: fadeIn 0.3s ease; }
+.tab-content.active { display: block; }
+
+/* =========================================
+   شبكة كروت الأندية الأنيقة (Bento Grid View)
+   ========================================= */
+
+.horizontal-clubs-list { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* عرض كرتين بجانب بعض بعمودين متناسقين */
+    gap: 14px; 
+}
+
+.bento-club-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    padding: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    min-height: 150px;
+}
+
+.bento-club-card:active {
+    transform: scale(0.96);
+}
+
+.bento-club-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.bento-avatar-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px; /* انحناء كبسولي أنيق للشعار */
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.bento-avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bento-action-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: transform 0.2s ease;
+}
+
+[data-theme="dark"] .bento-action-badge {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.bento-club-card:hover .bento-action-badge {
+    transform: translateX(-3px);
+}
+
+.bento-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bento-club-info h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+.bento-handle {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--primary-text);
+    direction: ltr;
+    display: inline-block;
+    width: fit-content;
+}
+
+.bento-club-info p {
+    margin: 4px 0 0 0;
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* =========================================
+   تنسيقات بروفايل الأندية المطور (Squircle Hero & Award Badges)
+   ========================================= */
+
+.club-profile-body {
+    background-color: var(--bg-color);
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+
+.club-profile-header {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+}
+
+.club-header-bg { /* استبدل هذا باسم الكلاس الفعلي لديك */
+    width: 100%;
+    
+    /* 1. الأهم: إزالة أي طول ثابت (احذف height إذا كان موجوداً) */
+    height: auto; 
+    
+    /* 2. فرض نسبة أبعاد البنرات العريضة (مثل بنر تويتر 3:1) */
+    aspect-ratio: 3 / 1; 
+    
+    /* 3. التوسيط والتغطية السليمة */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: relative; /* ضروري للحفاظ على مكان الشعار الدائري (اللوجو) أسفله */
+    border-radius: 20px;
+}
+
+.glass-back-btn {
+    width: 45px;
+    height: 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    padding: 10px 0px 4px 0px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.glass-back-btn:active {
+    transform: scale(0.9);
+}
+
+.club-profile-container {
+    padding: 12px 14px 40px 14px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* غلاف الهيدر الملون المتدرج ذو الحواف المنحنية والأنيقة */
+/* =========================================
+   وزنية الأفاتار المحدثة ومحاذاة العناصر
+   ========================================= */
+
+/* حاوية غلاف الهيدر */
+/* حاوية غلاف الهيدر */
+.club-hero-canvas {
+    width: 100%;
+    
+    /* 1. إزالة الطول الثابت واستخدام النسبة 3:1 (1200×400) */
+    height: auto; 
+    aspect-ratio: 3 / 1; 
+    
+    /* 2. في حال كانت الصورة مبرمجة كخلفية */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+/* 3. في حال كانت الصورة مضافة كوسم <img> داخل الحاوية (هذا هو السطر اللي بيحل القص تماماً) */
+.club-hero-canvas img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* بما أن الحاوية مقاسها 3:1 والصورة 3:1، ستظهر كاملة بدون أي قص */
+    display: block;
+}
+
+/* بطاقة تفاصيل النادي السفلية */
+.club-details-card {
+    position: relative;
+    padding: 0 10px;
+    margin-top: -35px; /* يحدد مقدار تداخل الأفاتار مع الهيدر */
+    z-index: 10;
+}
+
+/* الأفاتار الموزون بحواف دائرية ناعمة وإطار فاصل */
+.avatar-floating-wrapper {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--surface-color);
+    border: 3.5px solid var(--bg-color); /* إطار بلون خلفية التطبيق لفصل الأفاتار عن الهيدر */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-right: 12px; /* يثبت الأفاتار بالجهة اليمنى المتناسقة مع اتجاه اللغة العربية */
+}
+
+.club-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ضبط محاذاة اسم النادي والتاقات مع وزنية الأفاتار الجديدة */
+.club-main-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.club-main-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.club-titles h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 2px 0;
+}
+
+.club-handle {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 600;
+    direction: ltr;
+    display: inline-block;
+}
+
+.join-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #25d366;
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.join-action-btn:active {
+    transform: scale(0.94);
+}
+
+/* تاقات وأوسمة الجوائز للتحفيز */
+.club-badges-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    margin-bottom: 15px;
+}
+
+.club-badges-scroll::-webkit-scrollbar { display: none; }
+
+.award-badge-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* أنواع التاقات الملونة والفاخرة */
+.award-badge-chip.gold {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+}
+
+.award-badge-chip.blue {
+    background: rgba(0, 123, 196, 0.1);
+    color: var(--primary-text);
+    border: 1px solid rgba(0, 123, 196, 0.2);
+}
+
+.award-badge-chip.purple {
+    background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .award-badge-chip.blue {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.25);
+}
+
+.club-bio-text {
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* قسم الفعاليات والأخبار */
+.club-feed-section {
+    margin-top: 25px;
+}
+
+.feed-section-header {
+    margin-bottom: 15px;
+    padding: 0 6px;
+}
+
+.feed-section-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.feed-section-header h3 i {
+    color: var(--primary-text);
+}
+
+/* =========================================
+   شارات المراكز الأولى (Top 1 & Top 2 Badges)
+   ========================================= */
+
+/* تمييز إطار الكروت الفائزة */
+.bento-club-card.ranked-card {
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* شارة المركز */
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 5;
+}
+
+.rank-badge i {
+    font-size: 10px;
+}
+
+/* التاج الذهبي للمركز الأول */
+.rank-badge.gold {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* التاج الفضي للمركز الثاني */
+.rank-badge.silver {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================
+   نظام معاينة الصور عند الضغط (Image Lightbox Modal)
+   ========================================= */
+.img-preview-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.img-preview-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.img-preview-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    object-fit: contain;
+}
+
+.img-preview-overlay.show .img-preview-content {
+    transform: scale(1);
+}
+
+.img-preview-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+}
+
+.img-preview-close:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.img-preview-close:active {
+    transform: scale(0.9);
+}
+
+/* إضافة تأثير المؤشر للصور القابلة للضغط */
+.article-main-image, #articleImage, .article-body img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.article-main-image:active, #articleImage:active, .article-body img:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   نظام معاينة الصور عند الضغط (Image Lightbox Modal المطور)
+   يدعم التكبير والتصغير بالسحب والإيماءات
+   ========================================= */
+.img-preview-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* تعتيم أعمق للتركيز على الصورة */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    overflow: auto; /* السماح بالتمرير عند التكبير */
+}
+
+.img-preview-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* حاوية الصورة لتمكين التمرير والتكبير بحرية */
+.img-preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.img-preview-content {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+    transform: scale(0.85);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: contain;
+    touch-action: pan-x pan-y pinch-zoom; /* 👈 السر هنا: يسمح للمتصفح بالتعامل مع تكبير الصورة بأصابع اليد */
+}
+
+.img-preview-overlay.show .img-preview-content {
+    transform: scale(1);
+}
+
+.img-preview-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 9999999;
+}
+
+.img-preview-close:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.img-preview-close:active {
+    transform: scale(0.9);
+}

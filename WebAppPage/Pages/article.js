@@ -48,6 +48,9 @@ function makeLinksClickable(text) {
             let finalContent = newsItem.excerpt;
             finalContent = makeLinksClickable(finalContent); // إذا عندك دالة الروابط
             bodyEl.innerHTML = `<p>${finalContent}</p>`; 
+            
+            // تفعيل معاينة الصور
+            setupImagePreview(); // <-- أضف هذا السطر هنا
 
             // 3. بادج النادي
             clubEl.className = 'unified-badge';
@@ -126,5 +129,47 @@ function makeLinksClickable(text) {
         // لو بالغلط دخل الصفحة وجهازه ما فيه بيانات
         titleEl.textContent = "مافيه بيانات";
         bodyEl.innerHTML = "<p>ياليت تفتح صفحة اخبار الاندية أول عشان جهازك يستوعب البيانات.</p>";
+    }
+
+    // دالة تفعيل معاينة الصور لأخبار الأندية
+    function setupImagePreview() {
+       let modal = document.getElementById('image-preview-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'image-preview-modal';
+            modal.className = 'img-preview-overlay';
+            // تحديث الهيكلة هنا لدعم الحاوية المرنة
+            modal.innerHTML = `
+                <div class="img-preview-close">&times;</div>
+                <div class="img-preview-wrapper" id="preview-wrapper">
+                    <img class="img-preview-content" id="preview-img">
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // الإغلاق عند الضغط في المساحة الفارغة
+            const wrapper = document.getElementById('preview-wrapper');
+            wrapper.addEventListener('click', (e) => {
+                if (e.target === wrapper) {
+                    modal.classList.remove('show');
+                }
+            });
+            
+            // زر الإغلاق 
+            modal.querySelector('.img-preview-close').addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+        }
+
+        const previewImg = document.getElementById('preview-img');
+        // استهداف صورة الغلاف والصور داخل نص الخبر الخاص بالنادي
+        const images = document.querySelectorAll('#articleImage, .article-body img');
+        
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                previewImg.src = img.src;
+                modal.classList.add('show');
+            });
+        });
     }
 });

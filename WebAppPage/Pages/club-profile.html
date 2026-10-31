@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مدخل | بروفايل النادي</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="clubs.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+</head>
+<body class="club-profile-body">
+
+    <!-- شريط الإبحار العلوي العائم فوق الغلاف -->
+    <header class="club-profile-header">
+        <a href="clubs.html" class="glass-back-btn" aria-label="رجوع">
+            <i class="fi fi-rr-arrow-right"></i>
+        </a>
+    </header>
+
+    <main class="club-profile-container">
+        
+        <!-- غلاف الهيدر العريض بالحواف الانسيابية والتدرج الجمالي -->
+        <div class="club-hero-canvas" id="profileHeaderCanvas">
+            <!-- الصورة الغلاف الرمزية (اختيارية) -->
+            <img id="profileHeaderImg" src="" alt="" class="club-hero-img" style="display: none;">
+        </div>
+
+        <!-- منطقة بيانات النادي وشعار الأفاتار الطافي -->
+        <section class="club-details-card">
+            <div class="avatar-floating-wrapper">
+                <img id="profileAvatarImg" src="" alt="شعار النادي" class="club-avatar-img">
+            </div>
+
+            <div class="club-main-header-row">
+                <div class="club-titles">
+                    <h1 id="profileName">جاري التحميل...</h1>
+                    <span id="profileUsername" class="club-handle">@username</span>
+                </div>
+                
+                <a href="#" id="profileWhatsappBtn" target="_blank" class="join-action-btn">
+                    <i class="fi fi-brands-whatsapp"></i> انضمام
+                </a>
+            </div>
+
+            <!-- حاوية أوسمة وتاقات التميز والجوائز للتحفيز -->
+            <div id="clubBadgesContainer" class="club-badges-scroll">
+                <!-- سيتم توليد تاقات الجوائز هنا برمجياً -->
+            </div>
+
+            <!-- الوصف والنبذة -->
+            <p id="profileBio" class="club-bio-text"></p>
+        </section>
+
+        <!-- قسم التغذية الإخبارية والفعاليات الخاصة بالنادي -->
+        <section class="club-feed-section">
+            <div class="feed-section-header">
+                <h3><i class="fi fi-sr-megaphone"></i> الفعاليات وآخر الأخبار</h3>
+            </div>
+            
+            <div class="news-grid" id="profileNewsGrid">
+                <!-- أخبار النادي تظهر هنا -->
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../script.js"></script>
+    <script src="club-profile.js"></script>
+</body>
+</html>

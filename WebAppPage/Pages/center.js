@@ -1,98 +1,17 @@
 // =========================================
-// سكربت التمرير التلقائي لشريط الصور
+// center.js - نسخة الواجهة الجديدة (Dashboard)
 // =========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.getElementById('heroCarousel');
-    const dots = document.querySelectorAll('.dot');
     
-    if (!carousel || dots.length === 0) return; // حماية لو العناصر مو موجودة
-
-    let currentIndex = 0;
-    const totalSlides = dots.length;
-    let autoScrollInterval;
-
-    // دالة لتغيير الشريحة
-    function goToSlide(index) {
-        if (index >= totalSlides) index = 0; // إذا وصل الأخير يرجع للأول
-        if (index < 0) index = totalSlides - 1;
-        
-        currentIndex = index;
-        
-        // استخدام scrollIntoView يضمن التمرير الدقيق ويدعم الـ RTL بدون مشاكل حسابية
-        const targetSlide = carousel.children[currentIndex];
-        targetSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-
-        updateDots();
+    // 1. عرض التاريخ الحالي في الواجهة (الهجري/الميلادي حسب لغة جهاز الطالب)
+    const dateDisplay = document.getElementById('currentDateDisplay');
+    if (dateDisplay) {
+        const options = { weekday: 'long', month: 'short', day: 'numeric' };
+        dateDisplay.textContent = new Date().toLocaleDateString('ar-SA', options); 
     }
 
-    // تحديث لون وشكل النقاط السفلية
-    function updateDots() {
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentIndex].classList.add('active');
-    }
-
-    // تشغيل المؤقت
-    function startAutoScroll() {
-        autoScrollInterval = setInterval(() => {
-            goToSlide(currentIndex + 1);
-        }, 9000); // يلف كل 9 ثواني
-    }
-
-    // إيقاف المؤقت
-    function stopAutoScroll() {
-        clearInterval(autoScrollInterval);
-    }
-
-    // ربط النقاط السفلية بالضغط اليدوي
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            stopAutoScroll();
-            goToSlide(index);
-            startAutoScroll();
-        });
-    });
-
-    // لو الطالب لمس الصور بيده يوقف التلقائي، وإذا شال يده يرجع يشتغل
-    carousel.addEventListener('touchstart', stopAutoScroll);
-    carousel.addEventListener('touchend', startAutoScroll);
-
-    // إذا الطالب سحب الشاشة بيده، نحدث النقطة النشطة 
-    let scrollTimeout;
-    carousel.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const slideWidth = carousel.clientWidth;
-            // Math.abs لأن التمرير في المواقع العربية (RTL) يكون قيمته بالسالب
-            let newIndex = Math.round(Math.abs(carousel.scrollLeft) / slideWidth);
-            
-            if(newIndex !== currentIndex && newIndex < totalSlides) {
-                currentIndex = newIndex;
-                updateDots();
-            }
-        }, 150);
-    });
-
-    // تشغيل لأول مرة
-    startAutoScroll();
-});
-
-// دالة لتشغيل وإطفاء الوضع الليلي من زر القائمة الجانبية
-function toggleTheme(isDark) {
-    if (isDark) {
-        document.body.classList.add('dark-mode');
-        // إذا كنت تستخدم data-theme حط هذي بعد:
-        document.documentElement.setAttribute('data-theme', 'dark'); 
-        localStorage.setItem('theme', 'dark'); // يحفظ خياره
-    } else {
-        document.body.classList.remove('dark-mode');
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-}
-
-// عشان أول ما تفتح الصفحة يقرا خياره القديم ويضبط زر السلايدر
-document.addEventListener('DOMContentLoaded', () => {
+    // 2. قراءة خيار الوضع الليلي المحفوظ عند فتح الصفحة
     const savedTheme = localStorage.getItem('theme');
     const themeCheckbox = document.getElementById('sidebar-theme-checkbox');
     
@@ -129,7 +48,7 @@ function markAllRead() {
         const itemDot = item.querySelector('.item-unread-dot');
         if(itemDot) itemDot.style.display = 'none';
         
-        // مسح الخلفية الزرقاء الفاتحة (في الدارك مود واللايت مود)
+        // مسح الخلفية المميزة
         item.style.backgroundColor = 'transparent'; 
     });
 }
@@ -137,13 +56,150 @@ function markAllRead() {
 // 3. إغلاق القائمة عند الضغط في أي مكان خارجها
 document.addEventListener('click', (event) => {
     const notifPanel = document.getElementById('notifPanel');
-    // حددنا الزر اللي يفتح الإشعارات بناءً على الـ onclick حقه
     const bellBtn = document.querySelector('[onclick="toggleNotif()"]'); 
     
     if(notifPanel && notifPanel.classList.contains('active')) {
         // إذا الضغطة ما كانت على القائمة ولا على زر الجرس.. قفلها
-        if (!notifPanel.contains(event.target) && !bellBtn.contains(event.target)) {
+        if (!notifPanel.contains(event.target) && bellBtn && !bellBtn.contains(event.target)) {
             notifPanel.classList.remove('active');
         }
     }
 });
+
+// =========================================
+// نظام الوضع الليلي (من القائمة الجانبية القديمة إن وجدت)
+// =========================================
+function toggleTheme(isDark) {
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'dark'); 
+        localStorage.setItem('theme', 'dark'); 
+    } else {
+        document.body.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// =========================================
+// سكربت التمرير التلقائي لشريط الإعلانات (الجديد)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('carouselWrapper');
+    const dots = document.querySelectorAll('#carouselDots .dot');
+    
+    if (!wrapper || dots.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+    let autoScrollInterval;
+
+    function goToSlide(index) {
+        if (index >= totalSlides) index = 0;
+        if (index < 0) index = totalSlides - 1;
+        currentIndex = index;
+        
+        // التمرير الدقيق للبطاقة المطلوبة ويدعم الـ RTL
+        const targetSlide = wrapper.children[currentIndex];
+        targetSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        updateDots();
+    }
+
+    function updateDots() {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, 5000); // تمرير كل 5 ثواني
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    // ربط النقاط بالضغط
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoScroll();
+            goToSlide(index);
+            startAutoScroll();
+        });
+    });
+
+    // إيقاف التمرير عند لمس الشاشة والسحب
+    wrapper.addEventListener('touchstart', stopAutoScroll);
+    wrapper.addEventListener('touchend', startAutoScroll);
+
+    // تحديث النقطة النشطة عند السحب اليدوي
+    let scrollTimeout;
+    wrapper.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const slideWidth = wrapper.clientWidth;
+            let newIndex = Math.round(Math.abs(wrapper.scrollLeft) / slideWidth);
+            if(newIndex !== currentIndex && newIndex < totalSlides) {
+                currentIndex = newIndex;
+                updateDots();
+            }
+        }, 150);
+    });
+    
+
+    startAutoScroll();
+});
+
+// =========================================
+// نظام حساب الأسبوع الدراسي الحالي
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    
+    function calculateAcademicWeek() {
+        const weekDisplay = document.getElementById('currentWeekDisplay');
+        if (!weekDisplay) return;
+
+        /* 
+           قائمة الأسابيع: ضع تاريخ "أول يوم" في كل أسبوع (عادة يوم الأحد).
+           صيغة التاريخ: YYYY-MM-DD
+           الميزة: تقدر تسمي فترات مخصصة مثل "إجازة منتصف الفصل" وراح تظهر للطالب!
+        */
+        const schedule = [
+            { date: '2026-10-25', label: 'الأسبوع العاشر' },
+            { date: '2026-11-01', label: 'الأسبوع الحادي عشر' },
+            { date: '2026-11-08', label: 'الأسبوع الثاني عشر' },
+            { date: '2026-11-15', label: 'الأسبوع الثالث عشر' }, // مثال لتخصيص نص
+            { date: '2026-11-22', label: 'إجازة الخريف 🍂' },    // مثال لإجازة
+            { date: '2026-11-29', label: 'الأسبوع الرابع عشر' },
+            { date: '2026-12-06', label: 'الأسبوع الخامس عشر' },
+            { date: '2026-11-29', label: 'الاختبارات النهائية' },
+            { date: '2026-12-06', label: 'الاختبارات النهائية' },
+            // ... (أكمل القائمة حسب التقويم الأكاديمي للكلية)
+        ];
+
+        // ضبط الوقت الحالي بدون ساعات ليطابق تاريخ القائمة بدقة
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+
+        let currentLabel = "إجازة نهاية الفصل"; // النص الافتراضي لو خلصت التواريخ
+
+        for (let i = 0; i < schedule.length; i++) {
+            const weekDate = new Date(schedule[i].date);
+            weekDate.setHours(0, 0, 0, 0);
+            
+            // إذا كان تاريخ اليوم أكبر أو يساوي بداية الأسبوع
+            if (now >= weekDate) {
+                currentLabel = schedule[i].label;
+            } else {
+                // إذا وصلنا لأول تاريخ في المستقبل، نوقف اللوب لأننا وجدنا الأسبوع الحالي في الدورة السابقة
+                break;
+            }
+        }
+
+        weekDisplay.textContent = currentLabel;
+    }
+
+    calculateAcademicWeek();
+});
+

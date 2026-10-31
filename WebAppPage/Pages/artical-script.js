@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function showError(msg) {
+function showError(msg) {
         articleContainer.innerHTML = `
             <div style="text-align:center; margin-top:50px;">
                 <i class="fi fi-rr-sad" style="font-size:50px; color:#ccc;"></i>
@@ -82,39 +82,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderArticle(article) {
-        // تنسيق التاريخ
         const dateObj = new Date(article.date);
         let dateString = article.date; 
         if (!isNaN(dateObj)) {
             dateString = dateObj.toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
 
-        // معالجة الروابط في نص الخبر
         const formattedContent = article.content.replace(/(https?:\/\/[^\s]+)/g, function(url) {
             return `<br><a href="${url}" target="_blank" style="color:var(--primary-color); font-weight:bold;"><i class="fi fi-rr-link-alt"></i> اضغط هنا</a><br>`;
         });
         
         const imgSrc = (article.image && article.image.startsWith('http')) ? article.image : 'https://via.placeholder.com/800x400/1a60bb/ffffff?text=خبر+جديد';
 
-        // نفس الـ HTML الداخلي اللي كنت تستخدمه في الكود القديم بالضبط
         articleContainer.innerHTML = `
             <span class="article-meta">
                 <span class="article-badge">${article.category}</span>
                 <span>📅 ${dateString}</span>
             </span>
-
             <h1 style="font-size: 22px; font-weight: 800; margin: 10px 0 20px; color: var(--text-dark);">${article.title}</h1>
-
             <img src="${imgSrc}" class="article-main-image" alt="${article.title}">
-
             <div class="article-body">
                 ${formattedContent}
             </div>
-            
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); font-size: 12px;">
                 ✍️ بكتابة: ${article.author}
             </div>
         `;
+
+        setupImagePreview(); // هنا يتم الاستدعاء بشكل صحيح بعد طباعة المحتوى
+    }
+
+    // دالة تفعيل معاينة الصور
+    function setupImagePreview() {
+        // إنشاء نافذة المعاينة إذا لم تكن موجودة
+        let modal = document.getElementById('image-preview-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'image-preview-modal';
+            modal.className = 'img-preview-overlay';
+            modal.innerHTML = `
+                <div class="img-preview-close">&times;</div>
+                <img class="img-preview-content" id="preview-img">
+            `;
+            document.body.appendChild(modal);
+
+            // إغلاق النافذة عند الضغط عليها أو على زر الإغلاق
+            modal.addEventListener('click', (e) => {
+                if (e.target !== document.getElementById('preview-img')) {
+                    modal.classList.remove('show');
+                }
+            });
+        }
+
+        const previewImg = document.getElementById('preview-img');
+        // استهداف صورة الغلاف والصور داخل نص الخبر
+        const images = document.querySelectorAll('.article-main-image, .article-body img');
+        
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                previewImg.src = img.src;
+                modal.classList.add('show');
+            });
+        });
     }
 
     // تشغيل الجلب

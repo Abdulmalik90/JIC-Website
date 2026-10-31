@@ -10,47 +10,13 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
 <body>
 
     <div id="emoji-background"></div>
 
-<div id="sidebarOverlay"></div>
-
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <h3 style="font-family: 'Tajawal'; font-weight:800; color:var(--primary-text);">القائمة</h3>
-            <button class="close-btn">✕</button>
-        </div>
-
-        <ul class="modern-sidebar">
-            <li class="menu-label">التصفح</li>
-            <li><a href="../index.html"><i class="fi fi-rr-home"></i> الرئيسية</a></li>
-            <li><a href="Pages/center.html"><i class="fi fi-rr-dashboard"></i> الواجهة</a></li>
-            <li><a href="Tools/Tools.html"><i class="fi fi-rr-apps"></i> الأدوات</a></li>
-            <li><a href="Plans/plans.html"><i class="fi fi-rr-graduation-cap"></i> التخصصات</a></li>
-
-            <li class="menu-label">المجتمع</li>
-            <li><a href="missing.html"><i class="fi fi-rr-box"></i> مبادرة مفقود</a></li>
-            <li><a href="https://x.com/i/communities/1823043306739110132" target="_blank"><i class="fi fi-brands-twitter"></i> مجتمع JIC (X)</a></li>
-            <li><a href="https://t.me/newsjuc" target="_blank"><i class="fi fi-rr-paper-plane"></i> قناة الأخبار</a></li>
-
-            <li class="menu-divider"></li>
-
-            <li class="theme-toggle-card">
-                <div class="theme-switch-wrapper">
-                    <span class="theme-label"><i class="fi fi-rr-moon"></i> الوضع الليلي</span>
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-            </li>
-        </ul>
-        <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
-    </aside>
-
-    <app-header title="الرئيسية" base-path="../"></app-header>
+    <app-header title="الاخبار والعروض" base-path="../"></app-header>
     <div class="notif-panel" id="notifPanel">
         <div class="notif-header">
             <h3>الإشعارات</h3>
@@ -59,8 +25,9 @@
         <div class="notif-list">
             </div>
     </div>
-    <div class="section-switch-container" style="padding: 0 20px; margin-top: 20px;">
-        <div class="switch-wrapper">
+  <!-- شريط الانتقال (التبويبات) الأنيق والموحد -->
+    <div class="modern-tabs-container">
+        <div class="segmented-control">
             <button class="switch-btn active" onclick="switchSection('news', this)">
                 <i class="fi fi-rr-document"></i> الأخبار
             </button>
@@ -70,59 +37,138 @@
         </div>
     </div>
 
-    <div class="news-filter-container">
-        <div class="search-box">
+    <!-- بار البحث الزجاجي -->
+    <div class="modern-search-container">
+        <div class="glass-search-box">
             <i class="fi fi-rr-search"></i>
-            <input type="text" id="general-search" placeholder="ابحث..." onkeyup="filterContent()">
+            <input type="text" id="general-search" placeholder="ابحث عن خبر أو عرض..." onkeyup="filterContent()">
         </div>
     </div>
 
     <main class="news-feed-container">
+        <!-- قسم الأخبار (يبقى كما هو، السكريبت يعبيه) -->
         <div id="newsGrid" class="news-grid fade-in">
             <div class="loading-spinner">جاري تحميل الأخبار...</div>
         </div>
 
-        <div id="offersGrid" class="news-grid fade-in" style="display: none;">
-            <div class="offer-card">
-                <div class="offer-badge">المطاعم</div>
-                <img src="https://i.postimg.cc/jqN92Y5G/image.png" alt="عرض">
-                <div class="offer-content">
-                    <h3>خصم 10% لطلاب الكلية والمعهد</h3>
-                    <p>العرض شامل لجميع اصناف المطعم لطلاب الكلية ومعهد الجبيل</p>
-                    <a href="https://maps.app.goo.gl/qtpLAU992hdjNtDv8" class="offer-btn"> لوكيشن المطعم 📍</a>
+        <!-- قسم العروض والخصومات الأنيق (التصميم الجديد) -->
+        <div id="offersGrid" class="news-grid fade-in" style="display: none; padding-top: 10px;">
+            
+            <h3 class="offers-category-title"><i class="fi fi-rr-map-marker-home"></i> عروض شركاء الطالب</h3>
+            
+            <!-- كرت عرض محلي (Immersive Card) -->
+            <a href="https://maps.app.goo.gl/qtpLAU992hdjNtDv8" target="_blank" class="immersive-offer-card">
+                <img src="https://i.postimg.cc/jqN92Y5G/image.png" alt="عرض مطعم">
+                <div class="immersive-overlay">
+                    <span class="offer-tag">خصم 10%</span>
+                    <div class="immersive-text">
+                        <h4>مطعم ولائم الشيف</h4>
+                        <p>عرض شامل لجميع الأصناف لطلاب الكلية والمعهد.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="offer-card">
-                <div class="offer-badge">عروض</div>
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2tieHRqNTBzd2V0N254aDZ2dzRpeGE3eTkyaXRmZXdyMDZ4dHI2MiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KCpyc9SfBJcwhAMrFz/giphy.gif" alt="عرض">
-                <div class="offer-content">
-                    <h3>عندك عرض دائم للطلاب؟</h3>
-                    <p>ننشر عرضك بشكل مجاني هنا</p>
-                    <a href="https://wa.me/966503502885" class="offer-btn">تواصل معنا👀</a>
+            </a>
+
+                        <a href="https://unipal.me/en-sa/" target="_blank" class="immersive-offer-card">
+                <img src="https://i.postimg.cc/6Qm1pV8F/www-25.webp" alt="عرض مطعم">
+                <div class="immersive-overlay">
+                    <span class="offer-tag2">خصم 10%</span>
+                    <div class="immersive-text">
+                        <h4>مطعـم صـامولجي</h4>
+                        <p>تحصيل رمز العرض للطلاب عبر تطبيق Unipal</p>
+                    </div>
                 </div>
+            </a>
+
+            <h3 class="offers-category-title" style="margin-top: 25px;"><i class="fi fi-rr-globe"></i> اشتراكات رقمية للطلاب</h3>
+            
+<!-- شبكة الاشتراكات الأكاديمية (Bento Grid) -->
+            <div class="digital-bento-grid">
+                
+                <!-- كرت Microsoft 365 -->
+                <a href="https://www.microsoft.com/ar-sa/education/products/office" target="_blank" class="bento-offer-card">
+                    <div class="bento-icon" style="background: rgba(235, 60, 0, 0.1); color: #eb3c00;">
+                        <i class="fi fi-brands-microsoft"></i>
+                    </div>
+                    <div class="bento-details">
+                        <h4>Microsoft 365</h4>
+                        <p>تطبيقات الأوفيس مجاناً</p>
+                    </div>
+                </a>
+
+                <!-- كرت Autodesk (لطلاب الهندسة) -->
+                <a href="https://www.autodesk.com/education/edu-software/overview" target="_blank" class="bento-offer-card">
+                    <div class="bento-icon" style="background: rgba(6, 150, 215, 0.1); color: #0696d7;">
+                        <i class="fi fi-rr-drafting-compass"></i>
+                    </div>
+                    <div class="bento-details">
+                        <h4>Autodesk</h4>
+                        <p>برامج التصميم الهندسي مجاناً</p>
+                    </div>
+                </a>
+
+                <!-- كرت Notion (للتنظيم) -->
+                <a href="https://www.notion.so/students" target="_blank" class="bento-offer-card">
+                    <div class="bento-icon" style="background: rgba(0, 0, 0, 0.05); color: var(--text-dark);">
+                        <i class="fi fi-rr-book-bookmark"></i>
+                    </div>
+                    <div class="bento-details">
+                        <h4>Notion Plus</h4>
+                        <p>مساحة عمل لتنظيم دراستك</p>
+                    </div>
+                </a>
+
+                <!-- كرت GitHub (لطلاب الحاسب) -->
+                <a href="https://education.github.com/pack" target="_blank" class="bento-offer-card">
+                    <div class="bento-icon" style="background: rgba(112, 80, 250, 0.1); color: #7050fa;">
+                        <i class="fi fi-brands-github"></i>
+                    </div>
+                    <div class="bento-details">
+                        <h4>GitHub Pro</h4>
+                        <p>حزمة أدوات المطورين</p>
+                    </div>
+                </a>
             </div>
+            
+
+            <!-- لافتة إضافة عرض -->
+            <a href="https://wa.me/966503502885" target="_blank" class="add-offer-banner">
+                <div class="banner-icon"><i class="fi fi-rr-shop"></i></div>
+                <div class="banner-text">
+                    <h4>عندك عرض دائم للطلاب؟</h4>
+                    <p>ندعم من يدعمنا كطلاب ونضيف عرضك مجاناً هنا!</p>
+                </div>
+                <i class="fi fi-rr-angle-left banner-arrow"></i>
+            </a>
+
             <div class="loading-spinner" id="offers-loader" style="display:none">جاري تحميل العروض...</div>
         </div>
     </main>
 
-    <nav class="bottom-nav">
-    <a href="../index.html" class="nav-item"> <i class="fi fi-rr-home"></i> 
+<nav class="bottom-nav">
+    <a href="../index.html" class="nav-item">
+        <i class="fi fi-rr-home"></i> 
         <span>الرئيسية</span>
     </a>
 
-    <a href="../Tools/Tools.html" class="nav-item"> <i class="fi fi-rr-apps"></i>
+    <a href="../Tools/Tools.html" class="nav-item">
+        <i class="fi fi-rr-apps"></i>
         <span>الأدوات</span>
     </a>
 
-    <a href="center.html" class="nav-item"> <i class="fi fi-rr-dashboard"></i>
-            <span>الواجهة</span>
-        </a>
-
-    <a href="../Library/library.html" class="nav-item"> <i class="fi fi-rr-book-alt"></i>
-        <span>الموسوعة</span>
+    <a href="./center.html" class="nav-item">
+        <i class="fi fi-rr-dashboard"></i>
+        <span>الواجهة</span>
     </a>
 
-    <a href="news.html" class="nav-item active"> <i class="fi fi-rr-newspaper"></i>
+    <!-- تم استبدال الموسوعة بقسم الأندية -->
+    <a href="./clubs.html" class="nav-item">
+        <i class="fi fi-rr-users-class"></i>
+        <span>الأندية</span>
+    </a>
+
+    <a href="./news.html" class="nav-item active
+    ">
+        <i class="fi fi-sr-newspaper"></i>
         <span>الأخبار</span>
     </a>
 </nav>

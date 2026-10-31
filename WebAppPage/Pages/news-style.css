@@ -1,246 +1,118 @@
 /* =========================================
-   تنسيق صفحة الأخبار (News Page) - محدث للدارك مود 🌑
+   ملف news-style.css (النسخة الكاملة والمنظفة 🚀)
    ========================================= */
+
+/* توحيد الخط */
+body, input, h1, h2, h3, p, span, div, button {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
 /* =========================================
-   3. الهيدر العلوي (Header)
+   1. الهيدر العلوي (Header)
    ========================================= */
 .hub-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: var(--header-height);
-            background-color: var(--header-bg); /* شفافية حسب المتغيرات */
-            backdrop-filter: blur(10px); /* تأثير الزجاج */
-            -webkit-backdrop-filter: blur(10px);
-            padding: 0 20px;
-            position: sticky; /* يثبت فوق لما تنزل */
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* تنسيق الجزء الأيمن */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hub-logo {
-            width: 35px; /* حجم الشعار */
-            height: auto;
-        }
-
-        .hub-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary-text); /* لون النص الرسمي */
-            margin: 0;
-        }
-
-        /* تنسيق الجزء الأيسر */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* تنسيق الأزرار (الجرس والقائمة) */
-        .icon-btn {
-            background: var(--surface-color); /* لون خلفية الزر */
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px; /* حواف ناعمة */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: var(--text-dark); /* لون الأيقونة */
-            font-size: 18px;
-            position: relative; /* عشان النقطة الحمراء */
-            transition: transform 0.2s ease;
-        }
-
-        .icon-btn:active {
-            transform: scale(0.95); /* تصغير خفيف عند الضغط */
-        }
-
-        /* النقطة الحمراء (تنبيه جديد) */
-        .notif-dot {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 8px;
-            height: 8px;
-            background-color: #ff4757; /* أحمر */
-            border-radius: 50%;
-            border: 2px solid var(--surface-color); /* حدود عشان تفصل عن الأيقونة */
-        }
-
-/* =========================================
-   تنسيقات القائمة الجانبية (من اليسار + Blur + مساحة أكبر)
-   ========================================= */
-
-/* 1. التظليل الضبابي (Blur Overlay) */
-#sidebarOverlay {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    background-color: rgba(0, 0, 0, 0.4) !important; /* أسود شفاف */
-    backdrop-filter: blur(8px) !important; /* هذا اللي يسوي التغبيش الفخم */
-    -webkit-backdrop-filter: blur(8px) !important; /* لدعم أجهزة أبل */
-    z-index: 9998 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transition: all 0.4s ease-in-out !important;
-}
-
-/* لما تفتح القائمة يظهر التظليل */
-#sidebarOverlay.active {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* 2. القائمة الجانبية نفسها */
-#sidebar {
-    position: fixed !important;
-    top: 0 !important;
-    left: -100% !important; /* مخفية باليسار بالكامل */
-    width: 340px !important; /* كبرنا المساحة (كانت 280) */
-    max-width: 85vw !important; /* حماية عشان ما تتجاوز شاشة الجوال الصغير */
-    height: 100vh !important;
-    background-color: var(--bg-color) !important;
-    z-index: 9999 !important; /* أعلى شيء بالصفحة */
-    box-shadow: 5px 0 30px rgba(0,0,0,0.15) !important; /* ظل ناعم */
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* حركة دخول سريعة وتفرمل بنعومة */
-    display: flex !important;
-    flex-direction: column !important;
-    overflow-y: auto !important;
-}
-
-/* لما تفتح القائمة تدخل من اليسار للشاشة */
-#sidebar.active {
-    left: 0 !important;
-}
-
-/* 3. تنسيق رأس القائمة (العنوان وزر الإغلاق) */
-.sidebar-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 25px 20px 15px 20px !important;
-    border-bottom: 1px solid var(--border-color) !important;
-    margin-bottom: 10px !important;
-}
-
-/* زر الإغلاق ✕ */
-.close-btn {
-    background: var(--surface-color) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--text-dark) !important;
-    font-size: 16px !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    cursor: pointer !important;
-    box-shadow: 0 2px 8px var(--shadow-color) !important;
-    transition: transform 0.2s !important;
-}
-
-.close-btn:active {
-    transform: scale(0.9) !important;
-}
-
-/* =========================================
-   4. تنسيقات الروابط وكرت الدارك مود (الستايل المودرن)
-   ========================================= */
-.modern-sidebar {
-    list-style: none;
-    padding: 0 20px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.menu-label {
-    font-size: 13px;
-    color: var(--text-light);
-    font-weight: 800;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.modern-sidebar li a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 14px 15px;
-    text-decoration: none;
-    color: var(--text-dark);
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 14px;
-    transition: all 0.2s ease;
-}
-
-.modern-sidebar li a i {
-    font-size: 20px;
-    color: var(--text-light);
-    transition: 0.2s;
-}
-
-.modern-sidebar li a:hover, 
-.modern-sidebar li a.active {
-    background-color: var(--surface-color);
-    color: var(--primary-text);
-    box-shadow: 0 4px 10px var(--shadow-color);
-}
-
-.modern-sidebar li a:hover i, 
-.modern-sidebar li a.active i {
-    color: var(--primary-text);
-}
-
-.menu-divider {
-    height: 1px;
-    background-color: var(--border-color);
-    margin: 15px 0;
-}
-
-/* كرت زر الدارك مود */
-.theme-toggle-card {
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 16px;
-    margin-top: auto;
-    box-shadow: 0 4px 15px var(--shadow-color);
-}
-
-.theme-switch-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    height: var(--header-height);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.theme-label {
+.header-right { display: flex; align-items: center; gap: 12px; }
+.hub-logo { width: 35px; height: auto; }
+.hub-title { font-size: 20px; font-weight: 800; color: var(--primary-text); margin: 0; }
+.header-left { display: flex; align-items: center; gap: 10px; }
+
+.icon-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    font-weight: 700;
+    cursor: pointer;
     color: var(--text-dark);
+    font-size: 18px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+.icon-btn:active { transform: scale(0.95); }
+
+.notif-dot {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 8px; height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    border: 2px solid var(--surface-color);
 }
 
-/* أزرار السلايدر للدارك مود */
+/* =========================================
+   2. القائمة الجانبية (Sidebar & Overlay)
+   ========================================= */
+#sidebarOverlay {
+    position: fixed !important; top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 9998 !important; opacity: 0 !important; visibility: hidden !important;
+    transition: all 0.4s ease-in-out !important;
+}
+#sidebarOverlay.active { opacity: 1 !important; visibility: visible !important; }
+
+#sidebar {
+    position: fixed !important; top: 0 !important; left: -100% !important;
+    width: 340px !important; max-width: 85vw !important; height: 100vh !important;
+    background-color: var(--bg-color) !important; z-index: 9999 !important;
+    box-shadow: 5px 0 30px rgba(0,0,0,0.15) !important;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important; flex-direction: column !important; overflow-y: auto !important;
+}
+#sidebar.active { left: 0 !important; }
+
+.sidebar-header {
+    display: flex !important; justify-content: space-between !important; align-items: center !important;
+    padding: 25px 20px 15px 20px !important; border-bottom: 1px solid var(--border-color) !important; margin-bottom: 10px !important;
+}
+.close-btn {
+    background: var(--surface-color) !important; border: 1px solid var(--border-color) !important;
+    color: var(--text-dark) !important; font-size: 16px !important;
+    width: 38px !important; height: 38px !important; border-radius: 50% !important;
+    display: flex !important; justify-content: center !important; align-items: center !important;
+    cursor: pointer !important; box-shadow: 0 2px 8px var(--shadow-color) !important; transition: transform 0.2s !important;
+}
+.close-btn:active { transform: scale(0.9) !important; }
+
+.modern-sidebar { list-style: none; padding: 0 20px; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.menu-label { font-size: 13px; color: var(--text-light); font-weight: 800; margin-top: 15px; margin-bottom: 5px; }
+.modern-sidebar li a {
+    display: flex; align-items: center; gap: 15px; padding: 14px 15px;
+    text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700;
+    border-radius: 14px; transition: all 0.2s ease;
+}
+.modern-sidebar li a i { font-size: 20px; color: var(--text-light); transition: 0.2s; }
+.modern-sidebar li a:hover, .modern-sidebar li a.active {
+    background-color: var(--surface-color); color: var(--primary-text); box-shadow: 0 4px 10px var(--shadow-color);
+}
+.modern-sidebar li a:hover i, .modern-sidebar li a.active i { color: var(--primary-text); }
+.menu-divider { height: 1px; background-color: var(--border-color); margin: 15px 0; }
+
+/* مفتاح الوضع الليلي */
+.theme-toggle-card {
+    background-color: var(--surface-color); border: 1px solid var(--border-color);
+    padding: 15px; border-radius: 16px; margin-top: auto; box-shadow: 0 4px 15px var(--shadow-color);
+}
+.theme-switch-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.theme-label { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; color: var(--text-dark); }
 .theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
 .theme-switch input { opacity: 0; width: 0; height: 0; }
 .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; }
@@ -251,607 +123,368 @@ input:checked + .slider:before { transform: translateX(22px); }
 .slider.round:before { border-radius: 50%; }
 
 /* =========================================
-   تنسيقات نافذة الإشعارات (Notifications)
+   3. نافذة الإشعارات (Notifications)
    ========================================= */
-
-/* الحاوية الرئيسية المخفية */
 .notif-panel {
-    position: fixed;
-    top: 75px; /* تطلع تحت الهيدر بشوي */
-    left: 20px; /* محاذية لليسار تحت الجرس */
-    width: 340px;
-    max-width: calc(100vw - 40px); /* عشان ما تطلع برا شاشة الجوال الصغير */
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    z-index: 999;
-    
-    /* إعدادات الأنميشن والإخفاء */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-15px); /* مرفوعة لفوق شوي */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    position: fixed; top: 75px; left: 20px; width: 340px; max-width: calc(100vw - 40px);
+    background-color: var(--surface-color); border: 1px solid var(--border-color);
+    border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); z-index: 999;
+    opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; overflow: hidden;
 }
-
-/* حالة الظهور (لما نضغط الجرس) */
-.notif-panel.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* رأس نافذة الإشعارات */
+.notif-panel.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .notif-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--bg-color); /* لون أغمق شوي من الكرت */
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; border-bottom: 1px solid var(--border-color); background-color: var(--bg-color);
 }
-
-.notif-header h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--text-dark);
-}
-
-.mark-read-btn {
-    background: transparent;
-    border: none;
-    color: var(--primary-text);
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: 0.2s;
-}
-
-.mark-read-btn:hover {
-    opacity: 0.7;
-}
-
-/* قائمة الإشعارات */
-.notif-list {
-    max-height: 400px; /* عشان إذا كثرت الإشعارات يصير فيها سكرول */
-    overflow-y: auto;
-}
-
+.notif-header h3 { margin: 0; font-size: 16px; font-weight: 800; color: var(--text-dark); }
+.mark-read-btn { background: transparent; border: none; color: var(--primary-text); font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.mark-read-btn:hover { opacity: 0.7; }
+.notif-list { max-height: 400px; overflow-y: auto; }
 .notif-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--border-color);
-    position: relative;
-    background-color: var(--surface-color);
-    transition: 0.2s;
-    cursor: pointer;
+    display: flex; align-items: flex-start; gap: 15px; padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color); position: relative; background-color: var(--surface-color); transition: 0.2s; cursor: pointer;
 }
-
-.notif-item:hover {
-    background-color: var(--bg-color);
-}
-
-/* تمييز الإشعار الغير مقروء */
-.notif-item.unread {
-    background-color: rgba(0, 82, 204, 0.03); /* لون أزرق خفيف جداً كخلفية */
-}
-
-/* أيقونة الإشعار */
-.notif-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-/* نصوص الإشعار */
-.notif-content {
-    flex: 1;
-}
-
-.notif-content h4 {
-    margin: 0 0 5px 0;
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--text-dark);
-}
-
-.notif-content p {
-    margin: 0 0 8px 0;
-    font-size: 12px;
-    color: var(--text-light);
-    line-height: 1.5;
-}
-
-.notif-time {
-    font-size: 10px;
-    font-weight: 700;
-    color: #94a3b8;
-}
-
-/* النقطة الحمراء داخل الإشعار الغير مقروء */
-.item-unread-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #ff4757;
-    border-radius: 50%;
-    margin-top: 5px;
-}
-
-/* توحيد الخط */
-body, input, h1, h2, h3, p, span, div {
-    font-family: 'Tajawal', sans-serif !important;
-}
+.notif-item:hover { background-color: var(--bg-color); }
+.notif-item.unread { background-color: rgba(0, 82, 204, 0.03); }
+.notif-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; flex-shrink: 0; }
+.notif-content { flex: 1; }
+.notif-content h4 { margin: 0 0 5px 0; font-size: 14px; font-weight: 800; color: var(--text-dark); }
+.notif-content p { margin: 0 0 8px 0; font-size: 12px; color: var(--text-light); line-height: 1.5; }
+.notif-time { font-size: 10px; font-weight: 700; color: #94a3b8; }
+.item-unread-dot { width: 8px; height: 8px; background-color: #ff4757; border-radius: 50%; margin-top: 5px; }
 
 /* =========================================
-   1. تنسيق شبكة الأخبار (News Grid)
+   4. التبويبات والبحث (Tabs & Search)
    ========================================= */
-.news-filter-container {
-    padding: 10px 20px;
-    background: var(--surface-color); /* يدعم الدارك */
-    position: sticky;
-    top: 60px;
-    z-index: 80;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    transition: background 0.3s ease;
+.modern-tabs-container { padding: 15px 20px 5px 20px; position: relative; z-index: 10; }
+.segmented-control {
+    display: flex; background: var(--bg-color); border-radius: 16px; padding: 6px;
+    box-shadow: inset 0 2px 5px var(--shadow-color); border: 1px solid var(--border-color);
+}
+.segmented-control .switch-btn {
+    flex: 1; background: transparent; border: none; padding: 10px 5px; border-radius: 12px;
+    font-weight: 700; font-size: 13px; color: var(--text-light);
+    display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;
+    white-space: nowrap; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.segmented-control .switch-btn.active {
+    background: var(--surface-color); color: var(--primary-text); box-shadow: 0 4px 10px var(--shadow-color);
 }
 
-.search-box {
-    display: flex; 
-    align-items: center; 
-    gap: 10px;
-    background: var(--bg-color); /* لون الخلفية عشان يتباين مع السطح */
-    padding: 10px 15px; 
-    border-radius: 12px;
-    border: 1px solid transparent;
-    transition: 0.3s;
+.modern-search-container {
+    padding: 10px 20px 15px 20px; position: sticky; top: 60px; z-index: 90; background: var(--bg-color);
 }
-
-/* تحسين السيرش بوكس في الدارك مود */
-[data-theme="dark"] .search-box {
-    border: 1px solid var(--border-color);
+.glass-search-box {
+    display: flex; align-items: center; gap: 12px; background: var(--surface-color);
+    padding: 12px 18px; border-radius: 20px; border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color); transition: all 0.3s ease;
 }
-
-.search-box i {
-    color: var(--text-light);
+.glass-search-box:focus-within { border-color: var(--primary-text); box-shadow: 0 4px 20px rgba(0, 123, 196, 0.15); }
+.glass-search-box i { color: var(--primary-text); font-size: 16px; }
+.glass-search-box input {
+    border: none; background: transparent; width: 100%; font-weight: 500; font-size: 14px;
+    color: var(--text-dark); outline: none;
 }
-
-.search-box input {
-    border: none; 
-    background: transparent; 
-    width: 100%;
-    font-family: 'Tajawal'; 
-    outline: none;
-    color: var(--text-dark); /* النص يتغير لونه */
-    font-size: 14px;
-}
-
-.search-box:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
-}
-
-.news-feed-container { 
-    padding: 20px; 
-    padding-bottom: 100px; 
-}
+.glass-search-box input::placeholder { color: var(--text-light); }
 
 /* =========================================
-   2. كرت الخبر (Blog Card)
+   5. كروت الأخبار (News Feed)
    ========================================= */
+.news-feed-container { padding: 20px; padding-bottom: 100px; }
+
 .blog-card {
-    display: block;
-    background: var(--surface-color); /* يدعم الدارك */
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 25px var(--shadow-color);
-    text-decoration: none; 
-    color: inherit;
-    border: 1px solid transparent;
-    transition: transform 0.2s, box-shadow 0.2s;
+    display: block; background: var(--surface-color); border-radius: 20px; overflow: hidden;
+    margin-bottom: 20px; box-shadow: 0 10px 25px var(--shadow-color); text-decoration: none;
+    border: 1px solid transparent; transition: transform 0.2s, box-shadow 0.2s;
 }
-
-/* حدود خفيفة في الدارك مود */
-[data-theme="dark"] .blog-card {
-    border: 1px solid var(--border-color);
-}
-
+[data-theme="dark"] .blog-card { border: 1px solid var(--border-color); }
 .blog-card:active { transform: scale(0.98); }
 
-.blog-img-wrapper {
-    width: 100%; 
-    height: 180px; 
-    position: relative; 
-    background-color: var(--border-color); /* لون تحميل الصورة */
-}
-
-.blog-img-wrapper img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-}
-
+.blog-img-wrapper { width: 100%; height: 180px; position: relative; background-color: var(--border-color); }
+.blog-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 .blog-category-badge {
-    position: absolute; 
-    top: 15px; 
-    right: 15px;
-    background: rgba(255, 255, 255, 0.95); 
-    color: var(--primary-color);
-    padding: 5px 12px; 
-    border-radius: 20px; 
-    font-size: 11px; 
-    font-weight: 800;
+    position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 800;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
-/* تعديل بادج التصنيف في الدارك مود */
-[data-theme="dark"] .blog-category-badge {
-    background: rgba(30, 30, 30, 0.9);
-    color: #60a5fa;
-    border: 1px solid rgba(255,255,255,0.1);
-}
+[data-theme="dark"] .blog-category-badge { background: rgba(30, 30, 30, 0.9); color: #60a5fa; border: 1px solid rgba(255,255,255,0.1); }
 
 .blog-content { padding: 15px; }
-
-.blog-date { 
-    font-size: 11px; 
-    color: var(--text-light); 
-    margin-bottom: 5px; 
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.blog-title { 
-    font-size: 15px; 
-    font-weight: 800; 
-    color: var(--text-dark); /* النص يتغير */
-    line-height: 1.5; 
-    margin: 0 0 8px 0; 
-}
-
-.blog-excerpt { 
-    font-size: 12px; 
-    color: var(--text-light); /* النص الثانوي */
-    display: -webkit-box; 
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical; 
-    overflow: hidden; 
-    line-height: 1.6;
+.blog-date { font-size: 11px; color: var(--text-light); margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+.blog-title { font-size: 15px; font-weight: 800; color: var(--text-dark); line-height: 1.5; margin: 0 0 8px 0; }
+.blog-excerpt {
+    font-size: 12px; color: var(--text-light); display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6;
 }
 
 /* =========================================
-   3. تنسيق صفحة عرض المقال (Article Content)
+   6. كروت العروض والاشتراكات (Offers UI)
+   ========================================= */
+.offers-category-title {
+    font-size: 16px; font-weight: 800; color: var(--text-dark); margin: 0 0 15px 0; display: flex; align-items: center; gap: 8px;
+}
+.offers-category-title i { color: var(--primary-text); font-size: 18px; }
+
+/* الكروت المحلية (Immersive) */
+.immersive-offer-card {
+    display: block; position: relative; width: 100%; height: 200px; border-radius: 24px;
+    overflow: hidden; text-decoration: none; box-shadow: 0 8px 20px var(--shadow-color);
+    margin-bottom: 20px; transition: transform 0.2s; background: var(--border-color);
+}
+.immersive-offer-card:active { transform: scale(0.97); }
+.immersive-offer-card img { width: 100%; height: 100%; object-fit: cover; }
+.immersive-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    padding: 30px 20px 20px 20px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+}
+.offer-tag {
+    background: #ff4757; color: white; padding: 4px 12px; border-radius: 12px;
+    font-size: 11px; font-weight: 800; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+.offer-tag2 {
+    background: #4a47ff; color: white; padding: 4px 12px; border-radius: 12px;
+    font-size: 11px; font-weight: 800; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+.immersive-text h4 { color: white; font-size: 17px; font-weight: 800; margin: 0 0 5px 0; }
+.immersive-text p { color: rgba(255,255,255,0.8); font-size: 12px; margin: 0; line-height: 1.4; }
+
+/* الاشتراكات الرقمية (Bento - بتوسيط الأيقونات) */
+.digital-bento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+
+.bento-offer-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px 15px; 
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط الأيقونة والنص عرضياً */
+    text-align: center; /* توسيط النص */
+    gap: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.2s;
+}
+.bento-offer-card:active { transform: scale(0.95); }
+.bento-icon {
+    width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.bento-details h4 { color: var(--text-dark); font-size: 14px; font-weight: 800; margin: 0 0 6px 0; }
+.bento-details p { color: var(--text-light); font-size: 11px; margin: 0; line-height: 1.4; }
+
+/* لافتة إضافة عرض */
+.add-offer-banner {
+    display: flex; align-items: center; background: linear-gradient(135deg, rgba(0, 123, 196, 0.05), rgba(0, 123, 196, 0.15));
+    border: 1px dashed var(--primary-text); padding: 15px 20px; border-radius: 20px; text-decoration: none; gap: 15px;
+    transition: 0.2s; margin-bottom: 20px;
+}
+.add-offer-banner:active { background: rgba(0, 123, 196, 0.2); }
+.banner-icon { width: 40px; height: 40px; background: var(--surface-color); color: var(--primary-text); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 4px 10px var(--shadow-color); flex-shrink: 0; }
+.banner-text h4 { color: var(--text-dark); font-size: 14px; font-weight: 800; margin: 0 0 4px 0; }
+.banner-text p { color: var(--text-light); font-size: 11px; margin: 0; }
+.banner-arrow { margin-right: auto; color: var(--primary-text); font-size: 18px; }
+
+/* =========================================
+   7. صفحة قراءة المقال (Article Content)
    ========================================= */
 .article-header {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    padding: 15px 20px; 
-    background: var(--surface-color); /* هيدر المقال */
-    position: sticky; 
-    top: 0; 
-    z-index: 100;
-    border-bottom: 1px solid var(--border-color);
-    transition: background 0.3s ease;
+    display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
+    background: var(--surface-color); position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid var(--border-color); transition: background 0.3s ease;
 }
-
-.back-btn {
-    font-size: 24px; 
-    color: var(--text-dark); /* زر الرجوع */
-    text-decoration: none; 
-    display: flex;
-    padding: 5px;
-    border-radius: 50%;
-    transition: 0.2s;
-}
-
-.back-btn:active {
-    background: var(--bg-color);
-}
-
-.article-content-wrapper {
-    padding: 20px;
-    animation: fadeIn 0.4s ease;
-    background-color: var(--bg-color); /* خلفية الصفحة كاملة */
-    min-height: 100vh;
-}
-
-/* صورة المقال الكبيرة */
-.article-main-image {
-    width: 100%; 
-    height: auto; 
-    border-radius: 16px; 
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    background-color: var(--border-color);
-}
-
-/* معلومات المقال */
-.article-meta { 
-    color: var(--text-light); 
-    font-size: 12px; 
-    margin-bottom: 15px; 
-    display: flex; 
-    gap: 10px; 
-}
-
-.article-badge { 
-    color: var(--primary-color); 
-    font-weight: bold; 
-    background: #eef4ff; 
-    padding: 2px 8px; 
-    border-radius: 6px; 
-}
-
-[data-theme="dark"] .article-badge {
-    background: rgba(96, 165, 250, 0.15);
-    color: #60a5fa;
-}
-
-/* تنسيق جسم المقال (Typography) */
-.article-body h1 { 
-    font-size: 20px; 
-    font-weight: 800; 
-    margin-bottom: 15px; 
-    line-height: 1.4; 
-    color: var(--text-dark); /* العناوين */
-}
-
-.article-body p { 
-    font-size: 14px; 
-    line-height: 1.8; 
-    color: var(--text-dark); /* نص المقال الأساسي */
-    margin-bottom: 15px; 
-    opacity: 0.9; /* تخفيف بسيط للحدة */
-}
-
-.article-body ul { 
-    padding-right: 20px; 
-    margin-bottom: 15px; 
-}
-
-.article-body li { 
-    margin-bottom: 5px; 
-    color: var(--text-dark); 
-    font-size: 14px; 
-}
-
-.article-body a { 
-    color: var(--primary-color); 
-    font-weight: bold; 
-    text-decoration: none; 
-}
-
-/* تحسين الصور داخل المقال لو وجدت */
-.article-body img {
-    max-width: 100%;
-    border-radius: 12px;
-    margin: 10px 0;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+.back-btn { font-size: 24px; color: var(--text-dark); text-decoration: none; display: flex; padding: 5px; border-radius: 50%; transition: 0.2s; }
+.back-btn:active { background: var(--bg-color); }
+.article-content-wrapper { padding: 20px; animation: fadeIn 0.4s ease; background-color: var(--bg-color); min-height: 100vh; }
+.article-main-image { width: 100%; height: auto; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 5px 15px var(--shadow-color); background-color: var(--border-color); }
+.article-meta { color: var(--text-light); font-size: 12px; margin-bottom: 15px; display: flex; gap: 10px; }
+.article-badge { color: var(--primary-color); font-weight: bold; background: #eef4ff; padding: 2px 8px; border-radius: 6px; }
+[data-theme="dark"] .article-badge { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
+.article-body h1 { font-size: 20px; font-weight: 800; margin-bottom: 15px; line-height: 1.4; color: var(--text-dark); }
+.article-body p { font-size: 14px; line-height: 1.8; color: var(--text-dark); margin-bottom: 15px; opacity: 0.9; }
+.article-body ul { padding-right: 20px; margin-bottom: 15px; }
+.article-body li { margin-bottom: 5px; color: var(--text-dark); font-size: 14px; }
+.article-body a { color: var(--primary-color); font-weight: bold; text-decoration: none; }
+.article-body img { max-width: 100%; border-radius: 12px; margin: 10px 0; }
 
 /* =========================================
-   شاشة التحميل (Preloader) - أنيقة وتدعم الدارك مود
+   8. شاشة التحميل والأنميشن (Preloader & Animations)
    ========================================= */
-
 #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--surface-color); /* 👈 ياخذ لون الخلفية حسب المود */
-    z-index: 999999; /* فوق كل شي حرفياً */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease-out, visibility 0.5s; /* حركة اختفاء ناعمة */
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--surface-color); z-index: 999999;
+    display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s;
 }
-
-/* الحاوية اللي فيها الشعار والسبينر */
-.loader-content {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* الشعار داخل الشاشة */
-.loader-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    animation: pulseLogo 2s infinite ease-in-out;
-    position: relative;
-    z-index: 2;
-}
-
-/* إذا كنت مفعل كود قلب ألوان الشعار للدارك مود، طبقه هنا بعد */
-[data-theme="dark"] .loader-logo {
-    filter: brightness(0) invert(1) opacity(0.9);
-}
-
-/* حلقة التحميل الدائرة */
+.loader-content { position: relative; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; }
+.loader-logo { width: 50px; height: 50px; object-fit: contain; animation: pulseLogo 2s infinite ease-in-out; position: relative; z-index: 2; }
+[data-theme="dark"] .loader-logo { filter: brightness(0) invert(1) opacity(0.9); }
 .spinner-ring {
-    position: absolute;
+    position: absolute; width: 100%; height: 100%; border: 3px solid transparent;
+    border-top-color: var(--primary-color); border-radius: 50%; animation: spinRing 1s linear infinite; z-index: 1;
+}
+#preloader.fade-out { opacity: 0; visibility: hidden; }
+
+@keyframes pulseLogo { 0% { transform: scale(0.95); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.8; } }
+@keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.fade-in { animation: fadeIn 0.4s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   نظام معاينة الصور عند الضغط (Image Lightbox Modal)
+   ========================================= */
+.img-preview-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    border: 3px solid transparent;
-    border-top-color: var(--primary-color); /* لون التحميل أزرق */
-    border-radius: 50%;
-    animation: spinRing 1s linear infinite;
-    z-index: 1;
-}
-
-/* كلاس الاختفاء (يضاف بالجافاسكربت) */
-#preloader.fade-out {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* --- الحركات (Animations) --- */
-
-/* حركة النبض للشعار */
-@keyframes pulseLogo {
-    0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+.img-preview-overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
-/* حركة دوران الحلقة */
-@keyframes spinRing {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.img-preview-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    object-fit: contain;
 }
 
-/* =========================================
-   تنسيقات صفحة العروض (مربوطة بمتغيرات مدخل)
-   ========================================= */
-
-/* حاوية أزرار التبديل */
-.switch-wrapper {
-    /* تم الربط بـ bg-color عشان تتغير مع الثيم */
-    background-color: var(--bg-color); 
-    padding: 5px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    /* الظل مربوط بالمتغير */
-    box-shadow: inset 0 2px 4px var(--shadow-color);
-    border: 1px solid var(--border-color); /* إضافة حدود خفيفة للوضوح */
+.img-preview-overlay.show .img-preview-content {
+    transform: scale(1);
 }
 
-/* الأزرار نفسها */
-.switch-btn {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 700;
-    /* ربط لون النص بالمتغير الفرعي */
-    color: var(--text-light);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
-}
-
-/* حالة الزر النشط */
-.switch-btn.active {
-    /* الخلفية تأخذ لون السطح (أبيض في النهاري / رمادي غامق في الليلي) */
-    background-color: var(--surface-color);
-    /* النص يأخذ اللون الرسمي */
-    color: var(--primary-text);
-    box-shadow: 0 2px 8px var(--shadow-color);
-}
-
-.switch-btn:hover:not(.active) {
-    background-color: var(--border-color); /* تأثير هوفر خفيف */
-}
-
-/* تنسيق كرت العرض */
-.offer-card {
-    /* أهم تعديل: الخلفية الآن مربوطة بـ surface-color */
-    background: var(--surface-color);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    position: relative;
-    margin-bottom: 15px;
-    /* الحدود مربوطة بـ border-color */
-    border: 1px solid var(--border-color);
-}
-
-.offer-badge {
+.img-preview-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff4757; /* هذا لون تنبيه ثابت يفضل بقاؤه */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
+    top: 25px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 35px;
     font-weight: bold;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background 0.2s ease, transform 0.2s ease;
     z-index: 2;
 }
 
-.offer-card img {
+.img-preview-close:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.img-preview-close:active {
+    transform: scale(0.9);
+}
+
+/* إضافة تأثير المؤشر للصور القابلة للضغط */
+.article-main-image, #articleImage, .article-body img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.article-main-image:active, #articleImage:active, .article-body img:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   نظام معاينة الصور عند الضغط (Image Lightbox Modal المطور)
+   يدعم التكبير والتصغير بالسحب والإيماءات
+   ========================================= */
+.img-preview-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* تعتيم أعمق للتركيز على الصورة */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    overflow: auto; /* السماح بالتمرير عند التكبير */
 }
 
-.offer-content {
-    padding: 15px;
+.img-preview-overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
-.offer-content h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-    /* ربط العنوان بالمتغير الرئيسي */
-    color: var(--text-dark);
-}
-
-.offer-content p {
-    font-size: 13px;
-    /* ربط الوصف بالمتغير الفرعي */
-    color: var(--text-light);
-    margin-bottom: 15px;
-}
-
-.offer-btn {
-    display: block;
+/* حاوية الصورة لتمكين التمرير والتكبير بحرية */
+.img-preview-wrapper {
+    position: relative;
     width: 100%;
-    text-align: center;
-    /* جعلت خلفية الزر من لون الخلفية العام ليتناسب مع الوضعين */
-    background: var(--bg-color);
-    /* النص باللون الرسمي */
-    color: var(--primary-text);
-    padding: 8px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 13px;
-    border: 1px solid var(--border-color); /* حدود خفيفة للزر */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.offer-btn :hover {
-background: red;
+.img-preview-content {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+    transform: scale(0.85);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: contain;
+    touch-action: pan-x pan-y pinch-zoom; /* 👈 السر هنا: يسمح للمتصفح بالتعامل مع تكبير الصورة بأصابع اليد */
 }
 
-/* أنميشن بسيط للتبديل */
-.fade-in {
-    animation: fadeIn 0.4s ease-in-out;
+.img-preview-overlay.show .img-preview-content {
+    transform: scale(1);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+.img-preview-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 9999999;
+}
+
+.img-preview-close:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.img-preview-close:active {
+    transform: scale(0.9);
 }
