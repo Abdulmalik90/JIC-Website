@@ -1,383 +1,473 @@
 /* =========================================
-   تنسيقات صفحة الخطط (Plans)
-   تعتمد على متغيرات style.css الرئيسية
+   تنسيقات صفحة التخصصات والخطط - التصميم الجذري (Bento UI)
    ========================================= */
 
-/* شريط التبديل العلوي */
-.plans-main-tabs {
-    display: flex;
-    background: var(--surface-color, #fff);
-    padding: 6px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    margin-top: -50px;
-    border: 1px solid var(--border-color, #eee);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+.plans-container {
+    padding: 20px 18px 120px 18px;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
-.plan-tab {
+/* --- الهيدر الترحيبي --- */
+.plans-hero-section {
+    margin-bottom: 22px;
+    text-align: right;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+[data-theme="dark"] .hero-badge {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.hero-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.hero-title span {
+    color: var(--primary-text);
+}
+
+.hero-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+    padding-right: 2px;
+}
+
+/* --- أزرار التبديل الكبسولية (Segmented Control) --- */
+.plans-controls-wrapper {
+    margin-bottom: 25px;
+}
+
+.segmented-pill-container {
+    display: flex;
+    background: var(--surface-color);
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-bottom: 15px;
+}
+
+.segmented-btn {
     flex: 1;
-    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
     border: none;
     background: transparent;
-    color: var(--text-color, #bdbdbd);
-    font-family: 'Tajawal';
-    font-weight: 700;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
-}
-
-.plan-tab.active {
-    background: var(--primary-color, #103291);
-    color: white;
-    box-shadow: 0 4px 10px rgba(16, 50, 145, 0.2);
-}
-
-/* الفلاتر الفرعية (Chips) */
-.plans-sub-filters {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    scrollbar-width: none;
-}
-.plans-sub-filters::-webkit-scrollbar { display: none; }
-
-.sub-filter-btn {
-    white-space: nowrap;
-    padding: 10px 18px;
-    background: var(--surface-color, #fff);
-    border: 1px solid var(--border-color, #eee);
-    border-radius: 25px;
-    color: var(--text-color, #858585);
-    cursor: pointer;
-    transition: 0.2s;
-    font-family: 'Tajawal';
+    color: var(--text-light);
+    font-family: 'Tajawal', sans-serif;
     font-size: 13px;
-    font-weight: 500;
-}
-
-.sub-filter-btn.active {
-    background: rgba(16, 50, 145, 0.1);
-    color: var(--primary-color, #103291);
-    border-color: var(--primary-color, #103291);
     font-weight: 700;
-}
-
-/* شبكة التخصصات */
-.majors-grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* عمودين للجوال */
-    gap: 15px;
-    animation: fadeIn 0.4s ease;
-}
-
-.major-card-btn {
-    background: var(--surface-color, #fff);
-    border: 1px solid var(--border-color, #eee);
-    padding: 20px 10px;
-    border-radius: 18px;
-    text-align: center;
+    border-radius: 15px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.segmented-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 123, 196, 0.25);
+}
+
+/* الرقاقات الفرعية (Sub Chips) */
+.sub-chips-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 5px;
+}
+
+.sub-chips-scroll::-webkit-scrollbar { display: none; }
+
+.sub-chip-btn {
+    white-space: nowrap;
+    padding: 8px 16px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    color: var(--text-light);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sub-chip-btn.active {
+    background: rgba(0, 123, 196, 0.1);
+    color: var(--primary-text);
+    border-color: var(--primary-text);
+}
+
+[data-theme="dark"] .sub-chip-btn.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+/* --- شبكة التخصصات (Bento Grid) --- */
+.majors-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.bento-major-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    padding: 18px 14px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    min-height: 130px;
-}
-
-.major-card-btn:active { transform: scale(0.98); }
-
-.major-card-btn i {
-    font-size: 30px;
-    color: var(--primary-color, #103291);
-    background: rgba(16, 50, 145, 0.05);
-    padding: 12px;
-    border-radius: 50%;
-    margin-bottom: 5px;
-}
-
-.major-card-btn span {
-    color: var(--text-color, #333);
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-/* واجهة التفاصيل */
-#plan-detail-view { animation: slideUp 0.4s ease; }
-
-.back-to-majors-btn {
-    background: transparent;
-    border: none;
-    color: var(--primary-color, #103291);
-    font-family: 'Tajawal';
-    font-weight: bold;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 125px;
     cursor: pointer;
-    font-size: 15px;
-    padding: 0;
-}
-.back-to-majors-btn i { font-size: 18px; transform: rotate(180deg); }
-
-.plan-summary-card {
-    background: var(--surface-color, #fff);
-    border: 1px solid var(--border-color, #eee);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-}
-
-.major-title-head {
-    color: var(--primary-color, #103291);
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.plan-meta-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    border-top: 1px dashed var(--border-color, #eee);
-    padding-top: 20px;
-    gap: 15px;
-}
-
-.meta-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.meta-item .label { font-size: 11px; color: #888; }
-.meta-item .value { font-size: 14px; font-weight: 800; color: var(--text-color, #333); }
-
-.total-plan-box {
-    margin-top: 15px;
-    background: rgba(16, 50, 145, 0.06);
-    padding: 10px 15px;
-    border-radius: 12px;
-    color: var(--primary-color, #103291);
-    font-weight: 700;
-    font-size: 13px;
-    display: inline-block;
-}
-
-/* جداول المواد */
-.semester-card {
-    background: var(--surface-color, #fff);
-    border-radius: 16px;
-    margin-bottom: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
     overflow: hidden;
-    border: 1px solid var(--border-color, #eee);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
 }
 
-.semester-header {
-    background: var(--primary-color, #103291);
-    color: white;
-    padding: 12px 15px;
-}
-.semester-header h2 { font-size: 15px; margin: 0; }
-
-.course-table-wrapper { overflow-x: auto; width: 100%; }
-
-.course-table { width: 100%; border-collapse: collapse; min-width: 500px; }
-
-.course-table th {
-    background: var(--bg-body, #f4f6f8);
-    color: #666;
-    font-size: 12px;
-    padding: 10px;
-    text-align: right;
-    border-bottom: 1px solid var(--border-color, #eee);
+.bento-major-card:active {
+    transform: scale(0.95);
 }
 
-.course-table td {
-    padding: 12px 10px;
-    border-bottom: 1px solid var(--border-color, #eee);
-    color: var(--text-color, #333);
-    font-size: 13px;
-}
-
-.course-table tr:last-child td { border-bottom: none; }
-
-.total-row td { background: var(--bg-body, #f4f6f8); font-weight: bold; }
-.total-title { color: var(--primary-color, #103291); }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-/* =========================================
-   تنسيق النافذة المنبثقة (Popup)
-   ========================================= */
-
-/* الخلفية المعتمة */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* لون أسود شفاف */
-    backdrop-filter: blur(5px); /* تغبيش الخلفية */
-    z-index: 99999; /* فوق كل شيء */
-    display: none; /* مخفي افتراضياً */
-    justify-content: center;
+.bento-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    display: flex;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 12px;
 }
 
-/* عند التفعيل */
-.popup-overlay.active {
-    display: flex; /* يصير مرن عشان التوسط */
+[data-theme="dark"] .bento-card-icon {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.bento-card-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.4;
+    text-align: right;
+    width: 100%;
+}
+
+.bento-card-arrow {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    font-size: 12px;
+    color: var(--text-light);
+    opacity: 0.5;
+    transition: transform 0.2s ease;
+}
+
+.bento-major-card:hover .bento-card-arrow {
+    transform: translateX(-3px);
     opacity: 1;
 }
 
-/* الصندوق نفسه */
-.popup-content {
-    background: var(--bg-card); /* أبيض أو داكن حسب المود */
-    padding: 30px;
-    border-radius: 24px;
-    width: 85%;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-color);
-    transform: scale(0.8);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* --- شاشة تفاصيل الخطة والمواد --- */
+.plan-detail-view {
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.popup-overlay.active .popup-content {
-    transform: scale(1);
-}
-
-/* الأيقونة */
-.popup-icon {
-    font-size: 45px;
+.detail-top-nav {
     margin-bottom: 15px;
-    display: block;
-    animation: bounce 0.6s;
 }
 
-/* النصوص */
-.popup-content h3 {
-    margin: 0 0 10px 0;
-    color: var(--primary-color);
+.back-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--primary-text);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.plan-hero-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.hero-card-header {
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.degree-tag {
+    background: var(--primary-color);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.major-headline {
     font-size: 20px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.hero-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 15px;
+}
+
+.stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-color);
+    padding: 10px;
+    border-radius: 14px;
+}
+
+.stat-pill i {
+    font-size: 16px;
+    color: var(--primary-text);
+}
+
+.stat-label {
+    display: block;
+    font-size: 9px;
+    color: var(--text-light);
+}
+
+.stat-val {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* الفصول والمواد (Cards Accordion) */
+.semester-block {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.semester-title-bar {
+    background: var(--bg-color);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.semester-title-bar h3 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.semester-hours-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary-text);
+}
+
+.courses-list {
+    padding: 10px 15px;
+}
+
+.course-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-item-row:last-child {
+    border-bottom: none;
+}
+
+.course-main-info h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 4px 0;
+}
+
+.course-prereq {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.course-badge-hours {
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 11px;
     font-weight: 800;
 }
 
-.popup-content p {
-    margin: 0 0 25px 0;
-    color: var(--text-sub);
-    font-size: 14px;
-    line-height: 1.6;
+[data-theme="dark"] .course-badge-hours {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
 }
 
-/* الأزرار */
-.popup-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.pop-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s;
+.spin-icon {
+    font-size: 28px;
+    color: var(--primary-text);
+    animation: spin 1s linear infinite;
 }
 
-.pop-btn.confirm {
-    background: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.2);
-}
-
-.pop-btn.cancel {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-sub);
-}
-
-/* تأثير بسيط للأيقونة */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-10px);}
-    60% {transform: translateY(-5px);}
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* =========================================
-   تحديثات الدارك مود (إصلاح النصوص السوداء)
+   تحديثات شبكة التخصصات والجداول
    ========================================= */
 
-@media (prefers-color-scheme: dark) {
-    
-    /* 1. إصلاح نصوص كروت التخصصات في الشبكة */
-    .major-card-btn span {
-        color: var(--text-main) !important; /* يجبر النص يصير فاتح */
-    }
-    .major-card-btn {
-        background-color: var(--bg-card);
-        border-color: var(--border-color);
-    }
+/* ألوان الأيقونات لضمان الظهور الفوري */
+.bento-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
 
-    /* 2. إصلاح صفحة التفاصيل (الملخص العلوي) */
-    .plan-summary-card {
-        background-color: var(--bg-card);
-        border-color: var(--border-color);
-    }
-    .meta-item .label { color: var(--text-sub); }
-    .meta-item .value { color: var(--text-main) !important; }
-    
-    /* 3. إصلاح جداول المواد (أهم جزء) */
-    .semester-card {
-        background-color: var(--bg-card);
-        border-color: var(--border-color);
-    }
-    
-    .course-table td {
-        color: var(--text-main) !important; /* يخلي أسماء المواد والدرجات بيضاء */
-        border-bottom-color: var(--border-color);
-    }
+[data-theme="dark"] .bento-card-icon {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
 
-    .course-table th {
-        background-color: var(--surface-color); /* لون خلفية العناوين (نظري/عملي) */
-        color: var(--text-sub);
-        border-bottom-color: var(--border-color);
-    }
+/* جداول تفاصيل الخطة والمواد */
+.course-table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
 
-    /* صف المجموع أسفل الجدول */
-    .total-row td {
-        background-color: var(--surface-color) !important;
-        color: var(--text-main) !important;
-    }
+.modern-course-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 340px;
+    text-align: right;
+}
 
-    /* 4. إصلاح النافذة المنبثقة (Popup) */
-    .popup-content {
-        background-color: var(--bg-card);
-        border-color: var(--border-color);
-    }
-    .popup-content h3 { color: var(--primary-color); }
-    .popup-content p { color: var(--text-main); }
-    
-    /* زر الإلغاء في الدارك مود */
-    .pop-btn.cancel {
-        color: var(--text-main);
-        border-color: var(--border-color);
-    }
+.modern-course-table th {
+    background: var(--bg-color);
+    color: var(--text-light);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modern-course-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 12px;
+    color: var(--text-dark);
+}
+
+.modern-course-table tr:last-child td {
+    border-bottom: none;
+}
+
+.course-name-td {
+    font-weight: 800;
+    min-width: 120px;
+}
+
+.prereq-td {
+    font-size: 10px !important;
+    color: var(--text-light) !important;
+}
+
+.badge-pill {
+    background: rgba(0, 123, 196, 0.08);
+    color: var(--primary-text);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 11px;
+}
+
+[data-theme="dark"] .badge-pill {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+/* تنسيق كرت المواد الاختيارية المميز */
+.optional-block {
+    border: 1px dashed var(--primary-text) !important;
+    margin-top: 25px;
+}
+
+.optional-header {
+    background: rgba(0, 123, 196, 0.06) !important;
+}
+
+.optional-header h3 {
+    color: var(--primary-text) !important;
 }

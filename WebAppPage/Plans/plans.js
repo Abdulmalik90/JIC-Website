@@ -1,79 +1,7 @@
 /* =========================================
-   نظام الخطط الدراسية - plans.js
-   (محدث بالكامل لدعم الداتا الجديدة والتحضيري)
+   محرك الخطط والتخصصات المطور - plans.js
    ========================================= */
 
-// =========================================
-// 1. بيانات السنة التحضيرية
-// =========================================
-const JTI_Prep_Data = {
-    id: 'jti_prep',
-    name: 'السنة التحضيرية',
-    arabicName: 'السنة التحضيرية - المعهد',
-    degree: 'السنة التحضيرية',
-    years: 1,
-    track: 'بنين وبنات', 
-    icon: 'fi-rr-book',
-    semesters: [ 
-        {
-            semester: 1,
-            courses: [
-                ["Technical Drawing", 2, 1, 2, []],
-                ["Introduction to Safety", 2, 2, 0, []],
-                ["Occupational Health and Safety", 4, 4, 0, []],
-                ["Computer Application", 2, 1, 2, []],
-                ["English I", 8, 20, 1, []]
-            ]
-        },
-        {
-            semester: 2,
-            courses: [
-                ["Industrial Plant Safety", 4, 3, 2, []],
-                ["Workshop Skills Safety", 3, 2, 2, []],
-                ["Technical Mathematics", 3, 3, 0, []],
-                ["English II", 8, 20, 1, ["English I"]]
-            ]
-        }
-    ]
-};
-
-const JIC_Prep_Data = {
-    id: 'jic_prep',
-    name: 'السنة التحضيرية',
-    arabicName: 'السنة التحضيرية - الكلية',
-    degree: 'السنة التحضيرية',
-    years: 1,
-    track: 'بنين وبنات',
-    icon: 'fi-rr-book-alt',
-    semesters: [
-        {
-            semester: 1,
-            courses: [
-                ["English I (Reading and writing)", 8, 10, 0, []],
-                ["English I (Listening & Speaking)", 0, 6, 0, []],
-                ["English I (E-Learning)", 0, 0, 2, []],
-                ["English I (ESP)", 0, 3, 0, []],
-                ["Preparatory Math I", 4, 4, 0, []],
-                ["Introduction to Computer", 1, 1, 0, []]
-            ]
-        },
-        {
-            semester: 2,
-            courses: [
-                ["English II (Reading and writing)", 8, 10, 0, ["English I (Reading and writing)"]],
-                ["English II (Listening & Speaking)", 0, 6, 0, ["English I (Listening & Speaking)"]],
-                ["English II (E-Learning)", 0, 0, 2, ["English II (E-Learning)"]],
-                ["English II (ESP)", 0, 3, 0, ["English II (ESP)"]],
-                ["Preparatory Math II", 4, 4, 0, ["Preparatory Math I"]],
-                ["Study Skills", 1, 1, 0, []]
-            ]
-        }
-    ]
-};
-
-// =========================================
-// 2. إعدادات الهيكل والتصفية
-// =========================================
 const plansStructure = {
     college: {
         filters: [
@@ -94,67 +22,56 @@ let currentSource = 'college';
 let currentFilter = 'prep';    
 
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetSource = urlParams.get('source'); 
-    const targetFilter = urlParams.get('filter'); 
-
-    if (targetSource && targetFilter) {
-        switchPlanSource(targetSource);
-        setTimeout(() => { filterMajors(targetFilter); }, 50);
-    } else {
-        switchPlanSource('college');
-    }
-});
-
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
     switchPlanSource('college');
-}
+});
 
 function switchPlanSource(source) {
     currentSource = source;
-    document.querySelectorAll('.plan-tab').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('onclick').includes(source));
+    
+    // تحديث الأزرار الرئيسية
+    const btns = document.querySelectorAll('.segmented-btn');
+    btns.forEach(btn => {
+        const isCollege = btn.getAttribute('onclick').includes('college') && source === 'college';
+        const isInstitute = btn.getAttribute('onclick').includes('institute') && source === 'institute';
+        btn.classList.toggle('active', isCollege || isInstitute);
     });
 
+    // رسم الرقاقات الفرعية
     const filtersContainer = document.getElementById('sub-filters-container');
     if (!filtersContainer) return;
     filtersContainer.innerHTML = '';
     
     const filters = plansStructure[source].filters;
     filters.forEach((f, index) => {
-        const btn = document.createElement('button');
-        btn.className = `sub-filter-btn ${index === 0 ? 'active' : ''}`;
-        btn.innerText = f.name;
-        btn.onclick = () => filterMajors(f.id, btn);
-        filtersContainer.appendChild(btn);
+        const chip = document.createElement('button');
+        chip.className = `sub-chip-btn ${index === 0 ? 'active' : ''}`;
+        chip.innerText = f.name;
+        chip.onclick = () => filterMajors(f.id, chip);
+        filtersContainer.appendChild(chip);
     });
 
     if (filters.length > 0) filterMajors(filters[0].id);
 }
 
 function getMajorsList(source, filterId) {
-    if (source === 'college' && filterId === 'prep') return [ JIC_Prep_Data ];
-    if (source === 'institute' && filterId === 'prep') return [ JTI_Prep_Data ];
+    if (source === 'college' && filterId === 'prep') return [ window.JIC_Prep_Data || JIC_Prep_Data ];
+    if (source === 'institute' && filterId === 'prep') return [ window.JTI_Prep_Data || JTI_Prep_Data ];
     if (source === 'college' && filterId === 'bachelor') return window.JIC_Bachelor_List || [];
     if (source === 'college' && filterId === 'diploma') return window.JIC_Diploma_List || [];
     if (source === 'institute' && filterId === 'diploma') return window.JTI_Diploma_List || [];
     return [];
 }
 
-// تصفية وعرض الكروت
 function filterMajors(filterId, clickedBtn = null) {
     currentFilter = filterId;
 
     if (clickedBtn) {
-        document.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.sub-chip-btn').forEach(b => b.classList.remove('active'));
         clickedBtn.classList.add('active');
-    } else {
-        const btns = document.querySelectorAll('.sub-filter-btn');
-        if(btns.length > 0) btns[0].classList.add('active');
     }
 
     const grid = document.getElementById('majors-grid');
-    if(!grid) return;
+    if (!grid) return;
     grid.innerHTML = '';
     
     const list = getMajorsList(currentSource, filterId);
@@ -162,45 +79,41 @@ function filterMajors(filterId, clickedBtn = null) {
     if (list.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
-                <i class="fi fi-rr-sad-tear" style="font-size: 40px; color: #ccc; margin-bottom:10px; display:block;"></i>
-                <p style="color: var(--text-light);">لا توجد تخصصات مضافة حالياً.</p>
+                <i class="fi fi-rr-document-signed" style="font-size: 36px; color: var(--text-light); margin-bottom:8px; display:block;"></i>
+                <p style="color: var(--text-light); font-size:12px;">لا توجد تخصصات مضافة حالياً لهذا القسم.</p>
             </div>`;
         return;
     }
 
     list.forEach(major => {
         const card = document.createElement('div');
-        card.className = 'major-card-btn';
-        
-        // هنا يتم استدعاء دالة الفتح عند الضغط
+        card.className = 'bento-major-card';
         card.onclick = function() { loadMajorPlanData(major); };
-        
-        let iconClass = 'fi-rr-document';
+
+        // ضمان أيقونات شغالّة وتظهر دائماً
+        let iconClass = 'fi-rr-graduation-cap';
         if (major.category === 'engineering') iconClass = "fi-rr-settings";
         else if (major.category === 'it') iconClass = "fi-rr-laptop";
         else if (major.category === 'industrial') iconClass = "fi-rr-wrench-simple";
-        else if (major.category === 'science') iconClass = "fi-rr-test-tube";
-        else if (major.category === 'other') iconClass = "fi-rr-chart-histogram";
-        
+        else if (major.category === 'science') iconClass = "fi-rr-flask";
         if (major.icon) iconClass = major.icon;
 
-        const majorName = major.name || major.arabicName;
+        const majorName = major.arabicName || major.name;
 
-        card.innerHTML = `<i class="fi ${iconClass}"></i><span>${majorName}</span>`;
+        card.innerHTML = `
+            <div class="bento-card-icon"><i class="fi ${iconClass}"></i></div>
+            <div class="bento-card-title">${majorName}</div>
+            <i class="fi fi-rr-arrow-left bento-card-arrow"></i>
+        `;
         grid.appendChild(card);
     });
 
     closePlanView();
 }
 
-// =========================================
-// هذي الدوال اللي انمسحت عندك بالغلط
-// =========================================
-
-// دالة تحميل تفاصيل الخطة وفتح الشاشة
 function loadMajorPlanData(majorData) {
-    document.getElementById('plans-main-tabs').style.display = 'none';
-    document.getElementById('sub-filters-container').style.display = 'none';
+    document.getElementById('plansHero').style.display = 'none';
+    document.getElementById('plansControls').style.display = 'none';
     document.getElementById('majors-grid').style.display = 'none';
     document.getElementById('plan-detail-view').style.display = 'block';
 
@@ -208,30 +121,21 @@ function loadMajorPlanData(majorData) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// دالة زر الرجوع للتخصصات
 function closePlanView() {
-    const detailView = document.getElementById('plan-detail-view');
-    const tabs = document.getElementById('plans-main-tabs');
-    const filters = document.getElementById('sub-filters-container');
-    const grid = document.getElementById('majors-grid');
-
-    if (detailView) detailView.style.display = 'none';
-    if (tabs) tabs.style.display = 'flex';
-    if (filters) filters.style.display = 'flex';
-    if (grid) grid.style.display = 'grid';
-    
+    document.getElementById('plan-detail-view').style.display = 'none';
+    document.getElementById('plansHero').style.display = 'block';
+    document.getElementById('plansControls').style.display = 'block';
+    document.getElementById('majors-grid').style.display = 'grid';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// =========================================
-// محرك رسم الجداول
-// =========================================
+// رسم الخطة والجداول مع كافة التفاصيل والمواد الاختيارية
 function renderPlanDetails(majorData) {
     if (!majorData) return;
 
     const majorName = majorData.arabicName || majorData.name;
     document.getElementById("portal-greating").textContent = majorName;
-    document.getElementById("majorDegree").textContent = majorData.degree || 'غير محدد';
+    document.getElementById("majorDegreeBadge").textContent = majorData.degree || 'التخصص';
     document.getElementById("majorYears").textContent = majorData.years ? majorData.years + " سنوات" : 'سنة واحدة';
     document.getElementById("majorGender").textContent = majorData.track || majorData.genders || 'الجميع';
 
@@ -239,113 +143,112 @@ function renderPlanDetails(majorData) {
     container.innerHTML = '';
 
     let totalPlanHours = 0;
-
     const semestersList = majorData.semesters || majorData.courses;
 
     if (Array.isArray(semestersList) && semestersList.length > 0) {
         
+        // 1. رسم الفصول الأساسية (semester > 0)
         semestersList.forEach(sem => {
-            if (sem.semester === 0) return; 
+            if (sem.semester === 0) return;
 
-            const card = document.createElement("div");
-            card.classList.add("semester-card");
+            const block = document.createElement("div");
+            block.className = "semester-block";
 
-            const header = document.createElement("div");
-            header.classList.add("semester-header");
-            header.innerHTML = `<h2>الفصل الدراسي ${sem.semester}</h2>`;
-            card.appendChild(header);
-
-            const tableWrapper = document.createElement("div");
-            tableWrapper.classList.add("course-table-wrapper");
-
-            const table = document.createElement("table");
-            table.classList.add("course-table");
-            table.innerHTML = `<thead><tr><th>المادة</th><th>ساعات</th><th>نظري</th><th>عملي</th><th>مُتطلب</th></tr></thead>`;
-
-            const tbody = document.createElement("tbody");
             let semHours = 0;
+            let rowsHTML = '';
 
-            if(Array.isArray(sem.courses)){
+            if (Array.isArray(sem.courses)) {
                 sem.courses.forEach(course => {
                     const [title, credits, lec, lab, prereqs] = course;
-                    const row = document.createElement("tr");
-                    let prereqText = (Array.isArray(prereqs) && prereqs.length > 0) ? prereqs.join(', ') : '-';
-                    
+                    const prereqText = (Array.isArray(prereqs) && prereqs.length > 0) ? prereqs.join(', ') : '-';
                     const creditsNum = parseInt(credits, 10) || 0;
-
-                    row.innerHTML = `
-                        <td style="font-weight:bold">${title}</td>
-                        <td>${credits}</td>
-                        <td>${lec}</td>
-                        <td>${lab}</td>
-                        <td style="font-size:11px; color:var(--text-light)">${prereqText}</td>
-                    `;
-                    tbody.appendChild(row);
                     semHours += creditsNum;
+
+                    rowsHTML += `
+                        <tr>
+                            <td class="course-name-td">${title}</td>
+                            <td class="badge-td"><span class="badge-pill">${credits}</span></td>
+                            <td>${lec}</td>
+                            <td>${lab}</td>
+                            <td class="prereq-td">${prereqText}</td>
+                        </tr>
+                    `;
                 });
             }
 
-            const totalRow = document.createElement("tr");
-            totalRow.className = "total-row";
-            totalRow.innerHTML = `<td class="total-title">مجموع الساعات</td><td>${semHours}</td><td colspan="3"></td>`;
-            tbody.appendChild(totalRow);
+            totalPlanHours += semHours;
 
-            totalPlanHours += semHours; 
-            table.appendChild(tbody);
-            tableWrapper.appendChild(table);
-            card.appendChild(tableWrapper);
-            container.appendChild(card);
+            block.innerHTML = `
+                <div class="semester-title-bar">
+                    <h3>الفصل الدراسي ${sem.semester}</h3>
+                    <span class="semester-hours-tag">مجموع الساعات: ${semHours}</span>
+                </div>
+                <div class="course-table-wrapper">
+                    <table class="modern-course-table">
+                        <thead>
+                            <tr>
+                                <th>المادة</th>
+                                <th>ساعات</th>
+                                <th>نظري</th>
+                                <th>عملي</th>
+                                <th>المتطلب</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rowsHTML}</tbody>
+                    </table>
+                </div>
+            `;
+            container.appendChild(block);
         });
 
+        // 2. رسم المواد الاختيارية (semester === 0)
         const optionalSem = semestersList.find(s => s.semester === 0);
-        
         if (optionalSem && optionalSem.courses && optionalSem.courses.length > 0) {
-            const divider = document.createElement("div");
-            divider.style.cssText = "margin: 30px 0 15px 0; border-top: 2px dashed var(--border-color); position: relative;";
-            divider.innerHTML = `<span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--bg-color); padding: 0 10px; color: var(--text-light); font-size: 12px;">نهاية الخطة الأساسية</span>`;
-            container.appendChild(divider);
+            
+            const optionalBlock = document.createElement("div");
+            optionalBlock.className = "semester-block optional-block";
 
-            const card = document.createElement("div");
-            card.classList.add("semester-card", "optional-semester"); 
-
-            const header = document.createElement("div");
-            header.classList.add("semester-header");
-            header.innerHTML = `<h2>المواد الاختيارية (Electives)</h2>`;
-            card.appendChild(header);
-
-            const tableWrapper = document.createElement("div");
-            tableWrapper.classList.add("course-table-wrapper");
-
-            const table = document.createElement("table");
-            table.classList.add("course-table");
-            table.innerHTML = `<thead><tr><th>المادة</th><th>ساعات</th><th>نظري</th><th>عملي</th><th>مُتطلب</th></tr></thead>`;
-
-            const tbody = document.createElement("tbody");
-
+            let optionalRows = '';
             optionalSem.courses.forEach(course => {
                 const [title, credits, lec, lab, prereqs] = course;
-                const row = document.createElement("tr");
-                let prereqText = (Array.isArray(prereqs) && prereqs.length > 0) ? prereqs.join(', ') : '-';
-                
-                row.innerHTML = `
-                    <td style="font-weight:bold">${title}</td>
-                    <td>${credits}</td>
-                    <td>${lec}</td>
-                    <td>${lab}</td>
-                    <td style="font-size:11px; color:var(--text-light)">${prereqText}</td>
+                const prereqText = (Array.isArray(prereqs) && prereqs.length > 0) ? prereqs.join(', ') : '-';
+
+                optionalRows += `
+                    <tr>
+                        <td class="course-name-td">${title}</td>
+                        <td class="badge-td"><span class="badge-pill">${credits}</span></td>
+                        <td>${lec}</td>
+                        <td>${lab}</td>
+                        <td class="prereq-td">${prereqText}</td>
+                    </tr>
                 `;
-                tbody.appendChild(row);
             });
 
-            table.appendChild(tbody);
-            tableWrapper.appendChild(table);
-            card.appendChild(tableWrapper);
-            container.appendChild(card);
+            optionalBlock.innerHTML = `
+                <div class="semester-title-bar optional-header">
+                    <h3>المواد الاختيارية (Electives) 🎯</h3>
+                </div>
+                <div class="course-table-wrapper">
+                    <table class="modern-course-table">
+                        <thead>
+                            <tr>
+                                <th>المادة</th>
+                                <th>ساعات</th>
+                                <th>نظري</th>
+                                <th>عملي</th>
+                                <th>المتطلب</th>
+                            </tr>
+                        </thead>
+                        <tbody>${optionalRows}</tbody>
+                    </table>
+                </div>
+            `;
+            container.appendChild(optionalBlock);
         }
+
     } else {
         container.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-light);">الخطة غير متوفرة حالياً.</div>`;
     }
 
-    const totalBox = document.getElementById('total-hours-container');
-    if(totalBox) totalBox.innerHTML = `<div class="total-plan-box" style="margin-top: 15px; font-weight: bold; background: rgba(0, 123, 196, 0.1); color: var(--primary-text); padding: 10px; border-radius: 12px; text-align: center;">إجمالي ساعات الخطة الأساسية: ${totalPlanHours}</div>`;
+    document.getElementById('total-hours-val').textContent = `${totalPlanHours} ساعة`;
 }
