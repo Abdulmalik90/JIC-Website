@@ -8,46 +8,14 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="Friend.css">
 </head>
 <body>
 
 
     <div id="emoji-background"></div>
 
-<div id="sidebarOverlay"></div>
-
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <h3 style="font-family: 'Tajawal'; font-weight:800; color:var(--primary-text);">القائمة</h3>
-            <button class="close-btn">✕</button>
-        </div>
-
-        <ul class="modern-sidebar">
-            <li class="menu-label">التصفح</li>
-            <li><a href="../index.html"><i class="fi fi-rr-home"></i> الرئيسية</a></li>
-            <li><a href="../Pages/center.html"><i class="fi fi-rr-dashboard"></i> الواجهة</a></li>
-            <li><a href="Tools.html" class="active"><i class="fi fi-rr-apps"></i> الأدوات</a></li>
-            <li><a href="../Plans/plans.html"><i class="fi fi-rr-graduation-cap"></i> التخصصات</a></li>
-
-            <li class="menu-label">المجتمع</li>
-            <li><a href="missing.html"><i class="fi fi-rr-box"></i> مبادرة مفقود</a></li>
-            <li><a href="https://x.com/i/communities/1823043306739110132" target="_blank"><i class="fi fi-brands-twitter"></i> مجتمع JIC (X)</a></li>
-            <li><a href="https://t.me/newsjuc" target="_blank"><i class="fi fi-rr-paper-plane"></i> قناة الأخبار</a></li>
-
-            <li class="menu-divider"></li>
-
-            <li class="theme-toggle-card">
-                <div class="theme-switch-wrapper">
-                    <span class="theme-label"><i class="fi fi-rr-moon"></i> الوضع الليلي</span>
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                    </label>
-                </div>
-            </li>
-        </ul>
-        <div style="margin-top: auto; padding-bottom: 20px; font-size: 11px; color: var(--text-light); text-align: center;">منصة مدخل © 2026</div>
-    </aside>
 
 <app-header title="الأدوات" base-path="../"></app-header>
     
@@ -69,17 +37,135 @@
             </div>
     </div>
 
-    <div class="tabs-container">
-        <div class="tab-item active" data-target="absence">حاسبة الغياب</div>
-        <div class="tab-item" data-target="gpa">حاسبة المعدل</div>
-        <div class="tab-item" data-target="grades">حاسبة الدرجات</div>
-        <div class="tab-item" data-target="schedule">منشئ الجداول</div>
+
+   <!-- القائمة الرئيسية للأدوات -->
+   <main class="tools-main-menu" id="toolsMainMenu">
+        
+        <!-- قسم أدوات مدخل (Bento Grid) -->
+        <h2 class="tools-section-title"><i class="fi fi-rr-apps"></i> أدوات مدخل</h2>
+        <div class="bento-grid">
+            
+            <!-- كرت عريض (يأخذ عرض الشاشة) -->
+            <div class="tool-menu-card bento-wide" data-target="absence">
+                <div class="tool-icon-box" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+                    <i class="fi fi-rr-calendar-xmark"></i>
+                </div>
+                <div class="bento-text">
+                    <h3>حاسبة الغياب</h3>
+                    <p>احسب رصيد غياباتك قبل الحرمان (DN)</p>
+                </div>
+            </div>
+
+            <!-- كرت مربع (نصف الشاشة) -->
+            <div class="tool-menu-card bento-square" data-target="gpa">
+                <div class="tool-icon-box" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);">
+                    <i class="fi fi-rr-stats"></i>
+                </div>
+                <h3>حاسبة المعدل</h3>
+                <p>معدلك الفصلي والتراكمي</p>
+            </div>
+
+            <!-- كرت مربع (نصف الشاشة) -->
+            <div class="tool-menu-card bento-square" data-target="grades">
+                <div class="tool-icon-box" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">
+                    <i class="fi fi-rr-chart-pie-alt"></i>
+                </div>
+                <h3>حاسبة الدرجات</h3>
+                <p>سجل وتابع درجاتك بدقة</p>
+            </div>
+
+            <!-- كرت عريض (يأخذ عرض الشاشة) -->
+            <div class="tool-menu-card bento-wide" data-target="schedule">
+                <div class="tool-icon-box" style="color: #eab308; background: rgba(234, 179, 8, 0.1);">
+                    <i class="fi fi-rr-calendar-lines"></i>
+                </div>
+                <div class="bento-text">
+                            <h3>
+            صمم جدولك
+            <span style="font-size:10px;color:var(--primary-text)">
+                BETA
+            </span>
+        </h3>
+                    <p>رتب جدولك الدراسي بشكل انيق</p>
+                </div>
+            </div>
+        
+        <div class="tool-menu-card bento-wide" data-target="friend">
+    <div class="tool-icon-box"
+         style="color:#007bc4;background:rgba(0,123,196,.1)">
+        <i class="fi fi-rr-sparkles"></i>
     </div>
 
-    <main class="tools-content">
+    <div class="bento-text">
+        <h3>
+            صاحب
+            <span style="font-size:10px;color:var(--primary-text)">
+                BETA
+            </span>
+        </h3>
+        <p>محاضراتك ومهامك ويومك الدراسي بمكان واحد</p>
+    </div>
+</div>
+
+</div>
+        <!-- وسم بنر الإعلانات التلقائي -->
+<ad-banner></ad-banner>
+
+        <!-- قسم الأدوات الخارجية (Compact Grid) -->
+        <h2 class="tools-section-title" style="margin-top: 40px;"><i class="fi fi-rr-link-alt"></i> أدوات خارجية مفيدة</h2>
+        <div class="compact-tools-grid">
+            
+            <a href="https://edugate.rcjy.edu.sa/" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-graduation-cap"></i>
+                <span>الإيدوقيت</span>
+            </a>
+            
+             <a href="https://jic.blackboard.com/" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-book-alt"></i>
+                <span>البلاك بورد</span>
+            </a>
+
+            <a href="https://www.ilovepdf.com/ar" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-document"></i>
+                <span>أدوات PDF</span>
+            </a>
+
+            <a href="https://quillbot.com/" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-text-check"></i>
+                <span>QuillBot للتدقيق</span>
+            </a>
+
+            <a href="https://www.canva.com/" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-presentation"></i>
+                <span>Canva عروض</span>
+            </a>
+
+            <a href="https://notion.so/" target="_blank" class="compact-tool-card">
+                <i class="fi fi-rr-notebook"></i>
+                <span>Notion للملاحظات</span>
+            </a>
+
+
+
+        </div>
+
+    </main>
+    <!-- حاوية عرض الأداة المحددة (تكون مخفية في البداية) -->
+    <main class="tool-active-container" id="toolActiveContainer" style="display: none;">
         
-<div id="absence-tool" class="tool-view active">
-    <div class="tool-card">
+        <!-- هيدر صغير للرجوع للقائمة -->
+        <div class="tool-nav-bar">
+            <button class="back-to-tools-btn" id="backToToolsBtn">
+                <i class="fi fi-rr-angle-right"></i> الرجوع للأدوات
+            </button>
+            <h2 id="activeToolTitle" class="active-tool-title">اسم الأداة</h2>
+        </div>
+
+        <!-- هنا نضع الأكواد السابقة للأدوات كما هي تماماً -->
+        <!-- قسم حاسبة الغياب -->
+        <div id="absence-tool" class="tool-view">
+            <!-- [ضع محتوى div#absence-tool الموجود في الكود القديم هنا] -->
+            <div class="tool-card">
         <div class="tool-header-info">
             <i class="fi fi-rr-info"></i>
             <span>أدخل مجموع عدد ساعات محاضرات المادة في الأسبوع (نظري + عملي) لمعرفة رصيد غيابات المادة.</span>
@@ -156,13 +242,12 @@
             </div>
         </div>
     </div>
-</div>
-    </div>
-    <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
-</div>
+        </div>
 
+        <!-- قسم حاسبة المعدل -->
         <div id="gpa-tool" class="tool-view">
-    <div class="tool-card gpa-card">
+             <!-- [ضع محتوى div#gpa-tool الموجود في الكود القديم هنا] -->
+             <div class="tool-card gpa-card">
         <h4 class="card-subtitle"><i class="fi fi-rr-stats"></i> السجل الأكاديمي الحالي</h4>
         <div class="gpa-inputs-grid">
             <div class="input-group">
@@ -221,11 +306,12 @@
             </div>
         </div>
     </div>
+        </div>
 
-</div>
-
+        <!-- قسم حاسبة الدرجات -->
         <div id="grades-tool" class="tool-view">
-    <div class="tool-card">
+             <!-- [ضع محتوى div#grades-tool الموجود في الكود القديم هنا] -->
+             <div class="tool-card">
         <div class="tool-header-info">
             <i class="fi fi-rr-interrogation"></i>
             <span> دكتورك رصد الدرجة من 25 وهي بالاصل من 5 مثلاً , هنا تقدر تحول درجتك للوزن الصحيح</span>
@@ -314,23 +400,216 @@
         <h4 style="font-size: 14px;">حاسبة الدرجات</h4>
         <p style="font-size: 11px;">الأداة الشاملة لحساب درجات المادة كاملة لمستخدمين التطبيق حالياً فقط.</p>
     </div>
-    <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
+        </div>
+
+        <!-- قسم منشئ الجداول -->
+<!-- قسم منشئ الجداول المدمج لتطبيق مدخل -->
+        <div id="schedule-tool" class="tool-view">
+            
+            <!-- أزرار التبويب العلوية -->
+            <div class="sched-mobile-tabs">
+                <button class="sched-tab-btn active" data-step="input">إدخال المواد</button>
+                <button class="sched-tab-btn" data-step="view">عرض الجدول</button>
+            </div>
+
+            <!-- الخطوة 1: الإدخال -->
+            <div class="sched-panel active" id="step-input">
+                <div class="tool-card">
+                    <div class="tool-header-info">
+                        <i class="fi fi-rr-clipboard-paste"></i>
+                        <span>انسخ جدولك من الإيدوقيت (Ctrl+C) والصقه هنا ليتم استخراجه تلقائياً.</span>
+                    </div>
+                    <textarea id="pasteInput" class="main-input" style="height: 110px; margin-bottom: 15px; resize: none; font-size: 13px;" placeholder="الصق النص هنا..."></textarea>
+                    
+                    <div class="buttons-gap">
+                        <button class="action-btn" id="parseBtn" style="flex: 2; padding: 12px; border-radius: 14px;"><i class="fi fi-rr-magic-wand"></i> استخراج تلقائي</button>
+                        <button class="add-btn" id="clearPasteBtn" style="flex: 1; padding: 12px; border-radius: 14px;">مسح</button>
+                    </div>
+                </div>
+
+                <!-- 🔴 صندوق التنبيهات بالتعارض 🔴 -->
+                <div id="conflictWarning" style="display: none; margin-top: 20px;"></div>
+
+                <div class="tool-card" style="margin-top: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 class="card-subtitle" style="margin:0;"><i class="fi fi-rr-books"></i> المواد (<span id="courseCount">0</span>)</h3>
+                        <button class="clear-btn" id="clearAllBtn" style="margin: 0; padding: 6px 12px; width: auto; font-size: 12px;">حذف الكل</button>
+                    </div>
+                    
+                    <div id="coursesList"></div>
+                    
+                    <div id="emptyCourses" style="text-align: center; color: var(--text-light); padding: 25px 15px; border: 2px dashed var(--border-color); border-radius: 16px; font-size: 13px; margin-bottom: 15px;">
+                        <i class="fi fi-rr-box-open" style="font-size: 30px; margin-bottom: 10px; display: block; opacity: 0.5;"></i>
+                        لم تُضف أي مادة بعد.
+                    </div>
+                    
+                    <button class="add-btn" id="addCourseBtn" style="width: 100%;">+ إضافة مادة يدوياً</button>
+                </div>
+                
+                <button class="calc-btn" id="buildScheduleBtn" style="margin-top: 25px; background: linear-gradient(45deg, #10b981 0%, #059669 100%);"><i class="fi fi-rr-calendar-lines"></i> بناء وعرض الجدول</button>
+            </div>
+
+            <!-- الخطوة 2: عرض الجدول -->
+            <div class="sched-panel" id="step-view" style="display: none;">
+                <div class="results-grid" style="margin-bottom: 20px;">
+                    <div class="result-box blue">
+                        <span class="res-label">إجمالي المواد</span>
+                        <span id="schedCoursesCount" class="res-value">0</span>
+                    </div>
+                    <div class="result-box gold">
+                        <span class="res-label">الساعات المعتمدة</span>
+                        <span id="schedTotalHrs" class="res-value">0</span>
+                    </div>
+                </div>
+                
+                <div id="dayCards"></div>
+                
+                <!-- 🔴 أزرار الرجوع والتصدير 🔴 -->
+                <div style="display: flex; gap: 10px; margin-top: 25px;">
+                    <button class="add-btn" id="backToInputBtn" style="flex: 1; padding: 12px; font-weight: bold; border-radius: 14px;">← تعديل</button>
+                    <button
+    class="action-btn"
+    id="exportScheduleBtn"
+    type="button"
+    style="flex: 2; padding: 12px; border-radius: 14px;"
+>
+    <i class="fi fi-rr-share"></i>
+    حفظ ومشاركة الجدول
+</button>
+                </div>
+            </div>
+
+            <!-- القوالب المخفية -->
+            <template id="courseRowTemplate">
+                <div class="grade-row" style="padding: 15px; border-right: 4px solid var(--c); margin-bottom: 15px; position: relative;" data-id="">
+                    <button class="delete-btn course-del-btn" style="top: 15px; right: auto; left: 15px; width: 28px; height: 28px; z-index: 10;">×</button>
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px; padding-left: 35px;">
+                        <input type="text" class="main-input" data-field="code" style="flex: 1; padding: 10px; font-size: 13px;" placeholder="الكود (Math 111)">
+                        <input type="number" class="main-input" data-field="cr" style="width: 70px; padding: 10px; text-align: center;" placeholder="الساعات">
+                    </div>
+                    
+                    <div data-sessions-wrap></div>
+                    
+                    <button class="add-btn add-session-btn" style="padding: 8px; font-size: 12px; margin-top: 10px; width: fit-content;" type="button">+ إضافة حصة</button>
+                </div>
+            </template>
+
+            <template id="sessionRowTemplate">
+                <div class="session-row" style="display: flex; gap: 6px; margin-top: 8px; align-items: center; background: var(--bg-color); padding: 8px; border-radius: 12px; border: 1px solid var(--border-color);" data-session-id="">
+                    <select class="main-input" data-field="day" style="padding: 5px; font-size: 11px; flex: 1.5; height: 35px;">
+                        <option value="">اليوم</option><option value="Sun">الأحد</option><option value="Mon">الاثنين</option><option value="Tue">الثلاثاء</option><option value="Wed">الأربعاء</option><option value="Thu">الخميس</option>
+                    </select>
+                    <input type="number" class="main-input" data-field="periodStart" style="padding: 5px; font-size: 12px; flex: 1; text-align: center; height: 35px;" placeholder="من">
+                    <input type="number" class="main-input" data-field="periodEnd" style="padding: 5px; font-size: 12px; flex: 1; text-align: center; height: 35px;" placeholder="إلى">
+                    <select class="main-input" data-field="type" style="padding: 5px; font-size: 11px; flex: 1.5; height: 35px;">
+                        <option value="Theoretical">نظري</option><option value="Practical">عملي</option>
+                    </select>
+                    <input
+    type="text"
+    class="main-input"
+    data-field="room"
+    placeholder="القاعة"
+    dir="ltr"
+    style="
+        width: 66px;
+        min-width: 0;
+        padding: 5px;
+        font-size: 11px;
+        text-align: center;
+        height: 35px;
+    "
+>
+<button
+    class="session-del-btn"
+    type="button"
+    style="background: transparent; border: none; color: #ef4444; font-size: 16px; padding: 0 5px; cursor: pointer;"
+>
+    🗑
+</button>
+
+<input
+    type="text"
+    class="main-input"
+    data-field="building"
+    placeholder="المبنى"
+    style="
+        flex: 1 0 100%;
+        width: 100%;
+        min-width: 0;
+        padding: 8px;
+        margin-top: 6px;
+        font-size: 11px;
+        box-sizing: border-box;
+    "
+>
+</div>
+</template>
+
+           <!-- ========================================== -->
+            <!-- قالب الطباعة الأنيق (يظهر فقط في الـ PDF) -->
+            <!-- ========================================== -->
+            <div id="printLayout" class="print-only">
+                <div class="print-header-elegant">
+                    <!-- تم استبدال النص بشعار التطبيق -->
+                    <img src="../Images/Logo22.png" alt="مدخل Portal" class="print-logo-img">
+                    <div class="print-title">الجدول الدراسي الأسبوعي</div>
+                </div>
+                <div class="print-info-bar">
+                    <span>إجمالي المواد: <b id="printCourseCount">0</b></span>
+                    <span>الساعات المعتمدة: <b id="printTotalHrs">0</b></span>
+                </div>
+                <table class="elegant-print-table">
+                    <thead>
+                        <tr id="printTableHeader">
+                            <!-- يملأ برمجياً -->
+                        </tr>
+                    </thead>
+                    <tbody id="printTableBody">
+                        <!-- يملأ برمجياً -->
+                    </tbody>
+                </table>
+<div class="print-footer">تم الإنشاء بواسطة منصة مدخل</div>
 </div>
 
-        <div id="schedule-tool" class="tool-view">
-            <div class="desktop-only-notice">
-                <i class="fi fi-rr-computer"></i>
-                <h3>هذه الأداة متوفرة عبر الموقع فقط</h3>
-                <p>للحصول على أفضل تجربة، نرجو استخدام منشئ الجداول من خلال المتصفح.</p>
-                <a href="../index.html" class="app-btn primary">الانتقال للموقع</a>
-            </div>
-            <div class="library-ad-placeholder" style="margin: 15px auto; width: 100%; max-width: 100%;"></div>
-            </div>
+</div> <!-- إغلاق schedule-tool -->
+<div id="friend-tool" class="tool-view">
+ <div class="rf-wrap">
+  <div class="rf-top"><div><h3>صاحب <span class="rf-beta">تجريبي</span></h3><p class="rf-muted" id="rfDate">يومك الدراسي مع مدخل</p></div><button type="button" id="rfRefresh" class="rf-small-btn" hidden disabled>✎ تعديل</button></div>
+  <div class="rf-stats">
+   <div class="rf-card rf-stat rf-stat-blue"><span class="rf-stat-label" id="rfTodayLabel">محاضرات اليوم</span><strong class="rf-number" id="rfTodayCount">0</strong><span class="rf-muted">من جدولك المحفوظ</span></div>
+   <div class="rf-card rf-stat rf-stat-gold" id="rfWeekPanel"><span class="rf-stat-label">الأسبوع الدراسي</span><strong class="rf-number" id="rfWeekNumber">— / 16</strong><div class="rf-progress"><span id="rfWeekFill"></span></div><span class="rf-muted" id="rfWeekCaption">حدد بداية الفصل</span></div>
+  </div>
+  <div class="rf-card rf-hero" id="rfClassHero"><span class="rf-status">رفيق</span><h3>هلا بك!</h3><p>هنا تظهر محاضرتك القادمة</p></div>
+  <section class="rf-card"><div class="rf-section-head"><h4 id="rfListTitle">محاضرات اليوم</h4><span class="rf-muted">متصلة بصمم جدولك</span></div><div id="rfTodayList"></div></section>
+  <section class="rf-card rf-unified">
+   <div class="rf-section-head"><h4>مهامي وملاحظاتي</h4><button type="button" id="rfAddEntry" class="rf-small-btn">+ إضافة</button></div>
+   <div id="rfEntryList"></div>
+  </section>
+  <p class="rf-muted">🔒 بيانات صاحب محفوظة على هذا الجهاز فقط. لا يحتاج تسجيل دخول.</p>
+ </div>
+ <div id="rfEditor" class="rf-dialog" hidden><div class="rf-dialog-box"><h4 id="rfDialogTitle">إضافة</h4><form id="rfEditorForm"><label for="rfEntryText">التفاصيل</label><textarea id="rfEntryText" maxlength="300" required placeholder="اكتب هنا..."></textarea><label for="rfEntryKind">نوع الإضافة</label><select id="rfEntryKind"><option value="task">مهمة</option><option value="note">ملاحظة</option></select><div id="rfDateRow"><label for="rfEntryDate">تاريخ المهمة (اختياري)</label><input id="rfEntryDate" type="date"></div><div class="rf-dialog-actions"><button id="rfCancelEditor" type="button">إلغاء</button><button type="submit">حفظ</button></div></form></div></div>
 
-
-       
-
-    </main>
+<div id="rfExamDialog" class="rf-dialog" hidden>
+ <div class="rf-dialog-box" style="max-height:90dvh;overflow:auto">
+  <h4>ترتيب الاختبارات</h4>
+  <p class="rf-muted">أضف مواعيد الاختبارات لهذه الفترة. تُحفظ على جهازك.</p>
+  <form id="rfExamForm">
+   <div class="rf-exam-fields">
+    <label class="wide">رمز المادة<input id="rfExamCode" maxlength="40" required placeholder="MME 238"></label>
+    <label class="wide">اسم المادة (اختياري)<input id="rfExamName" maxlength="100" placeholder="اسم المادة"></label>
+    <label>يوم الاختبار<input id="rfExamDay" type="date" required></label>
+    <label>وقت البداية<input id="rfExamTime" type="time" required></label>
+    <label>وقت النهاية (اختياري)<input id="rfExamEnd" type="time"></label>
+    <label class="wide">موقع القاعة<input id="rfExamLocation" maxlength="120" placeholder="مبنى / دور / رقم القاعة"></label>
+   </div>
+   <div class="rf-dialog-actions"><button type="button" id="rfExamClose">إغلاق</button><button type="submit">حفظ الاختبار</button></div>
+  </form>
+  <div id="rfExamExisting" style="margin-top:16px"></div>
+ </div>
+</div>
+</div>
+</main>
 
     <div id="custom-popup-overlay3" class="popup-overlay3">
     <div class="popup-content3">
@@ -345,33 +624,43 @@
     </div>
 </div>
 
-    <nav class="bottom-nav">
-    <a href="../index.html" class="nav-item "> <i class="fi fi-rr-home"></i> 
+<nav class="bottom-nav">
+    <a href="../index.html" class="nav-item ">
+        <i class="fi fi-rr-home"></i> 
         <span>الرئيسية</span>
     </a>
 
-    <a href="Tools.html" class="nav-item active"> <i class="fi fi-rr-apps"></i>
+    <a href="./Tools.html" class="nav-item active">
+        <i class="fi fi-sr-apps"></i>
         <span>الأدوات</span>
     </a>
 
-    <a href="../Pages/center.html" class="nav-item"> <i class="fi fi-rr-dashboard"></i>
-            <span>الواجهة</span>
-        </a>
-
-    <a href="../Library/library.html" class="nav-item"> <i class="fi fi-rr-book-alt"></i>
-        <span>الموسوعة</span>
+    <a href="../Pages/center.html" class="nav-item ">
+        <i class="fi fi-rr-dashboard"></i>
+        <span>الواجهة</span>
     </a>
 
-    <a href="../Pages/news.html" class="nav-item"> <i class="fi fi-rr-newspaper"></i>
+    <!-- تم استبدال الموسوعة بقسم الأندية -->
+    <a href="../Pages/clubs.html" class="nav-item">
+        <i class="fi fi-rr-users-class"></i>
+        <span>الأندية</span>
+    </a>
+
+    <a href="../Pages/news.html" class="nav-item">
+        <i class="fi fi-rr-newspaper"></i>
         <span>الأخبار</span>
     </a>
 </nav>
 
     <script src="toolsjava.js"></script>
     <script src="../script.js"></script>
-    <script src=".../AdsEngine/ads-manager.js"></script>
+    <script src="../AdsEngine/ads-manager.js"></script>
     <script src="libscript.js"></script>
     <script src="../notifications.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="schedule.js"></script>
+<script src="Friend-calendar.js" defer></script>
+<script src="Friend.js" defer></script>
 
     
 </body>

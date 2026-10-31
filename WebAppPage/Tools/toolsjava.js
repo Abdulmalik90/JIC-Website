@@ -1,26 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll('.tab-item');
-    const views = document.querySelectorAll('.tool-view');
+    const toolsMainMenu = document.getElementById('toolsMainMenu');
+    const toolActiveContainer = document.getElementById('toolActiveContainer');
+    const toolCards = document.querySelectorAll('.tool-menu-card:not(.external)');
+    const toolViews = document.querySelectorAll('.tool-view');
+    const backBtn = document.getElementById('backToToolsBtn');
+    const activeToolTitle = document.getElementById('activeToolTitle');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // 1. تغيير الـ Tab النشط
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+    // عند الضغط على بطاقة أداة
+    toolCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const targetId = card.getAttribute('data-target');
+            const title = card.querySelector('h3').innerText;
 
-            // 2. إظهار المحتوى المناسب
-            const target = tab.getAttribute('data-target');
-            views.forEach(view => {
+            toolsMainMenu.style.display = 'none';
+            toolActiveContainer.style.display = 'block';
+            activeToolTitle.innerText = title;
+
+            toolViews.forEach(view => {
                 view.classList.remove('active');
-                if (view.id === `${target}-tool`) {
+                if (view.id === `${targetId}-tool`) {
                     view.classList.add('active');
                 }
             });
+             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
-});
-const resultBtn = document.getElementById("result-button");
 
+    // عند الضغط على زر الرجوع
+    if(backBtn) {
+        backBtn.addEventListener('click', () => {
+            toolActiveContainer.style.display = 'none';
+            toolsMainMenu.style.display = 'block';
+             toolViews.forEach(view => {
+                view.classList.remove('active');
+            });
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
+
+/* =========================================
+   حاسبة الغياب
+   ========================================= */
+const resultBtn = document.getElementById("result-button");
 if (resultBtn) {
     resultBtn.addEventListener("click", () => {
         let inputField = document.getElementById("lectures-count-input");
@@ -29,7 +51,7 @@ if (resultBtn) {
         let advancedTracker = document.getElementById("advanced-tracker"); 
 
         if (!classPerWeek || classPerWeek <= 0) {
-            alert("عذراً، يرجى إدخال عدد الساعات بشكل صحيح");
+            showAlert("خطأ إدخال", "عذراً، يرجى إدخال عدد الساعات بشكل صحيح", "⚠️");
             return;
         }
 
@@ -39,10 +61,8 @@ if (resultBtn) {
             return Number(englishNumbers) || 0;
         }
 
-        // --- الحسابات الأساسية ---
         let totalClassesSemester = classPerWeek * 16; 
         let exactDNThreshold = Number((totalClassesSemester * 0.20).toFixed(1)); 
-        
         let safeAllowedAbs = Math.floor(exactDNThreshold);
         
         document.getElementById("allowed-abs-val").innerText = safeAllowedAbs;
@@ -66,8 +86,6 @@ if (resultBtn) {
 
             let lateToAbsHours = Math.floor(lateCount / 3); 
             let totalCurrentAbs = absHours + lateToAbsHours;
-
-            // التعديل هنا: صار النص يطرح من الرقم الصافي اللي بدون كسور
             let displayRemaining = safeAllowedAbs - totalCurrentAbs; 
 
             let actualAbsencePercent = (totalCurrentAbs / totalClassesSemester) * 100;
@@ -86,230 +104,194 @@ if (resultBtn) {
             }
 
             progressPercentText.innerHTML = `${Number(actualAbsencePercent.toFixed(1))}% <span>/ 20%</span>`;
-            
             progressFill.style.width = `${visualBarFill}%`;
 
-            if (visualBarFill < 50) {
-                progressFill.style.background = "#22c55e"; 
-            } else if (visualBarFill >= 50 && visualBarFill < 99) {
-                progressFill.style.background = "#eab308"; 
-            } else {
-                progressFill.style.background = "#ef4444"; 
-            }
+            if (visualBarFill < 50) progressFill.style.background = "#22c55e"; 
+            else if (visualBarFill >= 50 && visualBarFill < 99) progressFill.style.background = "#eab308"; 
+            else progressFill.style.background = "#ef4444"; 
         }
 
         currentAbsInput.addEventListener("input", updateAdvancedTracker);
         currentLateInput.addEventListener("input", updateAdvancedTracker);
-        
         updateAdvancedTracker();
     });
 }
+
+/* =========================================
+   حاسبة المعدل
+   ========================================= */
 let subjectCount = 1;
+const addSubBtn = document.getElementById('add-sub-button');
+if(addSubBtn) {
+    addSubBtn.addEventListener('click', () => {
+        const container = document.getElementById('gpa-current-info');
+        const newRow = document.createElement('div');
+        newRow.className = `subject-card row-${subjectCount}`;
+        newRow.innerHTML = `
+            <div class="sub-header">
+                <span class="sub-number">مادة ${subjectCount + 1}</span>
+                <button class="remove-sub" onclick="this.parentElement.parentElement.remove()">✕</button>
+            </div>
+            <div class="sub-body-grid">
+                <input id="subName-input${subjectCount}" type="text" placeholder="اسم المادة" class="full-width">
+                <input id="cridet-input${subjectCount}" type="number" placeholder="الساعات">
+                <select id="grad-select${subjectCount}">
+                    <option value="" disabled selected>التقدير</option>
+                    <option value="4.00">A+</option><option value="3.75">A</option><option value="3.50">B+</option>
+                    <option value="3.00">B</option><option value="2.50">C+</option><option value="2.00">C</option>
+                    <option value="1.50">D+</option><option value="1.00">D</option><option value="0.00">F</option>
+                </select>
+            </div>
+        `;
+        container.appendChild(newRow);
+        subjectCount++;
+    });
+}
 
-// دالة إضافة مادة جديدة
-document.getElementById('add-sub-button').addEventListener('click', () => {
-    const container = document.getElementById('gpa-current-info');
-    const newRow = document.createElement('div');
-    newRow.className = `subject-card row-${subjectCount}`;
-    newRow.innerHTML = `
-        <div class="sub-header">
-            <span class="sub-number">مادة ${subjectCount + 1}</span>
-            <button class="remove-sub" onclick="this.parentElement.parentElement.remove()">✕</button>
-        </div>
-        <div class="sub-body-grid">
-            <input id="subName-input${subjectCount}" type="text" placeholder="اسم المادة" class="full-width">
-            <input id="cridet-input${subjectCount}" type="number" placeholder="الساعات">
-            <select id="grad-select${subjectCount}">
-                <option value="" disabled selected>التقدير</option>
-                <option value="4.00">A+</option>
-                <option value="3.75">A</option>
-                <option value="3.50">B+</option>
-                <option value="3.00">B</option>
-                <option value="2.50">C+</option>
-                <option value="2.00">C</option>
-                <option value="1.50">D+</option>
-                <option value="1.00">D</option>
-                <option value="0.00">F</option>
-            </select>
-        </div>
-    `;
-    container.appendChild(newRow);
-    subjectCount++;
-});
+const showGpaBtn = document.getElementById('show-gpa-button');
+if(showGpaBtn) {
+    showGpaBtn.addEventListener('click', () => {
+        let oldHours = parseFloat(document.getElementById('hours-input').value) || 0;
+        let oldGpa = parseFloat(document.getElementById('gpa-input').value) || 0;
+        
+        if (oldGpa > 4.00) {
+            showAlert('تنبيه', 'المعدل التراكمي السابق لا يمكن أن يتجاوز 4.00!', '⚠️');
+            return;
+        }
 
-// دالة حساب المعدل (مع التنبيهات الجديدة)
-document.getElementById('show-gpa-button').addEventListener('click', () => {
-    let oldHours = parseFloat(document.getElementById('hours-input').value) || 0;
-    let oldGpa = parseFloat(document.getElementById('gpa-input').value) || 0;
-    
-    // تحقق بسيط من المعدل السابق
-    if (oldGpa > 4.00) {
-        showAlert('تنبيه', 'المعدل التراكمي السابق لا يمكن أن يتجاوز 4.00!', '⚠️');
-        return;
-    }
+        let currentPoints = 0; let currentHours = 0;
 
-    let currentPoints = 0;
-    let currentHours = 0;
+        for (let i = 0; i < subjectCount; i++) {
+            let creditInput = document.getElementById(`cridet-input${i}`);
+            let gradeSelect = document.getElementById(`grad-select${i}`);
 
-    // ملاحظة: تأكد أن المتغير subjectCount معرف عندك في الكود العام
-    for (let i = 0; i < subjectCount; i++) {
-        // استخدمت نفس أسماء الآيديز اللي في كودك (cridet-input)
-        let creditInput = document.getElementById(`cridet-input${i}`);
-        let gradeSelect = document.getElementById(`grad-select${i}`);
-
-        if (creditInput && gradeSelect && gradeSelect.value !== "") {
-            let hours = parseFloat(creditInput.value);
-            let weight = parseFloat(gradeSelect.value);
-            
-            // التحقق من صحة المدخلات داخل اللوب
-            if (!isNaN(hours) && hours > 0) {
-                currentHours += hours;
-                currentPoints += (hours * weight);
+            if (creditInput && gradeSelect && gradeSelect.value !== "") {
+                let hours = parseFloat(creditInput.value);
+                let weight = parseFloat(gradeSelect.value);
+                if (!isNaN(hours) && hours > 0) {
+                    currentHours += hours;
+                    currentPoints += (hours * weight);
+                }
             }
         }
-    }
 
-    if (currentHours === 0) {
-        // هنا استبدلنا الـ alert بالتنبيه الجديد
-        showAlert('بيانات ناقصة', 'لطفاً أدخل ساعات ودرجات المواد الحالية.', '✍️');
-        return;
-    }
+        if (currentHours === 0) {
+            showAlert('بيانات ناقصة', 'لطفاً أدخل ساعات ودرجات المواد الحالية.', '✍️');
+            return;
+        }
 
-    let semesterGpa = currentPoints / currentHours;
-    let totalPoints = (oldGpa * oldHours) + currentPoints;
-    let totalHours = oldHours + currentHours;
-    let cumulativeGpa = totalPoints / totalHours;
+        let semesterGpa = currentPoints / currentHours;
+        let totalPoints = (oldGpa * oldHours) + currentPoints;
+        let totalHours = oldHours + currentHours;
+        let cumulativeGpa = totalPoints / totalHours;
 
-    // تصحيح الأرقام لو تجاوزت 4 بالخطأ الحسابي
-    if (cumulativeGpa > 4.00) cumulativeGpa = 4.00;
-    if (semesterGpa > 4.00) semesterGpa = 4.00;
+        if (cumulativeGpa > 4.00) cumulativeGpa = 4.00;
+        if (semesterGpa > 4.00) semesterGpa = 4.00;
 
-    // عرض النتائج
-    document.getElementById('semester-gpa-val').innerText = semesterGpa.toFixed(2);
-    document.getElementById('new-total-gpa-val').innerText = cumulativeGpa.toFixed(2);
-    
-    const resultCard = document.getElementById('gpa-result-card');
-    resultCard.style.display = 'block';
-    
-    // سكرول ناعم للنتيجة عشان يشوفها المستخدم
-    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
+        document.getElementById('semester-gpa-val').innerText = semesterGpa.toFixed(2);
+        document.getElementById('new-total-gpa-val').innerText = cumulativeGpa.toFixed(2);
+        
+        const resultCard = document.getElementById('gpa-result-card');
+        resultCard.style.display = 'block';
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+}
 
+/* =========================================
+   الوزن النسبي (جزء من أداة الدرجات)
+   ========================================= */
 function calculateWeight() {
     const studentMark = parseFloat(document.getElementById('studentMark').value);
     const examTotal = parseFloat(document.getElementById('examTotal').value);
     const realWeight = parseFloat(document.getElementById('realWeight').value);
 
-    // 1. التحقق من المدخلات (استبدال alert بـ showAlert)
     if (isNaN(studentMark) || isNaN(examTotal) || isNaN(realWeight)) {
-        // التنبيه الجديد
-        showAlert('بيانات ناقصة', 'تأكد انك عبيت كل الخانات بالأرقام.', '✍️');
-        return;
+        showAlert('بيانات ناقصة', 'تأكد انك عبيت كل الخانات بالأرقام.', '✍️'); return;
     }
-
-    // 2. التحقق من الصفر
     if (examTotal === 0) {
-        // التنبيه الجديد
-        showAlert('خطأ رياضي', 'الدرجة الكلية للاختبار مستحيل تكون صفر.', '➗');
-        return;
+        showAlert('خطأ رياضي', 'الدرجة الكلية للاختبار مستحيل تكون صفر.', '➗'); return;
     }
-
-    // 3. التحقق المنطقي (إضافة اختيارية)
     if (studentMark > examTotal) {
-        showAlert('خطأ في القيم', `درجتك (${studentMark}) ما يصير تكون أعلى من درجة الاختبار (${examTotal}).`, '❌');
-        return;
+        showAlert('خطأ في القيم', `درجتك (${studentMark}) ما يصير تكون أعلى من درجة الاختبار (${examTotal}).`, '❌'); return;
     }
 
-    // المعادلة: (الدرجة / المجموع) * الوزن
     let result = (studentMark / examTotal) * realWeight;
     
-    // إظهار النتيجة (نفس كودك القديم)
+    document.getElementById('finalResult').innerText = result.toFixed(2);
+    document.getElementById('weightTotalVal').innerText = realWeight;
     const resultCard = document.getElementById('resultCard');
-    const finalResult = document.getElementById('finalResult');
-    const weightTotalVal = document.getElementById('weightTotalVal');
-
-    finalResult.innerText = result.toFixed(2);
-    weightTotalVal.innerText = realWeight;
-    
     resultCard.style.display = 'flex';
-    
-    // حركة انيميشن بسيطة عند الظهور
     resultCard.style.animation = 'slideUp 0.4s ease';
 }
 
 /* =========================================
-   برمجة أداة حساب الدرجات + التنبيهات المخصصة
+   أداة حساب درجات المادة (المشكلة التي تم حلها)
    ========================================= */
-
-const assessmentTypes = [
-    "HW 1", "HW 2", "Quiz 1", "Quiz 2", 
-    "Midterm", "Project", "Lab", "Final", "أخرى/تعديل"
-];
-
+const assessmentTypes = ["HW 1", "HW 2", "Quiz 1", "Quiz 2", "Midterm", "Project", "Lab", "Final", "أخرى/تعديل"];
 let savedCourses = JSON.parse(localStorage.getItem('my_grades_list')) || [];
 let currentResult = { score: 0, max: 0, percent: 0, grade: '-' };
 
 document.addEventListener('DOMContentLoaded', () => {
     if(document.getElementById('course-calc-card')) {
         addRow(); addRow(); addRow();
-        
         document.getElementById('add-row-btn').addEventListener('click', addRow);
         document.getElementById('calculate-btn').addEventListener('click', calculateResult);
         document.getElementById('save-result-btn').addEventListener('click', saveCourseToStorage);
         document.getElementById('clear-all-btn').addEventListener('click', clearAllCourses);
-        
         renderSavedCourses();
     }
 });
 
-/* =========================================
-   🔥 دوال التنبيهات الجديدة (Popup System)
-   ========================================= */
+/* --- دوال التنبيهات (Popup System) والتوكيد (Confirm) --- */
+window.showAlert = function (title, message, icon = '🔔') {
+    const overlay = document.getElementById('custom-popup-overlay3');
+    const cancelBtn = document.getElementById('popup-cancel-btn3');
+    const confirmBtn = document.getElementById('popup-confirm-btn3');
+    if (!overlay || !confirmBtn) return;
 
-// دالة إظهار رسالة تنبيه عادية (بديل alert)
-document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('popup-icon3').textContent = icon;
+    document.getElementById('popup-title3').textContent = title;
+    document.getElementById('popup-message3').textContent = message;
+    cancelBtn.style.display = 'none';
+    confirmBtn.textContent = 'موافق';
+    confirmBtn.onclick = closePopup;
+    overlay.classList.add('active');
+};
 
-    window.showAlert = function (title, message, icon = '🔔') {
-        const overlay = document.getElementById('custom-popup-overlay3');
-        const cancelBtn = document.getElementById('popup-cancel-btn3');
-        const confirmBtn = document.getElementById('popup-confirm-btn3');
+window.showConfirm = function(title, message, onConfirm, icon = '❓') {
+    const overlay = document.getElementById('custom-popup-overlay3');
+    const cancelBtn = document.getElementById('popup-cancel-btn3');
+    const confirmBtn = document.getElementById('popup-confirm-btn3');
+    if (!overlay || !confirmBtn) return;
 
-        if (!overlay || !confirmBtn) return;
+    document.getElementById('popup-icon3').textContent = icon;
+    document.getElementById('popup-title3').textContent = title;
+    document.getElementById('popup-message3').textContent = message;
+    
+    cancelBtn.style.display = 'block';
+    cancelBtn.textContent = 'إلغاء';
+    cancelBtn.onclick = closePopup;
+    
+    confirmBtn.textContent = 'نعم، أوافق';
+    confirmBtn.onclick = () => { onConfirm(); closePopup(); };
+    overlay.classList.add('active');
+};
 
-        document.getElementById('popup-icon3').textContent = icon;
-        document.getElementById('popup-title3').textContent = title;
-        document.getElementById('popup-message3').textContent = message;
+window.closePopup = function () {
+    document.getElementById('custom-popup-overlay3')?.classList.remove('active');
+};
 
-        cancelBtn.style.display = 'none';
-        confirmBtn.textContent = 'موافق';
-        confirmBtn.onclick = closePopup;
-
-        overlay.classList.add('active');
-    };
-
-    window.closePopup = function () {
-        document.getElementById('custom-popup-overlay3')?.classList.remove('active');
-    };
-
-});
-
-/* =========================================
-   باقي دوال التطبيق (محدثة لتستخدم التنبيهات)
-   ========================================= */
-
+/* --- دوال صفوف الدرجات --- */
 function addRow() {
     const container = document.getElementById('rows-container');
     const row = document.createElement('div');
     row.className = 'grade-row';
-    
     let options = `<option value="" disabled selected>نوع التقييم</option>`;
     assessmentTypes.forEach(type => options += `<option value="${type}">${type}</option>`);
 
     row.innerHTML = `
         <button class="delete-btn" onclick="removeRow(this)">×</button>
-        <div class="row-top">
-            <div style="width:100%"><select class="assess-type" onchange="handleTypeChange(this)">${options}</select></div>
-        </div>
+        <div class="row-top"><div style="width:100%"><select class="assess-type" onchange="handleTypeChange(this)">${options}</select></div></div>
         <div class="row-bottom">
             <div style="flex:1"><input type="number" class="student-score" placeholder="درجتك" min="0"></div>
             <div style="flex:1"><input type="number" class="total-weight" placeholder="من كم؟" min="0"></div>
@@ -318,37 +300,39 @@ function addRow() {
     container.appendChild(row);
 }
 
+/* --- دوال صفوف الدرجات (محدثة لحل التداخل) --- */
+
 function removeRow(btn) {
-    const rows = document.querySelectorAll('.grade-row');
+    // التعديل هنا: البحث داخل حاوية الدرجات فقط
+    const container = document.getElementById('rows-container');
+    if (!container) return;
+    
+    const rows = container.querySelectorAll('.grade-row');
     if (rows.length > 1) {
         btn.parentElement.remove();
     } else {
-        // استبدال alert بـ showAlert
         showAlert('تنبيه', 'لازم يكون فيه صف واحد على الأقل!', '🚫');
     }
 }
 
-function handleTypeChange(selectElem) {
-    if (selectElem.value === "أخرى/تعديل") {
-        const input = document.createElement('input');
-        input.type = 'text'; input.placeholder = 'اسم التقييم...';
-        input.className = 'custom-input-title'; 
-        selectElem.replaceWith(input);
-        input.focus();
-    }
-}
-
 function calculateResult() {
-    const rows = document.querySelectorAll('.grade-row');
+    // التعديل هنا: قصر البحث على حاوية الدرجات لمنع التداخل مع منشئ الجداول
+    const container = document.getElementById('rows-container');
+    if (!container) return;
+    
+    const rows = container.querySelectorAll('.grade-row');
     let totalScore = 0; let totalMax = 0;
     let isValid = true; let hasData = false;
 
-    document.querySelectorAll('.grade-row input').forEach(inp => inp.classList.remove('input-error'));
+    container.querySelectorAll('input').forEach(inp => inp.classList.remove('input-error'));
 
-    // استخدام for loop عشان نقدر نسوي return ونوقف الدالة
     for (const row of rows) {
         const scoreInput = row.querySelector('.student-score');
         const weightInput = row.querySelector('.total-weight');
+        
+        // التحقق من وجود الحقول فعلياً لتجنب خطأ null
+        if (!scoreInput || !weightInput) continue;
+        
         if (!scoreInput.value && !weightInput.value) continue;
 
         const score = parseFloat(scoreInput.value);
@@ -358,18 +342,15 @@ function calculateResult() {
 
         if (score > max) {
             scoreInput.classList.add('input-error');
-            // استبدال alert بـ showAlert
             showAlert('خطأ في القيم', `درجتك (${score}) أعلى من الدرجة الكلية (${max})!`, '❌');
-            isValid = false; 
-            return; // خروج مباشر
+            isValid = false; return;
         }
         totalScore += score; totalMax += max; hasData = true;
     }
 
-    if (!isValid || !hasData) return; // لا تظهر رسالة هنا عشان ما تزعج المستخدم إذا بس الخانات فاضية
+    if (!isValid || !hasData) return;
 
     if (totalMax > 100) {
-        // استبدال alert بـ showAlert
         showAlert('تجاوز الحد', `مجموع الأوزان (${totalMax}) تجاوز 100!`, '⚠️');
         return;
     }
@@ -393,15 +374,12 @@ function saveCourseToStorage() {
     const nameInput = document.getElementById('course-name');
     const courseName = nameInput.value.trim() || `مادة (${savedCourses.length + 1})`;
 
-    const newCourse = {
-        id: Date.now(), name: courseName, ...currentResult, color: getGradeColor(currentResult.grade)
-    };
+    const newCourse = { id: Date.now(), name: courseName, ...currentResult, color: getGradeColor(currentResult.grade) };
 
     savedCourses.unshift(newCourse);
     localStorage.setItem('my_grades_list', JSON.stringify(savedCourses));
     renderSavedCourses();
     
-    // تأكيد الحفظ بستايل جديد
     showAlert('تم الحفظ', 'تمت إضافة المادة إلى السجل بنجاح.', '✅');
     document.getElementById('saved-courses-section').scrollIntoView({ behavior: 'smooth' });
 }
@@ -427,17 +405,14 @@ function renderSavedCourses() {
     });
 }
 
-// دالة الحذف (تستخدم showConfirm)
-function deleteSavedCourse(id) {
+window.deleteSavedCourse = function(id) {
     showConfirm('حذف مادة', 'هل أنت متأكد من حذف هذه المادة من السجل؟', () => {
-        // هذا الكود يتنفذ فقط اذا ضغط "نعم"
         savedCourses = savedCourses.filter(c => c.id !== id);
         localStorage.setItem('my_grades_list', JSON.stringify(savedCourses));
         renderSavedCourses();
     }, '🗑️');
-}
+};
 
-// دالة حذف الكل (تستخدم showConfirm)
 function clearAllCourses() {
     showConfirm('حذف السجل', 'هل أنت متأكد من حذف جميع المواد المحفوظة؟ لا يمكن التراجع.', () => {
         savedCourses = [];
@@ -458,76 +433,3 @@ function getGradeColor(grade) {
         case 'F': return '#dc3545'; default: return 'var(--primary-color)';
     }
 }
-
-// الستارة للصيانة
-
-    // ==========================================
-    // ⚙️ إعدادات الصيانة الطارئة
-    // ==========================================
-    
-    // 1. تبي تقفل الصفحة؟ حط true .. تبي تفتحها؟ حط false
-    const IS_MAINTENANCE_MODE = false; 
-
-    // 2. رسالة التنبيه اللي بتظهر للطلاب
-    const MAINTENANCE_MSG = {
-        title: "الادوات تحت الصيانة ",
-        desc: "جالسين نضبط كم شغلة ونرجع لكم أفضل من أول!",
-        btnText: "الرجوع للرئيسية"
-    };
-
-    // ==========================================
-    // 🛑 لا تعدل شي تحت هذا الخط
-    // ==========================================
-    
-    (function() {
-        // حيلة سرية لك: لو كتبت في الرابط ?admin=1 بيفتح لك الصفحة عشان تشتغل عليها
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('admin') === '1') return;
-
-        if (IS_MAINTENANCE_MODE) {
-            // 1. تجميد الصفحة (عشان ما يقدر يسوي سكرول)
-            document.body.style.overflow = "hidden";
-            
-            // 2. إنشاء الستارة
-            const overlay = document.createElement('div');
-            overlay.id = "maintenance-curtain";
-            
-            // 3. ستايل الستارة (CSS داخل JS)
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0; left: 0; width: 100%; height: 100%;
-                background: #ffffff;
-                z-index: 99; /* أعلى طبقة ممكنة */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                font-family: inherit;
-                color: #333;
-            `;
-
-            // 4. محتوى الصفحة
-            overlay.innerHTML = `
-                <div style="padding: 20px; max-width: 500px;">
-                    <div style="font-size: 60px; margin-bottom: 20px;">⚙️</div>
-                    <h2 style="margin-bottom: 10px; font-size: 24px;">${MAINTENANCE_MSG.title}</h2>
-                    <p style="color: #666; margin-bottom: 30px; line-height: 1.6;">${MAINTENANCE_MSG.desc}</p>
-                    
-                    <a href="index.html" style="
-                        background: linear-gradient(90deg, #103191, #106091);
-                        color: white; 
-                        text-decoration: none; 
-                        padding: 12px 25px; 
-                        border-radius: 13px; 
-                        font-weight: bold;
-                        display: inline-block;
-                        transition: 0.2s;
-                    ">${MAINTENANCE_MSG.btnText}</a>
-                </div>
-            `;
-
-            // 5. إضافة الستارة للصفحة
-            document.body.appendChild(overlay);
-        }
-    })();
