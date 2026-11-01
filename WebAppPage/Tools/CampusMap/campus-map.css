@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Sahib Campus Map — campus-map.css
+   Mobile-first · RTL · light/dark.  Every rule is scoped under #sahibCampusMap.
+
+   Host-app tokens used (all optional, fallbacks provided):
+     --surface-color  --bg-color  --border-color  --text-dark  --text-light  --primary-text
+   Theme: the script sets  data-theme="light|dark"  on #sahibCampusMap
+   (from the host: html/body .dark / [data-theme] / [data-bs-theme], else prefers-color-scheme).
+   You can force it with  <div id="sahibCampusMap" data-theme="dark">.
+   ========================================================================== */
+
+#sahibCampusMap {
+  --cm-surface: var(--surface-color, #ffffff);
+  --cm-page:    var(--bg-color, #f3f6fa);
+  --cm-border:  var(--border-color, #e1e7ef);
+  --cm-text:    var(--text-dark, #12263f);
+  --cm-muted:   var(--text-light, #5d7088);
+  --cm-accent:  var(--primary-text, #007bc4);
+  --cm-accent-bg: rgba(0, 123, 196, .10);
+  --cm-grad: linear-gradient(115deg, #0a0b4d, #007bc4);
+  --cm-radius: 20px;
+
+  /* map palette — LIGHT */
+  --m-bg:   #e8eee6;  --m-deep: #cdd8d0;  --m-lot:  #dce5da;
+  --m-r1:   #ccd7d2;  --m-r2:   #b6c5c7;  --m-st:   #8eb0c8;
+  --m-rl:   #6c9ab9;  --m-pale: #a8bcc9;
+  --m-label: #17314f; --m-halo: #f5f8f1;
+  --m-sel: #0a2540;   --m-build-mix: #14304e;
+
+  font-family: 'Tajawal', 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--cm-text);
+  direction: rtl;
+  text-align: right;
+}
+#sahibCampusMap[data-theme="dark"] {
+  --cm-surface: var(--surface-color, #14233a);
+  --cm-page:    var(--bg-color, #0c1626);
+  --cm-border:  var(--border-color, #263a57);
+  --cm-text:    var(--text-dark, #e8f0fb);
+  --cm-muted:   var(--text-light, #9db0c8);
+  --cm-accent:  var(--primary-text, #5db8f5);
+  --cm-accent-bg: rgba(93, 184, 245, .14);
+  /* map palette — DARK (colours taken from File A) */
+  --m-bg:   #193a5b;  --m-deep: #0d2740;  --m-lot:  #1e4065;
+  --m-r1:   #274768;  --m-r2:   #3e5c7b;  --m-st:   #5d91b7;
+  --m-rl:   #73a1c3;  --m-pale: #9fb6c7;
+  --m-label: #ffffff; --m-halo: #0d2238;
+  --m-sel: #ffffff;   --m-build-mix: #ffffff;
+}
+
+#sahibCampusMap *, #sahibCampusMap *::before, #sahibCampusMap *::after { box-sizing: border-box; }
+#sahibCampusMap [hidden] { display: none !important; }
+#sahibCampusMap button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+#sahibCampusMap button:focus-visible, #sahibCampusMap input:focus-visible,
+#sahibCampusMap .cm-building:focus-visible { outline: 2px solid var(--cm-accent); outline-offset: 2px; }
+
+/* ---------- shell ---------- */
+#sahibCampusMap .cm-shell { display: grid; gap: 12px; }
+#sahibCampusMap .cm-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+#sahibCampusMap .cm-title { font-size: 18px; font-weight: 900; line-height: 1.4; }
+#sahibCampusMap .cm-title small { font-size: 10px; background: var(--cm-accent-bg); color: var(--cm-accent); padding: 3px 7px; border-radius: 7px; margin-inline-start: 6px; vertical-align: middle; }
+#sahibCampusMap .cm-sub { font-size: 12px; color: var(--cm-muted); margin-top: 4px; line-height: 1.7; }
+
+#sahibCampusMap .cm-switch { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; gap: 4px; background: var(--cm-surface); border: 1px solid var(--cm-border); border-radius: 16px; }
+#sahibCampusMap .cm-switch button { border: 0; background: transparent; color: var(--cm-muted); padding: 10px 8px; border-radius: 12px; font-size: 12px; font-weight: 800; }
+#sahibCampusMap .cm-switch button.is-active { color: #fff; background: var(--cm-grad); box-shadow: 0 3px 12px rgba(0, 110, 179, .25); }
+#sahibCampusMap .cm-soon { font-size: 10px; background: var(--cm-accent-bg); color: var(--cm-accent); padding: 2px 7px; border-radius: 7px; margin-inline-start: 4px; }
+#sahibCampusMap .cm-switch button.is-active .cm-soon { background: rgba(255,255,255,.2); color: #fff; }
+
+/* ---------- search + chips ---------- */
+#sahibCampusMap .cm-tools { display: grid; gap: 10px; }
+#sahibCampusMap .cm-search { display: flex; align-items: center; gap: 8px; background: var(--cm-surface); border: 1px solid var(--cm-border); padding: 0 12px; border-radius: 15px; transition: border-color .15s; }
+#sahibCampusMap .cm-search:focus-within { border-color: var(--cm-accent); }
+#sahibCampusMap .cm-search svg { width: 18px; height: 18px; flex: none; color: var(--cm-accent); }
+#sahibCampusMap .cm-search input { border: 0; outline: 0; background: transparent; color: var(--cm-text); padding: 13px 0; flex: 1; min-width: 0; font: inherit; font-size: 14px; direction: rtl; }
+#sahibCampusMap .cm-search input::placeholder { color: var(--cm-muted); }
+#sahibCampusMap .cm-search input::-webkit-search-cancel-button { display: none; }
+#sahibCampusMap .cm-search .cm-clear { border: 0; background: transparent; color: var(--cm-muted); font-size: 22px; line-height: 1; padding: 4px 2px; }
+#sahibCampusMap .cm-chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+#sahibCampusMap .cm-chips::-webkit-scrollbar { display: none; }
+#sahibCampusMap .cm-chips button { flex: none; border: 1px solid var(--cm-border); background: var(--cm-surface); color: var(--cm-text); padding: 7px 13px; border-radius: 999px; font-size: 12px; font-weight: 800; transition: background .15s, border-color .15s; }
+#sahibCampusMap .cm-chips button.is-active { background: var(--cm-accent-bg); color: var(--cm-accent); border-color: var(--cm-accent); }
+
+/* ---------- map frame ---------- */
+#sahibCampusMap .cm-layout { display: grid; gap: 12px; }
+#sahibCampusMap .cm-map-frame {
+  position: relative; overflow: hidden; direction: ltr;
+  height: clamp(360px, 118vw, 640px);
+  background: var(--m-bg); border: 1px solid var(--cm-border); border-radius: var(--cm-radius);
+  touch-action: none; user-select: none; -webkit-user-select: none;
+}
+#sahibCampusMap .cm-map-wrap { position: absolute; inset: 0; }
+#sahibCampusMap #cmSvg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+#sahibCampusMap #cmSvg.is-dragging { cursor: grabbing; }
+#sahibCampusMap .cm-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--m-label); font-size: 13px; opacity: .8; }
+
+#sahibCampusMap .cm-controls { position: absolute; top: 12px; inset-inline-start: auto; left: 12px; display: grid; gap: 6px; z-index: 4; }
+#sahibCampusMap .cm-controls button { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--cm-border); background: var(--cm-surface); color: var(--cm-text); box-shadow: 0 3px 12px rgba(0, 0, 0, .15); }
+#sahibCampusMap .cm-controls button:active { transform: scale(.94); }
+#sahibCampusMap .cm-controls svg { width: 20px; height: 20px; }
+#sahibCampusMap .cm-hint { position: absolute; bottom: 10px; right: 10px; z-index: 3; max-width: calc(100% - 20px); background: color-mix(in srgb, var(--cm-surface) 90%, transparent); backdrop-filter: blur(6px); color: var(--cm-muted); border: 1px solid var(--cm-border); border-radius: 11px; padding: 6px 10px; font-size: 11px; font-weight: 700; direction: rtl; pointer-events: none; transition: opacity .3s; }
+#sahibCampusMap .cm-map-frame.is-touched .cm-hint { opacity: 0; }
+
+/* ---------- map drawing (themed via CSS variables) ---------- */
+#sahibCampusMap .c-bg   { fill: var(--m-bg); }
+#sahibCampusMap .c-deep { fill: var(--m-deep); }
+#sahibCampusMap .c-lot  { fill: var(--m-lot); }
+#sahibCampusMap .c-r1   { fill: var(--m-r1); }
+#sahibCampusMap .c-r2   { fill: var(--m-r2); }
+#sahibCampusMap .c-st   { fill: var(--m-st); }
+#sahibCampusMap .c-rl   { fill: var(--m-rl); }
+#sahibCampusMap .c-pale { fill: var(--m-pale); }
+#sahibCampusMap .cm-ctx { pointer-events: none; }
+
+#sahibCampusMap #cmSvg { --cm-sw: 1.6px; --cm-hit: 4px; }
+#sahibCampusMap .cm-building { cursor: pointer; outline: none; transition: opacity .2s ease; }
+#sahibCampusMap .cm-building .shape {
+  fill: var(--c);
+  stroke: var(--m-halo); stroke-opacity: .55; stroke-width: calc(var(--cm-sw) * .5); stroke-linejoin: round;
+  pointer-events: visiblePainted; transition: fill .2s ease;
+}
+#sahibCampusMap[data-theme="light"] .cm-building .shape {
+  fill: color-mix(in srgb, var(--c) 78%, var(--m-build-mix));
+  stroke: color-mix(in srgb, var(--c) 35%, var(--m-build-mix)); stroke-opacity: .9;   /* keeps pale buildings (Wings) readable on the light ground */
+}
+/* invisible, slightly fatter copy of the SAME outline → easier to tap small buildings, never a rectangle */
+#sahibCampusMap .cm-building .hit { fill: none; stroke: transparent; stroke-width: var(--cm-hit); stroke-linejoin: round; pointer-events: stroke; }
+#sahibCampusMap .cm-building:hover .shape { filter: brightness(1.18); }
+#sahibCampusMap .cm-building.is-selected .shape,
+#sahibCampusMap .cm-building:focus-visible .shape {
+  stroke: var(--m-sel); stroke-opacity: 1; stroke-width: var(--cm-sw);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--m-sel) 60%, transparent));
+}
+#sahibCampusMap .has-selection .cm-building:not(.is-selected) { opacity: .5; }
+#sahibCampusMap .has-query .cm-building.is-miss { opacity: .22; }
+#sahibCampusMap .has-query .cm-building.is-hit .shape { stroke: var(--m-sel); stroke-opacity: .85; stroke-width: calc(var(--cm-sw) * .8); }
+#sahibCampusMap .has-selection .cm-label.is-dim, #sahibCampusMap .has-query .cm-label.is-dim { opacity: .3; }
+
+#sahibCampusMap .cm-label { fill: var(--m-label); stroke: var(--m-halo); stroke-linejoin: round; paint-order: stroke; font-weight: 800; pointer-events: none; transition: opacity .2s; }
+#sahibCampusMap .cm-label.is-off { opacity: 0; visibility: hidden; }
+
+/* ---------- floating info card (anchored above the building) ---------- */
+#sahibCampusMap .cm-popover {
+  position: absolute; z-index: 6; left: 0; top: 0; width: min(260px, calc(100% - 20px));
+  direction: rtl; text-align: right;
+  padding: 12px 14px 13px; background: var(--cm-surface); color: var(--cm-text);
+  border: 1px solid var(--cm-border); border-radius: 16px; box-shadow: 0 12px 38px rgba(0, 0, 0, .28);
+  will-change: transform; pointer-events: auto;
+}
+#sahibCampusMap .cm-popover::after { content: ''; position: absolute; left: var(--arrow-x, 50%); width: 14px; height: 14px; margin-left: -7px; background: var(--cm-surface); transform: rotate(45deg); }
+#sahibCampusMap .cm-popover[data-side="above"]::after { bottom: -7px; border-right: 1px solid var(--cm-border); border-bottom: 1px solid var(--cm-border); }
+#sahibCampusMap .cm-popover[data-side="below"]::after { top: -7px; border-left: 1px solid var(--cm-border); border-top: 1px solid var(--cm-border); }
+#sahibCampusMap .cm-pop-type { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: var(--cm-accent); }
+#sahibCampusMap .cm-pop-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--cm-accent)); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--cm-text) 28%, transparent); }
+#sahibCampusMap .cm-popover h3 { margin: 5px 0 5px; font-size: 16px; line-height: 1.35; font-weight: 900; padding-inline-end: 26px; }
+#sahibCampusMap .cm-popover p { margin: 0; font-size: 12px; line-height: 1.75; color: var(--cm-muted); }
+#sahibCampusMap .cm-pop-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+#sahibCampusMap .cm-pop-tags span { background: var(--cm-page); border: 1px solid var(--cm-border); border-radius: 999px; padding: 3px 9px; font-size: 10.5px; font-weight: 800; }
+#sahibCampusMap .cm-pop-close { position: absolute; top: 8px; left: 8px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 9px; background: var(--cm-page); color: var(--cm-muted); font-size: 18px; line-height: 1; }
+
+/* ---------- results list ---------- */
+#sahibCampusMap .cm-panel { background: var(--cm-surface); border: 1px solid var(--cm-border); border-radius: 18px; padding: 14px 14px 6px; }
+#sahibCampusMap .cm-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+#sahibCampusMap .cm-panel-head h4 { margin: 0; font-size: 15px; font-weight: 900; }
+#sahibCampusMap .cm-count { font-size: 11px; color: var(--cm-muted); }
+#sahibCampusMap .cm-list { display: grid; max-height: 300px; overflow: auto; overscroll-behavior: contain; }
+#sahibCampusMap .cm-empty { font-size: 12px; color: var(--cm-muted); line-height: 1.7; padding: 16px 0; text-align: center; }
+#sahibCampusMap .cm-item { width: 100%; text-align: right; border: 0; background: transparent; border-top: 1px solid var(--cm-border); padding: 11px 2px; display: flex; gap: 11px; align-items: center; }
+#sahibCampusMap .cm-item:first-child { border-top: 0; }
+#sahibCampusMap .cm-item:hover, #sahibCampusMap .cm-item.is-active { background: var(--cm-accent-bg); }
+#sahibCampusMap .cm-item-dot { width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: 11px; background: color-mix(in srgb, var(--c) 28%, transparent); }
+#sahibCampusMap .cm-item-dot i { width: 14px; height: 14px; border-radius: 5px; background: var(--c); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--cm-text) 22%, transparent); }
+#sahibCampusMap .cm-item-text { flex: 1; min-width: 0; display: grid; gap: 2px; }
+#sahibCampusMap .cm-item-text strong { font-size: 13px; overflow-wrap: anywhere; }
+#sahibCampusMap .cm-item-text small { font-size: 11px; color: var(--cm-muted); overflow-wrap: anywhere; }
+#sahibCampusMap .cm-item-n { font-size: 11px; font-weight: 800; color: var(--cm-accent); background: var(--cm-accent-bg); border-radius: 8px; padding: 2px 8px; }
+#sahibCampusMap .cm-note { font-size: 11px; color: var(--cm-muted); line-height: 1.8; margin: 0; }
+
+#sahibCampusMap .cm-institute { background: var(--cm-surface); border: 1px solid var(--cm-border); border-radius: 20px; padding: 42px 16px; text-align: center; }
+#sahibCampusMap .cm-institute h3 { margin: 10px 0 6px; font-size: 19px; font-weight: 900; }
+#sahibCampusMap .cm-institute p { margin: 0; font-size: 12px; color: var(--cm-muted); line-height: 1.8; }
+
+@media (min-width: 860px) {
+  #sahibCampusMap .cm-layout { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; }
+  #sahibCampusMap .cm-map-frame { height: clamp(520px, 78vh, 760px); }
+  #sahibCampusMap .cm-list { max-height: min(560px, 64vh); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #sahibCampusMap * { transition: none !important; }
+}
