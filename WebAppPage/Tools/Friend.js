@@ -160,7 +160,7 @@
   else if(!upcoming){status='خلصت محاضراتك';hint='لا توجد محاضرات مجدولة قادمة';}
   else if(chosen){status=(soon&&future)||!active?'المحاضرة القادمة':'المحاضرة الحالية';hint=soon&&future?`تنتهي محاضرتك الحالية خلال ${remaining(active.end-currentMinute)}`:active?`تنتهي خلال ${remaining(active.end-currentMinute)}`:`تبدأ بعد ${remaining(chosen.start-currentMinute)}`;}
   else {status='أقرب محاضرة قادمة';hint=`يوم ${NAMES[DAYS.indexOf(upcoming.day)]} • ${clock(upcoming.start)}`;}
-  hero.innerHTML=upcoming?`<span class="rf-status">${status}</span><h3>${escapeHTML(upcoming.code)} <small>${escapeHTML(upcoming.type)}</small></h3>${upcoming.name?`<p>${escapeHTML(upcoming.name)}</p>`:''}<div class="rf-meta"><span>🕒 <b dir="ltr">${clock(upcoming.start)} – ${clock(upcoming.end)}</b></span><span>🚪 ${upcoming.room?'قاعة '+escapeHTML(upcoming.room):'القاعة غير محددة'}</span><span>📍 ${upcoming.building?escapeHTML(upcoming.building):'المبنى غير محدد'}</span></div><div class="rf-hero-hint">${hint}</div>`:`<span class="rf-status">${status}</span><h3>${raw.length?'جدولك يحتاج يوم المحاضرة':'حياك في رفيق! 🌟'}</h3><p>${hint}</p><button id="rfGoSchedule" type="button" class="rf-small-btn">فتح صمم جدولك</button>`;
+  hero.innerHTML=upcoming?`<span class="rf-status">${status}</span><h3>${escapeHTML(upcoming.code)} <small>${escapeHTML(upcoming.type)}</small></h3>${upcoming.name?`<p>${escapeHTML(upcoming.name)}</p>`:''}<div class="rf-meta"><span>🕒 <b dir="ltr">${clock(upcoming.start)} – ${clock(upcoming.end)}</b></span><span>🚪 ${upcoming.room?'قاعة '+escapeHTML(upcoming.room):'القاعة غير محددة'}</span><span>📍 ${upcoming.building?escapeHTML(upcoming.building):'المبنى غير محدد'}</span></div>${upcoming.building?`<button type="button" class="rf-map-link" data-sahib-building="${escapeHTML(upcoming.building)}">⌖ عرض المبنى على الخريطة</button>`: ''}<div class="rf-hero-hint">${hint}</div>`:`<span class="rf-status">${status}</span><h3>${raw.length?'جدولك يحتاج يوم المحاضرة':'حياك في رفيق! 🌟'}</h3><p>${hint}</p><button id="rfGoSchedule" type="button" class="rf-small-btn">فتح صمم جدولك</button>`;
   $('rfGoSchedule')?.addEventListener('click',()=>document.querySelector('.tool-menu-card[data-target="schedule"]')?.click());
   const root=$('rfTodayList');
   const notice=missingDay?`<div class="rf-empty rf-warning">⚠️ ${missingDay} حصة محفوظة بدون يوم محدد؛ حدد أيامها في «صمم جدولك» لتظهر هنا.</div>`:'';
@@ -186,6 +186,20 @@
  }
  function init(){
   if(mounted||!$('friend-tool'))return;mounted=true;hydrate();
+  // Move from the timetable straight to its building on the interactive map.
+  $('friend-tool').addEventListener('click', async (e)=>{
+    const btn=e.target.closest('[data-sahib-building]');
+    if(!btn)return;
+    const location=btn.dataset.sahibBuilding, section=$('sahib-campus-section');
+    if(!location||!section)return;
+    section.scrollIntoView({behavior:'smooth',block:'start'});
+    const api=window.SahibCampusMap;
+    if(!api)return;
+    try{
+      await api.ready;
+      if(!api.openBuilding(location)) api.search(location);
+    }catch(err){console.warn('Campus map unavailable:',err);}
+  });
   $('rfAddEntry')?.addEventListener('click',()=>edit());
   $('rfRefresh')?.addEventListener('click',openExamEditor);
   initExamEditor();

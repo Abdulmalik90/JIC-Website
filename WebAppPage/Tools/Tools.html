@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link rel="stylesheet" href="Friend.css">
+    <link rel="stylesheet" href="./CampusMap/campus-map.css">
 </head>
 <body>
 
@@ -578,6 +579,9 @@
    <div class="rf-section-head"><h4>مهامي وملاحظاتي</h4><button type="button" id="rfAddEntry" class="rf-small-btn">+ إضافة</button></div>
    <div id="rfEntryList"></div>
   </section>
+  <section class="rf-card rf-campus-card" id="sahib-campus-section" aria-label="خريطة الكلية">
+   <div id="sahibCampusMap"></div>
+  </section>
   <p class="rf-muted">🔒 بيانات صاحب محفوظة على هذا الجهاز فقط. لا يحتاج تسجيل دخول.</p>
  </div>
  <div id="rfEditor" class="rf-dialog" hidden><div class="rf-dialog-box"><h4 id="rfDialogTitle">إضافة</h4><form id="rfEditorForm"><label for="rfEntryText">التفاصيل</label><textarea id="rfEntryText" maxlength="300" required placeholder="اكتب هنا..."></textarea><label for="rfEntryKind">نوع الإضافة</label><select id="rfEntryKind"><option value="task">مهمة</option><option value="note">ملاحظة</option></select><div id="rfDateRow"><label for="rfEntryDate">تاريخ المهمة (اختياري)</label><input id="rfEntryDate" type="date"></div><div class="rf-dialog-actions"><button id="rfCancelEditor" type="button">إلغاء</button><button type="submit">حفظ</button></div></form></div></div>
@@ -653,6 +657,9 @@
 <script src="schedule.js"></script>
 <script src="Friend-calendar.js" defer></script>
 <script src="Friend.js" defer></script>
+<script src="./CampusMap/campus-data.js" defer></script>
+<script src="./CampusMap/campus-map.svg.js" defer></script>
+<script src="./CampusMap/campus-map.js" defer></script>
 
     
 </body>

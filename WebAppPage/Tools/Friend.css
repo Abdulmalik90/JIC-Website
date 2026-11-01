@@ -84,3 +84,9 @@
 #friend-tool .rf-exam-fields .wide{grid-column:1/-1}
 #friend-tool .rf-exam-fields input{min-width:0;width:100%;font-size:14px}
 [data-theme="dark"] #friend-tool .rf-stat-gold{background:rgba(54,128,157,.13)}
+
+/* Campus map integration - scoped to Sahib */
+#friend-tool .rf-campus-card {padding:14px;scroll-margin-top:18px}
+#friend-tool .rf-map-link {display:inline-flex;align-items:center;justify-content:center;margin-top:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:12px;font:inherit;font-weight:800;font-size:12px;padding:10px 14px;cursor:pointer;position:relative}
+#friend-tool .rf-map-link:focus-visible {outline:2px solid #fff;outline-offset:3px}
+#friend-tool #sahibCampusMap {max-width:100%;min-width:0}
