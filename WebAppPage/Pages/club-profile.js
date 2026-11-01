@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "var(--primary-text)", 
             username: "@CS_JIC", 
             desc: "نادي يهتم بتطوير المهارات التقنية والبرمجية لطلاب الجبيل من خلال ورش العمل.", 
-            whatsapp: "https://chat.whatsapp.com/XXXXX", 
+            whatsapp: "https://t.me/jic_cs_club", 
             avatar: "clubs-icon/CS.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #007bc4 100%)",
@@ -132,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
         "النادي الثقافي الاجتماعي للطالبات": { 
         id: "CF", color: "#b96210", username: "@CF_JIC", 
-        desc: "نادي يهدف لتعزيز الأنشطة الثقافية والاجتماعية وتنمية المهارات الشخصية والقيادية للطالبات.", whatsapp: "", 
-        avatar: "clubs-icon/CF.webp", header: "", gradient: "linear-gradient(135deg, #c2410c 0%, #f97316 100%)", 
+        desc: "النادي الثقافي هو بيئة تفاعلية حيوية تهدف إلى بناء شخصية متكاملة للطالبات من خلال دمج الجانب الثقافي والفني بالأنشطة الترفيهية والاجتماعية. يسعى النادي إلى إثراء الحصيلة المعرفية للطالبات، صقل مواهبهن الإبداعية والفنية، وتوطيد أواصر التعارف والروابط الاجتماعية بينهن في بيئة جامعية محفزة وممتعة.", 
+        whatsapp: "https://chat.whatsapp.com/BB9mMl4dfqv1fQhMj0FRjO?s=cl&p=i&mlu=4&ilr=4&iam=2", 
+        avatar: "clubs-icon/CF.webp", header: "", gradient: "linear-gradient(135deg, #7e22ce 0%, #c084fc 100%)", 
         badges: [
             
         ] 
