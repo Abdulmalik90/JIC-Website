@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: "@FS_JIC", 
             desc: "يهدف إلى تعزيز النشاط البدني ونشر ثقافة الرياضة بين الطالبات وتنظيم البطولات واكتشاف المواهب.", 
             links: [
-                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/E72wbHNbOPmA1Qpyio7xko", type: "whatsapp" }
+                { title: "الواتساب", url: "https://chat.whatsapp.com/E72wbHNbOPmA1Qpyio7xko", type: "whatsapp" }
             ],
             avatar: "clubs-icon/FS.webp", 
             header: "",
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: "@EEC_JIC", 
             desc: "نادي يجمع المهتمين بالهندسة الكهربائية والطاقة وتطبيقاتها الحديثة.", 
             links: [
-                { title: "انضمام للتليجرام", url: "https://t.me/JICEECLUB", type: "telegram" }
+                { title: "التليجرام", url: "https://t.me/JICEECLUB", type: "telegram" }
             ], 
             avatar: "clubs-icon/EEC.webp", 
             header: "",
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: "@Bridge_JIC", 
             desc: "نادي يُعنى بصناعة المحتوى وإبراز أصوات الطلاب والنشرة الصحفية لتوثيق التجارب الإبداعية.", 
             links: [
-                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/KJyDf3vI62e39ZFq9BTc81", type: "whatsapp" }
+                { title: "الواتساب", url: "https://chat.whatsapp.com/KJyDf3vI62e39ZFq9BTc81", type: "whatsapp" }
             ],
             avatar: "clubs-icon/Bridge.webp", 
             header: "",
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: "@CE_JIC", 
             desc: "نادي تخصصي يجمع طلاب الهندسة المدنية لإثراء معارفهم الأكاديمية والمهنية وتنمية مهاراتهم.", 
             links: [
-                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/FoBAehjlzTlJZaC8jeu1up", type: "whatsapp" }
+                { title: "الواتساب", url: "https://chat.whatsapp.com/FoBAehjlzTlJZaC8jeu1up", type: "whatsapp" }
             ],
             avatar: "clubs-icon/CE.webp", 
             header: "",
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: "@CHEM_JIC", 
             desc: "يهتم بتطوير مهارات الطلاب في تخصصات الهندسة الكيميائية والبوليمرات والكيمياء الصناعية.", 
             links: [
-                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/IXbVFUFO94OF0bLl8wo33A", type: "whatsapp" }
+                { title: "الواتساب", url: "https://chat.whatsapp.com/IXbVFUFO94OF0bLl8wo33A", type: "whatsapp" }
             ],
             avatar: "clubs-icon/CHEM.webp", 
             header: "",
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id: "BSF", color: "#b910ab", username: "@BSF_JIC", 
         desc: "نادي يعنى بتعزيز المفاهيم الإدارية والمالية وريادة الأعمال لربط الطالبات بسوق العمل.", 
         links: [
-                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/LLqW2R0PAzeDz9KFQ3UmON", type: "whatsapp" }
+                { title: "الواتساب", url: "https://chat.whatsapp.com/LLqW2R0PAzeDz9KFQ3UmON", type: "whatsapp" }
             ],
         avatar: "clubs-icon/BSF.webp", header: "", gradient: "linear-gradient(135deg, #7e22ce 0%, #c084fc 100%)", 
         badges: [
