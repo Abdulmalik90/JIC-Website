@@ -120,7 +120,7 @@ function updateConflictUI() {
     warningBox.style.display = 'block';
     warningBox.innerHTML = `
       <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 12px 15px; border-radius: 14px; font-size: 13px;">
-          <strong style="display:block; margin-bottom: 5px;"><i class="fi fi-rr-triangle-warning"></i> تنبيه: يوجد تعارض في الأوقات!</strong>
+          <strong style="display:block; margin-bottom: 5px;"><i class="fi fi-rr-triangle-warning"></i> تنبيه: فيه تعارض في الأوقات!</strong>
           <ul style="margin: 0; padding-right: 20px; line-height: 1.6;">
               ${conflicts.map(c => `<li>${c}</li>`).join('')}
           </ul>
@@ -157,7 +157,7 @@ function updateScheduleDayWarning() {
   title.style.display='block';
   box.appendChild(title);
   const note=document.createElement('p');
-  note.textContent='حدد اليوم لكل حصة قبل الاعتماد على عرض الجدول أو صاحب. لا يمكن معرفة اليوم من النص المنسوخ إذا اختفت خلايا الجدول الفارغة.';
+  note.textContent='حدد اليوم لكل حصة قبل الاعتماد على عرض الجدول أو اداة صاحب. لا يمكن معرفة اليوم من النص المنسوخ إذا اختفت خلايا الجدول الفارغة.';
   note.style.margin='5px 0 10px';
   box.appendChild(note);
   const codes=document.createElement('div');
