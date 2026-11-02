@@ -875,24 +875,22 @@ button, input, select, textarea, label { font-family: 'Tajawal', sans-serif !imp
     font-weight: 900;
 }
 
-/* Scoped help UI for Schedule tool */
-.sched-copy-helpbar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:4px 0 14px; color:var(--text-dark); }
-.sched-copy-helpbar>div {display:grid;gap:2px}
-.sched-copy-helpbar strong {font-size:14px}
-.sched-copy-helpbar span {font-size:11px;color:var(--text-light)}
-.sched-help-button {background:rgba(36,125,171,.09); color:var(--primary-text); border:1px solid rgba(36,125,171,.22); border-radius:12px; padding:10px 12px; font:inherit;font-size:12px;font-weight:800;cursor:pointer}
-.sched-help-overlay[hidden]{display:none!important}
-.sched-help-overlay{position:fixed;inset:0;z-index:20000;background:rgba(6,15,31,.72);display:flex;align-items:center;justify-content:center;padding:14px;backdrop-filter:blur(4px)}
-.sched-help-modal{width:min(100%,650px);max-height:min(90dvh,850px);overflow-y:auto;overscroll-behavior:contain;border-radius:22px;padding:20px;background:var(--surface-color,#fff);color:var(--text-dark,#172339);border:1px solid var(--border-color,#ddd);box-shadow:0 22px 75px rgba(0,0,0,.25);outline:none}
-.sched-help-header{display:flex;justify-content:space-between;align-items:start;gap:12px}
-.sched-help-header h3{font-size:18px;font-weight:900;margin:0}
-.sched-help-header p{font-size:12px;color:var(--text-light);margin:6px 0 0}
-#schedHelpClose{width:36px;height:36px;flex-shrink:0;border:1px solid var(--border-color);border-radius:10px;background:var(--bg-color);color:var(--text-dark);font-size:25px;cursor:pointer}
-.sched-help-steps{margin:17px 0;padding-right:24px;font-size:13px;line-height:1.9}
-.sched-help-steps li{padding:3px 0}.sched-help-steps a{color:var(--primary-text)}
-.sched-help-image{margin:16px 0;padding:8px;border:1px solid var(--border-color);border-radius:14px;background:var(--bg-color)}
-.sched-help-image img{width:100%;height:auto;display:block;border-radius:8px}
-.sched-help-image figcaption{font-size:11px;color:var(--text-light);text-align:center;margin:8px 0 2px}
-.sched-help-note{background:rgba(239,164,55,.09);border:1px solid rgba(239,164,55,.25);padding:12px;border-radius:12px;font-size:12px;line-height:1.8}
-.sched-help-done{width:100%;background:var(--primary-text,#007bc4);color:#fff;border:none;border-radius:13px;padding:12px;font:inherit;font-weight:800;cursor:pointer}
-@media(max-width:480px){.sched-help-modal{padding:15px}.sched-help-steps{font-size:12px}}
+/* Edugate copy guide — scoped Madkhal UI */
+.sched-copy-helpbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 14px;color:var(--text-dark)}
+.sched-copy-helpbar>div{display:grid;gap:3px}.sched-copy-helpbar strong{font-size:13px;font-weight:900}.sched-copy-helpbar span{font-size:11px;color:var(--text-light)}
+.sched-help-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:rgba(0,123,196,.09);color:var(--primary-text);border:1px solid rgba(0,123,196,.2);border-radius:12px;padding:11px 13px;font:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:background .2s,transform .2s}.sched-help-button:active{transform:scale(.97)}
+.sched-help-overlay[hidden],.sched-image-viewer[hidden]{display:none!important}
+.sched-help-overlay{position:fixed;inset:0;z-index:20000;background:rgba(3,12,28,.74);display:flex;align-items:center;justify-content:center;padding:12px;backdrop-filter:blur(6px)}
+.sched-help-modal{width:min(100%,600px);max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;border-radius:23px;background:var(--surface-color,#fff);color:var(--text-dark,#12263f);border:1px solid var(--border-color,#ddd);box-shadow:0 24px 70px rgba(0,0,0,.25);padding:20px;outline:0}
+.sched-help-header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border-color)}
+.sched-help-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;background:rgba(0,123,196,.1);border-radius:999px;color:var(--primary-text);font-size:11px;font-weight:800;margin-bottom:10px}
+.sched-help-heading h3{margin:0;color:var(--text-dark);font-size:21px;font-weight:900}.sched-help-heading p{margin:6px 0 0;font-size:12px;color:var(--text-light);line-height:1.7}
+.sched-help-close{width:36px;height:36px;border-radius:11px;border:1px solid var(--border-color);background:var(--bg-color);color:var(--text-dark);font-size:22px;cursor:pointer;flex:none}
+.sched-help-steps{counter-reset:steps;list-style:none;display:grid;gap:11px;margin:18px 0;padding:0}.sched-help-steps li{counter-increment:steps;position:relative;padding:0 39px 0 0;display:grid;gap:2px;min-height:34px}.sched-help-steps li:before{content:counter(steps);position:absolute;right:0;top:1px;width:28px;height:28px;background:var(--bg-color);color:var(--primary-text);border:1px solid var(--border-color);border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:900}.sched-help-steps b{font-size:13px;color:var(--text-dark)}.sched-help-steps span{font-size:12px;color:var(--text-light);line-height:1.7}.sched-help-steps kbd{background:var(--bg-color);border:1px solid var(--border-color);padding:2px 5px;border-radius:5px;color:var(--text-dark)}
+.sched-help-preview{display:grid;gap:10px;width:100%;border:1px solid var(--border-color);background:var(--bg-color);border-radius:17px;padding:10px;text-align:inherit;color:var(--text-dark);cursor:zoom-in;font:inherit}.sched-help-preview-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:12px;font-weight:800}.sched-help-preview-top>span{display:flex;align-items:center;gap:6px}.sched-help-expand{font-size:11px;color:var(--primary-text)}.sched-help-preview img{display:block;width:100%;height:auto;border-radius:10px;background:white}.sched-help-preview small{text-align:center;color:var(--text-light);font-size:11px}
+.sched-help-note{display:flex;align-items:flex-start;gap:9px;margin:14px 0;background:rgba(0,123,196,.07);border:1px solid rgba(0,123,196,.15);border-radius:12px;color:var(--text-dark);padding:12px;font-size:12px;line-height:1.8}.sched-help-note i{color:var(--primary-text);margin-top:3px}
+.sched-help-done{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px;border:0;border-radius:13px;background:linear-gradient(110deg,#0a0b4d,#007bc4);color:#fff;font:inherit;font-size:13px;font-weight:900;cursor:pointer}
+.sched-image-viewer{position:fixed;inset:0;z-index:20010;background:rgba(5,12,24,.97);color:#fff;display:flex;flex-direction:column;min-height:0;direction:rtl}
+.sched-image-toolbar{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.16)}.sched-image-toolbar strong{font-size:13px}.sched-image-actions{display:flex;align-items:center;gap:7px;direction:ltr}.sched-image-actions button{width:37px;height:37px;border:1px solid rgba(255,255,255,.25);background:#172945;color:#fff;border-radius:10px;cursor:pointer;font-size:20px}.sched-image-actions span{font:700 12px system-ui;min-width:42px;text-align:center}.sched-image-actions .sched-image-exit{background:#384052;font-size:25px}
+.sched-image-scroll{min-height:0;flex:1;overflow:auto;overscroll-behavior:contain;direction:ltr;display:block;text-align:center;padding:18px;touch-action:pan-x pan-y}.sched-image-scroll img{display:block;margin:auto;max-width:none;height:auto;border-radius:7px;box-shadow:0 12px 40px rgba(0,0,0,.5);background:white}.sched-image-caption{text-align:center;color:#b6c8df;padding:11px;font-size:11px}
+@media(max-width:500px){.sched-help-modal{padding:15px;border-radius:17px}.sched-help-heading h3{font-size:18px}.sched-image-toolbar{padding:10px}.sched-image-toolbar strong{width:100%;font-size:12px}.sched-image-actions{width:100%;justify-content:center}}

@@ -943,3 +943,53 @@ function showScheduleSharePreview(blob, file) {
             a.remove();
         });
 }
+
+/* Schedule guide: initialized after DOM exists; merged directly into schedule.js */
+(() => {
+  function setupScheduleHelp() {
+    const trigger=document.getElementById('schedHelpOpen');
+    const guide=document.getElementById('schedHelpDialog');
+    const viewer=document.getElementById('schedImageViewer');
+    if (!trigger||!guide||!viewer||trigger.dataset.helpReady) return;
+    trigger.dataset.helpReady='1';
+    const modal=guide.querySelector('.sched-help-modal');
+    let previousOverflow='', zoom=1, previouslyFocused=null;
+    const zoomImage=document.getElementById('schedZoomImage');
+    const scroller=document.getElementById('schedImageScroll');
+    const zoomLabel=document.getElementById('schedZoomValue');
+    const updateZoom=(value)=>{
+      zoom=Math.max(.5,Math.min(3,Math.round(value*10)/10));
+      zoomImage.style.width=Math.round(1103*zoom)+'px';
+      zoomLabel.textContent=Math.round(zoom*100)+'%';
+    };
+    const openGuide=()=>{previouslyFocused=document.activeElement;previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';guide.hidden=false;modal.focus();};
+    const closeGuide=()=>{viewer.hidden=true;guide.hidden=true;document.body.style.overflow=previousOverflow;previouslyFocused?.focus?.();};
+    const closeViewer=()=>{viewer.hidden=true;document.getElementById('schedImageOpen')?.focus();};
+    trigger.addEventListener('click',openGuide);
+    document.getElementById('schedHelpClose')?.addEventListener('click',closeGuide);
+    document.getElementById('schedHelpDone')?.addEventListener('click',closeGuide);
+    guide.addEventListener('click',e=>{if(e.target===guide)closeGuide();});
+    document.getElementById('schedImageOpen')?.addEventListener('click',()=>{viewer.hidden=false;updateZoom(Math.max(1,Math.min(1.4,scroller.clientWidth/1103)));scroller.scrollLeft=0;scroller.scrollTop=0;document.getElementById('schedImageClose')?.focus();});
+    document.getElementById('schedImageClose')?.addEventListener('click',closeViewer);
+    document.getElementById('schedZoomIn')?.addEventListener('click',()=>updateZoom(zoom+.25));
+    document.getElementById('schedZoomOut')?.addEventListener('click',()=>updateZoom(zoom-.25));
+    document.getElementById('schedZoomReset')?.addEventListener('click',()=>updateZoom(1));
+    zoomImage.addEventListener('click',()=>updateZoom(zoom<2?zoom+.5:1));
+    document.addEventListener('keydown',e=>{
+      if(guide.hidden)return;
+      if(e.key==='Escape'){if(!viewer.hidden)closeViewer();else closeGuide();}
+      else if(!viewer.hidden&&(e.key==='+'||e.key==='='))updateZoom(zoom+.25);
+      else if(!viewer.hidden&&e.key==='-')updateZoom(zoom-.25);
+      if(e.key==='Tab'){
+        const parent=viewer.hidden?guide:viewer;
+        const controls=[...parent.querySelectorAll('button,a[href]')].filter(el=>el.getClientRects().length);
+        const idx=controls.indexOf(document.activeElement);
+        if(!controls.length)return;
+        if(e.shiftKey&&idx<=0){e.preventDefault();controls.at(-1).focus();}
+        else if(!e.shiftKey&&idx===controls.length-1){e.preventDefault();controls[0].focus();}
+      }
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setupScheduleHelp,{once:true});
+  else setupScheduleHelp();
+})();

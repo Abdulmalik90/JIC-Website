@@ -9,7 +9,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel="stylesheet" href="Friend.css">    <link rel="stylesheet" href="./schedule-help.css">
+    <link rel="stylesheet" href="Friend.css">
     <link rel="stylesheet" href="./CampusMap/campus-map.css">
 
       <!-- Google tag (gtag.js) -->
@@ -679,27 +679,46 @@
 <script src="./CampusMap/campus-map.js" defer></script>
 
     
-<!-- Schedule copy instructions (standalone, no backend) -->
+<!-- Edugate guide — Madkhal -->
 <div id="schedHelpDialog" class="sched-help-overlay" hidden>
  <section class="sched-help-modal" role="dialog" aria-modal="true" aria-labelledby="schedHelpTitle" tabindex="-1">
-  <header class="sched-help-header">
-   <div><h3 id="schedHelpTitle">طريقة نسخ جدول الإيدوقيت</h3><p>اتبع الخطوات حتى تُستخرج أيام المحاضرات بشكل صحيح.</p></div>
-   <button type="button" id="schedHelpClose" aria-label="إغلاق الإرشادات">×</button>
-  </header>
+  <div class="sched-help-header">
+   <div class="sched-help-heading">
+    <span class="sched-help-eyebrow"><i class="fi fi-rr-graduation-cap"></i> دليل صمم جدولك</span>
+    <h3 id="schedHelpTitle">كيف تنسخ جدولك؟</h3>
+    <p>5 خطوات بسيطة لاستيراد جدولك من الإيدوقيت.</p>
+   </div>
+   <button type="button" id="schedHelpClose" class="sched-help-close" aria-label="إغلاق الدليل"><i class="fi fi-rr-cross-small"></i></button>
+  </div>
   <ol class="sched-help-steps">
-   <li>افتح <a href="https://edugate.rcjy.edu.sa/" target="_blank" rel="noopener noreferrer">الإيدوقيت</a> وانتقل إلى صفحة <b>جدولك الدراسي</b>.</li>
-   <li>حدد <b>الجدول كاملًا</b> من عنوان <span dir="ltr">Course Code</span> إلى آخر صف للمادة، شاملًا أعمدة أيام الأسبوع.</li>
-   <li>انسخ التحديد بالضغط على <b dir="ltr">Ctrl + C</b> (أو <b dir="ltr">⌘ + C</b> في Mac).</li>
-   <li>ارجع إلى مدخل، اضغط مربع اللصق، ثم <b>الصق</b> واضغط «استخراج تلقائي».</li>
-   <li>راجع عدد المواد، <b>الأيام والقاعات</b> بعد الاستخراج؛ أي يوم ناقص لازم تحدده يدويًا.</li>
+   <li><b>افتح الإيدوقيت</b><span>انتقل إلى صفحة جدولك الدراسي.</span></li>
+   <li><b>حدد الجدول كاملًا</b><span>من <span dir="ltr">Course Code</span> إلى آخر صف، مع أعمدة الأيام.</span></li>
+   <li><b>انسخ التحديد</b><span><kbd dir="ltr">Ctrl + C</kbd> أو <kbd dir="ltr">⌘ + C</kbd> على الماك.</span></li>
+   <li><b>الصق في مدخل</b><span>عد إلى «صمم جدولك» والصق النص واضغط «استخراج تلقائي».</span></li>
+   <li><b>راجع النتائج</b><span>تأكد من أيام المحاضرات والقاعات قبل حفظ الجدول.</span></li>
   </ol>
-  <figure class="sched-help-image">
-    <img src="../Images/SExample.jpeg" alt="مثال على تحديد جدول الإيدوقيت كاملًا من Course Code إلى آخر صف، بما فيه أعمدة الأيام والمبنى والقاعة" loading="lazy">
-    <figcaption>الجزء المظلل في الصورة مثال للتحديد الصحيح. لا تنسَ أعمدة الأيام.</figcaption>
-  </figure>
-  <p class="sched-help-note"><b>تنبيه:</b> لا تنسخ نصًا من صورة أو PDF؛ انسخه من جدول الإيدوقيت نفسه للحفاظ على أماكن الخانات الفارغة وأيام المحاضرات.</p>
-  <button type="button" id="schedHelpDone" class="sched-help-done">فهمت، ابدأ النسخ</button>
+  <button class="sched-help-preview" id="schedImageOpen" type="button" aria-label="تكبير الصورة التوضيحية">
+   <span class="sched-help-preview-top"><span><i class="fi fi-rr-picture"></i> مثال على التحديد الصحيح</span><span class="sched-help-expand"><i class="fi fi-rr-expand"></i> تكبير الصورة</span></span>
+   <img src="../Images/SExample.jpeg" alt="تحديد جدول الإيدوقيت كاملًا شاملاً رموز المواد والأيام والمباني والقاعات" loading="lazy">
+   <small>اضغط على الصورة لتكبيرها وقراءة التفاصيل بوضوح</small>
+  </button>
+  <div class="sched-help-note"><i class="fi fi-rr-info"></i><span><b>مهم:</b> انسخ الجدول من صفحة الإيدوقيت مباشرة وليس من صورة أو PDF، حتى لا تضيع أعمدة الأيام الفارغة.</span></div>
+  <button type="button" id="schedHelpDone" class="sched-help-done">تمام، ابدأ النسخ <i class="fi fi-rr-arrow-left"></i></button>
  </section>
+</div>
+<div id="schedImageViewer" class="sched-image-viewer" role="dialog" aria-modal="true" aria-label="عرض الصورة التوضيحية بحجم أكبر" hidden>
+ <div class="sched-image-toolbar">
+  <strong>مثال تحديد جدول الإيدوقيت</strong>
+  <div class="sched-image-actions">
+   <button type="button" id="schedZoomOut" aria-label="تصغير الصورة">−</button>
+   <span id="schedZoomValue" aria-live="polite">100%</span>
+   <button type="button" id="schedZoomIn" aria-label="تكبير الصورة">+</button>
+   <button type="button" id="schedZoomReset" aria-label="الحجم الأصلي"><i class="fi fi-rr-refresh"></i></button>
+   <button type="button" id="schedImageClose" class="sched-image-exit" aria-label="إغلاق الصورة">×</button>
+  </div>
+ </div>
+ <div id="schedImageScroll" class="sched-image-scroll" tabindex="0"><img id="schedZoomImage" src="../Images/SExample.jpeg" alt="جدول الإيدوقيت المعلم للتوضيح"></div>
+ <div class="sched-image-caption">كبّر الصورة ثم حرّكها أفقيًا وعموديًا لمشاهدة التفاصيل</div>
 </div>
 
 </body>
