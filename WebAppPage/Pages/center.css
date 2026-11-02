@@ -227,79 +227,96 @@
 }
 
 /* =========================================
-   4. شبكة أدوات مدخل (Bento Grid)
+   4. شبكة أدوات مدخل (Bento Grid) - مطابقة للتصميم الجديد
    ========================================= */
 .dash-bento-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
     gap: 12px;
 }
 
 .bento-item {
     background: var(--surface-color);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 15px;
+    border-radius: 20px; /* زوايا ناعمة مطابقة للصورة */
+    padding: 20px;
     text-decoration: none;
     display: flex;
-    box-shadow: 0 4px 12px var(--shadow-color);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .bento-item:active {
-    transform: scale(0.96);
+    transform: scale(0.97);
 }
 
-/* الكرت الرئيسي الكبير */
-.main-tool {
-    grid-column: span 2;
-    align-items: center;
-    gap: 15px;
-}
-
-.main-tool .bento-icon {
-    width: 45px;
-    height: 45px;
-    background: rgba(0, 123, 196, 0.1);
-    color: var(--primary-text);
-    border-radius: 12px;
+/* تنسيق الأيقونات الموحد */
+.bento-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     flex-shrink: 0;
+}
+
+/* الكرت العريض (يأخذ مساحة العمودين) */
+.main-tool {
+    grid-column: span 2;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; /* يضع النص يمين والأيقونة يسار */
+}
+
+.main-tool .bento-text {
+    text-align: right;
+    flex: 1;
+    padding-left: 15px;
 }
 
 .main-tool h4 {
     color: var(--text-dark);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
-    margin: 0 0 4px 0;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
 }
 
 .main-tool p {
     color: var(--text-light);
     font-size: 11px;
     margin: 0;
+    line-height: 1.4;
 }
 
-/* الكروت الفرعية المربعة */
+/* الكروت المربعة (عمود واحد) */
 .sub-tool {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px 10px;
 }
 
 .sub-tool .bento-icon {
-    font-size: 24px;
+    margin-bottom: 12px;
 }
 
 .sub-tool h4 {
     color: var(--text-dark);
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+}
+
+.sub-tool p {
+    color: var(--text-light);
+    font-size: 11px;
     margin: 0;
+    line-height: 1.4;
 }
 
 /* =========================================
