@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "نادي الحاسب": { id: "CS", color: "var(--primary-text)", username: "@CS_JIC", rank: 2, 
         desc: "نادي يهتم بتطوير المهارات التقنية والبرمجية لطلاب الجبيل من خلال ورش العمل.", whatsapp: "https://chat.whatsapp.com/XXXXX", 
         avatar: "clubs-icon/CS.webp", header: "" },
+        
         "نادي الاستدامة": { id: "Sustain", color: "#10b981", username: "@Sustain_JIC", rank: 1,
-            desc: "", whatsapp: "https://chat.whatsapp.com/I3pdflYDW2w2RfIsELM8yZ", avatar: "clubs-icon/Sustain.webp", header: "" },
+            desc: "نادي الاستدامة يسعى إلى تعزيز ثقافة الاستدامة والوعي البيئي والمجتمعي من خلال المبادرات والفعاليات والبرامج التوعوية.", whatsapp: "https://chat.whatsapp.com/I3pdflYDW2w2RfIsELM8yZ", avatar: "clubs-icon/Sustain.webp", header: "" },
 
         "نادي الهندسة الكهربائية": { 
             id: "EEC", 
@@ -125,14 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
         ] 
     },
-        "نادي الحاسب للطالبات": { 
-        id: "CSF", color: "#b910ab", username: "@CSF_JIC", 
-        desc: "نادي يختص بدعم وتطوير طالبات قسم الحاسب وتقنية المعلومات وإقامة الورش التقنية.", whatsapp: "", 
-        avatar: "clubs-icon/CSF.webp", header: "", gradient: "linear-gradient(135deg, #a21caf 0%, #e879f9 100%)", 
-        badges: [
-           
-        ] 
-    },
+
         "نادي ادارة الاعمال للطالبات": { 
         id: "BSF", color: "#b910ab", username: "@BSF_JIC", 
         desc: "نادي يعنى بتعزيز المفاهيم الإدارية والمالية وريادة الأعمال لربط الطالبات بسوق العمل.", whatsapp: "", 

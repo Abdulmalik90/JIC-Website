@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "var(--primary-text)", 
             username: "@CS_JIC", 
             desc: "نادي يهتم بتطوير المهارات التقنية والبرمجية لطلاب الجبيل من خلال ورش العمل.", 
-            whatsapp: "https://t.me/jic_cs_club", 
+            links: [
+                { title: "تليجرام", url: "https://t.me/jic_cs_club", type: "telegram" },
+                { title: "موقع النادي", url: "https://jiccs.club/", type: "website" } 
+            ],
             avatar: "clubs-icon/CS.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #007bc4 100%)",
@@ -23,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#10b981", 
             username: "@Sustain_JIC", 
             desc: "نادي الاستدامة يسعى إلى تعزيز ثقافة الاستدامة والوعي البيئي والمجتمعي من خلال المبادرات والفعاليات والبرامج التوعوية.", 
-            whatsapp: "https://chat.whatsapp.com/I3pdflYDW2w2RfIsELM8yZ", 
+            links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/I3pdflYDW2w2RfIsELM8yZ", type: "whatsapp" }
+            ],
             avatar: "clubs-icon/Sustain.webp", 
             header: "clubs-icon/SC-Banner.webp",
             badges: [
@@ -36,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#9110b9", 
             username: "@FS_JIC", 
             desc: "يهدف إلى تعزيز النشاط البدني ونشر ثقافة الرياضة بين الطالبات وتنظيم البطولات واكتشاف المواهب.", 
-            whatsapp: "https://chat.whatsapp.com/E72wbHNbOPmA1Qpyio7xko", 
+            links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/E72wbHNbOPmA1Qpyio7xko", type: "whatsapp" }
+            ],
             avatar: "clubs-icon/FS.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #831843 0%, #be185d 50%, #f43f5e 100%)",
@@ -49,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#ff475f", 
             username: "@EEC_JIC", 
             desc: "نادي يجمع المهتمين بالهندسة الكهربائية والطاقة وتطبيقاتها الحديثة.", 
-            whatsapp: "", 
+            links: [
+                { title: "انضمام للتليجرام", url: "https://t.me/JICEECLUB", type: "telegram" }
+            ], 
             avatar: "clubs-icon/EEC.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #b91c1c 0%, #ef4444 50%, #f97316 100%)",
@@ -62,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#105fb9", 
             username: "@JIC_Council", 
             desc: "مجلس يمثل حلقة الوصل بين الطلاب وإدارة الكلية والمعهد لمتابعة الملاحظات والخدمات والمبادرات الطلابية.", 
-            whatsapp: "", 
             avatar: "clubs-icon/JIC.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)",
@@ -75,7 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#45484d", 
             username: "@Bridge_JIC", 
             desc: "نادي يُعنى بصناعة المحتوى وإبراز أصوات الطلاب والنشرة الصحفية لتوثيق التجارب الإبداعية.", 
-            whatsapp: "https://chat.whatsapp.com/KJyDf3vI62e39ZFq9BTc81", 
+            links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/KJyDf3vI62e39ZFq9BTc81", type: "whatsapp" }
+            ],
             avatar: "clubs-icon/Bridge.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #1f2937 0%, #4b5563 50%, #9ca3af 100%)",
@@ -88,7 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#b97510", 
             username: "@CE_JIC", 
             desc: "نادي تخصصي يجمع طلاب الهندسة المدنية لإثراء معارفهم الأكاديمية والمهنية وتنمية مهاراتهم.", 
-            whatsapp: "https://chat.whatsapp.com/FoBAehjlzTlJZaC8jeu1up", 
+            links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/FoBAehjlzTlJZaC8jeu1up", type: "whatsapp" }
+            ],
             avatar: "clubs-icon/CE.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #78350f 0%, #d97706 50%, #f59e0b 100%)",
@@ -101,7 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
             color: "#b93710", 
             username: "@CHEM_JIC", 
             desc: "يهتم بتطوير مهارات الطلاب في تخصصات الهندسة الكيميائية والبوليمرات والكيمياء الصناعية.", 
-            whatsapp: "https://chat.whatsapp.com/IXbVFUFO94OF0bLl8wo33A", 
+            links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/IXbVFUFO94OF0bLl8wo33A", type: "whatsapp" }
+            ],
             avatar: "clubs-icon/CHEM.webp", 
             header: "",
             gradient: "linear-gradient(135deg, #9a3412 0%, #ea580c 50%, #f97316 100%)",
@@ -114,42 +128,41 @@ document.addEventListener('DOMContentLoaded', () => {
         color: "#1091b9", 
         username: "@HMH_JIC", 
         desc: "نادي تطوعي يسعى لخدمة المجتمع الجامعي والمحلي وتنظيم المبادرات والأنشطة الإنسانية.", 
-        whatsapp: "", 
         avatar: "clubs-icon/HMH.webp", 
         header: "", 
         gradient: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)", 
         badges: [
-            { title: "🤝 العطاء التطوعي", type: "gold" }
+            
             ] 
         },
         "نادي الهندسة الميكانيكية": { 
         id: "ME", color: "#1075b9", username: "@ME_JIC", 
-        desc: "نادي يهدف لتطوير المهارات الميكانيكية والصناعية لطلاب الهندسة.", whatsapp: "", 
+        desc: "نادي يهدف لتطوير المهارات الميكانيكية والصناعية لطلاب الهندسة.",
         avatar: "clubs-icon/ME.webp", header: "", gradient: "linear-gradient(135deg, #0369a1 0%, #0284c7 100%)", 
         badges: [
 
-        ] 
+        ]
+
     },
         "النادي الثقافي الاجتماعي للطالبات": { 
         id: "CF", color: "#b96210", username: "@CF_JIC", 
         desc: "النادي الثقافي هو بيئة تفاعلية حيوية تهدف إلى بناء شخصية متكاملة للطالبات من خلال دمج الجانب الثقافي والفني بالأنشطة الترفيهية والاجتماعية. يسعى النادي إلى إثراء الحصيلة المعرفية للطالبات، صقل مواهبهن الإبداعية والفنية، وتوطيد أواصر التعارف والروابط الاجتماعية بينهن في بيئة جامعية محفزة وممتعة.", 
-        whatsapp: "https://chat.whatsapp.com/BB9mMl4dfqv1fQhMj0FRjO?s=cl&p=i&mlu=4&ilr=4&iam=2", 
+        links: [
+                { title: "فرع سدير", url: "https://chat.whatsapp.com/BB9mMl4dfqv1fQhMj0FRjO?s=cl&p=i&mlu=4&ilr=4&iam=2", type: "whatsapp" },
+                { title: "فرع الفيحاء", url: "https://chat.whatsapp.com/DK7zYRMaVtG8kDteVB2FDJ", type: "whatsapp" }
+            ],
         avatar: "clubs-icon/CF.webp", header: "", gradient: "linear-gradient(135deg, #7e22ce 0%, #c084fc 100%)", 
         badges: [
             
         ] 
     },
-        "نادي الحاسب للطالبات": { 
-        id: "CSF", color: "#b910ab", username: "@CSF_JIC", 
-        desc: "نادي يختص بدعم وتطوير طالبات قسم الحاسب وتقنية المعلومات وإقامة الورش التقنية.", whatsapp: "", 
-        avatar: "clubs-icon/CSF.webp", header: "", gradient: "linear-gradient(135deg, #a21caf 0%, #e879f9 100%)", 
-        badges: [
-           
-        ] 
-    },
+
         "نادي ادارة الاعمال للطالبات": { 
         id: "BSF", color: "#b910ab", username: "@BSF_JIC", 
-        desc: "نادي يعنى بتعزيز المفاهيم الإدارية والمالية وريادة الأعمال لربط الطالبات بسوق العمل.", whatsapp: "", 
+        desc: "نادي يعنى بتعزيز المفاهيم الإدارية والمالية وريادة الأعمال لربط الطالبات بسوق العمل.", 
+        links: [
+                { title: "انضمام للواتساب", url: "https://chat.whatsapp.com/LLqW2R0PAzeDz9KFQ3UmON", type: "whatsapp" }
+            ],
         avatar: "clubs-icon/BSF.webp", header: "", gradient: "linear-gradient(135deg, #7e22ce 0%, #c084fc 100%)", 
         badges: [
             
@@ -193,14 +206,71 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('profileUsername').textContent = currentClub.username;
     document.getElementById('profileBio').textContent = currentClub.desc || "حساب النادي الرسمي في منصة مدخل.";
     
-    // 3. زر الانضمام عبر الواتساب
-    const waBtn = document.getElementById('profileWhatsappBtn');
-    if (waBtn) {
-        if (currentClub.whatsapp && currentClub.whatsapp.trim() !== "") {
-            waBtn.href = currentClub.whatsapp;
-            waBtn.style.display = "inline-flex";
-        } else {
-            waBtn.style.display = "none";
+// 3. نظام الروابط الديناميكي (واتساب، تليجرام، موقع)
+    const waBtnContainer = document.getElementById('joinActionContainer');
+    
+    // دالة مساعدة لتحديد الأيقونة واللون حسب نوع الرابط
+    function getPlatformStyles(type) {
+        switch(type) {
+            case 'whatsapp': return { icon: 'fi-brands-whatsapp', color: '#25d366', bg: '#25d366' };
+            case 'telegram': return { icon: 'fi-brands-telegram', color: '#229ED9', bg: '#229ED9' };
+            case 'website': return { icon: 'fi-rr-globe', color: 'var(--primary-text)', bg: 'var(--primary-text)' };
+            default: return { icon: 'fi-rr-link', color: '#64748b', bg: '#64748b' };
+        }
+    }
+
+    if (waBtnContainer) {
+        waBtnContainer.innerHTML = ''; 
+        const links = currentClub.links || [];
+
+        // الحالة الأولى: النادي يمتلك عدة منصات (عرض قائمة منسدلة)
+        if (links.length > 1) {
+            const mainBtn = document.createElement('button');
+            mainBtn.className = 'join-action-btn multi-links-btn';
+            mainBtn.innerHTML = '<i class="fi fi-rr-users-alt"></i> متابعة <i class="fi fi-rr-angle-small-down" style="font-size:10px; margin-right:4px;"></i>';
+            
+            const dropList = document.createElement('div');
+            dropList.className = 'groups-dropdown-list';
+            
+            links.forEach(link => {
+                const style = getPlatformStyles(link.type);
+                const item = document.createElement('a');
+                item.href = link.url;
+                item.target = '_blank';
+                item.className = 'group-dropdown-item';
+                // الأيقونة تأخذ لون المنصة، والنص بالأسود
+                item.innerHTML = `<i class="fi ${style.icon}" style="color: ${style.color}; font-size: 16px;"></i> ${link.title}`;
+                dropList.appendChild(item);
+            });
+            
+            mainBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropList.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!waBtnContainer.contains(e.target)) {
+                    dropList.classList.remove('active');
+                }
+            });
+            
+            waBtnContainer.appendChild(mainBtn);
+            waBtnContainer.appendChild(dropList);
+            
+        } 
+        // الحالة الثانية: النادي يمتلك رابط واحد فقط (زر مباشر)
+        else if (links.length === 1) {
+            const link = links[0];
+            const style = getPlatformStyles(link.type);
+            
+            const singleBtn = document.createElement('a');
+            singleBtn.href = link.url;
+            singleBtn.target = '_blank';
+            singleBtn.className = 'join-action-btn';
+            singleBtn.style.background = style.bg; // الزر يأخذ لون المنصة (أخضر أو أزرق)
+            singleBtn.innerHTML = `<i class="fi ${style.icon}"></i> ${link.title}`;
+            
+            waBtnContainer.appendChild(singleBtn);
         }
     }
 
@@ -227,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const clubNews = newsArray.filter(news => news.clubId === targetClubId);
 
         if (clubNews.length === 0) {
-            newsGrid.innerHTML = `<p style="text-align: center; color: var(--text-light); padding: 40px 20px; font-size:13px;">لا توجد فعاليات أو أخبار منشور حالياً لهذا النادي.</p>`;
+            newsGrid.innerHTML = `<p style="text-align: center; color: var(--text-light); padding: 40px 20px; font-size:13px;">لم ينشر أي أخبار لهذا النادي حتى الآن. شيك قسم اخبار الاندية لضمان تحميل الأخبار.</p>`;
             return;
         }
 
