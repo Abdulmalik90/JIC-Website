@@ -433,3 +433,25 @@ function getGradeColor(grade) {
         case 'F': return '#dc3545'; default: return 'var(--primary-color)';
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const open = document.getElementById('schedHelpOpen');
+  const dialog = document.getElementById('schedHelpDialog');
+  if (!open || !dialog) return;
+  const modal = dialog.querySelector('.sched-help-modal');
+  const close = () => { dialog.hidden = true; open.focus(); };
+  open.addEventListener('click', () => { dialog.hidden = false; modal.focus(); });
+  document.getElementById('schedHelpClose')?.addEventListener('click', close);
+  document.getElementById('schedHelpDone')?.addEventListener('click', close);
+  dialog.addEventListener('click', e => { if (e.target === dialog) close(); });
+  document.addEventListener('keydown', e => {
+    if (dialog.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab') {
+      const focusable = [...dialog.querySelectorAll('button,a[href]')].filter(el => !el.disabled);
+      const idx = focusable.indexOf(document.activeElement);
+      if (e.shiftKey && idx <= 0) {e.preventDefault();focusable.at(-1)?.focus();}
+      else if (!e.shiftKey && idx === focusable.length - 1) {e.preventDefault();focusable[0]?.focus();}
+    }
+  });
+});

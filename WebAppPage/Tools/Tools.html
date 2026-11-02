@@ -9,8 +9,18 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel="stylesheet" href="Friend.css">
+    <link rel="stylesheet" href="Friend.css">    <link rel="stylesheet" href="./schedule-help.css">
     <link rel="stylesheet" href="./CampusMap/campus-map.css">
+
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2NY64VY9CZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2NY64VY9CZ');
+</script>
 </head>
 <body>
 
@@ -412,6 +422,13 @@
                         <i class="fi fi-rr-clipboard-paste"></i>
                         <span>انسخ جدولك من الإيدوقيت (Ctrl+C) والصقه هنا ليتم استخراجه تلقائياً.</span>
                     </div>
+                    <div class="sched-copy-helpbar">
+  <div>
+    <strong>استيراد الجدول من الإيدوقيت</strong>
+    <span>انسخ صفوف الجدول كاملة ثم الصقها هنا.</span>
+  </div>
+  <button type="button" id="schedHelpOpen" class="sched-help-button" aria-haspopup="dialog" aria-controls="schedHelpDialog"><i class="fi fi-rr-interrogation"></i> كيف أنسخ الجدول؟</button>
+</div>
                     <textarea id="pasteInput" class="main-input" style="height: 110px; margin-bottom: 15px; resize: none; font-size: 13px;" placeholder="الصق النص هنا..."></textarea>
                     
                     <div class="buttons-gap">
@@ -662,5 +679,28 @@
 <script src="./CampusMap/campus-map.js" defer></script>
 
     
+<!-- Schedule copy instructions (standalone, no backend) -->
+<div id="schedHelpDialog" class="sched-help-overlay" hidden>
+ <section class="sched-help-modal" role="dialog" aria-modal="true" aria-labelledby="schedHelpTitle" tabindex="-1">
+  <header class="sched-help-header">
+   <div><h3 id="schedHelpTitle">طريقة نسخ جدول الإيدوقيت</h3><p>اتبع الخطوات حتى تُستخرج أيام المحاضرات بشكل صحيح.</p></div>
+   <button type="button" id="schedHelpClose" aria-label="إغلاق الإرشادات">×</button>
+  </header>
+  <ol class="sched-help-steps">
+   <li>افتح <a href="https://edugate.rcjy.edu.sa/" target="_blank" rel="noopener noreferrer">الإيدوقيت</a> وانتقل إلى صفحة <b>جدولك الدراسي</b>.</li>
+   <li>حدد <b>الجدول كاملًا</b> من عنوان <span dir="ltr">Course Code</span> إلى آخر صف للمادة، شاملًا أعمدة أيام الأسبوع.</li>
+   <li>انسخ التحديد بالضغط على <b dir="ltr">Ctrl + C</b> (أو <b dir="ltr">⌘ + C</b> في Mac).</li>
+   <li>ارجع إلى مدخل، اضغط مربع اللصق، ثم <b>الصق</b> واضغط «استخراج تلقائي».</li>
+   <li>راجع عدد المواد، <b>الأيام والقاعات</b> بعد الاستخراج؛ أي يوم ناقص لازم تحدده يدويًا.</li>
+  </ol>
+  <figure class="sched-help-image">
+    <img src="../Images/SExample.jpeg" alt="مثال على تحديد جدول الإيدوقيت كاملًا من Course Code إلى آخر صف، بما فيه أعمدة الأيام والمبنى والقاعة" loading="lazy">
+    <figcaption>الجزء المظلل في الصورة مثال للتحديد الصحيح. لا تنسَ أعمدة الأيام.</figcaption>
+  </figure>
+  <p class="sched-help-note"><b>تنبيه:</b> لا تنسخ نصًا من صورة أو PDF؛ انسخه من جدول الإيدوقيت نفسه للحفاظ على أماكن الخانات الفارغة وأيام المحاضرات.</p>
+  <button type="button" id="schedHelpDone" class="sched-help-done">فهمت، ابدأ النسخ</button>
+ </section>
+</div>
+
 </body>
 </html>
