@@ -88,33 +88,33 @@ window.SahibCampusData = Object.freeze({
 
     /* ---------------- academic ---------------- */
     {
-      id: 'english-institute', name: 'معهد الإنجليزي', sub: 'مركز اللغة الإنجليزية', type: 'academic',
-      description: 'مبنى معهد اللغة الإنجليزية (English Language Center) في الجهة الغربية من القلب الأكاديمي.',
-      tags: ['تعليمي', 'لغة إنجليزية', 'ELC'],
-      aliases: ['معهد الانجليزي', 'معهد اللغة الإنجليزية', 'مركز اللغة الإنجليزية', 'English Institute', 'English Language Center', 'ELC']
+      id: 'english-institute', name: 'معهد الإنجليزي', sub: 'معهد اللغة الإنجليزية', type: 'academic',
+      description: 'يتكون المبنى من معهد اللغة الانجليزية والسنة التحضيرية بجهة المواقف, ومبنى ادارة الاعمال بالجهة الخلفية.',
+      tags: ['تعليمي', 'لغة إنجليزية', 'الاعمال'],
+      aliases: ['معهد الانجليزي', 'معهد اللغة الإنجليزية', 'مركز اللغة الإنجليزية', 'English Institute', 'English Language Center', 'ELC', 'Bussiness']
     },
     {
       id: 'electricity-building', name: 'مبنى الكهرباء', sub: 'قسم تقنية الهندسة الكهربائية', type: 'academic',
-      description: 'مبنى قسم تقنية الهندسة الكهربائية والإلكترونية (ELET).',
-      tags: ['تعليمي', 'كهرباء', 'ELET'],
-      aliases: ['مبنى الكهرباء', 'الكهرباء', 'Electrical Building', 'ELET']
+      description: 'مبنى قسم تقنية الهندسة الكهربائية والإلكترونية (EE).',
+      tags: ['تعليمي', 'كهرباء', 'EE'],
+      aliases: ['مبنى الكهرباء', 'الكهرباء', 'Electrical Building', 'EE', 'E']
     },
     {
       id: 'chemistry-building', name: 'مبنى الكيمياء', sub: 'قسم تقنية الهندسة الكيميائية', type: 'academic',
-      description: 'مبنى قسم تقنية الهندسة الكيميائية والمعالجة الصناعية (CHET).',
-      tags: ['تعليمي', 'كيمياء', 'CHET'],
-      aliases: ['مبنى الكيمياء', 'الكيمياء', 'Chemistry Building', 'CHET']
+      description: 'مبنى قسم تقنية الهندسة الكيميائية والمعالجة الصناعية (CHE).',
+      tags: ['تعليمي', 'كيمياء', 'CHE'],
+      aliases: ['مبنى الكيمياء', 'الكيمياء', 'Chemistry Building', 'CHE', 'CHEM']
     },
     {
       id: 'computer-building', name: 'مبنى الحاسب', sub: 'قسم الإدارة وتقنية المعلومات', type: 'academic',
       description: 'مبنى الحاسب، ويضم قسم الإدارة وتقنية المعلومات (MIT).',
       tags: ['تعليمي', 'حاسب', 'MIT'],
-      aliases: ['مبنى الحاسب', 'الحاسب', 'مبنى الحاسوب', 'Computer Building', 'MIT']
+      aliases: ['مبنى الحاسب', 'الحاسب', 'تقنية المعلومات', 'Computer Building', 'MIT', 'M.']
     },
     {
       id: 'wings', name: 'الأجنحة', sub: 'مجمع Wings', type: 'academic',
-      description: 'مجمع الأجنحة التعليمية (Wings): قاعات ومعامل ومكاتب أقسام الكلية. تُربط به كل أجنحة الجدول.',
-      tags: ['تعليمي', 'Wings', 'قاعات'],
+      description: 'من اعظم مباني الكلية, حيث يضم مجموعة من الورش والقاعات التعليمية لقسم الميكانيكا والهندسة المدنية كذلك قسم الدراسات العامة.',
+      tags: ['تعليمي', 'Wings', 'تاريخي'],
       aliases: ['الأجنحة', 'الاجنحة', 'مبنى الأجنحة', 'Wings'],
       // All timetable names below resolve to this single complex (individual wings are NOT shown in the UI).
       // Wing 6 / Wing 7 are extras: they exist in the names reference (File B).
@@ -134,9 +134,9 @@ window.SahibCampusData = Object.freeze({
     },
     {
       id: 'restaurant', name: 'مطعم الكلية', sub: 'خدمة طلابية', type: 'restaurant',
-      description: 'مطعم الكلية، في الساحة الوسطى بين الأجنحة والسكن الطلابي القديم.',
-      tags: ['مطعم', 'خدمة طلابية'],
-      aliases: ['مطعم الكلية', 'المطعم', 'Restaurant', 'Cafeteria']
+      description: 'مطعم الكلية، امام مبنى الأجنحة، ويقدم وجبات للطلاب والموظفين.',
+      tags: ['مطعم', 'خدمة طلابية', 'الميز'],
+      aliases: ['مطعم الكلية', 'المطعم', 'Restaurant', 'Cafeteria', 'الميز']
     },
     {
       id: 'clinic', name: 'عيادة الكلية', sub: 'خدمة صحية', type: 'health',
@@ -184,9 +184,9 @@ window.SahibCampusData = Object.freeze({
       // "مركز التدريب / Training Center". The name "مبنى الأمير سعود" is kept because it is
       // the requested name and is printed on File A.  Confirm with the college before publishing
       // a functional description.
-      description: 'مبنى الأمير سعود، جنوب المنطقة الإدارية قرب البوابة الرئيسية.',
-      tags: ['مبنى الأمير سعود'],
-      aliases: ['مبنى الأمير سعود', 'الأمير سعود', 'مركز التدريب', 'Training Center', 'Prince Saud']
+      description: 'مبنى الأمير سعود، جنوب المنطقة الإدارية قرب البوابة الرئيسية. يضم ادارة التدريب, تقنية المعلومات, وكلاسات الطالبات',
+      tags: [ 'إدارة', 'مرافق', 'IT', 'الطالبات'],
+      aliases: ['مبنى الأمير سعود', 'الأمير سعود', 'مركز التدريب', 'Training Center', 'Prince Saud', 'ثنيان']
     },
 
     /* ---------------- sports ---------------- */
@@ -200,7 +200,7 @@ window.SahibCampusData = Object.freeze({
       id: 'gym', name: 'الصالة الرياضية', sub: 'القاعة متعددة الأغراض', type: 'sports',
       description: 'الصالة الرياضية والقاعة متعددة الأغراض (MPH + GYM) في الجهة الغربية من الحرم.',
       tags: ['رياضة', 'صالة', 'MPH'],
-      aliases: ['الصالة الرياضية', 'الصاله الرياضيه', 'القاعة متعددة الأغراض', 'Gym', 'MPH']
+      aliases: ['الصالة الرياضية', 'الصاله الرياضيه', 'القاعة متعددة الأغراض', 'Gym', 'MPH', 'FIELD-GYM']
     },
 
     /* ---------------- mosques ---------------- */
