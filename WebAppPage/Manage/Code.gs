@@ -65,3 +65,26 @@ function publishArticle(idToken, article){
   } finally {lock.releaseLock();}
 }
 function safeCell_(s){return /^[=+\-@]/.test(s)?"'"+s:s;}
+
+
+/** Cross-origin form transport for the GitHub Pages publisher. */
+function doPost(e) {
+  let nonce = '';
+  let response;
+  try {
+    const p = (e && e.parameter) || {};
+    nonce = String(p.nonce || '');
+    if (!/^[0-9a-f-]{36}$/i.test(nonce)) throw new Error('معرّف الطلب غير صحيح');
+    const action = String(p.action || '');
+    if (action === 'profile') response = {ok:true,result:getPublisherProfile(p.credential)};
+    else if (action === 'publish') response = {ok:true,result:publishArticle(p.credential,JSON.parse(p.payload||'{}'))};
+    else throw new Error('عملية غير معروفة');
+  } catch (err) {
+    response = {ok:false,error:String(err.message||err)};
+  }
+  const message = JSON.stringify(Object.assign({source:'madkhal-publisher-response',nonce},response));
+  // Encode message as JSON string literal to avoid injecting HTML/script from error text.
+  const safeMessage = JSON.stringify(message).replace(/</g,'\\u003c');
+  const html = '<!doctype html><html><body><script>window.top.postMessage(JSON.parse('+safeMessage+'),"https://juportal.online");<\/script></body></html>';
+  return HtmlService.createHtmlOutput(html);
+}
