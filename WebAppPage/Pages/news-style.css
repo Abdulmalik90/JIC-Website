@@ -488,3 +488,51 @@ input:checked + .slider:before { transform: translateX(22px); }
 .img-preview-close:active {
     transform: scale(0.9);
 }
+
+/* تنسيق مقالات مدخل */
+.article-body, #articleBody {
+    direction: rtl;
+    text-align: right;
+    line-height: 1.95;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.article-body p, #articleBody p {
+    margin: 0 0 1.15em;
+}
+
+.article-body h2, #articleBody h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 1.7em 0 .65em;
+    line-height: 1.5;
+}
+
+.article-body h3, #articleBody h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 1.35em 0 .55em;
+}
+
+.article-body ul, .article-body ol,
+#articleBody ul, #articleBody ol {
+    padding-right: 1.5em;
+    padding-left: 0;
+    margin: .5em 0 1.2em;
+}
+
+.article-body li, #articleBody li {
+    margin-bottom: .4em;
+}
+
+.article-body a, #articleBody a {
+    color: var(--primary-color, #2563eb);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.article-body strong, #articleBody strong {
+    font-weight: 800;
+}

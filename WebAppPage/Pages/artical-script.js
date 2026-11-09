@@ -1,3 +1,54 @@
+/* Madkhal article formatter: safe plain text + limited Markdown, no dependencies. */
+(function () {
+  'use strict';
+  const escapeHTML = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function inline(raw) {
+    let s = escapeHTML(raw);
+    const links = [];
+    s = s.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label, url) => {
+      const token = `MADKHAL_LINK_TOKEN_${links.length}_END`;
+      links.push(`<a href="${url.replace(/&amp;/g, '&amp;')}" target="_blank" rel="noopener noreferrer">${label}</a>`);
+      return token;
+    });
+    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/(^|\s)(https?:\/\/[^\s<]+)/g, (_, pre, url) => {
+      const punctuation = /[.,،؛!?؟]$/.test(url) ? url.slice(-1) : '';
+      const clean = punctuation ? url.slice(0, -1) : url;
+      return `${pre}<a href="${clean}" target="_blank" rel="noopener noreferrer">اضغط هنا</a>${punctuation}`;
+    });
+    links.forEach((link, i) => { s = s.replace(`MADKHAL_LINK_TOKEN_${i}_END`, link); });
+    return s;
+  }
+  function formatArticle(value) {
+    const lines = String(value ?? '').replace(/\r\n?/g, '\n').split('\n');
+    const result = [];
+    let paragraph = [], list = [], listType = null;
+    const flushParagraph = () => { if (paragraph.length) { result.push(`<p>${paragraph.map(inline).join('<br>')}</p>`); paragraph = []; } };
+    const flushList = () => { if (list.length) { result.push(`<${listType}>${list.map(x => `<li>${inline(x)}</li>`).join('')}</${listType}>`); list = []; listType = null; } };
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) { flushParagraph(); flushList(); continue; }
+      const heading = trimmed.match(/^(#{2,3})\s+(.+)$/);
+      const bullet = trimmed.match(/^[-*]\s+(.+)$/);
+      const numbered = trimmed.match(/^\d+[.)]\s+(.+)$/);
+      if (heading) { flushParagraph(); flushList(); result.push(`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`); }
+      else if (bullet || numbered) {
+        flushParagraph();
+        const type = bullet ? 'ul' : 'ol';
+        if (listType && listType !== type) flushList();
+        listType = type;
+        list.push((bullet || numbered)[1]);
+      } else { flushList(); paragraph.push(trimmed); }
+    }
+    flushParagraph(); flushList();
+    return result.join('\n');
+  }
+  window.MadkhalArticleFormatter = { format: formatArticle };
+})();
+
+
+const MadkhalArticleFormatter = window.MadkhalArticleFormatter;
+
 document.addEventListener("DOMContentLoaded", () => {
     const articleContainer = document.getElementById('articleContent');
     const urlParams = new URLSearchParams(window.location.search);
@@ -88,24 +139,25 @@ function showError(msg) {
             dateString = dateObj.toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
 
-        const formattedContent = article.content.replace(/(https?:\/\/[^\s]+)/g, function(url) {
-            return `<br><a href="${url}" target="_blank" style="color:var(--primary-color); font-weight:bold;"><i class="fi fi-rr-link-alt"></i> اضغط هنا</a><br>`;
-        });
-        
-        const imgSrc = (article.image && article.image.startsWith('http')) ? article.image : 'https://via.placeholder.com/800x400/1a60bb/ffffff?text=خبر+جديد';
+        const formattedContent = MadkhalArticleFormatter.format(article.content);
+        const escapeHTML = text => String(text ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        const safeImage = (article.image || '').trim();
+        const imageURL = /^https?:\/\//i.test(safeImage) ? safeImage : '';
+
+        const imgSrc = imageURL || 'https://via.placeholder.com/800x400/1a60bb/ffffff?text=خبر+جديد';
 
         articleContainer.innerHTML = `
             <span class="article-meta">
-                <span class="article-badge">${article.category}</span>
-                <span>📅 ${dateString}</span>
+                <span class="article-badge">${escapeHTML(article.category)}</span>
+                <span>📅 ${escapeHTML(dateString)}</span>
             </span>
-            <h1 style="font-size: 22px; font-weight: 800; margin: 10px 0 20px; color: var(--text-dark);">${article.title}</h1>
-            <img src="${imgSrc}" class="article-main-image" alt="${article.title}">
+            <h1 style="font-size: 22px; font-weight: 800; margin: 10px 0 20px; color: var(--text-dark);">${escapeHTML(article.title)}</h1>
+            <img src="${escapeHTML(imgSrc)}" class="article-main-image" alt="${escapeHTML(article.title)}">
             <div class="article-body">
                 ${formattedContent}
             </div>
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-light); font-size: 12px;">
-                ✍️ بكتابة: ${article.author}
+                ✍️ بكتابة: ${escapeHTML(article.author)}
             </div>
         `;
 
