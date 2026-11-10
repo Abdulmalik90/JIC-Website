@@ -1,69 +1,126 @@
-/* Madkhal article formatter: safe plain text + limited Markdown, no dependencies. */
+/* Madkhal article formatter — Markdown + automatic legacy link buttons. */
 (function () {
   'use strict';
-  const escapeHTML = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function inline(raw) {
-    let s = escapeHTML(raw);
-    const links = [];
-    s = s.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label, url) => {
-      const token = `MADKHAL_LINK_TOKEN_${links.length}_END`;
-      links.push(`<a href="${url.replace(/&amp;/g, '&amp;')}" target="_blank" rel="noopener noreferrer">${label}</a>`);
-      return token;
-    });
-    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    s = s.replace(/(^|\s)(https?:\/\/[^\s<]+)/g, (_, pre, url) => {
-      const punctuation = /[.,،؛!?؟]$/.test(url) ? url.slice(-1) : '';
-      const clean = punctuation ? url.slice(0, -1) : url;
-      return `${pre}<a href="${clean}" target="_blank" rel="noopener noreferrer">اضغط هنا</a>${punctuation}`;
-    });
-    links.forEach((link, i) => { s = s.replace(`MADKHAL_LINK_TOKEN_${i}_END`, link); });
-    return s;
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+
+  const DEFAULT_LINK_LABEL = 'اضغط للتفاصيل';
+  const linkRegex = /\[([^\]\n]*)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<]+)/g;
+
+  function safeUrl(raw) {
+    try {
+      const url = new URL(raw);
+      return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : null;
+    } catch (_) { return null; }
   }
+
+  function formatBold(text) {
+    return escapeHTML(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  }
+
+  function inline(raw) {
+    const source = String(raw);
+    const output = [];
+    let index = 0;
+    linkRegex.lastIndex = 0;
+    for (const match of source.matchAll(linkRegex)) {
+      const start = match.index;
+      output.push(formatBold(source.slice(index, start)));
+      const markdown = match[2] !== undefined;
+      const linkText = markdown ? match[1].trim() : '';
+      let rawUrl = markdown ? match[2] : match[3];
+      let trailing = '';
+      if (!markdown) {
+        // Preserve punctuation following standalone URLs.
+        const cleaned = rawUrl.replace(/[.,،؛!?؟]+$/, '');
+        trailing = rawUrl.slice(cleaned.length);
+        rawUrl = cleaned;
+      }
+      const url = safeUrl(rawUrl);
+      if (url) {
+        output.push(`<a class="inline-action-btn madkhal-link-button" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> ${formatBold(linkText || DEFAULT_LINK_LABEL)}</a>${escapeHTML(trailing)}`);
+      } else {
+        output.push(formatBold(match[0]));
+      }
+      index = start + match[0].length;
+    }
+    output.push(formatBold(source.slice(index)));
+    return output.join('');
+  }
+
   function formatArticle(value) {
     const lines = String(value ?? '').replace(/\r\n?/g, '\n').split('\n');
     const result = [];
     let paragraph = [], list = [], listType = null;
-    const flushParagraph = () => { if (paragraph.length) { result.push(`<p>${paragraph.map(inline).join('<br>')}</p>`); paragraph = []; } };
-    const flushList = () => { if (list.length) { result.push(`<${listType}>${list.map(x => `<li>${inline(x)}</li>`).join('')}</${listType}>`); list = []; listType = null; } };
+    const flushParagraph = () => {
+      if (paragraph.length) {
+        result.push(`<p>${paragraph.map(inline).join('<br>')}</p>`);
+        paragraph = [];
+      }
+    };
+    const flushList = () => {
+      if (list.length) {
+        result.push(`<${listType}>${list.map(item => `<li>${inline(item)}</li>`).join('')}</${listType}>`);
+        list = [];
+        listType = null;
+      }
+    };
     for (const line of lines) {
       const trimmed = line.trim();
       if (!trimmed) { flushParagraph(); flushList(); continue; }
       const heading = trimmed.match(/^(#{2,3})\s+(.+)$/);
       const bullet = trimmed.match(/^[-*]\s+(.+)$/);
       const numbered = trimmed.match(/^\d+[.)]\s+(.+)$/);
-      if (heading) { flushParagraph(); flushList(); result.push(`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`); }
-      else if (bullet || numbered) {
+      if (heading) {
+        flushParagraph(); flushList();
+        result.push(`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`);
+      } else if (bullet || numbered) {
         flushParagraph();
         const type = bullet ? 'ul' : 'ol';
         if (listType && listType !== type) flushList();
         listType = type;
         list.push((bullet || numbered)[1]);
-      } else { flushList(); paragraph.push(trimmed); }
+      } else {
+        flushList(); paragraph.push(trimmed);
+      }
     }
     flushParagraph(); flushList();
     return result.join('\n');
   }
+
+  // Inject once so the buttons work even when older article pages don't import new CSS.
+  if (!document.getElementById('madkhal-link-button-style')) {
+    const style = document.createElement('style');
+    style.id = 'madkhal-link-button-style';
+    style.textContent = `
+      .article-body a.madkhal-link-button, #articleBody a.madkhal-link-button {
+        display: inline-flex; align-items: center; gap: .45em;
+        max-width: 100%; vertical-align: middle; text-align: center;
+        padding: .65em 1.15em; margin: .25em .1em;
+        border-radius: 11px; text-decoration: none;
+        background: var(--primary-color, #1769aa); color: white;
+        font-weight: 800; line-height: 1.5; overflow-wrap: anywhere;
+        transition: filter .15s ease, transform .15s ease;
+      }
+      .article-body a.madkhal-link-button:hover, #articleBody a.madkhal-link-button:hover {
+        filter: brightness(1.14); transform: translateY(-1px);
+      }
+    `;
+    document.head.append(style);
+  }
   window.MadkhalArticleFormatter = { format: formatArticle };
 })();
 
-
 const MadkhalArticleFormatter = window.MadkhalArticleFormatter;
+
 
 // =========================================
 // قراءة تفاصيل الخبر من جهاز المستخدم مباشرة (بدون إنترنت)
 // =========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-     // دالة لصيد الروابط من النص الخام وتحويلها لروابط قابلة للضغط
-function makeLinksClickable(text) {
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        return text.replace(urlRegex, function(url) {
-            // حولنا الرابط لزر، وضفنا أيقونة رابط جنبه
-            return `<br><a href="${url}" target="_blank" class="inline-action-btn"><i class="fi fi-rr-link-alt"></i>اضغط لعرض التفاصيل</a><br>`;
-        });
-    }
-    
-    const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
 
     const titleEl = document.getElementById('articleTitle');
